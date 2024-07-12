@@ -1,6 +1,9 @@
 package com.example.nutrition.Activities;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -10,12 +13,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.R;
 import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -24,6 +30,7 @@ public class MainActivity extends ParentActivity {
     private ActivityMainBinding binding;
     private Toaster toaster;
     private MaterialCardView[] materialCardViews;
+    private HelperMain helperMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,7 @@ public class MainActivity extends ParentActivity {
         toaster = new Toaster(MainActivity.this);
 
         materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3, binding.matCard4, binding.matCard5};
+        helperMain = new HelperMain(MainActivity.this);
     }
 
     @Override
@@ -68,36 +76,12 @@ public class MainActivity extends ParentActivity {
             }
         });
 
-        setUpCardEventListeners();
+        helperMain.setUpCardEventListeners(materialCardViews, binding);
     }
 
     @Override
     public void additionalThemeChanges() {
 
-    }
-
-    public void setUpCardEventListeners() {
-        for (MaterialCardView materialCardView : materialCardViews) {
-            materialCardView.setOnClickListener(view -> {
-                materialCardView.setChecked(!materialCardView.isChecked());
-            });
-
-            materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                    binding.buttonListMainActivity.setEnabled(aCardIsChecked());
-                }
-            });
-        }
-    }
-
-    public boolean aCardIsChecked() {
-        for (MaterialCardView materialCardView : materialCardViews) {
-            if (materialCardView.isChecked()) {
-                return true;
-            }
-        }
-        return false;
     }
 }
 

@@ -359,6 +359,51 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/section3LayoutMainActivity"
+        android:layout_above="@id/imageViewArrow"
+        android:layout_marginBottom="8dp"
+        android:paddingHorizontal="4dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="12dp"
+            >
+
+            <RelativeLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Total days:"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageViewArrow"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:src="@drawable/ic_test"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        />
+
 </RelativeLayout>
 
 
