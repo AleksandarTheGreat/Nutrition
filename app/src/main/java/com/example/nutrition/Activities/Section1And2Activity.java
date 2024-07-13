@@ -22,6 +22,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.DoubleSummaryStatistics;
 import java.util.HashSet;
 import java.util.List;
@@ -52,6 +53,7 @@ public class Section1And2Activity extends ParentActivity {
         });
 
         addEventListeners();
+        helperSection1And2Activity.setUpFilteredCategories(this, binding);
     }
 
     @Override

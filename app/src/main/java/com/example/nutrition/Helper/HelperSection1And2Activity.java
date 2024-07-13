@@ -2,9 +2,14 @@ package com.example.nutrition.Helper;
 
 import android.content.Context;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.nutrition.Adapters.ItemsAdapter;
 import com.example.nutrition.Model.Product;
+import com.example.nutrition.databinding.ActivitySection1And2Binding;
+import com.google.android.material.chip.Chip;
 
+import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 
 public class HelperSection1And2Activity {
@@ -40,5 +45,20 @@ public class HelperSection1And2Activity {
         builder.append("Average protein: ").append(statisticsSugar.getAverage()).append("\n\n");
 
         toaster.alert("Stats:", builder.toString());
+    }
+
+    public void setUpFilteredCategories(AppCompatActivity activity, ActivitySection1And2Binding binding){
+        ArrayList<String> categories = activity.getIntent().getStringArrayListExtra("categories");
+        if (categories == null)
+            return;
+
+        // Here we only update the UI since the event listeners are already set in the addEventListeners method
+        for (int i=0;i<binding.chipGroupSection1And2.getChildCount();i++){
+            Chip chip = (Chip) binding.chipGroupSection1And2.getChildAt(i);
+            String text = chip.getText().toString().trim();
+
+            if (categories.contains(text))
+                chip.setChecked(true);
+        }
     }
 }

@@ -122,6 +122,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCard1"
+                android:tag="Grains"
                 style="@style/CardFoodPyramid"
                 android:layout_marginStart="12dp">
 
@@ -133,7 +134,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Category" />
+                        android:text="Grains" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -145,6 +146,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCard2"
+                android:tag="Vegetables"
                 style="@style/CardFoodPyramid">
 
                 <RelativeLayout
@@ -155,7 +157,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Category" />
+                        android:text="Vegetables" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -167,6 +169,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCard3"
+                android:tag="Fruits"
                 style="@style/CardFoodPyramid">
 
                 <RelativeLayout
@@ -177,7 +180,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Category" />
+                        android:text="Fruits" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -189,6 +192,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCard4"
+                android:tag="Proteins"
                 style="@style/CardFoodPyramid">
 
                 <RelativeLayout
@@ -199,7 +203,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Category" />
+                        android:text="Proteins" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -211,8 +215,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCard5"
-                style="@style/CardFoodPyramid"
-                android:layout_marginEnd="12dp">
+                android:tag="Dairy"
+                style="@style/CardFoodPyramid">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -222,7 +226,32 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Category" />
+                        android:text="Dairy" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard6"
+                android:tag="Fats, Oils, and Sweets"
+                style="@style/CardFoodPyramid"
+                android:layout_marginEnd="12dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        style="@style/FoodPyramidCategory"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Fats, Oils and Sweets" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -284,24 +313,29 @@
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="36dp"
         android:paddingHorizontal="4dp"
+        app:singleSelection="true"
         app:chipSpacingHorizontal="8dp"
         app:chipSpacingVertical="-8dp">
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"
-            android:text="Category 1" />
+            android:text="Most Protein" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"
-            android:text="Category 2" />
+            android:text="Least Protein" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"
-            android:text="Category 3" />
+            android:text="Most Calories" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"
-            android:text="Category 4" />
+            android:text="Least Sugar" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/ChipMainActivity"
+            android:text="Most Carbs" />
 
     </com.google.android.material.chip.ChipGroup>
 

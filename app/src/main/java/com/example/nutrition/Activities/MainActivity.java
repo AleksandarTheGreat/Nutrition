@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
@@ -17,6 +18,8 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends ParentActivity {
@@ -49,7 +52,7 @@ public class MainActivity extends ParentActivity {
 
         toaster = new Toaster(MainActivity.this);
 
-        materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3, binding.matCard4, binding.matCard5};
+        materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3, binding.matCard4, binding.matCard5, binding.matCard6};
         helperMain = new HelperMain(MainActivity.this);
     }
 
@@ -73,7 +76,18 @@ public class MainActivity extends ParentActivity {
         helperMain.setUpCardEventListeners(materialCardViews, binding);
 
         binding.buttonListMainActivity.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, Section1And2Activity.class);
+            Intent intent = new Intent(MainActivity.this, Section1And2Activity.class);
+
+            ArrayList<String> categories = new ArrayList<>();
+            for (MaterialCardView cardView: materialCardViews){
+                if (cardView.isChecked()){
+                    String text = cardView.getTag().toString().trim();
+                    categories.add(text);
+                }
+            }
+
+            intent.putStringArrayListExtra("categories", categories);
+            startActivity(intent);
         });
 
         binding.buttonFilterMainActivity.setOnClickListener(view -> {
