@@ -15,6 +15,7 @@
         android:paddingTop="8dp">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewSection1And2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -53,6 +54,7 @@
         >
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupSection1And2"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:chipSpacingVertical="-8dp"
@@ -61,32 +63,32 @@
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Some category"
+                android:text="Grains"
                 />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Some"
+                android:text="Vegetables"
                 />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="category"
+                android:text="Fruits"
                 />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Alooo"
+                android:text="Proteins"
                 />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Alooo"
+                android:text="Dairy"
                 />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Alooo"
+                android:text="Fats, Oils, and Sweets"
                 />
 
         </com.google.android.material.chip.ChipGroup>
@@ -114,7 +116,7 @@
         <TextView
             android:id="@+id/textViewSubTitleSection1And2"
             style="@style/SubTitlePart"
-            android:text="All Food items"
+            android:text="Stats for all food items in 100 grams"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1And2"
             app:layout_constraintTop_toTopOf="parent" />

@@ -23,4 +23,13 @@ public class Toaster implements IToaster{
                 .setCancelable(true)
                 .show();
     }
+
+    @Override
+    public void alert(String title, String text) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setMessage(text)
+                .setCancelable(true)
+                .show();
+    }
 }

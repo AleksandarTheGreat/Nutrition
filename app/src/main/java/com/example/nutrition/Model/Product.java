@@ -3,15 +3,20 @@ package com.example.nutrition.Model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
     protected String name;
+    protected String category;
     protected double protein;
     protected double carbs;
     protected double calories;
     protected double sugar;
 
-    private Product(String name, double protein, double carbs, double calories, double sugar) {
+    private Product(String name, String category, double protein, double carbs, double calories, double sugar) {
         this.name = name;
+        this.category = category;
         this.protein = protein;
         this.carbs = carbs;
         this.calories = calories;
@@ -20,8 +25,8 @@ public class Product {
 
     public Product(){}
 
-    public static Product createProduct(String name, double protein, double carbs, double calories, double sugar){
-        return new Product(name, protein, carbs, calories, sugar);
+    public static Product createProduct(String name, String category, double protein, double carbs, double calories, double sugar){
+        return new Product(name, category, protein, carbs, calories, sugar);
     }
 
     @NonNull
@@ -44,6 +49,12 @@ public class Product {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
     }
     public double getProtein() {
         return protein;
@@ -69,4 +80,13 @@ public class Product {
     public void setSugar(double sugar) {
         this.sugar = sugar;
     }
+
 }
+
+
+
+
+
+
+
+
