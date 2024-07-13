@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Section1And2Activity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerLayoutSection1And2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="8dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/back_for_search_view"
+            app:defaultQueryHint="Search here"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/imageViewIconHeaderLayoutSection1And2"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewIconHeaderLayoutSection1And2"
+            android:layout_height="45dp"
+            android:layout_width="45dp"
+            android:layout_marginEnd="4dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollViewSection1And2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerLayoutSection1And2"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="36dp"
+        android:scrollbars="none"
+        >
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:chipSpacingVertical="-8dp"
+            app:singleLine="true"
+            >
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Some category"
+                />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Some"
+                />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="category"
+                />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Alooo"
+                />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Alooo"
+                />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Alooo"
+                />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/subHeaderLayoutSection1And2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalScrollViewSection1And2"
+        android:layout_marginBottom="8dp"
+        android:paddingHorizontal="4dp">
+
+        <ImageView
+            android:id="@+id/imageViewIconSection1And2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSubTitleSection1And2"
+            style="@style/SubTitlePart"
+            android:text="All Food items"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1And2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/subHeaderLayoutSection1And2"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="24dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSection1And2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

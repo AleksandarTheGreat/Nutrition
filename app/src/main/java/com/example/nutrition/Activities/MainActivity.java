@@ -1,14 +1,10 @@
 package com.example.nutrition.Activities;
 
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -20,8 +16,6 @@ import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -77,6 +71,22 @@ public class MainActivity extends ParentActivity {
         });
 
         helperMain.setUpCardEventListeners(materialCardViews, binding);
+
+        binding.buttonListMainActivity.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, Section1And2Activity.class);
+        });
+
+        binding.buttonFilterMainActivity.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, Section1And2Activity.class);
+        });
+
+        binding.imageViewAddNewDay.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, Section3Activity.class);
+        });
+
+        binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, Section3Activity.class);
+        });
     }
 
     @Override

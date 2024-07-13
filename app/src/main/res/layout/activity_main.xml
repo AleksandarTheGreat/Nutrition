@@ -9,65 +9,60 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLayoutMainActivity"
-        android:layout_height="?actionBarSize"
         android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
         android:layout_marginBottom="4dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/imageViewLogoMainActivity"
-            android:layout_height="45dp"
             android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewTitleMainActivity"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="LE TITLE"
-            android:textStyle="bold"
             android:textSize="30sp"
-            app:layout_constraintLeft_toRightOf="@id/imageViewLogoMainActivity"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toRightOf="@id/imageViewLogoMainActivity"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/introductionLayoutMainActivity"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/headerLayoutMainActivity"
-        android:paddingHorizontal="4dp"
         android:layout_marginBottom="28dp"
-        >
+        android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/imageViewIntroductionArrow"
-            android:layout_height="30dp"
             android:layout_width="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            style="@style/SubTitlePart"
             android:id="@+id/textViewIntroductionMainActivity"
+            style="@style/SubTitlePart"
             android:text="A brief introduction"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIntroductionArrow"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toRightOf="@id/imageViewIntroductionArrow"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,161 +72,161 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/introductionLayoutMainActivity"
         android:layout_marginBottom="2dp"
-        android:paddingHorizontal="4dp"
-        >
+        android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/imageViewIconSection1"
-            android:layout_height="30dp"
             android:layout_width="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            style="@style/SubTitlePart"
             android:id="@+id/textViewSubTitleSection1"
+            style="@style/SubTitlePart"
             android:text="Section 1 (Pyramid I Think)"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonListMainActivity"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="List"
-            android:enabled="false"
-            android:drawableEnd="@drawable/ic_test"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             style="@style/Widget.Material3.Button.TextButton"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_test"
+            android:enabled="false"
+            android:text="List"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollViewPyramids"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/section1LayoutMainActivity"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="36dp"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/CardFoodPyramid"
                 android:id="@+id/matCard1"
-                android:layout_marginStart="12dp"
-                >
+                style="@style/CardFoodPyramid"
+                android:layout_marginStart="12dp">
 
                 <RelativeLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Category"
                         style="@style/FoodPyramidCategory"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
-                        />
+                        android:layout_alignParentBottom="true"
+                        android:text="Category" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/CardFoodPyramid"
-                android:id="@+id/matCard2">
+                android:id="@+id/matCard2"
+                style="@style/CardFoodPyramid">
 
                 <RelativeLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Category"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentStart="true"
                         style="@style/FoodPyramidCategory"
-                        />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Category" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/CardFoodPyramid"
                 android:id="@+id/matCard3"
-                >
+                style="@style/CardFoodPyramid">
 
                 <RelativeLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Category"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentStart="true"
                         style="@style/FoodPyramidCategory"
-                        />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Category" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/CardFoodPyramid"
                 android:id="@+id/matCard4"
-                >
+                style="@style/CardFoodPyramid">
 
                 <RelativeLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Category"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentStart="true"
                         style="@style/FoodPyramidCategory"
-                        />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Category" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/CardFoodPyramid"
                 android:id="@+id/matCard5"
-                android:layout_marginEnd="12dp"
-                >
+                style="@style/CardFoodPyramid"
+                android:layout_marginEnd="12dp">
 
                 <RelativeLayout
-                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Category"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentStart="true"
                         style="@style/FoodPyramidCategory"
-                        />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Category" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </RelativeLayout>
 
@@ -247,41 +242,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontalScrollViewPyramids"
         android:layout_marginBottom="0dp"
-        android:paddingHorizontal="4dp"
-        >
+        android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/imageViewIconSection2"
-            android:layout_height="30dp"
             android:layout_width="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            style="@style/SubTitlePart"
             android:id="@+id/textViewSubTitleSection2"
+            style="@style/SubTitlePart"
             android:text="Section 2 (Something ELSE)"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection2"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonFilterMainActivity"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Filter"
-            android:enabled="false"
-            android:drawableEnd="@drawable/ic_test"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             style="@style/Widget.Material3.Button.TextButton"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_test"
+            android:enabled="false"
+            android:text="Filter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -290,31 +281,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/section2LayoutMainActivity"
-        android:layout_marginBottom="36dp"
         android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="36dp"
         android:paddingHorizontal="4dp"
-        app:chipSpacingVertical="-8dp"
-        app:chipSpacingHorizontal="8dp">
+        app:chipSpacingHorizontal="8dp"
+        app:chipSpacingVertical="-8dp">
 
         <com.google.android.material.chip.Chip
-            android:text="Category 1"
             style="@style/ChipMainActivity"
-            />
+            android:text="Category 1" />
 
         <com.google.android.material.chip.Chip
-            android:text="Category 2"
             style="@style/ChipMainActivity"
-            />
+            android:text="Category 2" />
 
         <com.google.android.material.chip.Chip
-            android:text="Category 3"
             style="@style/ChipMainActivity"
-            />
+            android:text="Category 3" />
 
         <com.google.android.material.chip.Chip
-            android:text="Category 4"
             style="@style/ChipMainActivity"
-            />
+            android:text="Category 4" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -323,72 +310,94 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/chipGroupMainActivity"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/imageViewIconSection3"
-            android:layout_height="30dp"
             android:layout_width="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            style="@style/SubTitlePart"
             android:id="@+id/textViewSubTitleSection3"
+            style="@style/SubTitlePart"
             android:text="Section 3 (Third and Final Section)"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewAddNewDay"
-            android:layout_height="30dp"
             android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="12dp"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/section3LayoutMainActivity"
         android:layout_above="@id/imageViewArrow"
+        android:layout_below="@id/section3LayoutMainActivity"
         android:layout_marginBottom="8dp"
         android:paddingHorizontal="4dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="12dp"
-            >
+            android:layout_marginEnd="12dp">
 
-            <RelativeLayout
-                android:layout_height="match_parent"
-                android:layout_width="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutDaysMainActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Total days:"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     />
 
-            </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Day 24"
+                    android:textSize="26dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageViewGoLeft"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/imageViewGoRight" />
+
+                <ImageView
+                    android:id="@+id/imageViewGoRight"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -396,13 +405,12 @@
 
     <ImageView
         android:id="@+id/imageViewArrow"
-        android:layout_height="30dp"
         android:layout_width="30dp"
-        android:src="@drawable/ic_test"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
-        />
+        android:src="@drawable/ic_test" />
 
 </RelativeLayout>
 
