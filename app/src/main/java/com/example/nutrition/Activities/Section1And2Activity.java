@@ -65,7 +65,7 @@ public class Section1And2Activity extends ParentActivity {
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
         allProductsAlways = ContentLoader.createTestList();
 
-        itemsAdapter = new ItemsAdapter(Section1And2Activity.this, ContentLoader.createTestList());
+        itemsAdapter = new ItemsAdapter(Section1And2Activity.this, allProductsAlways);
 
         binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
         binding.recyclerViewSection1And2.setHasFixedSize(true);
@@ -93,7 +93,7 @@ public class Section1And2Activity extends ParentActivity {
                             .filter(product -> set.contains(product.getCategory()))
                             .collect(Collectors.toList());
                 else
-                    filteredList = ContentLoader.createTestList();
+                    filteredList = allProductsAlways;
 
                 itemsAdapter.setProductList(filteredList);
                 itemsAdapter.notifyDataSetChanged();
