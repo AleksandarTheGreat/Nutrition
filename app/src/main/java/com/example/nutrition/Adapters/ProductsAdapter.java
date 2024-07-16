@@ -16,20 +16,16 @@ import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
 
-import org.w3c.dom.Text;
-
-import java.net.ProtocolException;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder> {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyViewHolder> {
 
     private final Context context;
     private List<Product> productList;
 
     private Toaster toaster;
 
-    public ItemsAdapter(Context context, List<Product> productList){
+    public ProductsAdapter(Context context, List<Product> productList){
         this.context = context;
         this.productList = productList;
 
@@ -38,7 +34,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
     @NonNull
     @Override
-    public ItemsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.single_product_layout, parent, false);
 
@@ -54,7 +50,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ItemsAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductsAdapter.MyViewHolder holder, int position) {
         Product product = productList.get(position);
 
         holder.textViewName.setText(product.getName());

@@ -1,16 +1,20 @@
 package com.example.nutrition.Helper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.nutrition.Adapters.ItemsAdapter;
+import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.databinding.ActivitySection1And2Binding;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HelperSection1And2Activity {
     private Context context;
@@ -21,11 +25,11 @@ public class HelperSection1And2Activity {
         this.toaster = new Toaster(context);
     }
 
-    public void showStatistics(ItemsAdapter itemsAdapter){
-        DoubleSummaryStatistics statisticsProtein = itemsAdapter.getProductList().stream().mapToDouble(Product::getProtein).summaryStatistics();
-        DoubleSummaryStatistics statisticsCarbs = itemsAdapter.getProductList().stream().mapToDouble(Product::getCarbs).summaryStatistics();
-        DoubleSummaryStatistics statisticsCalories = itemsAdapter.getProductList().stream().mapToDouble(Product::getCalories).summaryStatistics();
-        DoubleSummaryStatistics statisticsSugar = itemsAdapter.getProductList().stream().mapToDouble(Product::getSugar).summaryStatistics();
+    public void showStatistics(ProductsAdapter productsAdapter){
+        DoubleSummaryStatistics statisticsProtein = productsAdapter.getProductList().stream().mapToDouble(Product::getProtein).summaryStatistics();
+        DoubleSummaryStatistics statisticsCarbs = productsAdapter.getProductList().stream().mapToDouble(Product::getCarbs).summaryStatistics();
+        DoubleSummaryStatistics statisticsCalories = productsAdapter.getProductList().stream().mapToDouble(Product::getCalories).summaryStatistics();
+        DoubleSummaryStatistics statisticsSugar = productsAdapter.getProductList().stream().mapToDouble(Product::getSugar).summaryStatistics();
 
         StringBuilder builder = new StringBuilder();
         builder.append("Max protein: ").append(statisticsProtein.getMax()).append("\n");
@@ -47,7 +51,7 @@ public class HelperSection1And2Activity {
         toaster.alert("Stats:", builder.toString());
     }
 
-    public void setUpFilteredCategories(AppCompatActivity activity, ActivitySection1And2Binding binding){
+    public void setUpByPyramidCategories(AppCompatActivity activity, ActivitySection1And2Binding binding){
         ArrayList<String> categories = activity.getIntent().getStringArrayListExtra("categories");
         if (categories == null)
             return;
@@ -61,4 +65,65 @@ public class HelperSection1And2Activity {
                 chip.setChecked(true);
         }
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setUpByFilters(AppCompatActivity activity, ActivitySection1And2Binding binding, ProductsAdapter productsAdapter){
+        String text = activity.getIntent().getStringExtra("filter");
+        if (text == null)
+            return;
+
+        List<Product> sortedList = new ArrayList<>();
+
+        switch (text){
+            case "Most Protein":{
+                sortedList = productsAdapter.getProductList()
+                        .stream()
+                        .sorted(Comparator.comparing(Product::getProtein).reversed())
+                        .limit(10)
+                        .collect(Collectors.toList());
+                break;
+            } case "Most Calories":{
+                sortedList = productsAdapter.getProductList()
+                        .stream()
+                        .sorted(Comparator.comparing(Product::getCalories).reversed())
+                        .limit(10)
+                        .collect(Collectors.toList());
+                break;
+            } case "Least Calories":{
+                sortedList = productsAdapter.getProductList()
+                        .stream()
+                        .sorted(Comparator.comparing(Product::getCalories))
+                        .limit(10)
+                        .collect(Collectors.toList());
+                break;
+            } case "Least Sugar":{
+                sortedList = productsAdapter.getProductList()
+                        .stream()
+                        .sorted(Comparator.comparing(Product::getSugar))
+                        .limit(10)
+                        .collect(Collectors.toList());
+                break;
+            } case "Most Carbs":{
+                sortedList = productsAdapter.getProductList()
+                        .stream()
+                        .sorted(Comparator.comparing(Product::getCarbs).reversed())
+                        .limit(10)
+                        .collect(Collectors.toList());
+                break;
+            }
+        }
+
+        productsAdapter.setProductList(sortedList);
+        productsAdapter.notifyDataSetChanged();
+    }
 }
+
+
+
+
+
+
+
+
+
+

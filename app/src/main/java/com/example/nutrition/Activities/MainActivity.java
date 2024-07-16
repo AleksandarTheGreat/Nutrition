@@ -62,14 +62,6 @@ public class MainActivity extends ParentActivity {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 binding.buttonFilterMainActivity.setEnabled(!checkedIds.isEmpty());
-
-                StringBuilder builder = new StringBuilder();
-                for (Integer id : checkedIds) {
-                    Chip chip = group.findViewById(id);
-                    builder.append(chip.getText().toString()).append(", ");
-                }
-
-                toaster.text(builder.toString());
             }
         });
 
@@ -91,7 +83,14 @@ public class MainActivity extends ParentActivity {
         });
 
         binding.buttonFilterMainActivity.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, Section1And2Activity.class);
+            Intent intent = new Intent(MainActivity.this, Section1And2Activity.class);
+
+            int checkedChipId = binding.chipGroupMainActivity.getCheckedChipId();
+            Chip checkedChip = binding.chipGroupMainActivity.findViewById(checkedChipId);
+            String text = checkedChip.getText().toString().trim();
+
+            intent.putExtra("filter", text);
+            startActivity(intent);
         });
 
         binding.imageViewAddNewDay.setOnClickListener(view -> {

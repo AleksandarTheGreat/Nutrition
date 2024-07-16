@@ -323,11 +323,11 @@
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"
-            android:text="Least Protein" />
+            android:text="Most Calories " />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"
-            android:text="Most Calories" />
+            android:text="Least Calories" />
 
         <com.google.android.material.chip.Chip
             style="@style/ChipMainActivity"

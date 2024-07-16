@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.nutrition.Adapters.ItemsAdapter;
+import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Helper.ContentLoader;
 import com.example.nutrition.Helper.HelperSection1And2Activity;
 import com.example.nutrition.Helper.Toaster;
@@ -21,13 +21,8 @@ import com.example.nutrition.databinding.ActivitySection1And2Binding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.DoubleSummaryStatistics;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Section1And2Activity extends ParentActivity {
@@ -35,7 +30,7 @@ public class Section1And2Activity extends ParentActivity {
 
     private ActivitySection1And2Binding binding;
     private Toaster toaster;
-    private ItemsAdapter itemsAdapter;
+    private ProductsAdapter productsAdapter;
     private HelperSection1And2Activity helperSection1And2Activity;
     private List<Product> allProductsAlways;
 
@@ -53,7 +48,13 @@ public class Section1And2Activity extends ParentActivity {
         });
 
         addEventListeners();
-        helperSection1And2Activity.setUpFilteredCategories(this, binding);
+
+        // Either the first method will be called or the second one
+        // The first shall be called if we come here via the List button
+        helperSection1And2Activity.setUpByPyramidCategories(this, binding);
+
+        // The second shall be called if we come here via the Filter button
+        helperSection1And2Activity.setUpByFilters(this, binding, productsAdapter);
     }
 
     @Override
@@ -65,11 +66,11 @@ public class Section1And2Activity extends ParentActivity {
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
         allProductsAlways = ContentLoader.createTestList();
 
-        itemsAdapter = new ItemsAdapter(Section1And2Activity.this, allProductsAlways);
+        productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
 
         binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
         binding.recyclerViewSection1And2.setHasFixedSize(true);
-        binding.recyclerViewSection1And2.setAdapter(itemsAdapter);
+        binding.recyclerViewSection1And2.setAdapter(productsAdapter);
     }
 
     @Override
@@ -95,8 +96,8 @@ public class Section1And2Activity extends ParentActivity {
                 else
                     filteredList = allProductsAlways;
 
-                itemsAdapter.setProductList(filteredList);
-                itemsAdapter.notifyDataSetChanged();
+                productsAdapter.setProductList(filteredList);
+                productsAdapter.notifyDataSetChanged();
             }
         });
 
@@ -115,15 +116,15 @@ public class Section1And2Activity extends ParentActivity {
                                 || product.getCategory().trim().toLowerCase().contains(newText.toLowerCase()))
                         .collect(Collectors.toList());
 
-                itemsAdapter.setProductList(filteredProducts);
-                itemsAdapter.notifyDataSetChanged();
+                productsAdapter.setProductList(filteredProducts);
+                productsAdapter.notifyDataSetChanged();
 
                 return true;
             }
         });
 
         binding.imageViewIconHeaderLayoutSection1And2.setOnClickListener(view -> {
-            helperSection1And2Activity.showStatistics(itemsAdapter);
+            helperSection1And2Activity.showStatistics(productsAdapter);
         });
     }
 
