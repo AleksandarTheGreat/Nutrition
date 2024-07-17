@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLayoutSection1And2"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:paddingHorizontal="8dp"
         android:paddingTop="8dp">
@@ -19,27 +19,25 @@
             android:id="@+id/searchViewSection1And2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/back_for_search_view"
             app:defaultQueryHint="Search here"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/imageViewIconHeaderLayoutSection1And2"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewIconHeaderLayoutSection1And2"
-            android:layout_height="45dp"
             android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="4dp"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -51,46 +49,38 @@
         android:layout_below="@id/headerLayoutSection1And2"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="36dp"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupSection1And2"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:chipSpacingVertical="-8dp"
-            app:singleLine="true"
-            >
+            app:singleLine="true">
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Grains"
-                />
+                android:text="Grains" />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Vegetables"
-                />
+                android:text="Vegetables" />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Fruits"
-                />
+                android:text="Fruits" />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Proteins"
-                />
+                android:text="Proteins" />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Dairy"
-                />
+                android:text="Dairy" />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Fats, Oils, and Sweets"
-                />
+                android:text="Fats, Oils, and Sweets" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -134,7 +124,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSection1And2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
