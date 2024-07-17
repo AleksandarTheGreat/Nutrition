@@ -72,7 +72,7 @@
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"
-                android:text="Proteins" />
+                android:text="Meat and Proteins" />
 
             <com.google.android.material.chip.Chip
                 style="@style/ChipMainActivity"

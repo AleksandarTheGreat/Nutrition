@@ -37,16 +37,16 @@ public class HelperSection1And2Activity {
         builder.append("Average protein: ").append(statisticsProtein.getAverage()).append("\n\n");
 
         builder.append("Max carbs: ").append(statisticsCarbs.getMax()).append("\n");
-        builder.append("Min protein: ").append(statisticsCarbs.getMin()).append("\n");
-        builder.append("Average protein: ").append(statisticsCarbs.getAverage()).append("\n\n");
+        builder.append("Min carbs: ").append(statisticsCarbs.getMin()).append("\n");
+        builder.append("Average carbs: ").append(statisticsCarbs.getAverage()).append("\n\n");
 
         builder.append("Max calories: ").append(statisticsCalories.getMax()).append("\n");
-        builder.append("Min protein: ").append(statisticsCalories.getMin()).append("\n");
-        builder.append("Average protein: ").append(statisticsCalories.getAverage()).append("\n\n");
+        builder.append("Min calories: ").append(statisticsCalories.getMin()).append("\n");
+        builder.append("Average calories: ").append(statisticsCalories.getAverage()).append("\n\n");
 
         builder.append("Max sugar: ").append(statisticsSugar.getMax()).append("\n");
-        builder.append("Min protein: ").append(statisticsSugar.getMin()).append("\n");
-        builder.append("Average protein: ").append(statisticsSugar.getAverage()).append("\n\n");
+        builder.append("Min sugar: ").append(statisticsSugar.getMin()).append("\n");
+        builder.append("Average sugar: ").append(statisticsSugar.getAverage()).append("\n\n");
 
         toaster.alert("Stats:", builder.toString());
     }

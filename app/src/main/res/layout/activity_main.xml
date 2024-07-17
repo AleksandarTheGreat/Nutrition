@@ -192,7 +192,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCard4"
-                android:tag="Proteins"
+                android:tag="Meat and Proteins"
                 style="@style/CardFoodPyramid">
 
                 <RelativeLayout
@@ -203,7 +203,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Proteins" />
+                        android:text="Meat and Proteins" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -380,7 +380,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/imageViewArrow"
         android:layout_below="@id/section3LayoutMainActivity"
         android:layout_marginBottom="8dp"
         android:paddingHorizontal="4dp">
@@ -404,8 +403,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="12dp"
                     android:text="Day 24"
                     android:textSize="26dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -437,14 +436,7 @@
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageViewArrow"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/ic_test" />
+
 
 </RelativeLayout>
 

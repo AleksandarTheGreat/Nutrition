@@ -5,12 +5,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrition.Helper.Toaster;
@@ -70,6 +73,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
         holder.progressBarCarbs.setProgress((int) product.getCarbs());
         holder.progressBarCalories.setProgress((int) product.getCalories());
         holder.progressBarSugar.setProgress((int) product.getSugar());
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.come_from_left);
+        holder.constraintLayout.startAnimation(animation);
     }
 
     @Override

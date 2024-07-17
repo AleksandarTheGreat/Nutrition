@@ -49,6 +49,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Corn", "Vegetables", 3.3, 19, 86, 6.3));
         productList.add(Product.createProduct("Onion", "Vegetables", 1.1, 9, 40, 4.2));
         productList.add(Product.createProduct("Garlic", "Vegetables", 6.4, 33, 149, 1));
+        productList.add(Product.createProduct("Mushroom", "Vegetables", 3.1, 3.3, 22, 1.7));
         productList.add(Product.createProduct("Radish", "Vegetables", 0.7, 3.4, 16, 1.9));
         productList.add(Product.createProduct("Beetroot", "Vegetables", 1.6, 10, 43, 7));
         productList.add(Product.createProduct("Celery", "Vegetables", 0.8, 3, 16, 1.8));
@@ -112,36 +113,39 @@ public class ContentLoader {
         productList.add(Product.createProduct("Custard Apple", "Fruits", 1.7, 25, 101, 24));
 
 // Proteins
-        productList.add(Product.createProduct("Chicken Breast", "Proteins", 31, 0, 165, 0));
-        productList.add(Product.createProduct("Eggs", "Proteins", 13, 1.1, 155, 1.1));
-        productList.add(Product.createProduct("Almonds", "Proteins", 21, 22, 576, 4.4));
-        productList.add(Product.createProduct("Beef", "Proteins", 26, 0, 250, 0));
-        productList.add(Product.createProduct("Lentils", "Proteins", 9, 20, 116, 1.8));
-        productList.add(Product.createProduct("Tofu", "Proteins", 8, 2, 70, 0.5));
-        productList.add(Product.createProduct("Chickpeas", "Proteins", 8.9, 27.4, 164, 4.8));
-        productList.add(Product.createProduct("Turkey Breast", "Proteins", 29, 0, 135, 0));
-        productList.add(Product.createProduct("Salmon", "Proteins", 25, 0, 206, 0));
-        productList.add(Product.createProduct("Peanuts", "Proteins", 25.8, 16.1, 567, 4.7));
-        productList.add(Product.createProduct("Tuna", "Proteins", 24, 0, 144, 0));
-        productList.add(Product.createProduct("Shrimp", "Proteins", 24, 0.2, 99, 0.2));
-        productList.add(Product.createProduct("Pork Loin", "Proteins", 27, 0, 242, 0));
-        productList.add(Product.createProduct("Cod", "Proteins", 20, 0, 82, 0));
-        productList.add(Product.createProduct("Cottage Cheese", "Proteins", 11, 3.4, 98, 2.7));
-        productList.add(Product.createProduct("Mozzarella Cheese", "Proteins", 22, 2.2, 280, 1));
-        productList.add(Product.createProduct("Edamame", "Proteins", 11, 9, 122, 2.2));
-        productList.add(Product.createProduct("Tempeh", "Proteins", 19, 9, 192, 0.5));
-        productList.add(Product.createProduct("Pumpkin Seeds", "Proteins", 19, 53, 446, 1.4));
-        productList.add(Product.createProduct("Sunflower Seeds", "Proteins", 21, 20, 584, 2.6));
-        productList.add(Product.createProduct("Quinoa", "Proteins", 4.1, 21, 120, 0.9));
-        productList.add(Product.createProduct("Black Beans", "Proteins", 9, 23, 132, 0.3));
-        productList.add(Product.createProduct("Peas", "Proteins", 5.4, 14, 81, 5.7));
-        productList.add(Product.createProduct("Flax Seeds", "Proteins", 18, 29, 534, 1.6));
-        productList.add(Product.createProduct("Hemp Seeds", "Proteins", 31.6, 8.7, 553, 1.5));
-        productList.add(Product.createProduct("Chia Seeds", "Proteins", 16.5, 42, 486, 0));
-        productList.add(Product.createProduct("Walnuts", "Proteins", 15, 14, 654, 2.6));
-        productList.add(Product.createProduct("Cashews", "Proteins", 18, 30, 553, 5.9));
-        productList.add(Product.createProduct("Brazil Nuts", "Proteins", 14, 12, 656, 2.3));
-        productList.add(Product.createProduct("Whey Protein Powder", "Proteins", 80, 7, 399, 6.6));
+        productList.add(Product.createProduct("Chicken Breast", "Meat and Proteins", 31, 0, 165, 0));
+        productList.add(Product.createProduct("Almonds", "Meat and Proteins", 21, 22, 576, 4.4));
+        productList.add(Product.createProduct("Beef", "Meat and Proteins", 26, 0, 250, 0));
+        productList.add(Product.createProduct("Lentils", "Meat and Proteins", 9, 20, 116, 1.8));
+        productList.add(Product.createProduct("Tofu", "Meat and Proteins", 8, 2, 70, 0.5));
+        productList.add(Product.createProduct("Chickpeas", "Meat and Proteins", 8.9, 27.4, 164, 4.8));
+        productList.add(Product.createProduct("Turkey Breast", "Meat and Proteins", 29, 0, 135, 0));
+        productList.add(Product.createProduct("Salmon", "Meat and Proteins", 25, 0, 206, 0));
+        productList.add(Product.createProduct("Peanuts", "Meat and Proteins", 25.8, 16.1, 567, 4.7));
+        productList.add(Product.createProduct("Cottage Cheese", "Meat and Proteins", 11, 3.4, 98, 2.7));
+        productList.add(Product.createProduct("Mozzarella Cheese", "Meat and Proteins", 22, 2.2, 280, 1));
+        productList.add(Product.createProduct("Pork Loin", "Meat and Proteins", 27, 0, 242, 0));
+        productList.add(Product.createProduct("Cod", "Meat and Proteins", 20, 0, 82, 0));
+        productList.add(Product.createProduct("Edamame", "Meat and Proteins", 11, 9, 122, 2.2));
+        productList.add(Product.createProduct("Tempeh", "Meat and Proteins", 19, 9, 192, 0.5));
+        productList.add(Product.createProduct("Pumpkin Seeds", "Meat and Proteins", 19, 53, 446, 1.4));
+        productList.add(Product.createProduct("Sunflower Seeds", "Meat and Proteins", 21, 20, 584, 2.6));
+        productList.add(Product.createProduct("Black Beans", "Meat and Proteins", 9, 23, 132, 0.3));
+        productList.add(Product.createProduct("Peas", "Meat and Proteins", 5.4, 14, 81, 5.7));
+        productList.add(Product.createProduct("Flax Seeds", "Meat and Proteins", 18, 29, 534, 1.6));
+        productList.add(Product.createProduct("Hemp Seeds", "Meat and Proteins", 31.6, 8.7, 553, 1.5));
+        productList.add(Product.createProduct("Chia Seeds", "Meat and Proteins", 16.5, 42, 486, 0));
+        productList.add(Product.createProduct("Walnuts", "Meat and Proteins", 15, 14, 654, 2.6));
+        productList.add(Product.createProduct("Cashews", "Meat and Proteins", 18, 30, 553, 5.9));
+        productList.add(Product.createProduct("Brazil Nuts", "Meat and Proteins", 14, 12, 656, 2.3));
+        productList.add(Product.createProduct("Bacon", "Meat and Proteins", 37, 1.4, 541, 0));
+        productList.add(Product.createProduct("Ham", "Meat and Proteins", 21, 1.5, 145, 0));
+        productList.add(Product.createProduct("Sausage", "Meat and Proteins", 19, 1.9, 301, 1.1));
+        productList.add(Product.createProduct("Venison", "Meat and Proteins", 30, 0, 158, 0));
+        productList.add(Product.createProduct("Duck", "Meat and Proteins", 19, 0, 337, 0));
+        productList.add(Product.createProduct("Goose", "Meat and Proteins", 23, 0, 305, 0));
+        productList.add(Product.createProduct("Eggs", "Meat and Proteins", 13, 1.1, 155, 1.1));
+        productList.add(Product.createProduct("Whey Protein Powder", "Meat and Proteins", 80, 8, 400, 5));
 
 // Dairy
         productList.add(Product.createProduct("Whole Milk", "Dairy", 3.4, 4.8, 61, 5));
@@ -189,6 +193,29 @@ public class ContentLoader {
         productList.add(Product.createProduct("Tahini", "Fats, Oils, and Sweets", 17, 22, 595, 1));
         productList.add(Product.createProduct("Nutella", "Fats, Oils, and Sweets", 6, 57.5, 539, 56.3));
         productList.add(Product.createProduct("Cream Cheese", "Fats, Oils, and Sweets", 6.2, 6.5, 350, 6));
+
+
+// Famous most consumed fast food products
+        productList.add(Product.createProduct("Hamburger", "Fast Food", 13, 26, 250, 6));
+        productList.add(Product.createProduct("Cheeseburger", "Fast Food", 15, 28, 300, 7));
+        productList.add(Product.createProduct("French Fries", "Fast Food", 3, 41, 312, 0.5));
+        productList.add(Product.createProduct("Chicken Nuggets", "Fast Food", 16, 13, 220, 0.5));
+        productList.add(Product.createProduct("Pizza (Pepperoni)", "Fast Food", 11, 30, 300, 3));
+        productList.add(Product.createProduct("Hot Dog", "Fast Food", 12, 19, 280, 3));
+        productList.add(Product.createProduct("Grilled Chicken Sandwich", "Fast Food", 27, 41, 350, 7));
+        productList.add(Product.createProduct("Fish Sandwich", "Fast Food", 18, 36, 300, 5));
+        productList.add(Product.createProduct("Burrito (Bean and Cheese)", "Fast Food", 10, 30, 290, 1));
+        productList.add(Product.createProduct("Taco (Beef)", "Fast Food", 11, 19, 210, 1));
+        productList.add(Product.createProduct("Onion Rings", "Fast Food", 3, 31, 340, 5));
+        productList.add(Product.createProduct("Milkshake (Vanilla)", "Fast Food", 5, 50, 300, 40));
+        productList.add(Product.createProduct("Chicken Wrap", "Fast Food", 18, 28, 320, 3));
+        productList.add(Product.createProduct("Salad (Chicken Caesar)", "Fast Food", 12, 15, 250, 3));
+        productList.add(Product.createProduct("Breakfast Sandwich (Egg and Cheese)", "Fast Food", 15, 30, 350, 5));
+        productList.add(Product.createProduct("Fried Chicken (1 piece)", "Fast Food", 14, 12, 250, 0));
+        productList.add(Product.createProduct("Quesadilla", "Fast Food", 13, 26, 320, 2));
+        productList.add(Product.createProduct("Submarine Sandwich (Turkey)", "Fast Food", 18, 30, 300, 5));
+        productList.add(Product.createProduct("Nachos", "Fast Food", 9, 21, 300, 2));
+        productList.add(Product.createProduct("Fried Shrimp", "Fast Food", 19, 15, 275, 0));
 
         return productList;
     }

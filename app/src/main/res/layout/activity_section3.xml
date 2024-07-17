@@ -7,12 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Section3Activity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Section 3"
-        android:textSize="18sp"
-        android:layout_centerInParent="true"
+    <RelativeLayout
+        android:id="@+id/headerLayoutSection3Activity"
+        android:layout_height="?actionBarSize"
+        android:layout_width="match_parent"
         />
 
 </RelativeLayout>
