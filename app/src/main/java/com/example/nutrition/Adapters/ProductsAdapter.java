@@ -91,15 +91,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
             this.imageView = itemView.findViewById(R.id.imageViewSingleProduct);
             this.textViewName = itemView.findViewById(R.id.textViewNameSingleProduct);
 
-            this.textViewProteinNumber = itemView.findViewById(R.id.textViewProteinNumberSingleProduct);
-            this.textViewCarbsNumber = itemView.findViewById(R.id.textViewCarbsNumberSingleProduct);
-            this.textViewCaloriesNumber = itemView.findViewById(R.id.textViewCaloriesNumberSingleProduct);
-            this.textViewSugarNumber = itemView.findViewById(R.id.textViewSugarNumberSingleProduct);
+            this.textViewProteinNumber = itemView.findViewById(R.id.textViewActualProteins);
+            this.textViewCarbsNumber = itemView.findViewById(R.id.textViewActualCarbs);
+            this.textViewCaloriesNumber = itemView.findViewById(R.id.textViewActualCalories);
+            this.textViewSugarNumber = itemView.findViewById(R.id.textViewActualSugar);
 
-            this.progressBarProtein = itemView.findViewById(R.id.progressBarProteinSingleProduct);
-            this.progressBarCarbs = itemView.findViewById(R.id.progressBarCarbsSingleProduct);
-            this.progressBarCalories = itemView.findViewById(R.id.progressBarCaloriesSingleProduct);
-            this.progressBarSugar = itemView.findViewById(R.id.progressBarSugarSingleProduct);
+            this.progressBarProtein = itemView.findViewById(R.id.progressBarProteins);
+            this.progressBarCarbs = itemView.findViewById(R.id.progressBarCarbs);
+            this.progressBarCalories = itemView.findViewById(R.id.progressBarCalories);
+            this.progressBarSugar = itemView.findViewById(R.id.progressBarSugar);
         }
     }
 
