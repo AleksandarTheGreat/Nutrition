@@ -76,7 +76,7 @@
             android:text="Carbs:"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualProteins"
+            app:layout_constraintRight_toLeftOf="@id/textViewActualCarbs"
             app:layout_constraintTop_toBottomOf="@id/progressBarProteins"
             app:layout_constraintLeft_toLeftOf="parent"
             />
@@ -111,7 +111,7 @@
             android:text="Calories:"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualProteins"
+            app:layout_constraintRight_toLeftOf="@id/textViewActualCalories"
             app:layout_constraintTop_toBottomOf="@id/progressBarCarbs"
             app:layout_constraintLeft_toLeftOf="parent"
             />
@@ -146,7 +146,7 @@
             android:text="Sugar:"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualProteins"
+            app:layout_constraintRight_toLeftOf="@id/textViewActualSugar"
             app:layout_constraintTop_toBottomOf="@id/progressBarCalories"
             app:layout_constraintLeft_toLeftOf="parent"
             />
