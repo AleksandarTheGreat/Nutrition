@@ -1,179 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayoutSingleProduct"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_marginBottom="4dp"
-    android:paddingBottom="32dp"
-    >
+    android:paddingBottom="32dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/imageViewSingleProduct"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNameSingleProduct"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        >
+        android:layout_marginStart="8dp"
+        android:text="Grains or Meat or Pasta"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toRightOf="@id/imageViewSingleProduct"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageViewSingleProduct"
-            android:layout_height="40dp"
-            android:layout_width="40dp"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
 
-        <TextView
-            android:id="@+id/textViewNameSingleProduct"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:textSize="18dp"
-            android:text="Grains or Meat or Pasta"
-            android:layout_marginStart="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/imageViewSingleProduct"
-            />
 
-        <TextView
-            android:id="@+id/textViewProteinsLabel"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:text="Proteins:"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualProteins"
-            app:layout_constraintTop_toBottomOf="@id/textViewNameSingleProduct"
-            app:layout_constraintLeft_toLeftOf="parent"
-            />
 
-        <TextView
-            android:id="@+id/textViewActualProteins"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="30g"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewNameSingleProduct"
-            />
+    <TextView
+        android:id="@+id/textViewProteinsLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="Proteins:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/textViewActualProteins"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameSingleProduct" />
 
-        <ProgressBar
-            android:id="@+id/progressBarProteins"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewActualProteins"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            />
+    <TextView
+        android:id="@+id/textViewActualProteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="30g"
+        app:layout_constraintLeft_toRightOf="@id/textViewProteinsLabel"
+        app:layout_constraintRight_toLeftOf="@id/textViewCarbsLabel"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameSingleProduct" />
 
-        <TextView
-            android:id="@+id/textViewCarbsLabel"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:text="Carbs:"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualCarbs"
-            app:layout_constraintTop_toBottomOf="@id/progressBarProteins"
-            app:layout_constraintLeft_toLeftOf="parent"
-            />
+    <ProgressBar
+        android:id="@+id/progressBarProteins"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/textViewActualProteins"
+        app:layout_constraintTop_toBottomOf="@id/textViewProteinsLabel" />
 
-        <TextView
-            android:id="@+id/textViewActualCarbs"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="24g"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progressBarProteins"
-            />
 
-        <ProgressBar
-            android:id="@+id/progressBarCarbs"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewCarbsLabel"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            />
+    <TextView
+        android:id="@+id/textViewCarbsLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Carbs"
+        app:layout_constraintLeft_toRightOf="@id/textViewActualProteins"
+        app:layout_constraintRight_toLeftOf="@id/textViewActualCarbs"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameSingleProduct" />
+
+    <TextView
+        android:id="@+id/textViewActualCarbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:text="24g"
+        app:layout_constraintLeft_toRightOf="@id/textViewCarbsLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameSingleProduct" />
+
+    <ProgressBar
+        android:id="@+id/progressBarCarbs"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintLeft_toLeftOf="@id/textViewCarbsLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewProteinsLabel" />
+
+
+
+
 
         <TextView
             android:id="@+id/textViewCaloriesLabel"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:text="Calories:"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualCalories"
-            app:layout_constraintTop_toBottomOf="@id/progressBarCarbs"
+            android:text="Calories:"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/textViewActualCalories"
+            app:layout_constraintTop_toBottomOf="@id/progressBarProteins"
             />
 
         <TextView
             android:id="@+id/textViewActualCalories"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="504g"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progressBarCarbs"
+            android:layout_marginEnd="8dp"
+            android:text="350g"
+            app:layout_constraintLeft_toRightOf="@id/textViewCaloriesLabel"
+            app:layout_constraintRight_toLeftOf="@id/textViewSugarLabel"
+            app:layout_constraintTop_toBottomOf="@id/progressBarProteins"
             />
 
         <ProgressBar
             android:id="@+id/progressBarCalories"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="4dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewActualCalories"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            />
+            app:layout_constraintRight_toRightOf="@id/textViewActualCalories"
+            app:layout_constraintTop_toBottomOf="@id/textViewCaloriesLabel" />
 
         <TextView
             android:id="@+id/textViewSugarLabel"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:text="Sugar:"
-            android:layout_marginStart="4dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
+            android:text="Sugar"
+            app:layout_constraintLeft_toRightOf="@id/textViewActualCalories"
             app:layout_constraintRight_toLeftOf="@id/textViewActualSugar"
-            app:layout_constraintTop_toBottomOf="@id/progressBarCalories"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBarCarbs"
             />
 
         <TextView
             android:id="@+id/textViewActualSugar"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="78g"
             android:layout_marginEnd="4dp"
+            android:text="244g"
+            app:layout_constraintLeft_toRightOf="@id/textViewSugarLabel"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progressBarCalories"
-            />
+            app:layout_constraintTop_toBottomOf="@id/progressBarCarbs" />
 
         <ProgressBar
             android:id="@+id/progressBarSugar"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewActualSugar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintLeft_toLeftOf="@id/textViewSugarLabel"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewSugarLabel" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

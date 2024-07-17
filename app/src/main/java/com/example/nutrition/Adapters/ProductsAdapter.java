@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrition.Helper.Toaster;
@@ -45,6 +46,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
         myViewHolder.progressBarCalories.setMax(902);
         myViewHolder.progressBarSugar.setMax(100);
 
+        myViewHolder.constraintLayout.setOnClickListener(v -> {
+            Product product = productList.get(myViewHolder.getAdapterPosition());
+            toaster.text(product.getName());
+        });
+
         return myViewHolder;
     }
 
@@ -55,10 +61,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
 
         holder.textViewName.setText(product.getName());
 
-        holder.textViewProteinNumber.setText(product.getProtein() + " g");
-        holder.textViewCarbsNumber.setText(product.getCarbs() + " g");
-        holder.textViewCaloriesNumber.setText(product.getCalories() + " g");
-        holder.textViewSugarNumber.setText(product.getSugar() + " g");
+        holder.textViewProteinNumber.setText(product.getProtein() + "g");
+        holder.textViewCarbsNumber.setText(product.getCarbs() + "g");
+        holder.textViewCaloriesNumber.setText(product.getCalories() + "g");
+        holder.textViewSugarNumber.setText(product.getSugar() + "g");
 
         holder.progressBarProtein.setProgress((int) product.getProtein());
         holder.progressBarCarbs.setProgress((int) product.getCarbs());
@@ -72,6 +78,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        protected ConstraintLayout constraintLayout;
 
         protected ImageView imageView;
         protected TextView textViewName;
@@ -88,6 +96,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.constraintLayout = itemView.findViewById(R.id.constraintLayoutSingleProduct);
             this.imageView = itemView.findViewById(R.id.imageViewSingleProduct);
             this.textViewName = itemView.findViewById(R.id.textViewNameSingleProduct);
 
