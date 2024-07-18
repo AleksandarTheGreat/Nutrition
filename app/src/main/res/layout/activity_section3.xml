@@ -10,7 +10,53 @@
     <RelativeLayout
         android:id="@+id/headerLayoutSection3Activity"
         android:layout_height="?actionBarSize"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Le title"
+            android:textSize="16sp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/section3MainLayout"
         android:layout_width="match_parent"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabLayoutSection3Activity"
+        >
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2Section3Activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutSection3Activity"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/headerLayoutSection3Activity"
+        android:background="@color/fullyTransparent">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="All days"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="A day"
+            />
+
+    </com.google.android.material.tabs.TabLayout>
 
 </RelativeLayout>

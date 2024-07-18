@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:title="All days"
+        android:id="@+id/menuItemAllDays"
+        />
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:title="A day"
+        android:id="@+id/menuItemADay"
+        />
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:title="Recommendations"
+        android:id="@+id/menuItemRecommendations"
+        />
+
+</menu>
