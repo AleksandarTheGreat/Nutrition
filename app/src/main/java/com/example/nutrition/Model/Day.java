@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Day {
+    // long id, List<Products> products
     private String title;
     private LocalDate createdAt;
 

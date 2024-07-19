@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.nutrition.Adapters.AllDaysAdapter;
 import com.example.nutrition.Helper.IEssentials;
+import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.databinding.ActivitySection3Binding;
@@ -29,9 +30,11 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     private AllDaysAdapter allDaysAdapter;
     private AppCompatActivity appCompatActivity;
     private ActivitySection3Binding activitySection3Binding;
+    private Toaster toaster;
 
     public FragmentAllDays() {}
-    public FragmentAllDays(ActivitySection3Binding activitySection3Binding){
+    public FragmentAllDays(AppCompatActivity appCompatActivity, ActivitySection3Binding activitySection3Binding){
+        this.appCompatActivity = appCompatActivity;
         this.activitySection3Binding = activitySection3Binding;
     }
 
@@ -74,7 +77,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             list.add(Day.createANewDay("Day 22", LocalDate.of(2024, 7, 20)));
         }
 
-        allDaysAdapter = new AllDaysAdapter(getContext(), activitySection3Binding, list);
+        allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, activitySection3Binding, list);
 
         binding.recyclerViewAllDaysFragment.setLayoutManager(new GridLayoutManager(getContext(), 3));
         binding.recyclerViewAllDaysFragment.setHasFixedSize(true);

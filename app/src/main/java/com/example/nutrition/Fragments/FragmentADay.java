@@ -1,9 +1,12 @@
 package com.example.nutrition.Fragments;
 
+import android.annotation.SuppressLint;
 import android.media.audiofx.DynamicsProcessing;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.nutrition.Adapters.AllDaysAdapter;
+import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Helper.ContentLoader;
+import com.example.nutrition.Helper.HelperFragmentADay;
 import com.example.nutrition.Helper.IEssentials;
+import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
@@ -21,17 +28,23 @@ import com.example.nutrition.databinding.FragmentADayBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
 public class FragmentADay extends Fragment implements IEssentials {
 
-    private FragmentADayBinding binding;
     private Day day;
+    private Toaster toaster;
+    private FragmentADayBinding binding;
+    private ProductsAdapter productsAdapter;
+    private HelperFragmentADay helperFragmentADay;
 
-    public FragmentADay() {}
-    public FragmentADay(Day day){
+    public FragmentADay() {
+    }
+
+    public FragmentADay(Day day) {
         this.day = day;
     }
 
@@ -47,49 +60,29 @@ public class FragmentADay extends Fragment implements IEssentials {
 
     @Override
     public void instantiateObjects() {
-        List<String> subList = ContentLoader.createTestList()
-                .stream()
-                .map(product -> product.getName())
-                .collect(Collectors.toList());
+        helperFragmentADay = new HelperFragmentADay(getContext());
+        toaster = new Toaster(getContext());
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, subList);
-        binding.autoCompleteTextViewFragmentADay.setAdapter(adapter);
+        // Load the auto complete text view with all the products data but as a string
+        helperFragmentADay.loadProductsToAutoComplete(binding);
+        helperFragmentADay.checkEmptyLayout(binding);
 
-        checkEmptyLayout();
+        productsAdapter = new ProductsAdapter(getContext(), new ArrayList<>());
+
+        binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerViewFragmentADay.setHasFixedSize(true);
+        binding.recyclerViewFragmentADay.setAdapter(productsAdapter);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void addEventListeners() {
-        binding.buttonSearchFragmentADay.setOnClickListener(view -> {
-            String text = binding.autoCompleteTextViewFragmentADay.getText().toString().trim();
-            if (text.equals("")){
-                binding.autoCompleteTextViewFragmentADay.setError("Type an item");
-                return;
-            }
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(12,0,0,16);
-
-            TextView textView = new TextView(getContext());
-            textView.setLayoutParams(layoutParams);
-            textView.setText(text);
-
-            binding.linearLayoutFragmentADay.addView(textView);
-            binding.autoCompleteTextViewFragmentADay.setText("");
-
-            checkEmptyLayout();
+        binding.buttonAddFragmentADay.setOnClickListener(view -> {
+            helperFragmentADay.addProduct(binding, productsAdapter);
+            helperFragmentADay.checkEmptyLayout(binding);
         });
     }
 
-
-
-    private void checkEmptyLayout(){
-        if (binding.linearLayoutFragmentADay.getChildCount() != 0){
-            binding.textViewNoItemsFragmentADay.setVisibility(View.INVISIBLE);
-        } else {
-            binding.textViewNoItemsFragmentADay.setVisibility(View.VISIBLE);
-        }
-    }
 }
 
 

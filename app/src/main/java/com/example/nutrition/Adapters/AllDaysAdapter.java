@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nutrition.Fragments.FragmentSec3Adapter;
+import com.example.nutrition.Fragments.FragmentADay;
+import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.databinding.ActivitySection3Binding;
-import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
@@ -21,11 +22,13 @@ import java.util.List;
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
 
     private Context context;
-    private List<Day> daysList;
+    private AppCompatActivity appCompatActivity;
     private ActivitySection3Binding activitySection3Binding;
+    private List<Day> daysList;
 
-    public AllDaysAdapter(Context context, ActivitySection3Binding activitySection3Binding, List<Day> daysList){
+    public AllDaysAdapter(Context context, AppCompatActivity appCompatActivity, ActivitySection3Binding activitySection3Binding, List<Day> daysList){
         this.context = context;
+        this.appCompatActivity = appCompatActivity;
         this.activitySection3Binding = activitySection3Binding;
         this.daysList = daysList;
     }
@@ -40,6 +43,9 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         myViewHolder.materialCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Day day = daysList.get(myViewHolder.getAdapterPosition());
+
+                MyFragmentManager.change(appCompatActivity, new FragmentADay(day));
                 myViewHolder.materialCardView.setChecked(!myViewHolder.materialCardView.isChecked());
             }
         });

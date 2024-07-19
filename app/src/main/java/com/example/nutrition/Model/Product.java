@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
+    // id, day_id
     protected String name;
     protected String category;
     protected double protein;
