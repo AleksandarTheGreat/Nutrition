@@ -1,5 +1,6 @@
 package com.example.nutrition.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
+import com.example.nutrition.Repos.DaysRepo;
 import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.google.android.material.card.MaterialCardView;
 
@@ -25,12 +27,15 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     private AppCompatActivity appCompatActivity;
     private ActivitySection3Binding activitySection3Binding;
     private List<Day> daysList;
+    private DaysRepo daysRepo;
 
-    public AllDaysAdapter(Context context, AppCompatActivity appCompatActivity, ActivitySection3Binding activitySection3Binding, List<Day> daysList){
+    public AllDaysAdapter(Context context, AppCompatActivity appCompatActivity, ActivitySection3Binding activitySection3Binding, DaysRepo daysRepo){
         this.context = context;
         this.appCompatActivity = appCompatActivity;
         this.activitySection3Binding = activitySection3Binding;
-        this.daysList = daysList;
+        this.daysRepo = daysRepo;
+
+        this.daysList = daysRepo.listAll();
     }
 
     @NonNull
@@ -50,6 +55,20 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             }
         });
 
+        myViewHolder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public boolean onLongClick(View v) {
+                Day day = daysList.get(myViewHolder.getAdapterPosition());
+
+                daysRepo.delete(day.getId());
+                daysList = daysRepo.listAll();
+                notifyDataSetChanged();
+
+                return true;
+            }
+        });
+
         return myViewHolder;
     }
 
@@ -57,7 +76,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
 
-        holder.textViewDays.setText(day.getTitle());
+        holder.textViewDays.setText(day.getTitle() + " " + day.getId());
         holder.textViewDate.setText(day.getDateIntoStringFormat());
     }
 
@@ -77,5 +96,13 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             this.textViewDays = itemView.findViewById(R.id.textViewDaySingleDayLayout);
             this.textViewDate = itemView.findViewById(R.id.textViewCreatedSingleDayLayout);
         }
+    }
+
+    public List<Day> getDaysList() {
+        return daysList;
+    }
+
+    public void setDaysList(List<Day> daysList) {
+        this.daysList = daysList;
     }
 }

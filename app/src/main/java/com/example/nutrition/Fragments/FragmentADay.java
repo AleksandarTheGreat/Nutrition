@@ -24,6 +24,7 @@ import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
+import com.example.nutrition.Repos.ProductsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
 
 import java.util.ArrayList;
@@ -40,12 +41,14 @@ public class FragmentADay extends Fragment implements IEssentials {
     private FragmentADayBinding binding;
     private ProductsAdapter productsAdapter;
     private HelperFragmentADay helperFragmentADay;
+    private ProductsRepo productsRepo;
 
     public FragmentADay() {
     }
 
     public FragmentADay(Day day) {
         this.day = day;
+        // Load from database the day and the products eaten in that day
     }
 
     @Override
@@ -60,14 +63,16 @@ public class FragmentADay extends Fragment implements IEssentials {
 
     @Override
     public void instantiateObjects() {
+        productsRepo = new ProductsRepo(getContext());
+
         helperFragmentADay = new HelperFragmentADay(getContext());
         toaster = new Toaster(getContext());
 
         // Load the auto complete text view with all the products data but as a string
-        helperFragmentADay.loadProductsToAutoComplete(binding);
-        helperFragmentADay.checkEmptyLayout(binding);
 
-        productsAdapter = new ProductsAdapter(getContext(), new ArrayList<>());
+        helperFragmentADay.loadProductsToAutoComplete(binding);
+        productsAdapter = new ProductsAdapter(getContext(), productsRepo.listAll(day.getId()));
+        helperFragmentADay.checkEmptyLayout(binding, productsAdapter);
 
         binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerViewFragmentADay.setHasFixedSize(true);
@@ -78,8 +83,8 @@ public class FragmentADay extends Fragment implements IEssentials {
     @Override
     public void addEventListeners() {
         binding.buttonAddFragmentADay.setOnClickListener(view -> {
-            helperFragmentADay.addProduct(binding, productsAdapter);
-            helperFragmentADay.checkEmptyLayout(binding);
+            helperFragmentADay.addProduct(binding, productsAdapter, productsRepo, day.getId());
+            helperFragmentADay.checkEmptyLayout(binding, productsAdapter);
         });
     }
 

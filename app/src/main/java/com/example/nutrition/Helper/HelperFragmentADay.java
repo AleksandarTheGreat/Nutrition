@@ -1,5 +1,6 @@
 package com.example.nutrition.Helper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -7,6 +8,7 @@ import android.widget.ArrayAdapter;
 import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Model.Product;
+import com.example.nutrition.Repos.ProductsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
 
 import java.util.List;
@@ -22,17 +24,20 @@ public class HelperFragmentADay {
     }
 
     public void loadProductsToAutoComplete(FragmentADayBinding binding){
-        List<String> subList = ContentLoader.createTestList()
+        List<String> subList = ContentLoader
+                .createTestList()
                 .stream()
-                .map(product -> product.getName())
+                .map(Product::getName)
                 .collect(Collectors.toList());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, subList);
         binding.autoCompleteTextViewFragmentADay.setAdapter(adapter);
     }
 
-    public void addProduct(FragmentADayBinding binding, ProductsAdapter productsAdapter){
+    @SuppressLint("NotifyDataSetChanged")
+    public void addProduct(FragmentADayBinding binding, ProductsAdapter productsAdapter, ProductsRepo productsRepo, long d_id){
         String text = binding.autoCompleteTextViewFragmentADay.getText().toString().trim();
+
         if (text.isEmpty()) {
             binding.autoCompleteTextViewFragmentADay.setError("Invalid search");
             return;
@@ -47,7 +52,11 @@ public class HelperFragmentADay {
                 .findFirst();
 
         if (optionalProduct.isPresent()){
-            productsAdapter.getProductList().add(optionalProduct.get());
+            Product product = optionalProduct.get();
+
+            productsRepo.add(product, d_id);
+
+            productsAdapter.setProductList(productsRepo.listAll(d_id));
             productsAdapter.notifyDataSetChanged();
 
             binding.autoCompleteTextViewFragmentADay.setText("");
@@ -56,8 +65,8 @@ public class HelperFragmentADay {
         }
     }
 
-    public void checkEmptyLayout(FragmentADayBinding binding) {
-        if (binding.recyclerViewFragmentADay.getChildCount() != 0) {
+    public void checkEmptyLayout(FragmentADayBinding binding, ProductsAdapter productsAdapter) {
+        if (!productsAdapter.getProductList().isEmpty()) {
             binding.textViewNoItemsFragmentADay.setVisibility(View.INVISIBLE);
         } else {
             binding.textViewNoItemsFragmentADay.setVisibility(View.VISIBLE);

@@ -8,12 +8,14 @@ import java.util.List;
 
 public class Product {
     // id, day_id
+    protected long id;
     protected String name;
     protected String category;
     protected double protein;
     protected double carbs;
     protected double calories;
     protected double sugar;
+    protected long d_id;
 
     private Product(String name, String category, double protein, double carbs, double calories, double sugar) {
         this.name = name;
@@ -22,6 +24,17 @@ public class Product {
         this.carbs = carbs;
         this.calories = calories;
         this.sugar = sugar;
+    }
+
+    public Product(long id, String name, String category, double protein, double carbs, double calories, double sugar, long d_id) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.calories = calories;
+        this.sugar = sugar;
+        this.d_id = d_id;
     }
 
     public Product(){}
