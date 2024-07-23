@@ -71,7 +71,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         // Load the auto complete text view with all the products data but as a string
 
         helperFragmentADay.loadProductsToAutoComplete(binding);
-        productsAdapter = new ProductsAdapter(getContext(), productsRepo.listAll(day.getId()));
+        productsAdapter = new ProductsAdapter(getContext(), day.getProductList());
         helperFragmentADay.checkEmptyLayout(binding, productsAdapter);
 
         binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
