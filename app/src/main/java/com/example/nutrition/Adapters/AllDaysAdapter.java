@@ -12,11 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrition.Fragments.FragmentADay;
+import com.example.nutrition.Fragments.FragmentAllDays;
 import com.example.nutrition.Fragments.MyFragmentManager;
+import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
 import com.example.nutrition.databinding.ActivitySection3Binding;
+import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
@@ -25,17 +28,22 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
     private Context context;
     private AppCompatActivity appCompatActivity;
-    private ActivitySection3Binding activitySection3Binding;
+    private FragmentAllDaysBinding fragmentAllDaysBinding;
     private List<Day> daysList;
     private DaysRepo daysRepo;
 
-    public AllDaysAdapter(Context context, AppCompatActivity appCompatActivity, ActivitySection3Binding activitySection3Binding, DaysRepo daysRepo){
+    private AllDaysAdapter allDaysAdapter;
+    private Toaster toaster;
+
+    public AllDaysAdapter(Context context, AppCompatActivity appCompatActivity, FragmentAllDaysBinding fragmentAllDaysBinding, DaysRepo daysRepo){
         this.context = context;
         this.appCompatActivity = appCompatActivity;
-        this.activitySection3Binding = activitySection3Binding;
+        this.fragmentAllDaysBinding = fragmentAllDaysBinding;
         this.daysRepo = daysRepo;
 
         this.daysList = daysRepo.listAll();
+        this.toaster = new Toaster(context);
+        this.allDaysAdapter = this;
     }
 
     @NonNull
@@ -51,7 +59,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 Day day = daysList.get(myViewHolder.getAdapterPosition());
 
                 MyFragmentManager.change(appCompatActivity, new FragmentADay(day));
-                myViewHolder.materialCardView.setChecked(!myViewHolder.materialCardView.isChecked());
+                toaster.text("Loading...");
             }
         });
 
@@ -65,6 +73,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 daysList = daysRepo.listAll();
                 notifyDataSetChanged();
 
+                FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
                 return true;
             }
         });
@@ -104,5 +113,9 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
     public void setDaysList(List<Day> daysList) {
         this.daysList = daysList;
+    }
+
+    public boolean isListEmpty(){
+        return daysList != null && daysList.isEmpty();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.nutrition.Helper;
 
+import android.content.Context;
+
 import com.example.nutrition.Model.Product;
 
 import java.util.ArrayList;
@@ -66,13 +68,13 @@ public class ContentLoader {
         productList.add(Product.createProduct("Snow Peas", "Vegetables", 2.8, 7.5, 42, 4));
         productList.add(Product.createProduct("Bamboo Shoots", "Vegetables", 2.6, 5.2, 27, 3));
         productList.add(Product.createProduct("Butternut Squash", "Vegetables", 1, 12, 45, 2.2));
-        productList.add(Product.createProduct("Bell Peppers", "Vegetables", 0.9, 6, 26, 3.5));
         productList.add(Product.createProduct("Acorn Squash", "Vegetables", 1.4, 15, 58, 0.4));
         productList.add(Product.createProduct("Rutabaga", "Vegetables", 1.2, 9, 37, 4.6));
         productList.add(Product.createProduct("Spaghetti Squash", "Vegetables", 1, 6.5, 31, 2.8));
 
 // Fruits
         productList.add(Product.createProduct("Apple", "Fruits", 0.3, 14, 52, 10));
+        productList.add(Product.createProduct("Avocado", "Fruits", 2, 9, 160, 0.7));
         productList.add(Product.createProduct("Banana", "Fruits", 1.3, 23, 96, 12));
         productList.add(Product.createProduct("Orange", "Fruits", 0.9, 12, 47, 9));
         productList.add(Product.createProduct("Grape", "Fruits", 0.6, 18, 69, 16));
@@ -112,20 +114,24 @@ public class ContentLoader {
         productList.add(Product.createProduct("Mulberry", "Fruits", 1.4, 10, 43, 8));
         productList.add(Product.createProduct("Custard Apple", "Fruits", 1.7, 25, 101, 24));
 
-// Proteins
+// Meat an Proteins
         productList.add(Product.createProduct("Chicken Breast", "Meat and Proteins", 31, 0, 165, 0));
-        productList.add(Product.createProduct("Almonds", "Meat and Proteins", 21, 22, 576, 4.4));
         productList.add(Product.createProduct("Beef", "Meat and Proteins", 26, 0, 250, 0));
+        productList.add(Product.createProduct("Turkey Breast", "Meat and Proteins", 29, 0, 135, 0));
+        productList.add(Product.createProduct("Salmon", "Meat and Proteins", 25, 0, 206, 0));
+        productList.add(Product.createProduct("Pork Loin", "Meat and Proteins", 27, 0, 242, 0));
+        productList.add(Product.createProduct("Cod", "Meat and Proteins", 20, 0, 82, 0));
+        productList.add(Product.createProduct("Bacon", "Meat and Proteins", 37, 1.4, 541, 0));
+        productList.add(Product.createProduct("Ham", "Meat and Proteins", 21, 1.5, 145, 0));
+        productList.add(Product.createProduct("Sausage", "Meat and Proteins", 19, 1.9, 301, 1.1));
+        productList.add(Product.createProduct("Venison", "Meat and Proteins", 30, 0, 158, 0));
+        productList.add(Product.createProduct("Duck", "Meat and Proteins", 19, 0, 337, 0));
+        productList.add(Product.createProduct("Goose", "Meat and Proteins", 23, 0, 305, 0));
+        productList.add(Product.createProduct("Almonds", "Meat and Proteins", 21, 22, 576, 4.4));
         productList.add(Product.createProduct("Lentils", "Meat and Proteins", 9, 20, 116, 1.8));
         productList.add(Product.createProduct("Tofu", "Meat and Proteins", 8, 2, 70, 0.5));
         productList.add(Product.createProduct("Chickpeas", "Meat and Proteins", 8.9, 27.4, 164, 4.8));
-        productList.add(Product.createProduct("Turkey Breast", "Meat and Proteins", 29, 0, 135, 0));
-        productList.add(Product.createProduct("Salmon", "Meat and Proteins", 25, 0, 206, 0));
         productList.add(Product.createProduct("Peanuts", "Meat and Proteins", 25.8, 16.1, 567, 4.7));
-        productList.add(Product.createProduct("Cottage Cheese", "Meat and Proteins", 11, 3.4, 98, 2.7));
-        productList.add(Product.createProduct("Mozzarella Cheese", "Meat and Proteins", 22, 2.2, 280, 1));
-        productList.add(Product.createProduct("Pork Loin", "Meat and Proteins", 27, 0, 242, 0));
-        productList.add(Product.createProduct("Cod", "Meat and Proteins", 20, 0, 82, 0));
         productList.add(Product.createProduct("Edamame", "Meat and Proteins", 11, 9, 122, 2.2));
         productList.add(Product.createProduct("Tempeh", "Meat and Proteins", 19, 9, 192, 0.5));
         productList.add(Product.createProduct("Pumpkin Seeds", "Meat and Proteins", 19, 53, 446, 1.4));
@@ -138,14 +144,9 @@ public class ContentLoader {
         productList.add(Product.createProduct("Walnuts", "Meat and Proteins", 15, 14, 654, 2.6));
         productList.add(Product.createProduct("Cashews", "Meat and Proteins", 18, 30, 553, 5.9));
         productList.add(Product.createProduct("Brazil Nuts", "Meat and Proteins", 14, 12, 656, 2.3));
-        productList.add(Product.createProduct("Bacon", "Meat and Proteins", 37, 1.4, 541, 0));
-        productList.add(Product.createProduct("Ham", "Meat and Proteins", 21, 1.5, 145, 0));
-        productList.add(Product.createProduct("Sausage", "Meat and Proteins", 19, 1.9, 301, 1.1));
-        productList.add(Product.createProduct("Venison", "Meat and Proteins", 30, 0, 158, 0));
-        productList.add(Product.createProduct("Duck", "Meat and Proteins", 19, 0, 337, 0));
-        productList.add(Product.createProduct("Goose", "Meat and Proteins", 23, 0, 305, 0));
         productList.add(Product.createProduct("Eggs", "Meat and Proteins", 13, 1.1, 155, 1.1));
         productList.add(Product.createProduct("Whey Protein Powder", "Meat and Proteins", 80, 8, 400, 5));
+
 
 // Dairy
         productList.add(Product.createProduct("Whole Milk", "Dairy", 3.4, 4.8, 61, 5));
@@ -165,7 +166,6 @@ public class ContentLoader {
 // Fats, Oils, and Sweets
         productList.add(Product.createProduct("Olive Oil", "Fats, Oils, and Sweets", 0, 0, 884, 0));
         productList.add(Product.createProduct("Butter", "Fats, Oils, and Sweets", 0.85, 0.06, 717, 0.06));
-        productList.add(Product.createProduct("Avocado", "Fats, Oils, and Sweets", 2, 9, 160, 0.7));
         productList.add(Product.createProduct("Peanut Butter", "Fats, Oils, and Sweets", 25, 20, 588, 7));
         productList.add(Product.createProduct("Dark Chocolate", "Fats, Oils, and Sweets", 7.8, 46.4, 598, 24));
         productList.add(Product.createProduct("Canola Oil", "Fats, Oils, and Sweets", 0, 0, 884, 0));

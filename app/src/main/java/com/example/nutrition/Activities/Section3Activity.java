@@ -42,7 +42,7 @@ public class Section3Activity extends ParentActivity {
         setContentView(binding.getRoot());
 
         appCompatActivity = this;
-        fragmentAllDays = new FragmentAllDays(appCompatActivity, binding);
+        fragmentAllDays = new FragmentAllDays(appCompatActivity);
 
         MyFragmentManager.change(this, fragmentAllDays);
     }

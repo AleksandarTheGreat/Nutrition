@@ -2,6 +2,8 @@ package com.example.nutrition.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,8 @@ import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyViewHolder> {

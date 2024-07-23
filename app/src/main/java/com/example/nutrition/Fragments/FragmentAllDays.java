@@ -19,6 +19,7 @@ import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
+import com.example.nutrition.Threads.ThreadDays;
 import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 
@@ -32,14 +33,12 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     private FragmentAllDaysBinding binding;
     private AllDaysAdapter allDaysAdapter;
     private AppCompatActivity appCompatActivity;
-    private ActivitySection3Binding activitySection3Binding;
     private Toaster toaster;
     private DaysRepo daysRepo;
 
     public FragmentAllDays() {}
-    public FragmentAllDays(AppCompatActivity appCompatActivity, ActivitySection3Binding activitySection3Binding){
+    public FragmentAllDays(AppCompatActivity appCompatActivity){
         this.appCompatActivity = appCompatActivity;
-        this.activitySection3Binding = activitySection3Binding;
     }
 
     @Override
@@ -54,13 +53,12 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
     @Override
     public void instantiateObjects() {
-        // Load the days from SQLite
         daysRepo = new DaysRepo(getContext());
 
-        final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, activitySection3Binding, daysRepo);
+        allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
+        checkIfDaysAreEmpty(binding, allDaysAdapter);
 
-        binding.recyclerViewAllDaysFragment.setLayoutManager(gridLayoutManager);
+        binding.recyclerViewAllDaysFragment.setLayoutManager(new GridLayoutManager(getContext(), 3));
         binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
         binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
     }
@@ -71,7 +69,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         // Add the day to database and to the adapter's list
         binding.buttonCreateANewDay.setOnClickListener(view -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
                 // We create a new day and add it to the database
                 // Then we load all days from the database and set the dayList pointing to that list
                 // Finally we updated the adapter
@@ -81,7 +78,23 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
                 allDaysAdapter.setDaysList(daysRepo.listAll());
                 allDaysAdapter.notifyDataSetChanged();
+
+                checkIfDaysAreEmpty(binding, allDaysAdapter);
             }
         });
     }
+
+
+
+    public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+        if (allDaysAdapter.isListEmpty())
+            binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.VISIBLE);
+        else
+            binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.INVISIBLE);
+    }
 }
+
+
+
+
+

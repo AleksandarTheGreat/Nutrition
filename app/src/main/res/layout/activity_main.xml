@@ -240,7 +240,6 @@
                 android:id="@+id/matCard6"
                 android:tag="Fats, Oils, and Sweets"
                 style="@style/CardFoodPyramid"
-                android:layout_marginEnd="12dp"
                 >
 
                 <RelativeLayout
@@ -252,6 +251,31 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
                         android:text="Fats, Oils and Sweets" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard7"
+                android:tag="Fast Food"
+                style="@style/CardFoodPyramid"
+                android:layout_marginEnd="12dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        style="@style/FoodPyramidCategory"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Fast Food" />
 
                     <ImageView
                         android:layout_width="match_parent"

@@ -1,6 +1,8 @@
 package com.example.nutrition.Activities;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +20,8 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +56,8 @@ public class MainActivity extends ParentActivity {
 
         toaster = new Toaster(MainActivity.this);
 
-        materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3, binding.matCard4, binding.matCard5, binding.matCard6};
+        materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3,
+                binding.matCard4, binding.matCard5, binding.matCard6, binding.matCard7};
         helperMain = new HelperMain(MainActivity.this);
     }
 

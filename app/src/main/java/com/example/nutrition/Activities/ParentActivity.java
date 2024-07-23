@@ -8,20 +8,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
+import com.google.android.material.color.DynamicColors;
 
 public abstract class ParentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (ThemeUtils.isNightModeActive(this)){
+
+        // This here is commented because dynamic colors are applied while under development
+
+        /*
+
+        if (ThemeUtils.isNightModeActive(this)) {
             setTheme(R.style.NightThemeNutrition);
             Log.d("Tag", "Night mode on");
-        }
-        else {
+        } else {
             setTheme(R.style.DayThemeNutrition);
             Log.d("Tag", "Day mode on");
         }
+
+        */
     }
 
     public abstract void instantiateObjects();

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ProductsRepo;
+import com.example.nutrition.Threads.ThreadDays;
 import com.example.nutrition.databinding.FragmentADayBinding;
 
 import java.util.ArrayList;
@@ -47,8 +49,8 @@ public class FragmentADay extends Fragment implements IEssentials {
     }
 
     public FragmentADay(Day day) {
+        // This day already contains the products list
         this.day = day;
-        // Load from database the day and the products eaten in that day
     }
 
     @Override
@@ -77,6 +79,8 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerViewFragmentADay.setHasFixedSize(true);
         binding.recyclerViewFragmentADay.setAdapter(productsAdapter);
+
+        // Calculate macronutrients consumed
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -85,6 +89,8 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.buttonAddFragmentADay.setOnClickListener(view -> {
             helperFragmentADay.addProduct(binding, productsAdapter, productsRepo, day.getId());
             helperFragmentADay.checkEmptyLayout(binding, productsAdapter);
+
+            // Calculate new macronutrients consumed
         });
     }
 

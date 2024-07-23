@@ -64,10 +64,10 @@ public class Section1And2Activity extends ParentActivity {
 
         toaster = new Toaster(Section1And2Activity.this);
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
+
         allProductsAlways = ContentLoader.createTestList();
 
         productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
-
         binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
         binding.recyclerViewSection1And2.setHasFixedSize(true);
         binding.recyclerViewSection1And2.setAdapter(productsAdapter);
