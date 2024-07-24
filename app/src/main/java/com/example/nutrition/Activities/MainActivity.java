@@ -98,12 +98,12 @@ public class MainActivity extends ParentActivity {
             startActivity(intent);
         });
 
-        binding.imageViewAddNewDay.setOnClickListener(view -> {
+        binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
 
-        binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, Section3Activity.class);
+        binding.introductionLayoutMainActivity.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class);
         });
     }
 
