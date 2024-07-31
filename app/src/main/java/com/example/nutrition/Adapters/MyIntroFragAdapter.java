@@ -44,6 +44,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         fragmentList.add(new FragmentIntroduction(new Macronutrient("Carbohydrate", "Lorem ipsu Lorem ipsu Lorem ipsu", 0)));
         fragmentList.add(new FragmentIntroduction(new Macronutrient("Calorie", "Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu", 0)));
         fragmentList.add(new FragmentIntroduction(new Macronutrient("Sugar", "Lorem ipsu Lorem ipsu", 0)));
+
     }
 
 
