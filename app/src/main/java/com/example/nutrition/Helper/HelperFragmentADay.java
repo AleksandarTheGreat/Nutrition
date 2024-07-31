@@ -47,7 +47,6 @@ public class HelperFragmentADay {
         binding.autoCompleteTextViewFragmentADay.setAdapter(adapter);
     }
 
-    // Replace products adapter with items adapter
     @SuppressLint("NotifyDataSetChanged")
     public void addProduct(FragmentADayBinding binding, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
         String searchedText = binding.autoCompleteTextViewFragmentADay.getText().toString().trim();
@@ -64,10 +63,10 @@ public class HelperFragmentADay {
                     public void onResponse(JSONObject response) {
                         Log.d("Tag", "Response of food item '" + searchedText + "' successful");
 
-                        double calories = 0.0;
-                        double protein = 0.0;
-                        double carbohydrates = 0.0;
-                        double sugar = 0.0;
+                        float calories = 0.0F;
+                        float protein = 0.0F;
+                        float carbohydrates = 0.0F;
+                        float sugar = 0.0F;
 
                         try {
                             JSONArray ingredients = response.getJSONArray("ingredients");
@@ -80,10 +79,10 @@ public class HelperFragmentADay {
 
                                     String ingredientName = ingredient.getString("text");
 
-                                    protein = nutrients.getJSONObject("PROCNT").getDouble("quantity");
-                                    carbohydrates = nutrients.getJSONObject("CHOCDF").getDouble("quantity");
-                                    calories = nutrients.getJSONObject("ENERC_KCAL").getDouble("quantity");
-                                    sugar = nutrients.getJSONObject("SUGAR").getDouble("quantity");
+                                    protein = (float) nutrients.getJSONObject("PROCNT").getDouble("quantity");
+                                    carbohydrates = (float) nutrients.getJSONObject("CHOCDF").getDouble("quantity");
+                                    calories = (float) nutrients.getJSONObject("ENERC_KCAL").getDouble("quantity");
+                                    sugar = (float) nutrients.getJSONObject("SUGAR").getDouble("quantity");
 
                                     @SuppressLint("DefaultLocale")
                                     String result = String.format("Ingredient: %s\n\nProtein: %.2f\nCalories: %.2f\nCarbohydrates: %.2f\nSugar: %.2f\n",
@@ -91,18 +90,15 @@ public class HelperFragmentADay {
 
                                     Log.d("Tag", result);
 
-                                    Item item = new Item(searchedText,
-                                            (float) protein,
-                                            (float) carbohydrates,
-                                            (float) calories,
-                                            (float) sugar,
-                                            d_id);
+                                    Item item = new Item(searchedText, protein, carbohydrates, calories, sugar, d_id);
 
                                     itemsRepo.add(item, d_id);
                                     itemsAdapter.setItemList(itemsRepo.listAll(d_id));
                                     itemsAdapter.notifyDataSetChanged();
 
                                     binding.autoCompleteTextViewFragmentADay.setText("");
+                                    HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
+
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
                                 }
                             }
@@ -110,7 +106,6 @@ public class HelperFragmentADay {
                             Log.d("Tag", "Error: " + e.getMessage());
                             toaster.text("Some nutrients are missing sadly :(");
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override

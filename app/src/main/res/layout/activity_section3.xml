@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Le Main Title"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginStart="8dp"
             android:layout_alignTop="@id/imageViewLogoSection3Activity"

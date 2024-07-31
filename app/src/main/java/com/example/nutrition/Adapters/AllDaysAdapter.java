@@ -59,7 +59,6 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 Day day = daysList.get(myViewHolder.getAdapterPosition());
 
                 MyFragmentManager.change(appCompatActivity, new FragmentADay(day));
-                toaster.text("Loading...");
             }
         });
 
@@ -71,9 +70,10 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
                 daysRepo.delete(day.getId());
                 daysList = daysRepo.listAll();
-                notifyDataSetChanged();
 
+                notifyItemRemoved(myViewHolder.getAdapterPosition());
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
+
                 return true;
             }
         });

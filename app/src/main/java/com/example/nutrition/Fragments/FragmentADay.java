@@ -54,7 +54,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         toaster = new Toaster(getContext());
 
         itemsRepo = new ItemsRepo(getContext());
-        itemsAdapter = new ItemsAdapter(getContext(), itemsRepo, day);
+        itemsAdapter = new ItemsAdapter(getContext(), binding, itemsRepo, day);
 
         binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerViewFragmentADay.setHasFixedSize(true);
@@ -64,7 +64,6 @@ public class FragmentADay extends Fragment implements IEssentials {
 
         helperFragmentADay = new HelperFragmentADay(getContext());
         HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -77,7 +76,6 @@ public class FragmentADay extends Fragment implements IEssentials {
             // So that those items can have the id NECESSARY for deletion
 
             helperFragmentADay.addProduct(binding, itemsAdapter, itemsRepo, day.getId());
-            HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
         });
     }
 

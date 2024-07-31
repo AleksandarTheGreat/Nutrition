@@ -71,7 +71,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // We create a new day and add it to the database
                 // Then we load all days from the database and set the dayList pointing to that list
-                // Finally we updated the adapter
+                // Finally we update the adapter
 
                 Day day = new Day("Day", LocalDate.now());
                 daysRepo.add(day);

@@ -10,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nutrition.Helper.HelperFragmentADay;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Item;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
+import com.example.nutrition.databinding.FragmentADayBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +23,14 @@ import java.util.List;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder> {
 
     private Context context;
+    private FragmentADayBinding binding;
     private List<Item> itemList;
     private ItemsRepo itemsRepo;
     private Day day;
 
-    public ItemsAdapter(Context context, ItemsRepo itemsRepo, Day day){
+    public ItemsAdapter(Context context, FragmentADayBinding binding, ItemsRepo itemsRepo, Day day){
         this.context = context;
+        this.binding = binding;
         this.itemsRepo = itemsRepo;
         this.day = day;
 
@@ -50,6 +54,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
                 notifyItemRemoved(myViewHolder.getAdapterPosition());
                 Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
+
+                HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
                 return true;
             }
         });
