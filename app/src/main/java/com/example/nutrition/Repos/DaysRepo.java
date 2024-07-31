@@ -9,6 +9,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.example.nutrition.Model.Day;
+import com.example.nutrition.Model.Item;
 import com.example.nutrition.Model.Product;
 
 import java.security.Policy;
@@ -22,16 +23,18 @@ import java.util.function.Consumer;
 
 public class DaysRepo extends ParentRepo implements IDays {
 
+    private static final String tableName = "days";
+
     public DaysRepo(@Nullable Context context) {
         super(context);
     }
 
     @Override
     public List<Day> listAll() {
-        String query = String.format("SELECT * FROM days d LEFT JOIN products p ON d.id = p.d_id");
+        String query = String.format("SELECT * FROM days d LEFT JOIN items i ON d.id = i.d_id");
         SQLiteDatabase database = getReadableDatabase();
 
-        Map<Day, List<Product>> map = new HashMap<>();
+        Map<Day, List<Item>> map = new HashMap<>();
         List<Day> list = new ArrayList<>();
 
         Cursor cursor = database.rawQuery(query, null);
@@ -42,23 +45,22 @@ public class DaysRepo extends ParentRepo implements IDays {
                 String dateTime = cursor.getString(2);
                 LocalDate dateCreated = LocalDate.parse(dateTime);
 
-                long p_id = cursor.getLong(3);
-                String name = cursor.getString(4);
-                String category = cursor.getString(5);
-                double protein = cursor.getDouble(6);
-                double carbs = cursor.getDouble(7);
-                double calories = cursor.getDouble(8);
-                double sugar = cursor.getDouble(9);
-                long d_id = cursor.getLong(10);
+                long i_id = cursor.getLong(3);
+                String ingredient = cursor.getString(4);
+                float protein = cursor.getFloat(5);
+                float carbohydrates = cursor.getFloat(6);
+                float calories = cursor.getFloat(7);
+                float sugar = cursor.getFloat(8);
+                long d_id = cursor.getLong(9);
 
                 Day day = new Day(id, title, dateCreated);
-                Product product = new Product(p_id, name, category, protein, carbs, calories, sugar, d_id);
+                Item item = new Item(i_id, ingredient, protein, carbohydrates, calories, sugar, d_id);
 
                 if (!map.containsKey(day))
                     map.put(day, new ArrayList<>());
 
-                if (p_id != 0)
-                    map.get(day).add(product);
+                if (i_id != 0)
+                    map.get(day).add(item);
             }
         }
 
@@ -66,7 +68,7 @@ public class DaysRepo extends ParentRepo implements IDays {
         database.close();
 
         map.forEach((day, value) -> {
-            day.setProductList(value);
+            day.setItemList(value);
             list.add(day);
         });
 
@@ -97,17 +99,17 @@ public class DaysRepo extends ParentRepo implements IDays {
     @Override
     public void delete(long id) {
         String query = "id = ?";
-        String queryFromProducts = "d_id = ?";
+        String queryFromItems = "d_id = ?";
 
         SQLiteDatabase database = getWritableDatabase();
 
         database.beginTransaction();
         try {
-            database.delete("products", queryFromProducts, new String[]{String.valueOf(id)});
+            database.delete("items", queryFromItems, new String[]{String.valueOf(id)});
             database.delete("days", query, new String[]{String.valueOf(id)});
 
             database.setTransactionSuccessful();
-            Log.d("Tag", "Successfully deleted day and products with id " + id);
+            Log.d("Tag", "Successfully deleted day and items with id " + id);
         } finally {
             database.endTransaction();
             database.close();

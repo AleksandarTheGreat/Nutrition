@@ -14,19 +14,19 @@ public class Day {
     private long id;
     private String title;
     private LocalDate createdAt;
-    private List<Product> productList;
+    private List<Item> itemList;
 
     public Day(String title, LocalDate createdAt){
         this.title = title;
         this.createdAt = createdAt;
-        this.productList = new ArrayList<>();
+        this.itemList = new ArrayList<>();
     }
 
     public Day(long id, String title, LocalDate createdAt){
         this.id = id;
         this.title = title;
         this.createdAt = createdAt;
-        this.productList = new ArrayList<>();
+        this.itemList = new ArrayList<>();
     }
 
     public static Day createANewDay(String title, LocalDate createdAt){
@@ -56,6 +56,10 @@ public class Day {
         return Objects.hash(id);
     }
 
+    public int itemsCount(){
+        return itemList.size();
+    }
+
     public String getTitle() {
         return title;
     }
@@ -71,10 +75,10 @@ public class Day {
     public long getId() {
         return id;
     }
-    public List<Product> getProductList() {
-        return productList;
+    public List<Item> getItemList() {
+        return itemList;
     }
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 }

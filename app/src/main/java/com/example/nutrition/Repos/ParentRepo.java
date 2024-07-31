@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class ParentRepo extends SQLiteOpenHelper {
 
     private final Context context;
-    private static final String NAME = "daysAndProducts.db";
+    private static final String NAME = "daysAndItems.db";
     private static final int VERSION = 1;
 
     public ParentRepo(@Nullable Context context) {
@@ -27,13 +27,12 @@ public class ParentRepo extends SQLiteOpenHelper {
                 "createdAt TEXT" +
                 ");";
 
-        String createProductsTable = "CREATE TABLE products" +
+        String createItemsTable = "CREATE TABLE items" +
                 "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name TEXT," +
-                "category TEXT," +
+                "ingredient TEXT," +
                 "protein REAL," +
-                "carbs REAL," +
+                "carbohydrates REAL," +
                 "calories REAL," +
                 "sugar REAL," +
                 "d_id INTEGER," +
@@ -41,8 +40,8 @@ public class ParentRepo extends SQLiteOpenHelper {
                 ");";
 
         db.execSQL(createDaysTable);
-        db.execSQL(createProductsTable);
-        Log.d("Tag", "Tables 'days' and 'products' created successfully");
+        db.execSQL(createItemsTable);
+        Log.d("Tag", "Tables 'days' and 'items' created successfully");
     }
 
     @Override

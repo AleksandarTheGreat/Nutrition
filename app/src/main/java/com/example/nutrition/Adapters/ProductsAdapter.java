@@ -129,4 +129,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
+
+    public boolean isListEmpty(){
+        return productList != null && productList.isEmpty();
+    }
 }

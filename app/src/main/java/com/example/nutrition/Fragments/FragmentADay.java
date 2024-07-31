@@ -1,39 +1,24 @@
 package com.example.nutrition.Fragments;
 
 import android.annotation.SuppressLint;
-import android.media.audiofx.DynamicsProcessing;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.example.nutrition.Adapters.AllDaysAdapter;
+import com.example.nutrition.Adapters.ItemsAdapter;
 import com.example.nutrition.Adapters.ProductsAdapter;
-import com.example.nutrition.Helper.ContentLoader;
 import com.example.nutrition.Helper.HelperFragmentADay;
 import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
-import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
-import com.example.nutrition.Repos.ProductsRepo;
-import com.example.nutrition.Threads.ThreadDays;
+import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 
 public class FragmentADay extends Fragment implements IEssentials {
@@ -41,9 +26,10 @@ public class FragmentADay extends Fragment implements IEssentials {
     private Day day;
     private Toaster toaster;
     private FragmentADayBinding binding;
-    private ProductsAdapter productsAdapter;
+
+    private ItemsAdapter itemsAdapter;
+    private ItemsRepo itemsRepo;
     private HelperFragmentADay helperFragmentADay;
-    private ProductsRepo productsRepo;
 
     public FragmentADay() {
     }
@@ -65,32 +51,33 @@ public class FragmentADay extends Fragment implements IEssentials {
 
     @Override
     public void instantiateObjects() {
-        productsRepo = new ProductsRepo(getContext());
-
-        helperFragmentADay = new HelperFragmentADay(getContext());
         toaster = new Toaster(getContext());
 
-        // Load the auto complete text view with all the products data but as a string
-
-        helperFragmentADay.loadProductsToAutoComplete(binding);
-        productsAdapter = new ProductsAdapter(getContext(), day.getProductList());
-        helperFragmentADay.checkEmptyLayout(binding, productsAdapter);
+        itemsRepo = new ItemsRepo(getContext());
+        itemsAdapter = new ItemsAdapter(getContext(), itemsRepo, day);
 
         binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerViewFragmentADay.setHasFixedSize(true);
-        binding.recyclerViewFragmentADay.setAdapter(productsAdapter);
+        binding.recyclerViewFragmentADay.setAdapter(itemsAdapter);
 
-        // Calculate macronutrients consumed
+        toaster.text("Listed '" + day.itemsCount() + "' items");
+
+        helperFragmentADay = new HelperFragmentADay(getContext());
+        HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void addEventListeners() {
         binding.buttonAddFragmentADay.setOnClickListener(view -> {
-            helperFragmentADay.addProduct(binding, productsAdapter, productsRepo, day.getId());
-            helperFragmentADay.checkEmptyLayout(binding, productsAdapter);
 
-            // Calculate new macronutrients consumed
+            // Make the request to the API and add the Item to repo
+            // After that load the adapter with items from the itemsRepo
+            // So that those items can have the id NECESSARY for deletion
+
+            helperFragmentADay.addProduct(binding, itemsAdapter, itemsRepo, day.getId());
+            HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
         });
     }
 
