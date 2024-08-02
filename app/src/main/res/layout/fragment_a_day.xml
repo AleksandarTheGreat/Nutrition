@@ -11,36 +11,240 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="12dp">
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="24dp"
+        >
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextViewFragmentADay"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewFragmentADay"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:textSize="16sp"
-            android:paddingVertical="8dp"
-            android:paddingStart="12dp"
-            android:hint="Insert a food you ate today"
+            android:textSize="12sp"
+            app:queryHint="Search for an item..."
             android:background="@drawable/back_for_search_view"
-            app:layout_constraintRight_toLeftOf="@id/buttonAddFragmentADay"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             />
 
-        <Button
-            android:id="@+id/buttonAddFragmentADay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="Add"
-            style="@style/Widget.Material3.Button.TextButton"
-            app:layout_constraintLeft_toRightOf="@id/autoCompleteTextViewFragmentADay"
-            app:layout_constraintRight_toRightOf="parent"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/subtitleLayoutStatsFragmentADay"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/headerLayoutFragmentADay"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageViewIconTotal"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/SubTitlePart"
+            android:text="Total le some title for day 3"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconTotal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollViewFragmentADay"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/subtitleLayoutStatsFragmentADay"
+        android:layout_marginBottom="24dp"
+        android:layout_marginHorizontal="12dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="match_parent"
+                android:layout_width="250dp"
+                android:layout_marginEnd="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewNutrient1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LE NUTRIENT"
+                        android:textSize="24sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewNutrient1Number"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="1024g"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="match_parent"
+                android:layout_width="250dp"
+                android:layout_marginHorizontal="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewNutrient2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LE NUTRIENT"
+                        android:textSize="24sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewNutrient2Number"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="1024g"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient2"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="match_parent"
+                android:layout_width="250dp"
+                android:layout_marginHorizontal="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewNutrient3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LE NUTRIENT"
+                        android:textSize="24sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewNutrient3Number"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="1024g"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient3"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_height="match_parent"
+                android:layout_width="250dp"
+                android:layout_marginHorizontal="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewNutrient4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LE NUTRIENT"
+                        android:textSize="24sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewNutrient4Number"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="1024g"
+                        android:textSize="22sp"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient4"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/subtitleLayoutSoFarFragmentADay"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/horizontalScrollViewFragmentADay"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageViewIconDay"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/SubTitlePart"
+            android:text="So far le consumed this day"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconDay"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,8 +253,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_below="@id/headerLayoutFragmentADay"
-        android:layout_marginTop="24dp"
+        android:layout_below="@id/subtitleLayoutSoFarFragmentADay"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="48dp"
         />

@@ -1,10 +1,12 @@
 package com.example.nutrition.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +46,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
                 .inflate(R.layout.single_item_layout, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
-        myViewHolder.textView.setOnLongClickListener(new View.OnLongClickListener() {
+        myViewHolder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 Item item = itemList.get(myViewHolder.getAdapterPosition());
@@ -56,6 +58,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
                 Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
 
                 HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
+
+                // Calculate total and change the UI in the material cards
                 return true;
             }
         });
@@ -63,11 +67,17 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         return myViewHolder;
     }
 
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     public void onBindViewHolder(@NonNull ItemsAdapter.MyViewHolder holder, int position) {
         Item item = itemList.get(position);
 
-        holder.textView.setText(item.toString());
+        holder.textViewIngredient.setText(item.getIngredient());
+
+        holder.textViewProtein.setText(String.format("%.2fg", item.getProtein()));
+        holder.textViewCalories.setText(String.format("%.2fg", item.getCalories()));
+        holder.textViewCarbohydrates.setText(String.format("%.2fg", item.getCarbohydrates()));
+        holder.textViewSugar.setText(String.format("%.2fg", item.getSugar()));
     }
 
     @Override
@@ -76,10 +86,21 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        protected TextView textView;
+        protected LinearLayout linearLayout;
+        protected TextView textViewIngredient;
+        protected TextView textViewProtein;
+        protected TextView textViewCarbohydrates;
+        protected TextView textViewCalories;
+        protected TextView textViewSugar;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.textView = itemView.findViewById(R.id.textViewSingleItem);
+            this.linearLayout = itemView.findViewById(R.id.mainLayoutSingleItem);
+            this.textViewIngredient = itemView.findViewById(R.id.textViewSingleItemTitle);
+            this.textViewProtein = itemView.findViewById(R.id.textViewActualProteins);
+            this.textViewCarbohydrates = itemView.findViewById(R.id.textViewActualCarbs);
+            this.textViewCalories = itemView.findViewById(R.id.textViewActualCalories);
+            this.textViewSugar = itemView.findViewById(R.id.textViewActualSugar);
         }
     }
 

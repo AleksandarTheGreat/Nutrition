@@ -3,6 +3,7 @@ package com.example.nutrition.Fragments;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -64,18 +65,24 @@ public class FragmentADay extends Fragment implements IEssentials {
 
         helperFragmentADay = new HelperFragmentADay(getContext());
         HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
+
+        // Calculate total and change the ui in the material cards
     }
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void addEventListeners() {
-        binding.buttonAddFragmentADay.setOnClickListener(view -> {
+        binding.searchViewFragmentADay.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                helperFragmentADay.addProduct(binding, itemsAdapter, itemsRepo, day.getId());
+                return true;
+            }
 
-            // Make the request to the API and add the Item to repo
-            // After that load the adapter with items from the itemsRepo
-            // So that those items can have the id NECESSARY for deletion
-
-            helperFragmentADay.addProduct(binding, itemsAdapter, itemsRepo, day.getId());
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
         });
     }
 

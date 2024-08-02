@@ -36,20 +36,9 @@ public class HelperFragmentADay {
         this.toaster = new Toaster(context);
     }
 
-    public void loadProductsToAutoComplete(FragmentADayBinding binding) {
-        List<String> subList = ContentLoader
-                .createTestList()
-                .stream()
-                .map(Product::getName)
-                .collect(Collectors.toList());
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, subList);
-        binding.autoCompleteTextViewFragmentADay.setAdapter(adapter);
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     public void addProduct(FragmentADayBinding binding, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
-        String searchedText = binding.autoCompleteTextViewFragmentADay.getText().toString().trim();
+        String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
         if (!checkIfInputIsValid(binding)) return;
 
         String apiKey = "73852b082619618ae5eb814953750853";
@@ -96,8 +85,10 @@ public class HelperFragmentADay {
                                     itemsAdapter.setItemList(itemsRepo.listAll(d_id));
                                     itemsAdapter.notifyDataSetChanged();
 
-                                    binding.autoCompleteTextViewFragmentADay.setText("");
+                                    binding.searchViewFragmentADay.setQuery("", false);
                                     HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
+
+                                    // Calculate total and change the ui in the material cards
 
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
                                 }
@@ -120,12 +111,8 @@ public class HelperFragmentADay {
     }
 
     private boolean checkIfInputIsValid(FragmentADayBinding binding) {
-        String searchedText = binding.autoCompleteTextViewFragmentADay.getText().toString().trim();
-        if (searchedText.isEmpty()) {
-            binding.autoCompleteTextViewFragmentADay.setError("Invalid search input!");
-            return false;
-        }
-        return true;
+        String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
+        return !searchedText.isEmpty();
     }
 
     public static void checkIfItemsAreEmpty(FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
