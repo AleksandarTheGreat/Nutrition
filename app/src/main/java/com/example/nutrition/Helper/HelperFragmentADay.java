@@ -88,6 +88,7 @@ public class HelperFragmentADay {
                                     binding.searchViewFragmentADay.setQuery("", false);
                                     HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
 
+                                    HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
                                     // Calculate total and change the ui in the material cards
 
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
@@ -121,5 +122,25 @@ public class HelperFragmentADay {
         } else {
             binding.textViewNoItemsFragmentADay.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
+    public static void calculateTotalNutrients(FragmentADayBinding binding, ItemsAdapter itemsAdapter){
+        float totalProtein = 0;
+        float totalCalories = 0;
+        float totalCarbs = 0;
+        float totalSugars = 0;
+
+        for (Item item: itemsAdapter.getItemList()){
+            totalProtein += item.getProtein();
+            totalCalories += item.getCalories();
+            totalCarbs += item.getCarbohydrates();
+            totalSugars += item.getSugar();
+        }
+
+        binding.textViewNutrient1Number.setText(String.format("%.2f", totalProtein));
+        binding.textViewNutrient2Number.setText(String.format("%.2f", totalCalories));
+        binding.textViewNutrient3Number.setText(String.format("%.2f", totalCarbs));
+        binding.textViewNutrient4Number.setText(String.format("%.2f", totalSugars));
     }
 }

@@ -17,6 +17,7 @@ import com.example.nutrition.Helper.HelperFragmentADay;
 import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
+import com.example.nutrition.Model.Item;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
@@ -67,6 +68,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
 
         // Calculate total and change the ui in the material cards
+        HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
     }
 
     @SuppressLint("NotifyDataSetChanged")
