@@ -54,7 +54,7 @@ public class Section1And2Activity extends ParentActivity {
         helperSection1And2Activity.setUpByPyramidCategories(this, binding);
 
         // The second shall be called if we come here via the Filter button
-        helperSection1And2Activity.setUpByFilters(this, binding, productsAdapter);
+        helperSection1And2Activity.setUpByFilters(this, productsAdapter);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Section1And2Activity extends ParentActivity {
         toaster = new Toaster(Section1And2Activity.this);
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
 
-        allProductsAlways = ContentLoader.createTestList();
+        allProductsAlways = ContentLoader.createTestList(Section1And2Activity.this);
 
         productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
         binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));

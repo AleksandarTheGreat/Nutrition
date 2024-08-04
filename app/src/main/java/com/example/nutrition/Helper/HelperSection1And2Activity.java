@@ -67,7 +67,7 @@ public class HelperSection1And2Activity {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setUpByFilters(AppCompatActivity activity, ActivitySection1And2Binding binding, ProductsAdapter productsAdapter){
+    public void setUpByFilters(AppCompatActivity activity, ProductsAdapter productsAdapter){
         String text = activity.getIntent().getStringExtra("filter");
         if (text == null)
             return;

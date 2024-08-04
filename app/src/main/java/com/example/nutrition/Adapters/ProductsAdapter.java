@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,6 +69,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
         Product product = productList.get(position);
 
         holder.textViewName.setText(product.getName());
+
+        if (product.getImageUri() != null){
+            Picasso.get()
+                    .load(Uri.parse(product.getImageUri()))
+                    .into(holder.imageView);
+        } else {
+            holder.imageView.setImageResource(R.mipmap.ic_launcher);
+        }
 
         holder.textViewProteinNumber.setText(product.getProtein() + "g");
         holder.textViewCarbsNumber.setText(product.getCarbs() + "g");

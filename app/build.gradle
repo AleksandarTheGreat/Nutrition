@@ -39,6 +39,7 @@ dependencies {
     implementation libs.constraintlayout
 
     implementation libs.volley
+    implementation libs.picasso
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

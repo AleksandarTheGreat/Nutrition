@@ -1,14 +1,22 @@
 package com.example.nutrition.Model;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
     // id, day_id
     protected long id;
+    protected String imageUri;
     protected String name;
     protected String category;
     protected double protein;
@@ -24,6 +32,16 @@ public class Product {
         this.carbs = carbs;
         this.calories = calories;
         this.sugar = sugar;
+    }
+
+    private Product(String name, String category, double protein, double carbs, double calories, double sugar, String imageUri) {
+        this.name = name;
+        this.category = category;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.calories = calories;
+        this.sugar = sugar;
+        this.imageUri = imageUri;
     }
 
     public Product(long id, String name, String category, double protein, double carbs, double calories, double sugar, long d_id) {
@@ -43,6 +61,10 @@ public class Product {
         return new Product(name, category, protein, carbs, calories, sugar);
     }
 
+    public static Product createProduct(String name, String category, double protein, double carbs, double calories, double sugar, String imageUri){
+        return new Product(name, category, protein, carbs, calories, sugar, imageUri);
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -58,6 +80,12 @@ public class Product {
         return name.equals(((Product) obj).name);
     }
 
+    public String getImageUri() {
+        return imageUri;
+    }
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
     public String getName() {
         return name;
     }
