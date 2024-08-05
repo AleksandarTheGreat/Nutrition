@@ -10,16 +10,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <TextView
             android:id="@+id/textViewSingleItemTitle"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="Some Ingredient here or whatever"
             android:textStyle="bold"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
@@ -39,7 +39,8 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
