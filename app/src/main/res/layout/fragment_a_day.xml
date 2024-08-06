@@ -41,16 +41,16 @@
 
         <ImageView
             android:id="@+id/imageViewIconTotal"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_apple_nutrient"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             style="@style/SubTitlePart"
-            android:text="Total le some title for day 3"
+            android:text="Macronutrients for today"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconTotal"
@@ -81,16 +81,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textViewNutrient1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PROTEINS"
-                        android:textSize="24sp"
+                    <ImageView
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_steak"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         />
 
                     <TextView
@@ -98,10 +95,23 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="1024g"
-                        android:textSize="22sp"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient1"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewNutrient1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PROTEINS"
+                        android:textSize="16sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient1Number"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,16 +127,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_olive_oil"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textViewNutrient2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CALORIES"
-                        android:textSize="24sp"
+                        android:textSize="16sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient2Number"
                         />
 
                     <TextView
@@ -134,10 +152,12 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="1024g"
-                        android:textSize="22sp"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient2"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -153,16 +173,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_wheat"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textViewNutrient3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CARBOHYDRATES"
-                        android:textSize="24sp"
+                        android:textSize="16sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient3Number"
                         />
 
                     <TextView
@@ -170,10 +198,12 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="1024g"
-                        android:textSize="22sp"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient3"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -189,16 +219,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_sugar"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textViewNutrient4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SUGARS"
-                        android:textSize="24sp"
+                        android:textSize="16sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient4Number"
                         />
 
                     <TextView
@@ -206,10 +244,12 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="1024g"
-                        android:textSize="22sp"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient4"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -231,9 +271,9 @@
 
         <ImageView
             android:id="@+id/imageViewIconDay"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_consumed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

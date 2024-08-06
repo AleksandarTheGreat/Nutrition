@@ -13,6 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp">
 
+        <ImageView
+            android:id="@+id/imageViewItemIcon"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/textViewSingleItemTitle"
+            />
+
         <TextView
             android:id="@+id/textViewSingleItemTitle"
             android:layout_height="wrap_content"
@@ -20,8 +30,10 @@
             android:text="Some Ingredient here or whatever"
             android:textStyle="bold"
             android:textSize="18sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toRightOf="@id/imageViewItemIcon"
+            app:layout_constraintTop_toTopOf="@id/imageViewItemIcon"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewItemIcon"
             />
 
         <com.google.android.material.divider.MaterialDivider

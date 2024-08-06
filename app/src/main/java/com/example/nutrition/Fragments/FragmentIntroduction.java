@@ -37,6 +37,7 @@ public class FragmentIntroduction extends Fragment implements IEssentials {
     public void instantiateObjects() {
         binding.textViewTitleIntroductionFragment.setText(macronutrient.getTitle());
         binding.textViewExplanationIntroductionFragment.setText(macronutrient.getExplanation());
+        binding.imageViewIconIntroductionFragment.setImageResource(macronutrient.getImageResource());
     }
 
     @Override

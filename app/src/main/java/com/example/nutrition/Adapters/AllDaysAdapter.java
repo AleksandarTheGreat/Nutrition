@@ -58,7 +58,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             public void onClick(View v) {
                 Day day = daysList.get(myViewHolder.getAdapterPosition());
 
-                MyFragmentManager.change(appCompatActivity, new FragmentADay(day));
+                MyFragmentManager.change(appCompatActivity, new FragmentADay(day, appCompatActivity));
             }
         });
 

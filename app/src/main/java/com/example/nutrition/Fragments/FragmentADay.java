@@ -3,6 +3,7 @@ package com.example.nutrition.Fragments;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +29,7 @@ public class FragmentADay extends Fragment implements IEssentials {
     private Day day;
     private Toaster toaster;
     private FragmentADayBinding binding;
+    private AppCompatActivity appCompatActivity;
 
     private ItemsAdapter itemsAdapter;
     private ItemsRepo itemsRepo;
@@ -36,9 +38,10 @@ public class FragmentADay extends Fragment implements IEssentials {
     public FragmentADay() {
     }
 
-    public FragmentADay(Day day) {
+    public FragmentADay(Day day, AppCompatActivity appCompatActivity) {
         // This day already contains the products list
         this.day = day;
+        this.appCompatActivity = appCompatActivity;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         toaster = new Toaster(getContext());
 
         itemsRepo = new ItemsRepo(getContext());
-        itemsAdapter = new ItemsAdapter(getContext(), binding, itemsRepo, day);
+        itemsAdapter = new ItemsAdapter(getContext(), appCompatActivity, binding, itemsRepo, day);
 
         binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerViewFragmentADay.setHasFixedSize(true);

@@ -15,6 +15,7 @@ import com.example.nutrition.Adapters.MyIntroFragAdapter;
 import com.example.nutrition.Fragments.FragmentIntroduction;
 import com.example.nutrition.Model.Macronutrient;
 import com.example.nutrition.R;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivityIntroductionBinding;
 
 import java.util.ArrayList;
@@ -79,7 +80,13 @@ public class IntroductionActivity extends ParentActivity {
 
     @Override
     public void additionalThemeChanges() {
-
+        if (ThemeUtils.isNightModeActive(this)){
+            binding.imageViewArrowLeft.setImageResource(R.drawable.ic_left_white);
+            binding.imageViewArrowRight.setImageResource(R.drawable.ic_right_white);
+        } else {
+            binding.imageViewArrowLeft.setImageResource(R.drawable.ic_left_black);
+            binding.imageViewArrowRight.setImageResource(R.drawable.ic_right_black);
+        }
     }
 
     private void updateImageArrowsVisibility(){

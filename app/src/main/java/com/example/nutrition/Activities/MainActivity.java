@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.R;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
@@ -109,7 +110,15 @@ public class MainActivity extends ParentActivity {
 
     @Override
     public void additionalThemeChanges() {
-
+        if (ThemeUtils.isNightModeActive(this)){
+            binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
+            binding.buttonListMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_right_white_16, 0);
+            binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_right_white_16, 0);
+        } else {
+            binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
+            binding.buttonListMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_black_16, 0);
+            binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_black_16, 0);
+        }
     }
 }
 
