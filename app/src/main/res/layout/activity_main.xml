@@ -11,7 +11,7 @@
         android:id="@+id/headerLayoutMainActivity"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="0dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
@@ -43,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/headerLayoutMainActivity"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="28dp"
         android:paddingHorizontal="4dp">
 
@@ -64,6 +65,17 @@
             app:layout_constraintLeft_toRightOf="@id/imageViewIntroductionArrow"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageViewGoRightIntro"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_right_black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/introductionLayoutMainActivity"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="4dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
@@ -117,15 +129,15 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Grains" />
+                        android:text="GRAINS"
+                        android:translationZ="1dp"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -133,6 +145,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/grains"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -145,14 +163,14 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/light_mask">
+                    android:layout_height="match_parent">
 
                     <TextView
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Vegetables"
+                        android:text="VEGETABLES"
+                        android:translationZ="1dp"
                         />
 
                     <ImageView
@@ -161,6 +179,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/vegetables"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -179,7 +203,9 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Fruits" />
+                        android:text="FRUITS"
+                        android:translationZ="1dp"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -187,6 +213,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/fruit"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -205,7 +237,9 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Meat &amp; Proteins" />
+                        android:text="MEAT &amp; PROTEINS"
+                        android:translationZ="1dp"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -213,6 +247,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/meat"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -231,7 +271,9 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Dairy" />
+                        android:text="DAIRY"
+                        android:translationZ="1dp"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -239,6 +281,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/dairy"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -257,7 +305,9 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Fats, Oils &amp; Sweets" />
+                        android:text="FATS, OILS &amp; SWEETS"
+                        android:translationZ="1dp"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -265,6 +315,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/fats_oils_sweets"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -284,7 +340,9 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="Fast Food" />
+                        android:text="FAST FOOD"
+                        android:translationZ="1dp"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -292,6 +350,12 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/fast_food"
                         android:translationZ="-1dp" />
+
+                    <View
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/light_list"
+                        />
 
                 </RelativeLayout>
 
@@ -332,7 +396,7 @@
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_right_black_16"
+            android:drawableEnd="@drawable/ic_right_gray"
             android:enabled="false"
             android:text="Filter"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -380,7 +444,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/chipGroupMainActivity"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
@@ -424,15 +488,19 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:src="@drawable/slika2"
+                    android:scaleType="centerCrop"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="12dp"
-                    android:text="Tracking"
+                    android:text="TRACKING"
                     android:textSize="20sp"
+                    android:translationZ="1dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -443,8 +511,21 @@
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginBottom="12dp"
                     android:src="@drawable/ic_right_black"
+                    android:translationZ="1dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
+
+                <View
+                    android:id="@+id/viewTrackingMask"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/blackTransparent"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

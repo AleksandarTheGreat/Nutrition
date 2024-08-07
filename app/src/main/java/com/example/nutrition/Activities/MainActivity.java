@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -33,6 +35,7 @@ public class MainActivity extends ParentActivity {
     private Toaster toaster;
     private MaterialCardView[] materialCardViews;
     private HelperMain helperMain;
+    private AppCompatActivity appCompatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class MainActivity extends ParentActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        appCompatActivity = this;
         toaster = new Toaster(MainActivity.this);
 
         materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3,
@@ -69,7 +73,17 @@ public class MainActivity extends ParentActivity {
         binding.chipGroupMainActivity.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                binding.buttonFilterMainActivity.setEnabled(!checkedIds.isEmpty());
+                if (!checkedIds.isEmpty()){
+                    binding.buttonFilterMainActivity.setEnabled(true);
+                    if (ThemeUtils.isNightModeActive(appCompatActivity))
+                        binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_right_white_16, 0);
+                    else
+                        binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_right_black_16, 0);
+                } else {
+                    binding.buttonFilterMainActivity.setEnabled(false);
+                    binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_gray, 0);
+                }
+
             }
         });
 
@@ -97,11 +111,15 @@ public class MainActivity extends ParentActivity {
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(this)){
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
-            binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_right_white_16, 0);
+            binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_white);
+            binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.dark_list));
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
-            binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_black_16, 0);
+            binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_black);
+            binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
         }
+
+        helperMain.setUpUIMasksOnCards(this, materialCardViews);
     }
 }
 

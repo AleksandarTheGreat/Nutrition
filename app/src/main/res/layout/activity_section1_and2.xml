@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/headerLayoutSection1And2"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="24dp"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
@@ -96,7 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontalScrollViewSection1And2"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:paddingHorizontal="4dp">
 
         <ImageView

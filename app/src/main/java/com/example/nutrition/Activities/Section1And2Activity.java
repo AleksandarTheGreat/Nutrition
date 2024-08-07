@@ -80,19 +80,23 @@ public class Section1And2Activity extends ParentActivity {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                HashSet<String> set = new HashSet<>();
-                for (Integer id : checkedIds) {
-                    Chip chip = group.findViewById(id);
-                    String category = chip.getText().toString().trim();
-
-                    set.add(category);
+                if (checkedIds.isEmpty()){
+                    productsAdapter.setProductList(allProductsAlways);
+                    productsAdapter.notifyDataSetChanged();
+                    return;
                 }
+
+                // Get the one and only selected filter chip
+
+                int id = checkedIds.get(0);
+                Chip selectedChip = group.findViewById(id);
+                String text = selectedChip.getText().toString().trim();
 
                 List<Product> filteredList;
                 if (!checkedIds.isEmpty())
                     filteredList = allProductsAlways
                             .stream()
-                            .filter(product -> set.contains(product.getCategory()))
+                            .filter(product -> product.getCategory().equals(text))
                             .collect(Collectors.toList());
                 else
                     filteredList = allProductsAlways;

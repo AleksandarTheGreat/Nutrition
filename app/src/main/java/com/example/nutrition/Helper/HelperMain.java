@@ -3,11 +3,17 @@ package com.example.nutrition.Helper;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.example.nutrition.Activities.MainActivity;
 import com.example.nutrition.Activities.Section1And2Activity;
+import com.example.nutrition.R;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
 
@@ -28,6 +34,22 @@ public class HelperMain {
 
                 context.startActivity(intent);
             });
+        }
+    }
+
+    public void setUpUIMasksOnCards(AppCompatActivity appCompatActivity, MaterialCardView [] materialCardView){
+        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+            for (MaterialCardView cardView: materialCardView){
+                RelativeLayout relativeLayout = (RelativeLayout) cardView.getChildAt(0);
+                View view = relativeLayout.getChildAt(2);
+                view.setBackground(ContextCompat.getDrawable(context, R.drawable.dark_list));
+            }
+        } else {
+            for (MaterialCardView cardView: materialCardView){
+                RelativeLayout relativeLayout = (RelativeLayout) cardView.getChildAt(0);
+                View view = relativeLayout.getChildAt(2);
+                view.setBackground(ContextCompat.getDrawable(context, R.drawable.light_list));
+            }
         }
     }
 
