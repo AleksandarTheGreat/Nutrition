@@ -37,7 +37,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     private DaysRepo daysRepo;
 
     public FragmentAllDays() {}
-    public FragmentAllDays(AppCompatActivity appCompatActivity){
+
+    public FragmentAllDays(AppCompatActivity appCompatActivity) {
         this.appCompatActivity = appCompatActivity;
     }
 
@@ -55,6 +56,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     public void instantiateObjects() {
         daysRepo = new DaysRepo(getContext());
 
+        toaster = new Toaster(getContext());
         allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
         checkIfDaysAreEmpty(binding, allDaysAdapter);
 
@@ -73,6 +75,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 // Then we load all days from the database and set the dayList pointing to that list
                 // Finally we update the adapter
 
+                if (!isANewDayValidToAdd()) return;
+
                 Day day = new Day("Day", LocalDate.now());
                 daysRepo.add(day);
 
@@ -85,8 +89,21 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     }
 
 
+    // HELPER METHODS
 
-    public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+    private boolean isANewDayValidToAdd() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            for (Day day : allDaysAdapter.getDaysList()) {
+                if (day.getCreatedAt().equals(LocalDate.now())) {
+                    toaster.text("Cannot create 2 days");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
         if (allDaysAdapter.isListEmpty())
             binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.VISIBLE);
         else
