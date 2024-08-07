@@ -7,12 +7,21 @@
     android:checkable="true"
     android:clickable="true"
     android:focusable="true"
-    style="@style/Widget.Material3.CardView.Outlined"
+    style="@style/Widget.Material3.CardView.Filled"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_height="24dp"
+            android:layout_width="24dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_sun_day"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/textViewDaySingleDayLayout"

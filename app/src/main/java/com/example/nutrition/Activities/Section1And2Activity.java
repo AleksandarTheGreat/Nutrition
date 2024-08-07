@@ -41,7 +41,7 @@ public class Section1And2Activity extends ParentActivity {
         additionalThemeChanges();
 
         EdgeToEdge.enable(this);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainLayoutSection1And2Activity), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -81,6 +81,9 @@ public class Section1And2Activity extends ParentActivity {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 if (checkedIds.isEmpty()){
+
+                    helperSection1And2Activity.setUpBackgroundMask("", binding);
+
                     productsAdapter.setProductList(allProductsAlways);
                     productsAdapter.notifyDataSetChanged();
                     return;
@@ -91,6 +94,8 @@ public class Section1And2Activity extends ParentActivity {
                 int id = checkedIds.get(0);
                 Chip selectedChip = group.findViewById(id);
                 String text = selectedChip.getText().toString().trim();
+
+                helperSection1And2Activity.setUpBackgroundMask(text, binding);
 
                 List<Product> filteredList;
                 if (!checkedIds.isEmpty())

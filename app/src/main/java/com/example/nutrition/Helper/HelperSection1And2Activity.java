@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Model.Product;
+import com.example.nutrition.R;
 import com.example.nutrition.databinding.ActivitySection1And2Binding;
 import com.google.android.material.chip.Chip;
 
@@ -53,17 +55,51 @@ public class HelperSection1And2Activity {
 
     public void setUpByPyramidCategories(AppCompatActivity activity, ActivitySection1And2Binding binding){
         String category = activity.getIntent().getStringExtra("category");
-        if (category == null)
+        if (category == null){
+            setUpBackgroundMask("", binding);
             return;
+        }
+
 
         // Here we only update the UI since the event listeners are already set in the addEventListeners method
         for (int i=0;i<binding.chipGroupSection1And2.getChildCount();i++){
             Chip chip = (Chip) binding.chipGroupSection1And2.getChildAt(i);
             String text = chip.getText().toString().trim();
 
+            setUpBackgroundMask(text, binding);
+
             if (category.equals(text)){
                 chip.setChecked(true);
                 break;
+            }
+        }
+    }
+
+    public void setUpBackgroundMask(String category, ActivitySection1And2Binding binding){
+        switch (category){
+            case "Grains":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_grains));
+                break;
+            } case "Vegetables":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_vegetables));
+                break;
+            } case "Fruits":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_fruit));
+                break;
+            } case "Meat and Proteins":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_meat));
+                break;
+            } case "Dairy":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_dairy));
+                break;
+            } case "Fats, Oils, and Sweets":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_fats));
+                break;
+            } case "Fast Food":{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_fast_food));
+                break;
+            } default:{
+                binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_default));
             }
         }
     }
