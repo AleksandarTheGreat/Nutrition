@@ -52,8 +52,8 @@ public class HelperSection1And2Activity {
     }
 
     public void setUpByPyramidCategories(AppCompatActivity activity, ActivitySection1And2Binding binding){
-        ArrayList<String> categories = activity.getIntent().getStringArrayListExtra("categories");
-        if (categories == null)
+        String category = activity.getIntent().getStringExtra("category");
+        if (category == null)
             return;
 
         // Here we only update the UI since the event listeners are already set in the addEventListeners method
@@ -61,8 +61,10 @@ public class HelperSection1And2Activity {
             Chip chip = (Chip) binding.chipGroupSection1And2.getChildAt(i);
             String text = chip.getText().toString().trim();
 
-            if (categories.contains(text))
+            if (category.equals(text)){
                 chip.setChecked(true);
+                break;
+            }
         }
     }
 

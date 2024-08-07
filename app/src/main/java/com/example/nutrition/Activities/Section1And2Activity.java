@@ -50,6 +50,7 @@ public class Section1And2Activity extends ParentActivity {
         addEventListeners();
 
         // Either the first method will be called or the second one
+
         // The first shall be called if we come here via the List button
         helperSection1And2Activity.setUpByPyramidCategories(this, binding);
 

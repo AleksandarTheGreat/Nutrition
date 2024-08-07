@@ -64,28 +64,13 @@ public class MainActivity extends ParentActivity {
 
     @Override
     public void addEventListeners() {
+        helperMain.setUpCardEventListeners(materialCardViews, binding);
+
         binding.chipGroupMainActivity.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 binding.buttonFilterMainActivity.setEnabled(!checkedIds.isEmpty());
             }
-        });
-
-        helperMain.setUpCardEventListeners(materialCardViews, binding);
-
-        binding.buttonListMainActivity.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, Section1And2Activity.class);
-
-            ArrayList<String> categories = new ArrayList<>();
-            for (MaterialCardView cardView: materialCardViews){
-                if (cardView.isChecked()){
-                    String text = cardView.getTag().toString().trim();
-                    categories.add(text);
-                }
-            }
-
-            intent.putStringArrayListExtra("categories", categories);
-            startActivity(intent);
         });
 
         binding.buttonFilterMainActivity.setOnClickListener(view -> {
@@ -112,11 +97,9 @@ public class MainActivity extends ParentActivity {
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(this)){
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
-            binding.buttonListMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_right_white_16, 0);
             binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_right_white_16, 0);
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
-            binding.buttonListMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_black_16, 0);
             binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_black_16, 0);
         }
     }

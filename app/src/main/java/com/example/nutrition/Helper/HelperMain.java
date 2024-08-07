@@ -21,22 +21,12 @@ public class HelperMain {
     public void setUpCardEventListeners(MaterialCardView [] materialCardViews, ActivityMainBinding binding) {
         for (MaterialCardView materialCardView : materialCardViews) {
             materialCardView.setOnClickListener(view -> {
-                materialCardView.setChecked(!materialCardView.isChecked());
-            });
+                String text = materialCardView.getTag().toString().trim();
 
-            materialCardView.setOnCheckedChangeListener(new MaterialCardView.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(MaterialCardView card, boolean isChecked) {
-                    RelativeLayout relativeLayout = (RelativeLayout) card.getChildAt(0);
-                    TextView textView = (TextView) relativeLayout.getChildAt(0);
-                    if (isChecked){
-                        textView.setTypeface(Typeface.DEFAULT_BOLD);
-                    } else {
-                        textView.setTypeface(Typeface.DEFAULT);
-                    }
+                Intent intent = new Intent(context, Section1And2Activity.class);
+                intent.putExtra("category", text);
 
-                    binding.buttonListMainActivity.setEnabled(aCardIsChecked(materialCardViews));
-                }
+                context.startActivity(intent);
             });
         }
     }
