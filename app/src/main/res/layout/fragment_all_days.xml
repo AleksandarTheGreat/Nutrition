@@ -57,59 +57,154 @@
 
     </RelativeLayout>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/createDayLayoutFragmentAllDays"
+    <RelativeLayout
+        android:id="@+id/relativeLayoutDaysFragmentAllDays"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_below="@id/headerLayoutFragmentAllDays"
-        android:paddingHorizontal="4dp"
-        android:layout_marginBottom="8dp"
-        >
+        android:layout_marginBottom="24dp">
 
-        <ImageView
-            android:id="@+id/imageViewLogoTrackedDays"
-            android:layout_height="35dp"
-            android:layout_width="35dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_days"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/createDayLayoutFragmentAllDays"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="4dp">
+
+            <ImageView
+                android:id="@+id/imageViewLogoTrackedDays"
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_days"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                android:text="All of your tracked days"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/imageViewLogoTrackedDays"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAllDaysFragment"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:layout_below="@id/createDayLayoutFragmentAllDays"
             />
 
         <TextView
+            android:id="@+id/textViewNoDaysYetFragmentAllDays"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_marginStart="8dp"
-            android:text="All of your tracked days"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/imageViewLogoTrackedDays"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No days yet"
+            android:drawableLeft="@drawable/ic_info"
+            android:drawablePadding="4dp"
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAllDaysFragment"
+    <RelativeLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_marginBottom="48dp"
-        android:layout_marginHorizontal="8dp"
-        android:layout_below="@id/createDayLayoutFragmentAllDays"
-        />
+        android:layout_below="@id/relativeLayoutDaysFragmentAllDays"
+        android:layout_marginBottom="48dp">
 
-    <TextView
-        android:id="@+id/textViewNoDaysYetFragmentAllDays"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="No days yet"
-        android:drawableLeft="@drawable/ic_info"
-        android:drawablePadding="4dp"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutGraphFragmentAllDays"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="4dp"
+            android:paddingHorizontal="4dp">
+
+            <ImageView
+                android:id="@+id/imageViewLogoGraph"
+                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:layout_marginStart="8dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                android:text="Graph or something"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/imageViewLogoGraph"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollViewGraphSelections"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/constraintLayoutGraphFragmentAllDays"
+            android:scrollbars="none"
+            >
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupGraphFragmentAllDays"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:chipSpacingVertical="-8dp"
+                app:singleSelection="true"
+                app:singleLine="true">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipMainActivity"
+                    android:text="Proteins"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipMainActivity"
+                    android:text="Carbohydrates"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipMainActivity"
+                    android:text="Calories"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipMainActivity"
+                    android:text="Sugar"
+                    />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/anyChartFragmentAllDays"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/horizontalScrollViewGraphSelections"
+            android:layout_marginHorizontal="12dp"
+            />
+
+    </RelativeLayout>
 
 </RelativeLayout>
 

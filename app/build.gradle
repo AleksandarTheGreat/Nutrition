@@ -40,6 +40,8 @@ dependencies {
 
     implementation libs.volley
     implementation libs.picasso
+    implementation libs.anychart.android
+    implementation libs.mpandroidchart
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

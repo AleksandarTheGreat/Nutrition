@@ -60,6 +60,35 @@ public class Day {
         return itemList.size();
     }
 
+    public float totalProteins(){
+        float sum = 0.0F;
+        for (Item item: itemList){
+            sum += item.getProtein();
+        }
+        return sum;
+    }
+    public float totalCalories(){
+        float sum = 0.0F;
+        for (Item item: itemList){
+            sum += item.getCalories();
+        }
+        return sum;
+    }
+    public float totalCarbohydrates(){
+        float sum = 0.0F;
+        for (Item item: itemList){
+            sum += item.getCarbohydrates();
+        }
+        return sum;
+    }
+    public float totalSugar(){
+        float sum = 0.0F;
+        for (Item item: itemList){
+            sum += item.getSugar();
+        }
+        return sum;
+    }
+
     public String getTitle() {
         return title;
     }
