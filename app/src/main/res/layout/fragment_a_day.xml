@@ -51,7 +51,8 @@
             android:id="@+id/imageViewIconTotal"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_apple_nutrient"
+            android:padding="4dp"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -281,7 +282,7 @@
             android:id="@+id/imageViewIconDay"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_consumed"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

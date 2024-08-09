@@ -21,6 +21,7 @@ import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Item;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
 
 
@@ -50,6 +51,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
         instantiateObjects();
         addEventListeners();
+        additionalThemeSettings();
 
         return binding.getRoot();
     }
@@ -89,6 +91,16 @@ public class FragmentADay extends Fragment implements IEssentials {
                 return false;
             }
         });
+    }
+
+    public void additionalThemeSettings(){
+        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+            binding.imageViewIconTotal.setImageResource(R.drawable.ic_apple_white);
+            binding.imageViewIconDay.setImageResource(R.drawable.ic_plate_white);
+        } else {
+            binding.imageViewIconTotal.setImageResource(R.drawable.ic_apple_black);
+            binding.imageViewIconDay.setImageResource(R.drawable.ic_plate_black);
+        }
     }
 
 }

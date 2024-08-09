@@ -1,10 +1,12 @@
 package com.example.nutrition.Activities;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +19,7 @@ import com.example.nutrition.Helper.HelperSection1And2Activity;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivitySection1And2Binding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -33,6 +36,7 @@ public class Section1And2Activity extends ParentActivity {
     private ProductsAdapter productsAdapter;
     private HelperSection1And2Activity helperSection1And2Activity;
     private List<Product> allProductsAlways;
+    private AppCompatActivity appCompatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,8 @@ public class Section1And2Activity extends ParentActivity {
     public void instantiateObjects() {
         binding = ActivitySection1And2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        appCompatActivity = this;
 
         toaster = new Toaster(Section1And2Activity.this);
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
@@ -140,7 +146,13 @@ public class Section1And2Activity extends ParentActivity {
 
     @Override
     public void additionalThemeChanges() {
-
+        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+            binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_white);
+            binding.imageViewIconHeaderLayoutSection1And2.setImageResource(R.drawable.ic_calculate_white);
+        } else {
+            binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_black);
+            binding.imageViewIconHeaderLayoutSection1And2.setImageResource(R.drawable.ic_calculate_black);
+        }
     }
 
 }

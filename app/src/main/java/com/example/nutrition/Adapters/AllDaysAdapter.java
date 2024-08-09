@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
@@ -78,6 +80,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             }
         });
 
+        additionalThemeChanges(myViewHolder);
+
         return myViewHolder;
     }
 
@@ -96,14 +100,24 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         protected MaterialCardView materialCardView;
+        protected ImageView imageViewSun;
         protected TextView textViewDays;
         protected TextView textViewDate;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.materialCardView = itemView.findViewById(R.id.materialCardViewSingleDay);
+            this.imageViewSun = itemView.findViewById(R.id.imageViewSunSingleDayLayout);
             this.textViewDays = itemView.findViewById(R.id.textViewDaySingleDayLayout);
             this.textViewDate = itemView.findViewById(R.id.textViewCreatedSingleDayLayout);
+        }
+    }
+
+    public void additionalThemeChanges(MyViewHolder holder){
+        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+            holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
+        } else {
+            holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
         }
     }
 

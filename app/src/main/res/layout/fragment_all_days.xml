@@ -173,23 +173,27 @@
 
                 <com.google.android.material.chip.Chip
                     style="@style/ChipMainActivity"
+                    android:tag="Proteins"
                     android:text="Proteins"
-                    />
+                    tools:ignore="HardcodedText" />
 
                 <com.google.android.material.chip.Chip
                     style="@style/ChipMainActivity"
+                    android:tag="Carbohydrates"
                     android:text="Carbohydrates"
-                    />
+                    tools:ignore="HardcodedText" />
 
                 <com.google.android.material.chip.Chip
                     style="@style/ChipMainActivity"
+                    android:tag="Calories"
                     android:text="Calories"
-                    />
+                    tools:ignore="HardcodedText" />
 
                 <com.google.android.material.chip.Chip
                     style="@style/ChipMainActivity"
-                    android:text="Sugar"
-                    />
+                    android:tag="Sugars"
+                    android:text="Sugars"
+                    tools:ignore="HardcodedText" />
 
             </com.google.android.material.chip.ChipGroup>
 

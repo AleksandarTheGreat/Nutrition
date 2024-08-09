@@ -83,7 +83,6 @@ public class MainActivity extends ParentActivity {
                     binding.buttonFilterMainActivity.setEnabled(false);
                     binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_gray, 0);
                 }
-
             }
         });
 
@@ -113,10 +112,20 @@ public class MainActivity extends ParentActivity {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
             binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_white);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.dark_list));
+
+            binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_white);
+            binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
+            binding.imageViewIconSection2.setImageResource(R.drawable.ic_filter_white);
+            binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
+
+            binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_black);
+            binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
+            binding.imageViewIconSection2.setImageResource(R.drawable.ic_filter_black);
+            binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
         }
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);
