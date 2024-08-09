@@ -161,8 +161,7 @@
             android:layout_marginHorizontal="12dp"
             android:layout_marginBottom="8dp"
             android:layout_below="@id/constraintLayoutGraphFragmentAllDays"
-            android:scrollbars="none"
-            >
+            android:scrollbars="none">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupGraphFragmentAllDays"

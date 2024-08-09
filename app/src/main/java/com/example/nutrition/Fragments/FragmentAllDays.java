@@ -77,7 +77,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
         checkIfDaysAreEmpty(binding, allDaysAdapter);
 
-        binding.recyclerViewAllDaysFragment.setLayoutManager(new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false));
+        // binding.recyclerViewAllDaysFragment.setLayoutManager(new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
         binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
 
