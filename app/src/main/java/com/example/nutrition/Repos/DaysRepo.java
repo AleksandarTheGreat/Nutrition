@@ -16,10 +16,12 @@ import java.security.Policy;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class DaysRepo extends ParentRepo implements IDays {
 
@@ -74,6 +76,12 @@ public class DaysRepo extends ParentRepo implements IDays {
 
         Log.d("Tag", "Listed '" + list.size() + "' days");
         return list;
+    }
+
+    public List<Day> listAllSorted(){
+        return listAll().stream()
+                .sorted(Comparator.comparing(Day::getId).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override

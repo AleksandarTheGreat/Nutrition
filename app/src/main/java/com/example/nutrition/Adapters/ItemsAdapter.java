@@ -119,8 +119,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
     }
 
     private void additionalThemeChanges(MyViewHolder holder){
-        if (isNightModeOn) holder.imageViewItemIcon.setImageResource(R.drawable.ic_eat_white);
-        else holder.imageViewItemIcon.setImageResource(R.drawable.ic_eat_black);
+        if (isNightModeOn) holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_white);
+        else holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_black);
     }
 
     public boolean isListEmpty(){

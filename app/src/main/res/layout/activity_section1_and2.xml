@@ -112,7 +112,7 @@
         <TextView
             android:id="@+id/textViewSubTitleSection1And2"
             style="@style/SubTitlePart"
-            android:text="Stats for all food items in 100 grams"
+            android:text="Most consumed food items (100 grams)"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1And2"
             app:layout_constraintTop_toTopOf="parent" />

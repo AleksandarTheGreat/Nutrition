@@ -83,7 +83,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
         checkIfDaysAreEmpty(binding, allDaysAdapter);
 
-        // binding.recyclerViewAllDaysFragment.setLayoutManager(new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
         binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
@@ -113,10 +112,13 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 Day day = new Day("Day", LocalDate.now());
                 daysRepo.add(day);
 
-                allDaysAdapter.setDaysList(daysRepo.listAll());
+                allDaysAdapter.setDaysList(daysRepo.listAllSorted());
                 allDaysAdapter.notifyDataSetChanged();
 
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
+
+                Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
+                chip.setChecked(true);
                 helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
             }
         });

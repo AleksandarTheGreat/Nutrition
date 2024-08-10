@@ -31,7 +31,6 @@
             android:text="Day #"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
-            android:layout_marginBottom="2dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toTopOf="@id/textViewCreatedSingleDayLayout"
             />

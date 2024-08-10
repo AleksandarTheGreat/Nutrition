@@ -9,6 +9,9 @@
     <color name="fullyTransparent">#00ffffff</color>
     <color name="blackTransparent">#321B1B1B</color>
 
+    <color name="greenLight">#5FE264</color>
+    <color name="greenDark">#3B893E</color>
+
     <color name="color_grains">#74CAAA7B</color>
     <color name="color_vegetables">#743CB341</color>
     <color name="color_fruit">#747C5B81</color>

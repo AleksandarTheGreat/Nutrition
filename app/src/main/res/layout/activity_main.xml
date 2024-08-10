@@ -99,7 +99,7 @@
         <TextView
             android:id="@+id/textViewSubTitleSection1"
             style="@style/SubTitlePart"
-            android:text="Section 1 (Pyramid I Think)"
+            android:text="Food Pyramid"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
             app:layout_constraintTop_toTopOf="parent" />
@@ -386,7 +386,7 @@
         <TextView
             android:id="@+id/textViewSubTitleSection2"
             style="@style/SubTitlePart"
-            android:text="Section 2 (Something ELSE)"
+            android:text="Sort your items"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection2"
             app:layout_constraintTop_toTopOf="parent" />
@@ -460,7 +460,7 @@
         <TextView
             android:id="@+id/textViewSubTitleSection3"
             style="@style/SubTitlePart"
-            android:text="Section 3 (Third and Final Section)"
+            android:text="Tracking my progress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
             app:layout_constraintTop_toTopOf="parent" />

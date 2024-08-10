@@ -30,7 +30,7 @@
             android:text="Some Ingredient here or whatever"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="4dp"
             app:layout_constraintLeft_toRightOf="@id/imageViewItemIcon"
             app:layout_constraintTop_toTopOf="@id/imageViewItemIcon"
             app:layout_constraintBottom_toBottomOf="@id/imageViewItemIcon"

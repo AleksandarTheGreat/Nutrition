@@ -27,7 +27,9 @@ import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
 
@@ -47,7 +49,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         this.fragmentAllDaysBinding = fragmentAllDaysBinding;
         this.daysRepo = daysRepo;
 
-        this.daysList = daysRepo.listAll();
+        this.daysList = daysRepo.listAllSorted();
+
         this.toaster = new Toaster(context);
         this.allDaysAdapter = this;
         this.helperFragmentAllDays = new HelperFragmentAllDays(context, appCompatActivity);
@@ -76,7 +79,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 Day day = daysList.get(myViewHolder.getAdapterPosition());
 
                 daysRepo.delete(day.getId());
-                daysList = daysRepo.listAll();
+                daysList = daysRepo.listAllSorted();
 
                 notifyItemRemoved(myViewHolder.getAdapterPosition());
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);

@@ -96,10 +96,10 @@ public class FragmentADay extends Fragment implements IEssentials {
     public void additionalThemeSettings(){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             binding.imageViewIconTotal.setImageResource(R.drawable.ic_apple_white);
-            binding.imageViewIconDay.setImageResource(R.drawable.ic_plate_white);
+            binding.imageViewIconDay.setImageResource(R.drawable.ic_eating_white);
         } else {
             binding.imageViewIconTotal.setImageResource(R.drawable.ic_apple_black);
-            binding.imageViewIconDay.setImageResource(R.drawable.ic_plate_black);
+            binding.imageViewIconDay.setImageResource(R.drawable.ic_eating_black);
         }
     }
 
