@@ -10,11 +10,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Fragments.FragmentAllDays;
 import com.example.nutrition.Fragments.MyFragmentManager;
+import com.example.nutrition.Helper.HelperFragmentAllDays;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
@@ -23,6 +25,7 @@ import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.chip.Chip;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
     private AllDaysAdapter allDaysAdapter;
     private Toaster toaster;
+    private HelperFragmentAllDays helperFragmentAllDays;
 
     public AllDaysAdapter(Context context, AppCompatActivity appCompatActivity, FragmentAllDaysBinding fragmentAllDaysBinding, DaysRepo daysRepo){
         this.context = context;
@@ -46,6 +50,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         this.daysList = daysRepo.listAll();
         this.toaster = new Toaster(context);
         this.allDaysAdapter = this;
+        this.helperFragmentAllDays = new HelperFragmentAllDays(context, appCompatActivity);
     }
 
     @NonNull
@@ -76,6 +81,10 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 notifyItemRemoved(myViewHolder.getAdapterPosition());
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
 
+                Chip chip = (Chip) fragmentAllDaysBinding.chipGroupGraphFragmentAllDays.getChildAt(0);
+                chip.setChecked(true);
+                helperFragmentAllDays.setUpAnyChart("Proteins", fragmentAllDaysBinding, allDaysAdapter);
+
                 return true;
             }
         });
@@ -85,6 +94,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         return myViewHolder;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
@@ -116,8 +126,10 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void additionalThemeChanges(MyViewHolder holder){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
+            holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
         } else {
             holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
+            holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
         }
     }
 

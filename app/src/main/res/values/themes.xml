@@ -5,7 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Nutrition" parent="Base.Theme.Nutrition" />
+    <style name="Theme.Nutrition" parent="Base.Theme.Nutrition"/>
 
 
     <style name="DayThemeNutrition" parent="Theme.Material3.Light.NoActionBar">

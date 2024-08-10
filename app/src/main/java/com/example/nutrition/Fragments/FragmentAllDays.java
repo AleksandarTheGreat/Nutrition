@@ -27,6 +27,7 @@ import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.example.nutrition.Adapters.AllDaysAdapter;
+import com.example.nutrition.Helper.HelperFragmentAllDays;
 import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
@@ -56,10 +57,9 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     private AppCompatActivity appCompatActivity;
     private Toaster toaster;
     private DaysRepo daysRepo;
+    private HelperFragmentAllDays helperFragmentAllDays;
 
-    public FragmentAllDays() {
-    }
-
+    public FragmentAllDays() {}
     public FragmentAllDays(AppCompatActivity appCompatActivity) {
         this.appCompatActivity = appCompatActivity;
     }
@@ -88,11 +88,14 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
         binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
 
+
+        helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
+
         // Set up the graph with data
 
-        setUpAnyChart("Proteins");
         Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
         chip.setChecked(true);
+        helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -114,6 +117,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 allDaysAdapter.notifyDataSetChanged();
 
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
+                helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
             }
         });
 
@@ -121,9 +125,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 if (checkedIds.isEmpty()){
-                    setUpAnyChart("Proteins");
-                    Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
-                    chip.setChecked(true);
                     return;
                 }
 
@@ -131,9 +132,10 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 Chip chip = group.findViewById(id);
                 String text = chip.getTag().toString().trim();
 
-                setUpAnyChart(text);
+                helperFragmentAllDays.setUpAnyChart(text, binding, allDaysAdapter);
             }
         });
+
     }
 
     public void additionalThemeChanges() {
@@ -146,105 +148,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         }
     }
 
-
     // HELPER METHODS
-
-    public void setUpAnyChart(String macronutrient) {
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
-
-        switch (macronutrient) {
-            case "Carbohydrates": {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalCarbohydrates()));
-                }
-                break;
-            }
-            case "Calories": {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalCalories()));
-                }
-                break;
-            }
-            case "Sugars": {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalSugar()));
-                }
-                break;
-            }
-            case "Proteins":
-            default: {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalProteins()));
-                }
-                break;
-
-            }
-        }
-
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Days");
-        barDataSet.setValueTextSize(14f);
-
-        // Change the colors for the axis - es
-        // Left, Right, and Horizontal (X - axis)
-
-        if (ThemeUtils.isNightModeActive(appCompatActivity)) {
-            int color = ContextCompat.getColor(getContext(), R.color.white);
-
-            barDataSet.setValueTextColor(color);
-            barDataSet.setColor(color);
-            binding.anyChartFragmentAllDays.getDescription().setTextColor(color);
-            // X axis
-            binding.anyChartFragmentAllDays.getXAxis().setGridColor(color);
-            binding.anyChartFragmentAllDays.getXAxis().setTextColor(color);
-            binding.anyChartFragmentAllDays.getXAxis().setAxisLineColor(color);
-
-            // Left and Right axes
-            binding.anyChartFragmentAllDays.getAxisLeft().setGridColor(color);
-            binding.anyChartFragmentAllDays.getAxisLeft().setTextColor(color);
-            binding.anyChartFragmentAllDays.getAxisLeft().setAxisLineColor(color);
-            binding.anyChartFragmentAllDays.getAxisRight().setGridColor(color);
-            binding.anyChartFragmentAllDays.getAxisRight().setTextColor(color);
-            binding.anyChartFragmentAllDays.getAxisRight().setAxisLineColor(color);
-
-        } else {
-            int color = ContextCompat.getColor(getContext(), R.color.black);
-
-            barDataSet.setValueTextColor(color);
-            barDataSet.setColor(color);
-            binding.anyChartFragmentAllDays.getDescription().setTextColor(color);
-            // X axis
-            binding.anyChartFragmentAllDays.getXAxis().setGridColor(color);
-            binding.anyChartFragmentAllDays.getXAxis().setTextColor(color);
-            binding.anyChartFragmentAllDays.getXAxis().setAxisLineColor(color);
-
-            // Left and Right axes
-            binding.anyChartFragmentAllDays.getAxisLeft().setGridColor(color);
-            binding.anyChartFragmentAllDays.getAxisLeft().setTextColor(color);
-            binding.anyChartFragmentAllDays.getAxisLeft().setAxisLineColor(color);
-            binding.anyChartFragmentAllDays.getAxisRight().setGridColor(color);
-            binding.anyChartFragmentAllDays.getAxisRight().setTextColor(color);
-            binding.anyChartFragmentAllDays.getAxisRight().setAxisLineColor(color);
-        }
-
-        BarData barData = new BarData(barDataSet);
-
-        binding.anyChartFragmentAllDays.setFitBars(true);
-        binding.anyChartFragmentAllDays.setData(barData);
-        binding.anyChartFragmentAllDays.getDescription().setText("Calories test");
-        binding.anyChartFragmentAllDays.animateY(700);
-    }
-
-    private boolean isANewDayValidToAdd() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            for (Day day : allDaysAdapter.getDaysList()) {
-                if (day.getCreatedAt().equals(LocalDate.now())) {
-                    toaster.text("Cannot create 2 days");
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
     public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
         if (allDaysAdapter.isListEmpty())
