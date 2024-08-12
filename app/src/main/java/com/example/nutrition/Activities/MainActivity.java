@@ -74,19 +74,19 @@ public class MainActivity extends ParentActivity {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
                 if (!checkedIds.isEmpty()){
-                    binding.buttonFilterMainActivity.setEnabled(true);
+                    binding.imageViewFilter.setClickable(true);
                     if (ThemeUtils.isNightModeActive(appCompatActivity))
-                        binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_right_white_16, 0);
+                        binding.imageViewFilter.setImageResource(R.drawable.ic_right_white);
                     else
-                        binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_right_black_16, 0);
+                        binding.imageViewFilter.setImageResource(R.drawable.ic_right_black);
                 } else {
-                    binding.buttonFilterMainActivity.setEnabled(false);
-                    binding.buttonFilterMainActivity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_right_gray, 0);
+                    binding.imageViewFilter.setClickable(false);
+                    binding.imageViewFilter.setImageResource(R.drawable.ic_right_gray);
                 }
             }
         });
 
-        binding.buttonFilterMainActivity.setOnClickListener(view -> {
+        binding.imageViewFilter.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, Section1And2Activity.class);
 
             int checkedChipId = binding.chipGroupMainActivity.getCheckedChipId();
@@ -96,6 +96,9 @@ public class MainActivity extends ParentActivity {
             intent.putExtra("filter", text);
             startActivity(intent);
         });
+
+        // So that I can not click it without a single item being selected to filter
+        binding.imageViewFilter.setClickable(false);
 
         binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
@@ -109,6 +112,7 @@ public class MainActivity extends ParentActivity {
     @Override
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(this)){
+            binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_light);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
             binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_white);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.dark_list));
@@ -118,6 +122,7 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIconSection2.setImageResource(R.drawable.ic_filter_white);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
         } else {
+            binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_dark);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));

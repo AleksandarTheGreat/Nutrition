@@ -20,11 +20,13 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
 
     private Context context;
     private List<Fragment> fragmentList;
+    private AppCompatActivity appCompatActivity;
 
-    public MyIntroFragAdapter(Context context, FragmentActivity fragmentActivity) {
+    public MyIntroFragAdapter(Context context, FragmentActivity fragmentActivity, AppCompatActivity appCompatActivity) {
         super(fragmentActivity);
 
         this.context = context;
+        this.appCompatActivity = appCompatActivity;
         setUpFragmentList();
     }
 
@@ -43,12 +45,12 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         this.fragmentList = new ArrayList<>();
 
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Protein", "Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu", R.drawable.ic_steak)));
+                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues. In short terms they are important for muscle growth", R.drawable.ic_steak), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Carbohydrate", "Lorem ipsu Lorem ipsu Lorem ipsu", R.drawable.ic_wheat)));
+                new Macronutrient("Carbohydrate", "Carbohydrates, or carbs, are sugar molecules. Along with proteins and fats, carbohydrates are one of three main nutrients found in foods and drinks. Your body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy for your body's cells, tissues, and organs.", R.drawable.ic_wheat), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Calorie", "Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu Lorem ipsu", R.drawable.ic_olive_oil)));
+                new Macronutrient("Calorie", "A calorie is a unit of energy. In nutrition, calories refer to the energy people get from the food and drink they consume, and the energy they use in physical activity. Calories are listed in the nutritional information on all food packaging. Many weight loss programs center around reducing the intake of calories.", R.drawable.ic_olive_oil), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Sugar", "Lorem ipsu Lorem ipsu", R.drawable.ic_sugar)));
+                new Macronutrient("Sugar", "Sugars are the smallest unit of carbohydrates and include both naturally occurring sugars (like those found in fruits and milk) and added sugars (like table sugar or high-fructose corn syrup).", R.drawable.ic_sugar), appCompatActivity));
     }
 }

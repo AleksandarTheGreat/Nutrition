@@ -26,6 +26,7 @@ public class IntroductionActivity extends ParentActivity {
     private ActivityIntroductionBinding binding;
     private MyIntroFragAdapter myIntroFragAdapter;
     private int pageCounter;
+    private AppCompatActivity appCompatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,10 @@ public class IntroductionActivity extends ParentActivity {
         binding = ActivityIntroductionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        appCompatActivity = this;
+
         pageCounter = 0;
-        myIntroFragAdapter = new MyIntroFragAdapter(this, this);
+        myIntroFragAdapter = new MyIntroFragAdapter(this, this, appCompatActivity);
         binding.viewPagerIntroductionActivity.setAdapter(myIntroFragAdapter);
 
         updateImageArrowsVisibility();
@@ -92,7 +95,7 @@ public class IntroductionActivity extends ParentActivity {
     private void updateImageArrowsVisibility(){
         if (pageCounter <= 0)
             binding.imageViewArrowLeft.setVisibility(View.INVISIBLE);
-        else  binding.imageViewArrowLeft.setVisibility(View.VISIBLE);
+        else binding.imageViewArrowLeft.setVisibility(View.VISIBLE);
 
         if (pageCounter >= myIntroFragAdapter.getItemCount() - 1)
             binding.imageViewArrowRight.setVisibility(View.INVISIBLE);

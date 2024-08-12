@@ -101,7 +101,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     @Override
     public void addEventListeners() {
         // Add the day to database and to the adapter's list
-        binding.buttonCreateANewDay.setOnClickListener(view -> {
+        binding.imageViewCreateNewDay.setOnClickListener(view -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // We create a new day and add it to the database
                 // Then we load all days from the database and set the dayList pointing to that list
@@ -142,11 +142,15 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
+            binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_light);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calculate_white);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
+            binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_light);
         } else {
+            binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_dark);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
+            binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_dark);
         }
     }
 
