@@ -24,6 +24,8 @@ import com.example.nutrition.databinding.ActivitySection1And2Binding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -86,6 +88,8 @@ public class Section1And2Activity extends ParentActivity {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                // We shall clear the second chip group selection
+
                 if (checkedIds.isEmpty()){
 
                     helperSection1And2Activity.setUpBackgroundMask("", binding);
@@ -113,6 +117,29 @@ public class Section1And2Activity extends ParentActivity {
                     filteredList = allProductsAlways;
 
                 productsAdapter.setProductList(filteredList);
+                productsAdapter.notifyDataSetChanged();
+            }
+        });
+
+        binding.chipGroupFiltersSection1And2.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                // We shall clear the first chip group selection
+
+                if (checkedIds.isEmpty()){
+
+                    productsAdapter.setProductList(allProductsAlways);
+                    productsAdapter.notifyDataSetChanged();
+
+                    return;
+                }
+
+                Chip chip = group.findViewById(checkedIds.get(0));
+                String text = chip.getText().toString().trim();
+
+                List<Product> filtered = helperSection1And2Activity.findFilteredProducts(text, allProductsAlways);
+                productsAdapter.setProductList(filtered);
                 productsAdapter.notifyDataSetChanged();
             }
         });
@@ -154,5 +181,4 @@ public class Section1And2Activity extends ParentActivity {
             binding.imageViewIconHeaderLayoutSection1And2.setImageResource(R.drawable.ic_calculate_black);
         }
     }
-
 }

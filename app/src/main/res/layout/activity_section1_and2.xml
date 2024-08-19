@@ -41,14 +41,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <HorizontalScrollView
         android:id="@+id/horizontalScrollViewSection1And2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/headerLayoutSection1And2"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="-4dp"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
@@ -91,11 +90,64 @@
 
     </HorizontalScrollView>
 
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollViewFiltersSection1And2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalScrollViewSection1And2"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="24dp"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupFiltersSection1And2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:chipSpacingVertical="-8dp"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Most Protein" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Least Protein" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Most Calories" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Least Calories" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Most Carbs" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Least Carbs" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Most Sugar" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ChipMainActivity"
+                android:text="Least Sugar" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/subHeaderLayoutSection1And2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/horizontalScrollViewSection1And2"
+        android:layout_below="@id/horizontalScrollViewFiltersSection1And2"
         android:layout_marginBottom="24dp"
         android:paddingHorizontal="4dp">
 

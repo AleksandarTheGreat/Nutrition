@@ -154,6 +154,66 @@ public class HelperSection1And2Activity {
         productsAdapter.setProductList(sortedList);
         productsAdapter.notifyDataSetChanged();
     }
+
+    public List<Product> findFilteredProducts(String text, List<Product> allProductsAlways){
+        List<Product> products = new ArrayList<>();
+        switch (text){
+            case "Most Protein": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getProtein).reversed())
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            } case "Least Protein": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getProtein))
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            }  case "Most Calories": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getCalories).reversed())
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            }  case "Least Calories": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getCalories))
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            }  case "Most Carbs": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getCarbs).reversed())
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            }  case "Least Carbs": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getCarbs))
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            }  case "Most Sugar": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getSugar).reversed())
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            }  case "Least Sugar": {
+                products = allProductsAlways.stream()
+                        .sorted(Comparator.comparing(Product::getSugar))
+                        .limit(20)
+                        .collect(Collectors.toList());
+                break;
+            } default:{
+                products = allProductsAlways;
+                break;
+            }
+        }
+        return products;
+    }
+
 }
 
 
