@@ -39,500 +39,461 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/introductionLayoutMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/headerLayoutMainActivity"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="28dp"
-        android:paddingHorizontal="4dp">
-
-        <ImageView
-            android:id="@+id/imageViewIntroductionArrow"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_intro"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewIntroductionMainActivity"
-            style="@style/SubTitlePart"
-            android:text="A brief introduction"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIntroductionArrow"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageViewGoRightIntro"
-            android:layout_height="30dp"
-            android:layout_width="30dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/ic_right_black"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/section1LayoutMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/introductionLayoutMainActivity"
-        android:layout_marginBottom="4dp"
-        android:paddingHorizontal="4dp">
-
-        <ImageView
-            android:id="@+id/imageViewIconSection1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_nutrition_pyramid"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewSubTitleSection1"
-            style="@style/SubTitlePart"
-            android:text="Food Pyramid"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollViewPyramids"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/section1LayoutMainActivity"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="36dp"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard1"
-                style="@style/CardFoodPyramid"
-                android:layout_marginStart="12dp"
-                android:tag="Grains">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="GRAINS"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/grains"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard2"
-                style="@style/CardFoodPyramid"
-                android:tag="Vegetables">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="VEGETABLES"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/vegetables"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard3"
-                style="@style/CardFoodPyramid"
-                android:tag="Fruits">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="FRUITS"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/fruit"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard4"
-                style="@style/CardFoodPyramid"
-                android:tag="Meat and Proteins">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="MEAT &amp; PROTEINS"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/meat"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard5"
-                style="@style/CardFoodPyramid"
-                android:tag="Dairy">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="DAIRY"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/dairy"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard6"
-                style="@style/CardFoodPyramid"
-                android:tag="Fats, Oils, and Sweets">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="FATS, OILS &amp; SWEETS"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/fats_oils_sweets"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/matCard7"
-                style="@style/CardFoodPyramid"
-                android:layout_marginEnd="12dp"
-                android:tag="Fast Food">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/FoodPyramidCategory"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:text="FAST FOOD"
-                        android:translationZ="1dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/fast_food"
-                        android:translationZ="-1dp" />
-
-                    <View
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/light_list"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/section2LayoutMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/horizontalScrollViewPyramids"
-        android:layout_marginBottom="8dp"
-        android:paddingHorizontal="4dp">
-
-        <ImageView
-            android:id="@+id/imageViewIconSection2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_filter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewSubTitleSection2"
-            style="@style/SubTitlePart"
-            android:text="Sort your items"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageViewFilter"
-            android:src="@drawable/ic_right_gray"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroupMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/section2LayoutMainActivity"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="36dp"
-        android:paddingHorizontal="4dp"
-        app:chipSpacingHorizontal="8dp"
-        app:chipSpacingVertical="-8dp"
-        app:singleSelection="true">
-
-        <com.google.android.material.chip.Chip
-            style="@style/ChipMainActivity"
-            android:text="Most Protein" />
-
-        <com.google.android.material.chip.Chip
-            style="@style/ChipMainActivity"
-            android:text="Most Calories " />
-
-        <com.google.android.material.chip.Chip
-            style="@style/ChipMainActivity"
-            android:text="Least Calories" />
-
-        <com.google.android.material.chip.Chip
-            style="@style/ChipMainActivity"
-            android:text="Least Sugar" />
-
-        <com.google.android.material.chip.Chip
-            style="@style/ChipMainActivity"
-            android:text="Most Carbs" />
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/section3LayoutMainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/chipGroupMainActivity"
-        android:layout_marginBottom="12dp"
-        android:paddingHorizontal="4dp">
-
-        <ImageView
-            android:id="@+id/imageViewIconSection3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_days"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewSubTitleSection3"
-            style="@style/SubTitlePart"
-            android:text="Tracking my progress"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/section3LayoutMainActivity"
-        android:layout_marginBottom="8dp"
-        android:paddingHorizontal="4dp">
+        android:layout_below="@id/headerLayoutMainActivity"
+        android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/introductionLayoutMainActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="28dp"
+            android:paddingHorizontal="4dp">
+
+            <ImageView
+                android:id="@+id/imageViewIntroductionArrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_intro"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewIntroductionMainActivity"
+                style="@style/SubTitlePart"
+                android:text="A brief introduction"
+                app:layout_constraintLeft_toRightOf="@id/imageViewIntroductionArrow"
+                app:layout_constraintTop_toTopOf="@id/imageViewIntroductionArrow" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Definitions and common missconceptions"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@id/textViewIntroductionMainActivity"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewIntroductionArrow"
+                app:layout_constraintLeft_toRightOf="@id/imageViewIntroductionArrow"
+                />
+
+            <ImageView
+                android:id="@+id/imageViewGoRightIntro"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_right_black"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/section1LayoutMainActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:paddingHorizontal="4dp">
+
+            <ImageView
+                android:id="@+id/imageViewIconSection1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_nutrition_pyramid"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewSubTitleSection1"
+                style="@style/SubTitlePart"
+                android:text="Food Pyramid"
+                app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
+                app:layout_constraintTop_toTopOf="@id/imageViewIconSection1"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                android:text="Popular foods and products"
+                app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection1"
+                app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection1"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollViewPyramids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="36dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard1"
+                    style="@style/CardFoodPyramid"
+                    android:layout_marginStart="12dp"
+                    android:tag="Grains">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="GRAINS"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/grains"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard2"
+                    style="@style/CardFoodPyramid"
+                    android:tag="Vegetables">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="VEGETABLES"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/vegetables"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard3"
+                    style="@style/CardFoodPyramid"
+                    android:tag="Fruits">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="FRUITS"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fruit"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard4"
+                    style="@style/CardFoodPyramid"
+                    android:tag="Meat and Proteins">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="MEAT &amp; PROTEINS"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/meat"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard5"
+                    style="@style/CardFoodPyramid"
+                    android:tag="Dairy">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="DAIRY"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/dairy"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard6"
+                    style="@style/CardFoodPyramid"
+                    android:tag="Fats, Oils, and Sweets">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="FATS, OILS &amp; SWEETS"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fats_oils_sweets"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/matCard7"
+                    style="@style/CardFoodPyramid"
+                    android:layout_marginEnd="12dp"
+                    android:tag="Fast Food">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            style="@style/FoodPyramidCategory"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="FAST FOOD"
+                            android:translationZ="1dp"
+                            />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fast_food"
+                            android:translationZ="-1dp" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/light_list"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/section3LayoutMainActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:paddingHorizontal="4dp">
+
+            <ImageView
+                android:id="@+id/imageViewIconSection3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_days"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewSubTitleSection3"
+                style="@style/SubTitlePart"
+                android:text="Tracking my progress"
+                app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
+                app:layout_constraintTop_toTopOf="@id/imageViewIconSection3"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Keep track of your eaten products throught a day"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
+                app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection3"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection3"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="12dp">
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="4dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayoutDaysMainActivity"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="12dp">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayoutDaysMainActivity"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/food_1"
-                    android:scaleType="centerCrop"
-                    />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="12dp"
-                    android:text="TRACKING"
-                    android:textSize="20sp"
-                    android:translationZ="1dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/food_1"
+                        android:scaleType="centerCrop"
+                        />
 
-                <ImageView
-                    android:id="@+id/imageViewGoRight"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:src="@drawable/ic_right_black"
-                    android:translationZ="1dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    <TextView
+                        android:id="@+id/textViewTracking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="Show me"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:translationZ="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent" />
 
-                <View
-                    android:id="@+id/viewTrackingMask"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    />
+                    <ImageView
+                        android:id="@+id/imageViewGoRight"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:src="@drawable/ic_right_black"
+                        android:translationZ="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/blackTransparent"
-                    />
+                    <View
+                        android:id="@+id/viewTrackingMask"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/blackTransparent"
+                        />
 
-        </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
 

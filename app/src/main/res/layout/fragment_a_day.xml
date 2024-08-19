@@ -30,7 +30,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Be as straight forward as it can get"
+            android:text="Be as straight forward as you can be"
             android:layout_marginTop="4dp"
             android:layout_marginHorizontal="4dp"
             app:layout_constraintTop_toBottomOf="@id/searchViewFragmentADay"
@@ -51,7 +51,6 @@
             android:id="@+id/imageViewIconTotal"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="4dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -59,12 +58,19 @@
 
         <TextView
             style="@style/SubTitlePart"
-            android:text="Macronutrients for today"
-            android:textSize="18sp"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Macronutrients"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconTotal"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/imageViewIconTotal"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="Total macronutrients for this day"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewIconTotal"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconTotal"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -73,7 +79,7 @@
         android:layout_height="150dp"
         android:layout_width="match_parent"
         android:layout_below="@id/subtitleLayoutStatsFragmentADay"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginHorizontal="12dp"
         android:scrollbars="none">
 
@@ -276,7 +282,7 @@
         android:layout_width="match_parent"
         android:layout_below="@id/horizontalScrollViewFragmentADay"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="24dp"
         >
 
         <ImageView
@@ -284,18 +290,25 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@mipmap/ic_launcher"
-            android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             style="@style/SubTitlePart"
-            android:text="My meals for today"
-            android:layout_marginStart="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="My meals"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconDay"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/imageViewIconDay"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="What you ate today"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconDay"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewIconDay"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

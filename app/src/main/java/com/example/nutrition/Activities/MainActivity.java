@@ -70,36 +70,6 @@ public class MainActivity extends ParentActivity {
     public void addEventListeners() {
         helperMain.setUpCardEventListeners(materialCardViews, binding);
 
-        binding.chipGroupMainActivity.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
-            @Override
-            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                if (!checkedIds.isEmpty()){
-                    binding.imageViewFilter.setClickable(true);
-                    if (ThemeUtils.isNightModeActive(appCompatActivity))
-                        binding.imageViewFilter.setImageResource(R.drawable.ic_right_white);
-                    else
-                        binding.imageViewFilter.setImageResource(R.drawable.ic_right_black);
-                } else {
-                    binding.imageViewFilter.setClickable(false);
-                    binding.imageViewFilter.setImageResource(R.drawable.ic_right_gray);
-                }
-            }
-        });
-
-        binding.imageViewFilter.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, Section1And2Activity.class);
-
-            int checkedChipId = binding.chipGroupMainActivity.getCheckedChipId();
-            Chip checkedChip = binding.chipGroupMainActivity.findViewById(checkedChipId);
-            String text = checkedChip.getText().toString().trim();
-
-            intent.putExtra("filter", text);
-            startActivity(intent);
-        });
-
-        // So that I can not click it without a single item being selected to filter
-        binding.imageViewFilter.setClickable(false);
-
         binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
@@ -119,7 +89,6 @@ public class MainActivity extends ParentActivity {
 
             binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_white);
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
-            binding.imageViewIconSection2.setImageResource(R.drawable.ic_filter_white);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
         } else {
             binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_dark);
@@ -129,7 +98,6 @@ public class MainActivity extends ParentActivity {
 
             binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_black);
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
-            binding.imageViewIconSection2.setImageResource(R.drawable.ic_filter_black);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
         }
 

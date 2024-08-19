@@ -45,12 +45,12 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         this.fragmentList = new ArrayList<>();
 
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues. In short terms they are important for muscle growth", R.drawable.ic_steak), appCompatActivity));
+                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Carbohydrate", "Carbohydrates, or carbs, are sugar molecules. Along with proteins and fats, carbohydrates are one of three main nutrients found in foods and drinks. Your body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy for your body's cells, tissues, and organs.", R.drawable.ic_wheat), appCompatActivity));
+                new Macronutrient("Carbohydrate", "Carbohydrates, or carbs, are sugar molecules.\n\nAlong with proteins and fats, carbohydrates are one of three main nutrients found in foods and drinks.\n\nYour body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy for your body's cells, tissues, and organs.", R.drawable.ic_wheat), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Calorie", "A calorie is a unit of energy. In nutrition, calories refer to the energy people get from the food and drink they consume, and the energy they use in physical activity. Calories are listed in the nutritional information on all food packaging. Many weight loss programs center around reducing the intake of calories.", R.drawable.ic_olive_oil), appCompatActivity));
+                new Macronutrient("Calorie", "A calorie is a unit of energy.\n\nIn nutrition, calories refer to the energy people get from the food and drink they consume, and the energy they use in physical activity. Calories are listed in the nutritional information on all food packaging.\n\nMany weight loss programs center around reducing the intake of calories.", R.drawable.ic_olive_oil), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Sugar", "Sugars are the smallest unit of carbohydrates and include both naturally occurring sugars (like those found in fruits and milk) and added sugars (like table sugar or high-fructose corn syrup).", R.drawable.ic_sugar), appCompatActivity));
+                new Macronutrient("Sugar", "Sugars are the smallest unit of carbohydrates.\n\nThey include both naturally occurring sugars (like those found in fruits and milk) and added sugars (like table sugar or high-fructose corn syrup).", R.drawable.ic_sugar), appCompatActivity));
     }
 }

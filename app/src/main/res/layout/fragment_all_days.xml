@@ -37,7 +37,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Gotcha now"
+            android:text="Tracking"
             android:textSize="12sp"
             android:layout_marginStart="8dp"
             android:layout_alignBottom="@id/imageViewLogoFragmentAllDays"
@@ -76,8 +76,8 @@
 
             <ImageView
                 android:id="@+id/imageViewLogoTrackedDays"
-                android:layout_height="35dp"
-                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_days"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -86,15 +86,25 @@
                 />
 
             <TextView
+                android:id="@+id/textViewTrackedDays"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="8dp"
-                android:text="My tracked days"
-                android:textSize="16sp"
+                android:text="All days"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/imageViewLogoTrackedDays"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imageViewLogoTrackedDays"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                android:text="Created days from most to least recent"
+                app:layout_constraintLeft_toRightOf="@id/imageViewLogoTrackedDays"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLogoTrackedDays"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,8 +144,8 @@
 
             <ImageView
                 android:id="@+id/imageViewLogoGraph"
-                android:layout_height="35dp"
-                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
                 android:layout_marginStart="8dp"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -144,15 +154,24 @@
                 />
 
             <TextView
+                android:id="@+id/textViewStatistics"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="8dp"
-                android:text="Statistics for all of my days"
-                android:textSize="16sp"
+                android:text="Statistics"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/imageViewLogoGraph"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imageViewLogoGraph"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                android:text="Macronutrients graph for all days"
+                app:layout_constraintLeft_toRightOf="@id/imageViewLogoGraph"
+                app:layout_constraintBottom_toBottomOf="@id/imageViewLogoGraph"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
