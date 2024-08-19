@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -113,6 +114,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         protected MaterialCardView materialCardView;
+        protected ConstraintLayout constraintLayout;
         protected ImageView imageViewSun;
         protected TextView textViewDays;
         protected TextView textViewDate;
@@ -120,6 +122,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.materialCardView = itemView.findViewById(R.id.materialCardViewSingleDay);
+            this.constraintLayout = itemView.findViewById(R.id.constraintLayoutSingleDay);
             this.imageViewSun = itemView.findViewById(R.id.imageViewSunSingleDayLayout);
             this.textViewDays = itemView.findViewById(R.id.textViewDaySingleDayLayout);
             this.textViewDate = itemView.findViewById(R.id.textViewCreatedSingleDayLayout);

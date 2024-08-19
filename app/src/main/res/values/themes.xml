@@ -8,7 +8,7 @@
         <item name="fontFamily">@font/radio_regular</item>
     </style>
 
-    <style name="Theme.Nutrition" parent="Base.Theme.Nutrition" >
+    <style name="Theme.Nutrition" parent="Base.Theme.Nutrition">
 
     </style>
 
