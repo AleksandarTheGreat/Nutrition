@@ -74,216 +74,233 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollViewFragmentADay"
-        android:layout_height="150dp"
+    <GridLayout
+        android:id="@+id/gridLayoutFragmentADay"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@id/subtitleLayoutStatsFragmentADay"
-        android:layout_marginBottom="36dp"
         android:layout_marginHorizontal="12dp"
-        android:scrollbars="none">
+        android:layout_marginBottom="32dp"
+        android:layout_below="@id/subtitleLayoutStatsFragmentADay"
+        android:rowCount="2"
+        android:columnCount="2">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            >
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="match_parent"
-                android:layout_width="250dp"
-                android:layout_marginEnd="4dp">
+                android:layout_width="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_steak"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
-                    <ImageView
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_steak"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                <TextView
+                    android:id="@+id/textViewNutrient1Number"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0.00"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient1Number"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="1024g"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Proteins"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewNutrient1Number"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PROTEINS"
-                        android:textSize="16sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient1Number"
-                        />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            >
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="match_parent"
-                android:layout_width="250dp"
-                android:layout_marginHorizontal="4dp">
+                android:layout_width="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_olive_oil"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
-                    <ImageView
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_olive_oil"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                <TextView
+                    android:id="@+id/textViewNutrient2Number"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0.00"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CALORIES"
-                        android:textSize="16sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient2Number"
-                        />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Calories"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewNutrient2Number"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient2Number"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="1024g"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            >
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="match_parent"
-                android:layout_width="250dp"
-                android:layout_marginHorizontal="4dp">
+                android:layout_width="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_wheat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
-                    <ImageView
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_wheat"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                <TextView
+                    android:id="@+id/textViewNutrient3Number"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0.00"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CARBOHYDRATES"
-                        android:textSize="16sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient3Number"
-                        />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Carbohydrates"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewNutrient3Number"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient3Number"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="1024g"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            >
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="match_parent"
-                android:layout_width="250dp"
-                android:layout_marginHorizontal="4dp">
+                android:layout_width="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_sugar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
-                    <ImageView
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_sugar"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                <TextView
+                    android:id="@+id/textViewNutrient4Number"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0.00"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SUGARS"
-                        android:textSize="16sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient4Number"
-                        />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Sugar"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewNutrient4Number"
+                    />
 
-                    <TextView
-                        android:id="@+id/textViewNutrient4Number"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="1024g"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
+    </GridLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/subtitleLayoutSoFarFragmentADay"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@id/horizontalScrollViewFragmentADay"
+        android:layout_below="@id/gridLayoutFragmentADay"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="24dp"
-        >
+        android:layout_marginBottom="24dp">
 
         <ImageView
             android:id="@+id/imageViewIconDay"
