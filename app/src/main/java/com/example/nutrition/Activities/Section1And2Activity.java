@@ -8,6 +8,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -176,9 +177,15 @@ public class Section1And2Activity extends ParentActivity {
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_white);
             binding.imageViewIconHeaderLayoutSection1And2.setImageResource(R.drawable.ic_calculate_white);
+
+            int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Light);
+            binding.textViewSub1.setTextColor(color);
         } else {
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_black);
             binding.imageViewIconHeaderLayoutSection1And2.setImageResource(R.drawable.ic_calculate_black);
+
+            int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Dark);
+            binding.textViewSub1.setTextColor(color);
         }
     }
 }

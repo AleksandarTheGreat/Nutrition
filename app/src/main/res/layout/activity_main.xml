@@ -71,6 +71,7 @@
                 app:layout_constraintTop_toTopOf="@id/imageViewIntroductionArrow" />
 
             <TextView
+                android:id="@+id/textViewSub1"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:text="Definitions and common missconceptions"
@@ -119,6 +120,7 @@
                 />
 
             <TextView
+                android:id="@+id/textViewSub2"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="8dp"
@@ -415,6 +417,7 @@
                 />
 
             <TextView
+                android:id="@+id/textViewSub3"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:text="Keep track of your eaten foods through out the day"

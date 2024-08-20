@@ -14,7 +14,11 @@
 
 
     <style name="DayThemeNutrition" parent="Theme.Material3.Light.NoActionBar">
-
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="android:background">@color/colorBackgroundLight</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+        <item name="fontFamily">@font/radio_regular</item>
         <!--
             for Material card view background
             <item name="colorSurface">@color/black</item>
@@ -22,7 +26,11 @@
     </style>
 
     <style name="NightThemeNutrition" parent="Theme.Material3.Dark.NoActionBar">
-
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="android:background">@color/colorBackgroundDark</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+        <item name="fontFamily">@font/radio_regular</item>
     </style>
 
 

@@ -21,4 +21,18 @@
     <color name="color_fast_food">#74EF744E</color>
     <color name="color_no_category_selected">#74ABABAB</color>
 
+    <color name="colorPrimaryLight">#F8A428</color>
+    <color name="colorAccentLight">#1563A0</color>
+    <color name="colorBackgroundLight">#F0F0F0</color>
+    <color name="colorTextDark">#1A1A1A</color>
+    <color name="colorText80Dark">#CC1A1A1A</color>
+    <color name="colorText60Dark">#991A1A1A</color>
+
+    <color name="colorPrimaryDark">#F8B859</color>
+    <color name="colorAccentDark">#2D9FF8</color>
+    <color name="colorBackgroundDark">#1A1A1A</color>
+    <color name="colorTextLight">#F0F0F0</color>
+    <color name="colorText80Light">#CCF0F0F0</color>
+    <color name="colorText60Light">#99F0F0F0</color>
+
 </resources>

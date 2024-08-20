@@ -1,5 +1,6 @@
 package com.example.nutrition.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
@@ -90,6 +91,12 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_white);
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
+
+            int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
+
+            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub2.setTextColor(color);
+            binding.textViewSub3.setTextColor(color);
         } else {
             binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_dark);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
@@ -99,6 +106,12 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_black);
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
+
+            int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
+
+            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub2.setTextColor(color);
+            binding.textViewSub3.setTextColor(color);
         }
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);

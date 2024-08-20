@@ -146,11 +146,21 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calculate_white);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_light);
+
+            int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
+            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub2.setTextColor(color);
+            binding.textViewSub3.setTextColor(color);
         } else {
             binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_dark);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_dark);
+
+            int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
+            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub2.setTextColor(color);
+            binding.textViewSub3.setTextColor(color);
         }
     }
 

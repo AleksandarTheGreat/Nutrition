@@ -28,6 +28,7 @@
             />
 
         <TextView
+            android:id="@+id/textViewSub1"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Be as straight forward as you can be"
@@ -64,6 +65,7 @@
             />
 
         <TextView
+            android:id="@+id/textViewSub2"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_marginStart="8dp"
@@ -319,6 +321,7 @@
             />
 
         <TextView
+            android:id="@+id/textViewSub3"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_marginStart="8dp"

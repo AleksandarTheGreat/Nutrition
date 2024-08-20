@@ -170,6 +170,7 @@
             />
 
         <TextView
+            android:id="@+id/textViewSub1"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:text="All measures are made per 100 grams of the item"

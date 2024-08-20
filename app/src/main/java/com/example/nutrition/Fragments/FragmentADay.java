@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -97,9 +98,19 @@ public class FragmentADay extends Fragment implements IEssentials {
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             binding.imageViewIconTotal.setImageResource(R.drawable.ic_apple_white);
             binding.imageViewIconDay.setImageResource(R.drawable.ic_eating_white);
+
+            int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
+            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub2.setTextColor(color);
+            binding.textViewSub3.setTextColor(color);
         } else {
             binding.imageViewIconTotal.setImageResource(R.drawable.ic_apple_black);
             binding.imageViewIconDay.setImageResource(R.drawable.ic_eating_black);
+
+            int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
+            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub2.setTextColor(color);
+            binding.textViewSub3.setTextColor(color);
         }
     }
 

@@ -79,7 +79,7 @@ public class HelperFragmentAllDays {
         // Left, Right, and Horizontal (X - axis)
 
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
-            int color = ContextCompat.getColor(context, R.color.white60Opacity);
+            int color = ContextCompat.getColor(context, R.color.white);
 
             barDataSet.setValueTextColor(color);
             barDataSet.setColor(color);
@@ -98,7 +98,7 @@ public class HelperFragmentAllDays {
             binding.anyChartFragmentAllDays.getAxisRight().setAxisLineColor(color);
 
         } else {
-            int color = ContextCompat.getColor(context, R.color.black60Opacity);
+            int color = ContextCompat.getColor(context, R.color.black);
 
             barDataSet.setValueTextColor(color);
             barDataSet.setColor(color);
