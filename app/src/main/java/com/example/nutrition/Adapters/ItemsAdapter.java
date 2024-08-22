@@ -74,6 +74,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             }
         });
 
+        additionalThemeChanges(myViewHolder);
+
         return myViewHolder;
     }
 
@@ -88,8 +90,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         holder.textViewCalories.setText(String.format("%.2fg", item.getCalories()));
         holder.textViewCarbohydrates.setText(String.format("%.2fg", item.getCarbohydrates()));
         holder.textViewSugar.setText(String.format("%.2fg", item.getSugar()));
-
-        additionalThemeChanges(holder);
     }
 
     @Override
@@ -119,8 +119,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
     }
 
     private void additionalThemeChanges(MyViewHolder holder){
-        if (isNightModeOn) holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_white);
-        else holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_black);
+        if (isNightModeOn) holder.imageViewItemIcon.setImageResource(R.drawable.ic_food_item_light);
+        else holder.imageViewItemIcon.setImageResource(R.drawable.ic_food_item_dark);
     }
 
     public boolean isListEmpty(){

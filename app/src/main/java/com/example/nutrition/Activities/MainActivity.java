@@ -71,12 +71,12 @@ public class MainActivity extends ParentActivity {
     public void addEventListeners() {
         helperMain.setUpCardEventListeners(materialCardViews, binding);
 
-        binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, Section3Activity.class);
-        });
-
         binding.introductionLayoutMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, IntroductionActivity.class);
+        });
+
+        binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
     }
 
@@ -84,13 +84,10 @@ public class MainActivity extends ParentActivity {
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(this)){
             binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_light);
+            binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_welcome_dark);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
             binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_white);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.dark_list));
-
-            binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_white);
-            binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
-            binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
 
@@ -99,13 +96,10 @@ public class MainActivity extends ParentActivity {
             binding.textViewSub3.setTextColor(color);
         } else {
             binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_dark);
+            binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_welcome_light);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.imageViewGoRightIntro.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
-
-            binding.imageViewIntroductionArrow.setImageResource(R.drawable.ic_intro_black);
-            binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
-            binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
 

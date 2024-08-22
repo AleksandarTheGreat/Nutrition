@@ -32,7 +32,7 @@ public class HelperFragmentAllDays {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             for (Day day : allDaysAdapter.getDaysList()) {
                 if (day.getCreatedAt().equals(LocalDate.now())) {
-                    toaster.text("Cannot create 2 days");
+                    toaster.text("Cannot create 2 days, today");
                     return false;
                 }
             }

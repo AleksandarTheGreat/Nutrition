@@ -107,7 +107,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 // Then we load all days from the database and set the dayList pointing to that list
                 // Finally we update the adapter
 
-                // if (!isANewDayValidToAdd()) return;
+                if (!helperFragmentAllDays.isANewDayValidToAdd(allDaysAdapter, toaster)) return;
 
                 Day day = new Day("Day", LocalDate.now());
                 daysRepo.add(day);
@@ -143,8 +143,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
             binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_light);
-            binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calculate_white);
-            binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_light);
 
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
@@ -153,8 +151,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.textViewSub3.setTextColor(color);
         } else {
             binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_dark);
-            binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_black);
-            binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_dark);
 
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
