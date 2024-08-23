@@ -12,13 +12,16 @@ import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.android.material.chip.Chip;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HelperFragmentAllDays {
     private Context context;
@@ -43,37 +46,36 @@ public class HelperFragmentAllDays {
     public void  setUpAnyChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
-        switch (macronutrient) {
-            case "Carbohydrates": {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalCarbohydrates()));
-                }
-                break;
-            }
-            case "Calories": {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalCalories()));
-                }
-                break;
-            }
-            case "Sugars": {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalSugar()));
-                }
-                break;
-            }
-            case "Proteins":
-            default: {
-                for (Day day : allDaysAdapter.getDaysList()) {
-                    barEntries.add(new BarEntry(day.getId(), day.totalProteins()));
-                }
-                break;
+        int index = 0;
+        List<String> xValuesDays = new ArrayList<>();
 
+        for (Day day : allDaysAdapter.getDaysList()) {
+            switch (macronutrient) {
+                case "Carbohydrates":
+                    barEntries.add(new BarEntry(index, day.totalCarbohydrates()));
+                    break;
+                case "Calories":
+                    barEntries.add(new BarEntry(index, day.totalCalories()));
+                    break;
+                case "Sugars":
+                    barEntries.add(new BarEntry(index, day.totalSugar()));
+                    break;
+                case "Proteins":
+                default:
+                    barEntries.add(new BarEntry(index, day.totalProteins()));
+                    break;
             }
+            xValuesDays.add(day.getTitle() + " " + index);
+            index++;  // Increment index for each day
         }
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "Days");
         barDataSet.setValueTextSize(14f);
+
+        XAxis xAxis = binding.anyChartFragmentAllDays.getXAxis();
+        // xAxis.setValueFormatter(new IndexAxisValueFormatter(xValuesDays));
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(10);
 
         // Change the colors for the axis - es
         // Left, Right, and Horizontal (X - axis)
@@ -123,6 +125,8 @@ public class HelperFragmentAllDays {
         binding.anyChartFragmentAllDays.setData(barData);
         binding.anyChartFragmentAllDays.getDescription().setText("Calories test");
         binding.anyChartFragmentAllDays.animateY(700);
+
+        binding.anyChartFragmentAllDays.invalidate();
     }
 
     private void changeChipsColors(FragmentAllDaysBinding binding){
