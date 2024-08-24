@@ -66,4 +66,10 @@ public class HelperMain {
         Intent intent = new Intent(context, clas);
         context.startActivity(intent);
     }
+
+    public void goToActivity(Context context, Class clas, String type){
+        Intent intent = new Intent(context, clas);
+        intent.putExtra("type", type);
+        context.startActivity(intent);
+    }
 }

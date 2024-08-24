@@ -35,4 +35,8 @@
     <color name="colorText80Light">#CCF0F0F0</color>
     <color name="colorText60Light">#99F0F0F0</color>
 
+    <color name="definitions">#FF6363</color>
+    <color name="myths_facts">#FF5722</color>
+    <color name="fun_quiz">#4CAF50</color>
+
 </resources>

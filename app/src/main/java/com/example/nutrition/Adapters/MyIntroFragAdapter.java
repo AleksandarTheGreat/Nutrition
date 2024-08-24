@@ -1,6 +1,7 @@
 package com.example.nutrition.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +25,26 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     private List<Fragment> fragmentList;
     private AppCompatActivity appCompatActivity;
 
-    public MyIntroFragAdapter(Context context, FragmentActivity fragmentActivity, AppCompatActivity appCompatActivity) {
+    public MyIntroFragAdapter(Context context, FragmentActivity fragmentActivity, AppCompatActivity appCompatActivity, String type) {
         super(fragmentActivity);
 
         this.context = context;
         this.appCompatActivity = appCompatActivity;
-        setUpFragmentList();
+
+        switch (type) {
+            case "definitions":
+                setUpDefinitionFragments();
+                break;
+            case "mythFact":
+                setUpMythFactFragments();
+                break;
+            case "quiz":
+                setUpQuizFragments();
+                break;
+            default:
+                Log.d("Tag", "IDK what happens now");
+                break;
+        }
     }
 
     @NonNull
@@ -43,8 +58,8 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         return fragmentList.size();
     }
 
-    private void setUpFragmentList() {
-        this.fragmentList = new ArrayList<>();
+    private void setUpDefinitionFragments(){
+        fragmentList = new ArrayList<>();
 
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak), appCompatActivity));
@@ -54,6 +69,10 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
                 new Macronutrient("Calorie", "A calorie is a unit of energy.\n\nIn nutrition, calories refer to the energy people get from the food and drinks they consume, and the energy they use in physical activity. Calories are listed in the nutritional information on all food packaging.\n\nMany weight loss programs center around reducing the intake of calories.", R.drawable.ic_olive_oil), appCompatActivity));
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Sugar", "Sugars are the smallest unit of carbohydrates.\n\nThey include both naturally occurring sugars (like those found in fruits and milk) and added sugars (like table sugar or high-fructose corn syrup).", R.drawable.ic_sugar), appCompatActivity));
+    }
+
+    private void setUpMythFactFragments() {
+        fragmentList = new ArrayList<>();
 
         fragmentList.add(new FragmentMythReality(appCompatActivity, new MRModel("You must eat 3 times a day!", "If you can match your requirements for the day, you can eat as many times as you like.")));
         fragmentList.add(new FragmentMythReality(appCompatActivity, new MRModel("You must have protein after a workout, if not, you will not have any hypertrophy benefits from the workout.", "Proteins can take a long time in order to be digested and absorbed by the body, so even if you eat a protein meal in the morning, your body will still benefit from its protein even in later parts of the day.")));
@@ -72,5 +91,9 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         fragmentList.add(new FragmentMythReality(appCompatActivity, new MRModel("You should train AT LEAST for an hour, if not, you will not grow your muscles.", "The time in the gym is not even important, just give it your ALL in the time that you will be in the gym.")));
         fragmentList.add(new FragmentMythReality(appCompatActivity, new MRModel("Intermittent fasting is healthier than eating whenever you want.", "As long as the caloric intake is the same, there is no difference in having an intermittent fast or not.")));
         fragmentList.add(new FragmentMythReality(appCompatActivity, new MRModel("You must do cardio in order to lose weight!", "The most important thing in losing weight is being in a caloric deficit.")));
+    }
+
+    private void setUpQuizFragments() {
+        fragmentList = new ArrayList<>();
     }
 }

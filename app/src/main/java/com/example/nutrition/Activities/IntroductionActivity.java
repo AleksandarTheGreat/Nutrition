@@ -28,6 +28,7 @@ public class IntroductionActivity extends ParentActivity {
     private MyIntroFragAdapter myIntroFragAdapter;
     private int pageCounter;
     private AppCompatActivity appCompatActivity;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +54,10 @@ public class IntroductionActivity extends ParentActivity {
 
         appCompatActivity = this;
 
+        type = getIntent().getStringExtra("type");
+
         pageCounter = 0;
-        myIntroFragAdapter = new MyIntroFragAdapter(this, this, appCompatActivity);
+        myIntroFragAdapter = new MyIntroFragAdapter(this, this, appCompatActivity, type);
         binding.viewPagerIntroductionActivity.setAdapter(myIntroFragAdapter);
 
         updateImageArrowsVisibility();
@@ -84,7 +87,7 @@ public class IntroductionActivity extends ParentActivity {
 
     @Override
     public void additionalThemeChanges() {
-        if (ThemeUtils.isNightModeActive(this)){
+        if (ThemeUtils.isNightModeActive(this)) {
             binding.imageViewArrowLeft.setImageResource(R.drawable.ic_left_white);
             binding.imageViewArrowRight.setImageResource(R.drawable.ic_right_white);
         } else {
@@ -94,7 +97,7 @@ public class IntroductionActivity extends ParentActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void updateImageArrowsVisibility(){
+    private void updateImageArrowsVisibility() {
         if (pageCounter <= 0)
             binding.imageViewArrowLeft.setVisibility(View.INVISIBLE);
         else binding.imageViewArrowLeft.setVisibility(View.VISIBLE);
@@ -103,7 +106,20 @@ public class IntroductionActivity extends ParentActivity {
             binding.imageViewArrowRight.setVisibility(View.INVISIBLE);
         else binding.imageViewArrowRight.setVisibility(View.VISIBLE);
 
-        binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 21");
+        switch (type) {
+            case "definitions":
+                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 4");
+                break;
+            case "mythFact":
+                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 17");
+                break;
+            case "quiz":
+                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 15");
+                break;
+            default:
+                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / X");
+                break;
+        }
     }
 
 }
