@@ -41,6 +41,9 @@ public class HelperFragmentADay {
         String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
         if (!checkIfInputIsValid(binding)) return;
 
+        // Optional
+        // Check if the date is valid (we are not in a past date)
+
         String apiKey = "73852b082619618ae5eb814953750853";
         String appId = "e7be29f8";
         String baseUrl = "https://api.edamam.com/api/nutrition-data";
