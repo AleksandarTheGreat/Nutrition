@@ -52,17 +52,21 @@ public class HelperFragmentAllDays {
         for (Day day : allDaysAdapter.getDaysList()) {
             switch (macronutrient) {
                 case "Carbohydrates":
-                    barEntries.add(new BarEntry(index, day.totalCarbohydrates()));
+                    barEntries.add(new BarEntry(day.getId(), day.totalCarbohydrates()));
+                    binding.anyChartFragmentAllDays.getDescription().setText("Carbohydrates");
                     break;
                 case "Calories":
-                    barEntries.add(new BarEntry(index, day.totalCalories()));
+                    barEntries.add(new BarEntry(day.getId(), day.totalCalories()));
+                    binding.anyChartFragmentAllDays.getDescription().setText("Calories");
                     break;
                 case "Sugars":
-                    barEntries.add(new BarEntry(index, day.totalSugar()));
+                    barEntries.add(new BarEntry(day.getId(), day.totalSugar()));
+                    binding.anyChartFragmentAllDays.getDescription().setText("Sugars");
                     break;
                 case "Proteins":
                 default:
-                    barEntries.add(new BarEntry(index, day.totalProteins()));
+                    barEntries.add(new BarEntry(day.getId(), day.totalProteins()));
+                    binding.anyChartFragmentAllDays.getDescription().setText("Proteins");
                     break;
             }
             xValuesDays.add(day.getTitle() + " " + index);
@@ -73,7 +77,6 @@ public class HelperFragmentAllDays {
         barDataSet.setValueTextSize(14f);
 
         XAxis xAxis = binding.anyChartFragmentAllDays.getXAxis();
-        // xAxis.setValueFormatter(new IndexAxisValueFormatter(xValuesDays));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(10);
 
@@ -123,7 +126,6 @@ public class HelperFragmentAllDays {
 
         binding.anyChartFragmentAllDays.setFitBars(true);
         binding.anyChartFragmentAllDays.setData(barData);
-        binding.anyChartFragmentAllDays.getDescription().setText("Calories test");
         binding.anyChartFragmentAllDays.animateY(700);
 
         binding.anyChartFragmentAllDays.invalidate();

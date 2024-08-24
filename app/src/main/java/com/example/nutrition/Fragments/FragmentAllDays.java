@@ -69,8 +69,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         binding = FragmentAllDaysBinding.bind(inflater.inflate(R.layout.fragment_all_days, container, false));
 
         instantiateObjects();
-        addEventListeners();
         additionalThemeChanges();
+        addEventListeners();
 
         return binding.getRoot();
     }

@@ -133,9 +133,11 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
             holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
+            holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.black));
         } else {
             holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
             holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
+            holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white));
         }
     }
 
