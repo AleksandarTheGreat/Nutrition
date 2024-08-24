@@ -1,5 +1,6 @@
 package com.example.nutrition.Activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -92,6 +93,7 @@ public class IntroductionActivity extends ParentActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateImageArrowsVisibility(){
         if (pageCounter <= 0)
             binding.imageViewArrowLeft.setVisibility(View.INVISIBLE);
@@ -100,6 +102,8 @@ public class IntroductionActivity extends ParentActivity {
         if (pageCounter >= myIntroFragAdapter.getItemCount() - 1)
             binding.imageViewArrowRight.setVisibility(View.INVISIBLE);
         else binding.imageViewArrowRight.setVisibility(View.VISIBLE);
+
+        binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 21");
     }
 
 }

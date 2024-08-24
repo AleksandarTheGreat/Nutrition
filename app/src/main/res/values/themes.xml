@@ -5,7 +5,6 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <item name="android:fontFamily">@font/radio_regular</item>
-        <item name="fontFamily">@font/radio_regular</item>
     </style>
 
     <style name="Theme.Nutrition" parent="Base.Theme.Nutrition">
