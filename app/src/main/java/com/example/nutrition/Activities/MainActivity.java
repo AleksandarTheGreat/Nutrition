@@ -92,7 +92,6 @@ public class MainActivity extends ParentActivity {
     @Override
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(this)){
-            binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_light);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.dark_list));
 
@@ -105,7 +104,6 @@ public class MainActivity extends ParentActivity {
             binding.textView2.setTextColor(colorBright);
             binding.textView3.setTextColor(colorBright);
         } else {
-            binding.imageViewLogoMainActivity.setImageResource(R.drawable.ic_logo_dark);
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
 

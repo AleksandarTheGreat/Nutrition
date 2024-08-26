@@ -28,8 +28,12 @@ import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
@@ -103,7 +107,12 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
 
-        holder.textViewDays.setText(day.getTitle() + " " + day.getId());
+        LocalDate ldt = day.getCreatedAt();
+        @SuppressLint({"NewApi", "LocalSuppress"})
+        String dayName = ldt.getDayOfWeek()
+                        .getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+
+        holder.textViewDays.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
     }
 

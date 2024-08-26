@@ -142,7 +142,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
-            binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_light);
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_light);
 
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
@@ -150,7 +149,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
         } else {
-            binding.imageViewLogoFragmentAllDays.setImageResource(R.drawable.ic_logo_dark);
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_dark);
 
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
