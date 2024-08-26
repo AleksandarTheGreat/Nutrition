@@ -97,24 +97,32 @@ public class MainActivity extends ParentActivity {
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
             int colorBright = ContextCompat.getColor(MainActivity.this, R.color.colorTextLight);
+            int colorAlmostBlack = ContextCompat.getColor(MainActivity.this, R.color.almostBlack);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorBright);
             binding.textView2.setTextColor(colorBright);
             binding.textView3.setTextColor(colorBright);
+            binding.matCardDefinitions.setCardBackgroundColor(colorAlmostBlack);
+            binding.matCardMythFact.setCardBackgroundColor(colorAlmostBlack);
+            binding.matCardQuiz.setCardBackgroundColor(colorAlmostBlack);
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
             int colorDark = ContextCompat.getColor(MainActivity.this, R.color.colorTextDark);
+            int colorAlmostWhite = ContextCompat.getColor(MainActivity.this, R.color.almostWhite);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorDark);
             binding.textView2.setTextColor(colorDark);
             binding.textView3.setTextColor(colorDark);
+            binding.matCardDefinitions.setCardBackgroundColor(colorAlmostWhite);
+            binding.matCardMythFact.setCardBackgroundColor(colorAlmostWhite);
+            binding.matCardQuiz.setCardBackgroundColor(colorAlmostWhite);
         }
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);
