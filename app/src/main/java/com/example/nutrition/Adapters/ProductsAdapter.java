@@ -1,6 +1,7 @@
 package com.example.nutrition.Adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
@@ -56,7 +57,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
         myViewHolder.progressBarSugar.setMax(100);
 
         myViewHolder.constraintLayout.setOnClickListener(v -> {
-            Product product = productList.get(myViewHolder.getAdapterPosition());
+            int position = myViewHolder.getAdapterPosition();
+
+            Product product = productList.get(position);
+            createDialog(product);
+            // Show the dialog
+
             toaster.text(product.getName());
         });
 
@@ -130,6 +136,22 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
             this.progressBarCalories = itemView.findViewById(R.id.progressBarCalories);
             this.progressBarSugar = itemView.findViewById(R.id.progressBarSugar);
         }
+    }
+
+    private void createDialog(Product product){
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.custom_image_dialog, null);
+
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        ImageView imageView = view.findViewById(R.id.imageViewProduct);
+        Picasso.get()
+                .load(product.getImageUri())
+                .into(imageView);
+
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(view);
+        dialog.setCancelable(true);
+        dialog.show();
     }
 
     public List<Product> getProductList() {
