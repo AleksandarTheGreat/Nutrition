@@ -1,6 +1,7 @@
 package com.example.nutrition.Helper;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 
@@ -18,6 +19,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class HelperFragmentAllDays {
         return true;
     }
 
-    public void  setUpAnyChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
+    public void setUpAnyChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
         int index = 0;
@@ -85,9 +87,10 @@ public class HelperFragmentAllDays {
 
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
             int color = ContextCompat.getColor(context, R.color.white);
+            int primaryColor = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLACK);
 
             barDataSet.setValueTextColor(color);
-            barDataSet.setColor(color);
+            barDataSet.setColor(primaryColor);
             binding.anyChartFragmentAllDays.getDescription().setTextColor(color);
             // X axis
             binding.anyChartFragmentAllDays.getXAxis().setGridColor(color);
@@ -104,9 +107,10 @@ public class HelperFragmentAllDays {
 
         } else {
             int color = ContextCompat.getColor(context, R.color.black);
+            int primaryColor = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLACK);
 
             barDataSet.setValueTextColor(color);
-            barDataSet.setColor(color);
+            barDataSet.setColor(primaryColor);
             binding.anyChartFragmentAllDays.getDescription().setTextColor(color);
             // X axis
             binding.anyChartFragmentAllDays.getXAxis().setGridColor(color);

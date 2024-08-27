@@ -15,7 +15,7 @@
     <color name="color_grains">#74CAAA7B</color>
     <color name="color_vegetables">#743CB341</color>
     <color name="color_fruit">#747C5B81</color>
-    <color name="color_meat">#74B35252</color>
+    <color name="color_meat">#73B35252</color>
     <color name="color_dairy">#74F2ECB1</color>
     <color name="color_fats">#74A2962C</color>
     <color name="color_fast_food">#74EF744E</color>
@@ -34,5 +34,21 @@
     <color name="colorTextLight">#F0F0F0</color>
     <color name="colorText80Light">#CCF0F0F0</color>
     <color name="colorText60Light">#99F0F0F0</color>
+
+    <color name="definitions">#FF6363</color>
+    <color name="myths_facts">#FF5722</color>
+    <color name="fun_quiz">#4CAF50</color>
+
+    <color name="colorProtein">#F2132D</color>
+    <color name="colorProteinBack">#26F2132D</color>
+    <color name="colorCarbohydrate">#FFC61A</color>
+    <color name="colorCarbohydrateBack">#26FFC61A</color>
+    <color name="colorCalorie">#CDDC39</color>
+    <color name="colorCalorieBack">#26CDDC39</color>
+    <color name="colorSugar">#1792F4</color>
+    <color name="colorSugarBack">#261792F4</color>
+
+    <color name="almostWhite">#F4F4F4</color>
+    <color name="almostBlack">#161616</color>
 
 </resources>

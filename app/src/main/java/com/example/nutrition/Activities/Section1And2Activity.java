@@ -100,8 +100,10 @@ public class Section1And2Activity extends ParentActivity {
                     return;
                 }
 
-                // Get the one and only selected filter chip
+                // Clear the second chip group, all selections
+                binding.chipGroupFiltersSection1And2.clearCheck();
 
+                // Get the one and only selected filter chip
                 int id = checkedIds.get(0);
                 Chip selectedChip = group.findViewById(id);
                 String text = selectedChip.getText().toString().trim();
@@ -135,6 +137,9 @@ public class Section1And2Activity extends ParentActivity {
 
                     return;
                 }
+
+                // Clear the first chip group, all selections
+                binding.chipGroupSection1And2.clearCheck();
 
                 Chip chip = group.findViewById(checkedIds.get(0));
                 String text = chip.getText().toString().trim();

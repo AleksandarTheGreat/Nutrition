@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_logo_512"
+        android:icon="@drawable/ic_new_logo_black_back"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_logo_512"
+        android:roundIcon="@drawable/ic_new_logo_black_back"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Nutrition"
         tools:targetApi="31">

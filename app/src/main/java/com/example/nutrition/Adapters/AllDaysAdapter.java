@@ -2,6 +2,7 @@ package com.example.nutrition.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +28,14 @@ import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.color.MaterialColors;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
@@ -39,6 +45,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     private FragmentAllDaysBinding fragmentAllDaysBinding;
     private List<Day> daysList;
     private DaysRepo daysRepo;
+    private boolean isNightMode = false;
 
     private AllDaysAdapter allDaysAdapter;
     private Toaster toaster;
@@ -55,6 +62,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         this.toaster = new Toaster(context);
         this.allDaysAdapter = this;
         this.helperFragmentAllDays = new HelperFragmentAllDays(context, appCompatActivity);
+        this.isNightMode = ThemeUtils.isNightModeActive(appCompatActivity);
     }
 
     @NonNull
@@ -82,7 +90,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 daysRepo.delete(day.getId());
                 daysList = daysRepo.listAllSorted();
 
-                notifyItemRemoved(myViewHolder.getAdapterPosition());
+                notifyDataSetChanged();
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
 
                 Chip chip = (Chip) fragmentAllDaysBinding.chipGroupGraphFragmentAllDays.getChildAt(0);
@@ -93,8 +101,6 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             }
         });
 
-        additionalThemeChanges(myViewHolder);
-
         return myViewHolder;
     }
 
@@ -103,8 +109,18 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
 
-        holder.textViewDays.setText(day.getTitle() + " " + day.getId());
+
+        LocalDate ldt = day.getCreatedAt();
+        @SuppressLint({"NewApi", "LocalSuppress"})
+        String dayName = ldt.getDayOfWeek()
+                        .getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+
+        holder.textViewDays.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
+
+        // Check if this day is the current day
+        // Check if this day is also yesterday
+        additionalThemeChanges(day, holder);
     }
 
     @Override
@@ -129,15 +145,77 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         }
     }
 
-    public void additionalThemeChanges(MyViewHolder holder){
-        if (ThemeUtils.isNightModeActive(appCompatActivity)){
-            holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
-            holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
-            holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.black));
-        } else {
-            holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
-            holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
-            holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white));
+    public void additionalThemeChanges(Day day, MyViewHolder holder){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate currentDate = LocalDate.now();
+            // Today
+            if (day.getCreatedAt().equals(currentDate)){
+                int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
+                int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
+
+                holder.imageViewSun.setImageResource(R.drawable.ic_sun_day);
+                holder.textViewDays.setTextColor(onPrimaryContainer);
+                holder.textViewDate.setTextColor(onPrimaryContainer);
+                holder.textViewDays.setText("Today");
+                holder.materialCardView.setCardBackgroundColor(primaryContainer);
+            }
+            // Yesterday
+            else if (day.getCreatedAt().equals(currentDate.minusDays(1))) {
+                int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
+                int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
+
+                if (isNightMode) holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
+                else holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
+                holder.materialCardView.setCardBackgroundColor(secondaryContainer);
+                holder.textViewDays.setTextColor(onSecondaryContainer);
+                holder.textViewDate.setTextColor(onSecondaryContainer);
+                holder.textViewDays.setText("Yesterday");
+            }
+            // Every other day
+            else {
+                if (isNightMode){
+                    holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
+                    holder.textViewDays.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
+                    holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
+                    holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
+                } else {
+                    holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
+                    holder.textViewDays.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
+                    holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
+                    holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
+                }
+            }
+        }
+    }
+
+    // For today and yesterday, but disabled for now
+    public void checkIfDayIsToday(Day day, MyViewHolder holder){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate date = LocalDate.now();
+            if (date.equals(day.getCreatedAt())){
+                int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
+                int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
+
+                holder.materialCardView.setCardBackgroundColor(primaryContainer);
+                holder.textViewDays.setText("Today");
+                holder.textViewDays.setTextColor(onPrimaryContainer);
+                holder.textViewDate.setTextColor(onPrimaryContainer);
+            }
+        }
+    }
+
+    public void checkIfDayIsYesterday(Day day, MyViewHolder holder){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate date = LocalDate.now();
+            if (date.minusDays(1).equals(day.getCreatedAt())){
+                int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
+                int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
+
+                holder.materialCardView.setCardBackgroundColor(secondaryContainer);
+                holder.textViewDays.setText("Yesterday");
+                holder.textViewDays.setTextColor(onSecondaryContainer);
+                holder.textViewDate.setTextColor(onSecondaryContainer);
+            }
         }
     }
 

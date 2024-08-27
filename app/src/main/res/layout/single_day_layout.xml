@@ -8,7 +8,6 @@
     android:clickable="true"
     android:focusable="true"
     app:cardElevation="4dp"
-    style="@style/Widget.Material3.CardView.Filled"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
