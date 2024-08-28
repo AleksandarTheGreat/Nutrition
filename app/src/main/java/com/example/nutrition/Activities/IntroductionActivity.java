@@ -114,7 +114,7 @@ public class IntroductionActivity extends ParentActivity {
                 binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 17");
                 break;
             case "quiz":
-                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 15");
+                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 5");
                 break;
             default:
                 binding.textViewFragmentsCount.setText((pageCounter + 1) + " / X");

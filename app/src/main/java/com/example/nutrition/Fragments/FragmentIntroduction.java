@@ -20,12 +20,12 @@ public class FragmentIntroduction extends Fragment implements IEssentials {
 
     private FragmentIntroductionBinding binding;
     private Macronutrient macronutrient;
-    private AppCompatActivity appCompatActivity;
+    private boolean isNightModeActive;
 
     public FragmentIntroduction() {}
-    public FragmentIntroduction(Macronutrient macronutrient, AppCompatActivity appCompatActivity){
+    public FragmentIntroduction(Macronutrient macronutrient, boolean isNightModeActive){
         this.macronutrient = macronutrient;
-        this.appCompatActivity = appCompatActivity;
+        this.isNightModeActive = isNightModeActive;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class FragmentIntroduction extends Fragment implements IEssentials {
     }
 
     public void additionalThemeChanges(){
-        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+        if (isNightModeActive){
             binding.textViewExplanationIntroductionFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.white60Opacity));
         } else {
             binding.textViewExplanationIntroductionFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.black60Opacity));
