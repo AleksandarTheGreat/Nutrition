@@ -48,6 +48,12 @@ public class FragmentQuiz extends Fragment implements IEssentials {
     @Override
     public void instantiateObjects() {
         toaster = new Toaster(getContext());
+
+        binding.textViewQuestion.setText(question.getQuestion());
+        binding.radioA.setText(question.getOptionA());
+        binding.radioB.setText(question.getOptionB());
+        binding.radioC.setText(question.getOptionC());
+        binding.radioD.setText(question.getOptionD());
     }
 
     @Override
