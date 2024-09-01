@@ -60,20 +60,18 @@ public class FragmentQuiz2Options extends Fragment implements IEssentials {
                     binding.textViewStatusFragmentQuiz.setText("Correct!");
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_correct);
+                    binding.imageViewEmoji.setImageResource(R.drawable.ic_smiling);
                 } else {
                     binding.textViewStatusFragmentQuiz.setText("Incorrect!");
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_wrong);
+                    binding.imageViewEmoji.setImageResource(R.drawable.ic_sad);
                 }
             }
         });
     }
 
     private void additionalThemeChanges(){
-        if (isNightModeActive){
-            binding.imageViewQuestionFragmentQuiz.setImageResource(R.drawable.ic_question_light);
-        } else {
-            binding.imageViewQuestionFragmentQuiz.setImageResource(R.drawable.ic_question_dark);
-        }
+
     }
 }
