@@ -54,20 +54,20 @@ public class HelperFragmentAllDays {
         for (Day day : allDaysAdapter.getDaysList()) {
             switch (macronutrient) {
                 case "Carbohydrates":
-                    barEntries.add(new BarEntry(day.getId(), day.totalCarbohydrates()));
+                    barEntries.add(new BarEntry(index, day.totalCarbohydrates()));
                     binding.anyChartFragmentAllDays.getDescription().setText("Carbohydrates");
                     break;
                 case "Calories":
-                    barEntries.add(new BarEntry(day.getId(), day.totalCalories()));
+                    barEntries.add(new BarEntry(index, day.totalCalories()));
                     binding.anyChartFragmentAllDays.getDescription().setText("Calories");
                     break;
                 case "Sugars":
-                    barEntries.add(new BarEntry(day.getId(), day.totalSugar()));
+                    barEntries.add(new BarEntry(index, day.totalSugar()));
                     binding.anyChartFragmentAllDays.getDescription().setText("Sugars");
                     break;
                 case "Proteins":
                 default:
-                    barEntries.add(new BarEntry(day.getId(), day.totalProteins()));
+                    barEntries.add(new BarEntry(index, day.totalProteins()));
                     binding.anyChartFragmentAllDays.getDescription().setText("Proteins");
                     break;
             }

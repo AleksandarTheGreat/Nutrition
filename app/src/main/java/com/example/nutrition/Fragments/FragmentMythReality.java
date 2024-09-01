@@ -19,15 +19,15 @@ import com.example.nutrition.databinding.FragmentMythRealityBinding;
 public class FragmentMythReality extends Fragment implements IEssentials {
 
     private FragmentMythRealityBinding binding;
-    private AppCompatActivity appCompatActivity;
+    private boolean isNightModeActive;
     private MRModel mrModel;
 
     public FragmentMythReality() {
         // Required empty public constructor
     }
 
-    public FragmentMythReality(AppCompatActivity appCompatActivity, MRModel mrModel){
-        this.appCompatActivity = appCompatActivity;
+    public FragmentMythReality(boolean isNightModeActive, MRModel mrModel){
+        this.isNightModeActive = isNightModeActive;
         this.mrModel = mrModel;
     }
 
@@ -55,7 +55,7 @@ public class FragmentMythReality extends Fragment implements IEssentials {
     }
 
     public void additionalThemeChanges(){
-        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+        if (isNightModeActive){
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
 
             binding.textViewActualMyth.setTextColor(color);

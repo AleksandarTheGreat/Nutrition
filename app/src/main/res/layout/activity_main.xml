@@ -11,7 +11,7 @@
         android:id="@+id/headerLayoutMainActivity"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="8dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
