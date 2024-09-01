@@ -122,5 +122,19 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(18 , "What do carbs do in the body?", "they make you lose focus", "they make you fatter", "they are the main energy source for our body" ,"they decrease blood sugar levels", "radioC")));
         fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(19 , "Which hormone is the main anabolic hormone?", "insulin", "glucagon", "adrenaline" ,"noradrenaline", "radioA")));
         fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(20 , "Why is fiber important?", "it increases blood sugar levels", "it is a carb, it can not do good stuff", "it improves bowel movements and eases the work of the pancreas" ,"it is good for oral health", "radioC")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(21, "Why are fruits and vegetables different?", "they are colorful", "they contain only sugar in them", "they contain fiber", "they are calorie dense", "radioC")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(22, "Which protein source contains the most protein per 100g?", "eggs", "greek yoghurt", "lean meat", "peanut butter", "radioC")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(23, "Which protein source is the best?", "the source that is your favourite", "meat", "plant protein", "dairy products", "radioA")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(24, "How many kcal (calories) are in 1g of alcohol?", "9 kcal", "7 kcal", "5 kcal", "4 kcal", "radioB")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(25, "Which of the following contains calories?", "vitamins", "minerals", "proteins", "salt", "radioC")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(26, "Which form of cardio is the best?", "what you want to do the most is always the best", "walking and running", "walking and cycling", "playing sports", "radioA")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(27, "Which of the following contains the most sugar per 100g?", "milk chocolate", "dates", "dark chocolate", "banana", "radioB")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(28, "Which of the following contains the most fats per 100g?", "peanut butter", "chicken breast", "eggs", "avocado", "radioA")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(29, "Which of the following has the most calories per 100g?", "olive oil", "ground beef", "milk chocolate", "pepperoni pizza", "radioA")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(30, "Which of the following contains the least amount of calories per 100g?", "almonds", "dark chocolate", "dates", "fat free greek yoghurt", "radioD")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(31, "When will the body start losing fat?", "when there is no more sugar, so it must start burning fat", "when the person eats only fruits and vegetables", "when the person runs every day, but eats a lot after", "when the reserve sugar in the body is full", "radioA")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(32, "How can you know how much do you eat?", "by asking google", "by measuring by eye", "by measuring with a food scale", "you can not know how much you eat", "radioC")));
+        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(33, "Which of these macronutrients is the most important?", "proteins", "carbs", "fats", "there is no such thing as ‘the most important nutrient", "radioD")));
+
     }
 }
