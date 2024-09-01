@@ -1,9 +1,7 @@
 package com.example.nutrition.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,29 +11,28 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.nutrition.Helper.IEssentials;
-import com.example.nutrition.Helper.Toaster;
-import com.example.nutrition.Model.Question;
+import com.example.nutrition.Model.Question2;
 import com.example.nutrition.R;
-import com.example.nutrition.databinding.FragmentQuizBinding;
+import com.example.nutrition.databinding.FragmentQuiz2OptionsBinding;
 
-public class FragmentQuiz extends Fragment implements IEssentials {
+public class FragmentQuiz2Options extends Fragment implements IEssentials {
 
-    private FragmentQuizBinding binding;
+    private FragmentQuiz2OptionsBinding binding;
+    private Question2 question2;
     private boolean isNightModeActive;
-    private Question question;
 
-    public FragmentQuiz() {
+    public FragmentQuiz2Options() {
         // Required empty public constructor
     }
 
-    public FragmentQuiz(boolean isNightModeActive, Question question){
-        this.question = question;
+    public FragmentQuiz2Options(boolean isNightModeActive, Question2 question2){
         this.isNightModeActive = isNightModeActive;
+        this.question2 = question2;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentQuizBinding.bind(inflater.inflate(R.layout.fragment_quiz, container, false));
+        binding = FragmentQuiz2OptionsBinding.bind(inflater.inflate(R.layout.fragment_quiz2_options, container, false));
 
         instantiateObjects();
         additionalThemeChanges();
@@ -46,23 +43,20 @@ public class FragmentQuiz extends Fragment implements IEssentials {
 
     @Override
     public void instantiateObjects() {
-        binding.textViewQuestion.setText(question.getQuestion());
-        binding.radioA.setText(question.getOptionA());
-        binding.radioB.setText(question.getOptionB());
-        binding.radioC.setText(question.getOptionC());
-        binding.radioD.setText(question.getOptionD());
+        binding.textViewQuestion.setText(question2.getQuestion());
+        binding.radioA.setText(question2.getOptionA());
+        binding.radioB.setText(question2.getOptionB());
     }
 
     @Override
     public void addEventListeners() {
         binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = group.findViewById(checkedId);
-                String tag = radioButton.getTag().toString().trim();
+                RadioButton button = group.findViewById(checkedId);
+                String tag = button.getTag().toString().trim();
 
-                if (tag.equals(question.getCorrectOption())){
+                if (tag.equals(question2.getCorrectOption())){
                     binding.textViewStatusFragmentQuiz.setText("Correct!");
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_correct);

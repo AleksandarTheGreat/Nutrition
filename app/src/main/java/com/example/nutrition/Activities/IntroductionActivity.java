@@ -106,20 +106,7 @@ public class IntroductionActivity extends ParentActivity {
             binding.imageViewArrowRight.setVisibility(View.INVISIBLE);
         else binding.imageViewArrowRight.setVisibility(View.VISIBLE);
 
-        switch (type) {
-            case "definitions":
-                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 4");
-                break;
-            case "mythFact":
-                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 17");
-                break;
-            case "quiz":
-                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / 20");
-                break;
-            default:
-                binding.textViewFragmentsCount.setText((pageCounter + 1) + " / X");
-                break;
-        }
+        binding.textViewFragmentsCount.setText((pageCounter + 1) + " / " + myIntroFragAdapter.getItemCount());
     }
 
 }

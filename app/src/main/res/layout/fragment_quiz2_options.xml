@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".Fragments.FragmentQuiz">
+
+    <ImageView
+        android:id="@+id/imageViewQuestionFragmentQuiz"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="32dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="22sp"
+        android:text="Lorem ipsum question here dipsum HAHA ??"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="48dp"
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="48dp"
+        >
+
+        <RadioButton
+            android:id="@+id/radioA"
+            android:tag="radioA"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Option A"
+            android:paddingStart="8dp"
+            />
+
+        <RadioButton
+            android:id="@+id/radioB"
+            android:tag="radioB"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Option B"
+            android:paddingStart="8dp"
+
+            />
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewStatusFragmentQuiz"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toLeftOf="@id/textViewStatusFragmentQuiz"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textViewStatusFragmentQuiz"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:drawablePadding="8dp"
+            android:visibility="invisible"
+            android:padding="8dp"
+            android:text="Incorrect"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
