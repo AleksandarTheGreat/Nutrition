@@ -3,6 +3,8 @@ package com.example.nutrition.Activities;
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -75,12 +77,21 @@ public class Section1And2Activity extends ParentActivity {
         toaster = new Toaster(Section1And2Activity.this);
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
 
-        allProductsAlways = ContentLoader.createTestList(Section1And2Activity.this);
+        // Set up the adapter and and load the list on a new thread
 
-        productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
-        binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
-        binding.recyclerViewSection1And2.setHasFixedSize(true);
-        binding.recyclerViewSection1And2.setAdapter(productsAdapter);
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+            allProductsAlways = ContentLoader.createTestList(Section1And2Activity.this);
+
+            productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
+
+            handler.post(() -> {
+                binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
+                binding.recyclerViewSection1And2.setHasFixedSize(true);
+                binding.recyclerViewSection1And2.setAdapter(productsAdapter);
+            });
+
+        }).start();
     }
 
     @Override
