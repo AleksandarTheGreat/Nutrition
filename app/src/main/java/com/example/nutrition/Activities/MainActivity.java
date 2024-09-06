@@ -104,6 +104,8 @@ public class MainActivity extends ParentActivity {
             binding.textView1.setTextColor(colorBright);
             binding.textView2.setTextColor(colorBright);
             binding.textView3.setTextColor(colorBright);
+            binding.textView4.setTextColor(colorBright);
+            binding.textView5.setTextColor(colorBright);
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
@@ -116,15 +118,17 @@ public class MainActivity extends ParentActivity {
             binding.textView1.setTextColor(colorDark);
             binding.textView2.setTextColor(colorDark);
             binding.textView3.setTextColor(colorDark);
+            binding.textView4.setTextColor(colorDark);
+            binding.textView5.setTextColor(colorDark);
         }
 
-        int primaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
-        int secondaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
-        int tertiaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorTertiaryContainer, Color.BLACK);
-
-        binding.matCardDefinitions.setCardBackgroundColor(primaryContainer);
-        binding.matCardMythFact.setCardBackgroundColor(secondaryContainer);
-        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
+//        int primaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
+//        int secondaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
+//        int tertiaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorTertiaryContainer, Color.BLACK);
+//
+//        binding.matCardDefinitions.setCardBackgroundColor(primaryContainer);
+//        binding.matCardMythFact.setCardBackgroundColor(secondaryContainer);
+//        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);
     }

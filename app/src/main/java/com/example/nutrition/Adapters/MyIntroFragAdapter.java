@@ -72,6 +72,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     private void setUpDefinitionFragments(){
         fragmentList = new ArrayList<>();
 
+        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "In the following slides, you will learn about some generic and most commonly used TERMS in nutrition\n\n", R.mipmap.ic_launcher), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
