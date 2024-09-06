@@ -23,8 +23,8 @@
         android:layout_width="match_parent"
         android:textSize="22sp"
         android:text="Lorem ipsum question here dipsum HAHA ??"
-        android:textStyle="bold"
         android:textAlignment="center"
+        android:textStyle="bold"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="48dp"
         />
@@ -54,24 +54,6 @@
             android:text="Option B"
             android:paddingStart="8dp"
 
-            />
-
-        <RadioButton
-            android:id="@+id/radioC"
-            android:tag="radioC"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Option C"
-            android:paddingStart="8dp"
-            />
-
-        <RadioButton
-            android:id="@+id/radioD"
-            android:tag="radioD"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Option D"
-            android:paddingStart="8dp"
             />
 
     </RadioGroup>

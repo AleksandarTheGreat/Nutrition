@@ -48,14 +48,10 @@ public class Section3Activity extends ParentActivity {
     }
 
     @Override
-    public void addEventListeners() {
-
-    }
+    public void addEventListeners() {}
 
     @Override
-    public void additionalThemeChanges() {
-
-    }
+    public void additionalThemeChanges() {}
 }
 
 

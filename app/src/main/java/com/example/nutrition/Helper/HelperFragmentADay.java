@@ -1,6 +1,7 @@
 package com.example.nutrition.Helper;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,12 @@ public class HelperFragmentADay {
         String baseUrl = "https://api.edamam.com/api/nutrition-data";
         String url = baseUrl + "?app_id=" + appId + "&app_key=" + apiKey + "&ingr=" + searchedText;
 
+
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -94,12 +101,14 @@ public class HelperFragmentADay {
                                     HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
                                     // Calculate total and change the ui in the material cards
 
+                                    progressDialog.dismiss();
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
                                 }
                             }
                         } catch (JSONException e) {
                             Log.d("Tag", "Error: " + e.getMessage());
                             toaster.text("Some nutrients are missing sadly :(");
+                            progressDialog.dismiss();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -107,6 +116,7 @@ public class HelperFragmentADay {
             public void onErrorResponse(VolleyError error) {
                 Log.d("Tag", error.getMessage());
                 toaster.text("Response error");
+                progressDialog.dismiss();
             }
         });
 

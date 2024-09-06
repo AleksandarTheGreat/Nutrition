@@ -3,6 +3,7 @@ package com.example.nutrition.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -23,6 +24,7 @@ import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.color.MaterialColors;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,7 +88,6 @@ public class MainActivity extends ParentActivity {
         binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
-
     }
 
     @Override
@@ -97,33 +98,33 @@ public class MainActivity extends ParentActivity {
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
             int colorBright = ContextCompat.getColor(MainActivity.this, R.color.colorTextLight);
-            int colorAlmostBlack = ContextCompat.getColor(MainActivity.this, R.color.almostBlack);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorBright);
             binding.textView2.setTextColor(colorBright);
             binding.textView3.setTextColor(colorBright);
-            binding.matCardDefinitions.setCardBackgroundColor(colorAlmostBlack);
-            binding.matCardMythFact.setCardBackgroundColor(colorAlmostBlack);
-            binding.matCardQuiz.setCardBackgroundColor(colorAlmostBlack);
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
             int colorDark = ContextCompat.getColor(MainActivity.this, R.color.colorTextDark);
-            int colorAlmostWhite = ContextCompat.getColor(MainActivity.this, R.color.almostWhite);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorDark);
             binding.textView2.setTextColor(colorDark);
             binding.textView3.setTextColor(colorDark);
-            binding.matCardDefinitions.setCardBackgroundColor(colorAlmostWhite);
-            binding.matCardMythFact.setCardBackgroundColor(colorAlmostWhite);
-            binding.matCardQuiz.setCardBackgroundColor(colorAlmostWhite);
         }
+
+        int primaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
+        int secondaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
+        int tertiaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorTertiaryContainer, Color.BLACK);
+
+        binding.matCardDefinitions.setCardBackgroundColor(primaryContainer);
+        binding.matCardMythFact.setCardBackgroundColor(secondaryContainer);
+        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);
     }

@@ -13,14 +13,19 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.nutrition.Fragments.FragmentIntroduction;
 import com.example.nutrition.Fragments.FragmentMythReality;
 import com.example.nutrition.Fragments.FragmentQuiz;
+import com.example.nutrition.Fragments.FragmentQuiz2Options;
 import com.example.nutrition.Model.MRModel;
 import com.example.nutrition.Model.Macronutrient;
 import com.example.nutrition.Model.Question;
+import com.example.nutrition.Model.Question2;
 import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 public class MyIntroFragAdapter extends FragmentStateAdapter {
 
@@ -101,40 +106,58 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
 
     private void setUpQuizFragments() {
         fragmentList = new ArrayList<>();
+        List<Fragment> questionsList = new ArrayList<>();
 
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(1, "How many times should you eat per day?", "once, but after an activity", "twice, whenever you like", "as many times as you like", "three times (breakfast, lunch and dinner)", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(2, "Why are fats important?", "they are not important, they are bad", "they will only keep you warm;", "they protect us from injuries", "they regulate hormonal and bodily functions", "radioD")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(3, "When is the right time to eat?", "it doesn’t matter", "only in the morning", "every part of the day except night time", "intermittent fasting (no eating 8AM-4PM)", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(4, "When should you drink water?", "when you are thirsty", "immediately after waking up", "only during a workout", "only when you are eating food", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(5, "How much water should you drink per day?", "5 litres", "drink in order to not be thirsty, there is no correct quantity", "3 litres", "drink a lot of water, as much as you can", "radioB")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(6, "When will you gain fat?", "whenever you eat fats", "immediately after you eat carbs", "when you are in a big caloric surplus", "when you eat only pizzas", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(7, "How many kcal (calories) are in 1g of fat?", "4 kcal", "5 kcal", "9 kcal", "7 kcal", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(8, "What should you eat when you are going to the gym?", "a mixture of ‘healthy’ and fast food if the bodily needs are fulfilled", "only ‘healthy’ food", "only fast food" ,"you should only stay away from carbs", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(9, "Why is insulin important?", "it improves focus", "it is not important", "it is the main anabolic hormone" ,"it lowers blood sugar levels", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(10, "Should you mix different types of food at once?", "absolutely", "no, harm will be done to the brain", "you should not do that! The body can not deal with them at once!" ,"it is not advisable", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(11, "How long should you stay in the gym?", "at least 1 hour", "no more than 2 hours", "30 minutes with giving everything that you have" ,"time is not important if you train with high intensity", "radioD")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(12, "What to do in order to lose fat?", "you should only do cardio", "you should not eat anything for a week", "stay in a caloric deficit" ,"you must go to the gym", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(13, "How many kcal (calories) are in 1g of carbs?", "9 kcal", "4 kcal", "5 kcal" ,"7 kcal", "radioB")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(14, "What to do in order to be properly hydrated", "just drink water", "drink water, milk and tea", "only drink electrolytes" ,"use both water and electrolytes", "radioD")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(15, "How many kcal (calories) are in 1g of protein?", "5 kcal", "4 kcal", "9 kcal" ,"7 kcal", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(16 , "What should you eat before going to the gym?", "you should not eat anything", "you should eat only protein", "you should do what suits you best" ,"you should eat only carbs", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(17 , "When should you eat protein?", "there is no specific time", "in the morning and at dinner", "it is not important, but after going to the gym it is a must" ,"only before and after going to the gym", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(18 , "What do carbs do in the body?", "they make you lose focus", "they make you fatter", "they are the main energy source for our body" ,"they decrease blood sugar levels", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(19 , "Which hormone is the main anabolic hormone?", "insulin", "glucagon", "adrenaline" ,"noradrenaline", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(20 , "Why is fiber important?", "it increases blood sugar levels", "it is a carb, it can not do good stuff", "it improves bowel movements and eases the work of the pancreas" ,"it is good for oral health", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(21, "Why are fruits and vegetables different?", "they are colorful", "they contain only sugar in them", "they contain fiber", "they are calorie dense", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(22, "Which protein source contains the most protein per 100g?", "eggs", "greek yoghurt", "lean meat", "peanut butter", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(23, "Which protein source is the best?", "the source that is your favourite", "meat", "plant protein", "dairy products", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(24, "How many kcal (calories) are in 1g of alcohol?", "9 kcal", "7 kcal", "5 kcal", "4 kcal", "radioB")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(25, "Which of the following contains calories?", "vitamins", "minerals", "proteins", "salt", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(26, "Which form of cardio is the best?", "what you want to do the most is always the best", "walking and running", "walking and cycling", "playing sports", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(27, "Which of the following contains the most sugar per 100g?", "milk chocolate", "dates", "dark chocolate", "banana", "radioB")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(28, "Which of the following contains the most fats per 100g?", "peanut butter", "chicken breast", "eggs", "avocado", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(29, "Which of the following has the most calories per 100g?", "olive oil", "ground beef", "milk chocolate", "pepperoni pizza", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(30, "Which of the following contains the least amount of calories per 100g?", "almonds", "dark chocolate", "dates", "fat free greek yoghurt", "radioD")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(31, "When will the body start losing fat?", "when there is no more sugar, so it must start burning fat", "when the person eats only fruits and vegetables", "when the person runs every day, but eats a lot after", "when the reserve sugar in the body is full", "radioA")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(32, "How can you know how much do you eat?", "by asking google", "by measuring by eye", "by measuring with a food scale", "you can not know how much you eat", "radioC")));
-        fragmentList.add(new FragmentQuiz(isNightModeActive, new Question(33, "Which of these macronutrients is the most important?", "proteins", "carbs", "fats", "there is no such thing as ‘the most important nutrient", "radioD")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(1, "How many times should you eat per day?", "once, but after an activity", "twice, whenever you like", "as many times as you like", "three times (breakfast, lunch and dinner)", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(2, "Why are fats important?", "they are not important, they are bad", "they will only keep you warm;", "they protect us from injuries", "they regulate hormonal and bodily functions", "radioD")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(3, "When is the right time to eat?", "it doesn’t matter", "only in the morning", "every part of the day except night time", "intermittent fasting (no eating 8AM-4PM)", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(4, "When should you drink water?", "when you are thirsty", "immediately after waking up", "only during a workout", "only when you are eating food", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(5, "How much water should you drink per day?", "5 litres", "drink in order to not be thirsty, there is no correct quantity", "3 litres", "drink a lot of water, as much as you can", "radioB")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(6, "When will you gain fat?", "whenever you eat fats", "immediately after you eat carbs", "when you are in a big caloric surplus", "when you eat only pizzas", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(7, "How many kcal (calories) are in 1g of fat?", "4 kcal", "5 kcal", "9 kcal", "7 kcal", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(8, "What should you eat when you are going to the gym?", "a mixture of ‘healthy’ and fast food if the bodily needs are fulfilled", "only ‘healthy’ food", "only fast food" ,"you should only stay away from carbs", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(9, "Why is insulin important?", "it improves focus", "it is not important", "it is the main anabolic hormone" ,"it lowers blood sugar levels", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(10, "Should you mix different types of food at once?", "absolutely", "no, harm will be done to the brain", "you should not do that! The body can not deal with them at once!" ,"it is not advisable", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(11, "How long should you stay in the gym?", "at least 1 hour", "no more than 2 hours", "30 minutes with giving everything that you have" ,"time is not important if you train with high intensity", "radioD")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(12, "What to do in order to lose fat?", "you should only do cardio", "you should not eat anything for a week", "stay in a caloric deficit" ,"you must go to the gym", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(13, "How many kcal (calories) are in 1g of carbs?", "9 kcal", "4 kcal", "5 kcal" ,"7 kcal", "radioB")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(14, "What to do in order to be properly hydrated", "just drink water", "drink water, milk and tea", "only drink electrolytes" ,"use both water and electrolytes", "radioD")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(15, "How many kcal (calories) are in 1g of protein?", "5 kcal", "4 kcal", "9 kcal" ,"7 kcal", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(16 , "What should you eat before going to the gym?", "you should not eat anything", "you should eat only protein", "you should do what suits you best" ,"you should eat only carbs", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(17 , "When should you eat protein?", "there is no specific time", "in the morning and at dinner", "it is not important, but after going to the gym it is a must" ,"only before and after going to the gym", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(18 , "What do carbs do in the body?", "they make you lose focus", "they make you fatter", "they are the main energy source for our body" ,"they decrease blood sugar levels", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(19 , "Which hormone is the main anabolic hormone?", "insulin", "glucagon", "adrenaline" ,"noradrenaline", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(20 , "Why is fiber important?", "it increases blood sugar levels", "it is a carb, it can not do good stuff", "it improves bowel movements and eases the work of the pancreas" ,"it is good for oral health", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(21, "Why are fruits and vegetables different?", "they are colorful", "they contain only sugar in them", "they contain fiber", "they are calorie dense", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(22, "Which protein source contains the most protein per 100g?", "eggs", "greek yoghurt", "lean meat", "peanut butter", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(23, "Which protein source is the best?", "the source that is your favourite", "meat", "plant protein", "dairy products", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(24, "How many kcal (calories) are in 1g of alcohol?", "9 kcal", "7 kcal", "5 kcal", "4 kcal", "radioB")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(25, "Which of the following contains calories?", "vitamins", "minerals", "proteins", "salt", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(26, "Which form of cardio is the best?", "what you want to do the most is always the best", "walking and running", "walking and cycling", "playing sports", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(27, "Which of the following contains the most sugar per 100g?", "milk chocolate", "dates", "dark chocolate", "banana", "radioB")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(28, "Which of the following contains the most fats per 100g?", "peanut butter", "chicken breast", "eggs", "avocado", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(29, "Which of the following has the most calories per 100g?", "olive oil", "ground beef", "milk chocolate", "pepperoni pizza", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(30, "Which of the following contains the least amount of calories per 100g?", "almonds", "dark chocolate", "dates", "fat free greek yoghurt", "radioD")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(31, "When will the body start losing fat?", "when there is no more sugar, so it must start burning fat", "when the person eats only fruits and vegetables", "when the person runs every day, but eats a lot after", "when the reserve sugar in the body is full", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(32, "How can you know how much do you eat?", "by asking google", "by measuring by eye", "by measuring with a food scale", "you can not know how much you eat", "radioC")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(33, "Which of these macronutrients is the most important?", "proteins", "carbs", "fats", "there is no such thing as ‘the most important nutrient", "radioD")));
+        questionsList.add(new FragmentQuiz2Options(isNightModeActive, new Question2(34, "Is maintaining an intermittent fast healthier than eating whenever you like?", "yes, it has plenty of positive effects", "no, it doesn’t matter", "radioB")));
+        questionsList.add(new FragmentQuiz2Options(isNightModeActive, new Question2(35, "Which person will not gain fat?", "John who eats only ‘healthy’ good, but doesn’t care about the calories", "Michael who eats whatever he wants, but makes sure to not eat more calories than what his body needs", "radioB")));
+        questionsList.add(new FragmentQuiz2Options(isNightModeActive, new Question2(36, "Which person will have more progress in the gym?", "Jeremy, who believes that he must stay in the gym for at least 2 hours and is constantly tired", "Mike, who stays in the gym for 30 minutes and trains with the highest intensity", "radioB")));
+        questionsList.add(new FragmentQuiz2Options(isNightModeActive, new Question2(37, "Is the ketogenic diet better than a balanced diet?", "yes, people on keto tend to be more focused and have more energy", "no, people on keto lack carbs in their diet so they lack energy most of the time", "radioB")));
 
+        // I use a set to ensure unique numbers, not repetitive ones
+        Random random = new Random();
+        Set<Integer> set = new HashSet<>();
+        for (int i=0;i<10;i++){
+            int position = random.nextInt(37);
+            if (!set.contains(position)){
+                set.add(position);
+            } else {
+                while (set.contains(position))
+                    position = random.nextInt(37);
+            }
+            fragmentList.add(questionsList.get(position));
+        }
     }
 }
