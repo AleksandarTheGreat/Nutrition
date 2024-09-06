@@ -78,11 +78,10 @@ public class Section1And2Activity extends ParentActivity {
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
 
         // Set up the adapter and and load the list on a new thread
-
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
-            allProductsAlways = ContentLoader.createTestList(Section1And2Activity.this);
 
+            allProductsAlways = ContentLoader.createTestList(Section1And2Activity.this);
             productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
 
             handler.post(() -> {
