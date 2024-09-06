@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,19 +64,24 @@ public class FragmentADay extends Fragment implements IEssentials {
         toaster = new Toaster(getContext());
 
         itemsRepo = new ItemsRepo(getContext());
-        itemsAdapter = new ItemsAdapter(getContext(), appCompatActivity, binding, itemsRepo, day);
-
-        binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.recyclerViewFragmentADay.setHasFixedSize(true);
-        binding.recyclerViewFragmentADay.setAdapter(itemsAdapter);
-
-        toaster.text("Listed '" + day.itemsCount() + "' items");
-
         helperFragmentADay = new HelperFragmentADay(getContext());
-        HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
 
-        // Calculate total and change the ui in the material cards
-        HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+            itemsAdapter = new ItemsAdapter(getContext(), appCompatActivity, binding, itemsRepo, day);
+
+            handler.post(() -> {
+                binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
+                binding.recyclerViewFragmentADay.setHasFixedSize(true);
+                binding.recyclerViewFragmentADay.setAdapter(itemsAdapter);
+
+                HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
+
+                // Calculate total and change the ui in the material cards
+                HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
+            });
+
+        }).start();
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,12 +82,25 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         daysRepo = new DaysRepo(getContext());
 
         toaster = new Toaster(getContext());
-        allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
-        checkIfDaysAreEmpty(binding, allDaysAdapter);
 
-        binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
-        binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
+
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+
+            allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
+            checkIfDaysAreEmpty(binding, allDaysAdapter);
+
+            handler.post(() ->{
+                binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
+                binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
+
+                // This is also here since we are using a binding
+                // And binding is a main UI component
+                helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
+            });
+
+        }).start();
 
 
         helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
@@ -95,7 +110,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
         Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
         chip.setChecked(true);
-        helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
     }
 
     @SuppressLint("NotifyDataSetChanged")
