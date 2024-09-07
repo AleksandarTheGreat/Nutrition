@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.nutrition.Adapters.MyIntroFragAdapter;
 import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.R;
@@ -74,15 +75,19 @@ public class MainActivity extends ParentActivity {
         helperMain.setUpCardEventListeners(materialCardViews, binding);
 
         binding.matCardDefinitions.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, "definitions");
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_1);
         });
 
         binding.matCardMythFact.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, "mythFact");
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_2);
         });
 
         binding.matCardQuiz.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, "quiz");
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_3);
+        });
+
+        binding.matCardSearchExamples.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
 
         binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {

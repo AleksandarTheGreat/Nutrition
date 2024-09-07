@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
         android:textSize="28sp"
         android:text="Le Name for Product"
         />
@@ -29,9 +29,7 @@
         android:id="@+id/textViewExplanationIntroductionFragment"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginHorizontal="24dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/textViewTitleIntroductionFragment"
         android:textSize="16sp"
         android:textAlignment="center"

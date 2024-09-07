@@ -56,8 +56,6 @@ public class Section1And2Activity extends ParentActivity {
             return insets;
         });
 
-        addEventListeners();
-
         // Either the first method will be called or the second one
 
         // The first shall be called if we come here via the List button
@@ -88,6 +86,11 @@ public class Section1And2Activity extends ParentActivity {
                 binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
                 binding.recyclerViewSection1And2.setHasFixedSize(true);
                 binding.recyclerViewSection1And2.setAdapter(productsAdapter);
+
+                // Adding the event listeners here
+                // because the allProductsAlways is not loaded on the main thread yet
+                // and causes some null pointer exceptions
+                addEventListeners();
             });
 
         }).start();
@@ -107,6 +110,7 @@ public class Section1And2Activity extends ParentActivity {
 
                     productsAdapter.setProductList(allProductsAlways);
                     productsAdapter.notifyDataSetChanged();
+
                     return;
                 }
 
@@ -120,15 +124,7 @@ public class Section1And2Activity extends ParentActivity {
 
                 helperSection1And2Activity.setUpBackgroundMask(text, binding);
 
-                List<Product> filteredList;
-                if (!checkedIds.isEmpty())
-                    filteredList = allProductsAlways
-                            .stream()
-                            .filter(product -> product.getCategory().equals(text))
-                            .collect(Collectors.toList());
-                else
-                    filteredList = allProductsAlways;
-
+                List<Product> filteredList = helperSection1And2Activity.filterByCategory(text, allProductsAlways);
                 productsAdapter.setProductList(filteredList);
                 productsAdapter.notifyDataSetChanged();
             }
