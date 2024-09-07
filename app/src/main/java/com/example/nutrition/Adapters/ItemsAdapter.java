@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -90,6 +92,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         holder.textViewCalories.setText(String.format("%.2fg", item.getCalories()));
         holder.textViewCarbohydrates.setText(String.format("%.2fg", item.getCarbohydrates()));
         holder.textViewSugar.setText(String.format("%.2fg", item.getSugar()));
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.come_from_left);
+        holder.linearLayout.startAnimation(animation);
     }
 
     @Override

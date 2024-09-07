@@ -14,10 +14,12 @@ import com.example.nutrition.Fragments.FragmentIntroduction;
 import com.example.nutrition.Fragments.FragmentMythReality;
 import com.example.nutrition.Fragments.FragmentQuiz;
 import com.example.nutrition.Fragments.FragmentQuiz2Options;
+import com.example.nutrition.Fragments.FragmentSearchExample;
 import com.example.nutrition.Model.MRModel;
 import com.example.nutrition.Model.Macronutrient;
 import com.example.nutrition.Model.Question;
 import com.example.nutrition.Model.Question2;
+import com.example.nutrition.Model.SEModel;
 import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 
@@ -28,6 +30,11 @@ import java.util.Random;
 import java.util.Set;
 
 public class MyIntroFragAdapter extends FragmentStateAdapter {
+
+    public static final String TYPE_1 = "definitions";
+    public static final String TYPE_2 = "mythFact";
+    public static final String TYPE_3 = "quiz";
+    public static final String TYPE_4 = "searchExample";
 
     private Context context;
     private List<Fragment> fragmentList;
@@ -43,14 +50,17 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         this.isNightModeActive = ThemeUtils.isNightModeActive(appCompatActivity);
 
         switch (type) {
-            case "definitions":
+            case TYPE_1:
                 setUpDefinitionFragments();
                 break;
-            case "mythFact":
+            case TYPE_2:
                 setUpMythFactFragments();
                 break;
-            case "quiz":
+            case TYPE_3:
                 setUpQuizFragments();
+                break;
+            case TYPE_4:
+                setUpSearchExampleFragments();
                 break;
             default:
                 Log.d("Tag", "IDK what happens now");
@@ -72,6 +82,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     private void setUpDefinitionFragments(){
         fragmentList = new ArrayList<>();
 
+        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "In the following slides, you will learn about some generic and most commonly used TERMS in nutrition\n\n", R.drawable.ic_enter), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
@@ -222,5 +233,15 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
             }
             fragmentList.add(questionsList.get(position));
         }
+    }
+
+    private void setUpSearchExampleFragments(){
+        fragmentList = new ArrayList<>();
+
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Solid Measurements", "A list of units that are ACCEPTABLE when searching for food items solid form", new String[]{"Grams (g)", "Kilograms (kg)", "Milligrams (mg)", "Ounces (oz)", "Pounds (lb)"}, R.drawable.ic_solid)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Liquid Measurements", "A list of units that are ACCEPTABLE when searching for food items in liquid form", new String[]{"Liters (l)", "Milliliters (ml)", "Teaspoons (tsp)", "Tablespoons (tbsp)", "Cups", "Fluid ounces (fl oz)", "Pints (pt)", "Quarts (qt)", "Gallons (gal)"}, R.drawable.ic_liquid)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Item Measurements", "A list of most commonly USED words also ACCEPTABLE when searching for food items", new String[]{"Slice", "Bowl", "Piece", "Can", "Stick", "Fillet", "Cube", "Bag", "Jar"}, R.drawable.ic_search)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Valid queries", "All of these are examples of HOW we should SEARCH for food items", new String[]{"2 tablespoons of olive oil", "3 slices of bread", "300 grams cooked rice", "100 grams peanut butter", "5 grams of sugar", "2 liters orange juice", "200 grams chicken"}, R.drawable.ic_correct)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Invalid queries", "All of these are examples of HOW we should NOT SEARCH for food items, even though we might still get ABSURD results", new String[]{"1 galaxy of salt", "500 liters of cake", "12345", "pasta and cheese and chicken and beef and broccoli and carrots and spinach and tomatoes and potatoes", "randomfoodthatisnotreal ", "sdfghjk", "1.5x chicken"}, R.drawable.ic_wrong)));
     }
 }

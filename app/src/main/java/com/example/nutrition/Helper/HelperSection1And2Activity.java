@@ -22,12 +22,12 @@ public class HelperSection1And2Activity {
     private Context context;
     private Toaster toaster;
 
-    public HelperSection1And2Activity(Context context){
+    public HelperSection1And2Activity(Context context) {
         this.context = context;
         this.toaster = new Toaster(context);
     }
 
-    public void showStatistics(ProductsAdapter productsAdapter){
+    public void showStatistics(ProductsAdapter productsAdapter) {
         DoubleSummaryStatistics statisticsProtein = productsAdapter.getProductList().stream().mapToDouble(Product::getProtein).summaryStatistics();
         DoubleSummaryStatistics statisticsCarbs = productsAdapter.getProductList().stream().mapToDouble(Product::getCarbs).summaryStatistics();
         DoubleSummaryStatistics statisticsCalories = productsAdapter.getProductList().stream().mapToDouble(Product::getCalories).summaryStatistics();
@@ -53,95 +53,106 @@ public class HelperSection1And2Activity {
         toaster.alert("Stats:", builder.toString());
     }
 
-    public void setUpByPyramidCategories(AppCompatActivity activity, ActivitySection1And2Binding binding){
+    public void setUpByPyramidCategories(AppCompatActivity activity, ActivitySection1And2Binding binding) {
         String category = activity.getIntent().getStringExtra("category");
-        if (category == null){
+        if (category == null) {
             setUpBackgroundMask("", binding);
             return;
         }
 
 
         // Here we only update the UI since the event listeners are already set in the addEventListeners method
-        for (int i=0;i<binding.chipGroupSection1And2.getChildCount();i++){
+        for (int i = 0; i < binding.chipGroupSection1And2.getChildCount(); i++) {
             Chip chip = (Chip) binding.chipGroupSection1And2.getChildAt(i);
             String text = chip.getText().toString().trim();
 
             setUpBackgroundMask(text, binding);
 
-            if (category.equals(text)){
+            if (category.equals(text)) {
                 chip.setChecked(true);
                 break;
             }
         }
     }
 
-    public void setUpBackgroundMask(String category, ActivitySection1And2Binding binding){
-        switch (category){
-            case "Grains":{
+    public void setUpBackgroundMask(String category, ActivitySection1And2Binding binding) {
+        switch (category) {
+            case "Grains": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_grains));
                 break;
-            } case "Vegetables":{
+            }
+            case "Vegetables": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_vegetables));
                 break;
-            } case "Fruits":{
+            }
+            case "Fruits": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_fruit));
                 break;
-            } case "Meat and Proteins":{
+            }
+            case "Meat and Proteins": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_meat));
                 break;
-            } case "Dairy":{
+            }
+            case "Dairy": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_dairy));
                 break;
-            } case "Fats, Oils, and Sweets":{
+            }
+            case "Fats, Oils, and Sweets": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_fats));
                 break;
-            } case "Fast Food":{
+            }
+            case "Fast Food": {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_fast_food));
                 break;
-            } default:{
+            }
+            default: {
                 binding.mainLayoutSection1And2Activity.setBackground(ContextCompat.getDrawable(context, R.drawable.mask_default));
             }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setUpByFilters(AppCompatActivity activity, ProductsAdapter productsAdapter){
+    public void setUpByFilters(AppCompatActivity activity, ProductsAdapter productsAdapter) {
         String text = activity.getIntent().getStringExtra("filter");
         if (text == null)
             return;
 
         List<Product> sortedList = new ArrayList<>();
 
-        switch (text){
-            case "Most Protein":{
+        switch (text) {
+            case "Most Protein": {
                 sortedList = productsAdapter.getProductList()
                         .stream()
                         .sorted(Comparator.comparing(Product::getProtein).reversed())
                         .limit(10)
                         .collect(Collectors.toList());
                 break;
-            } case "Most Calories":{
+            }
+            case "Most Calories": {
                 sortedList = productsAdapter.getProductList()
                         .stream()
                         .sorted(Comparator.comparing(Product::getCalories).reversed())
                         .limit(10)
                         .collect(Collectors.toList());
                 break;
-            } case "Least Calories":{
+            }
+            case "Least Calories": {
                 sortedList = productsAdapter.getProductList()
                         .stream()
                         .sorted(Comparator.comparing(Product::getCalories))
                         .limit(10)
                         .collect(Collectors.toList());
                 break;
-            } case "Least Sugar":{
+            }
+            case "Least Sugar": {
                 sortedList = productsAdapter.getProductList()
                         .stream()
                         .sorted(Comparator.comparing(Product::getSugar))
                         .limit(10)
                         .collect(Collectors.toList());
                 break;
-            } case "Most Carbs":{
+            }
+            case "Most Carbs": {
                 sortedList = productsAdapter.getProductList()
                         .stream()
                         .sorted(Comparator.comparing(Product::getCarbs).reversed())
@@ -155,63 +166,81 @@ public class HelperSection1And2Activity {
         productsAdapter.notifyDataSetChanged();
     }
 
-    public List<Product> findFilteredProducts(String text, List<Product> allProductsAlways){
+    public List<Product> findFilteredProducts(String text, List<Product> allProductsAlways) {
         List<Product> products = new ArrayList<>();
-        switch (text){
+        switch (text) {
             case "Most Protein": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getProtein).reversed())
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            } case "Least Protein": {
+            }
+            case "Least Protein": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getProtein))
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            }  case "Most Calories": {
+            }
+            case "Most Calories": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getCalories).reversed())
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            }  case "Least Calories": {
+            }
+            case "Least Calories": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getCalories))
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            }  case "Most Carbs": {
+            }
+            case "Most Carbs": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getCarbs).reversed())
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            }  case "Least Carbs": {
+            }
+            case "Least Carbs": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getCarbs))
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            }  case "Most Sugar": {
+            }
+            case "Most Sugar": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getSugar).reversed())
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            }  case "Least Sugar": {
+            }
+            case "Least Sugar": {
                 products = allProductsAlways.stream()
                         .sorted(Comparator.comparing(Product::getSugar))
                         .limit(20)
                         .collect(Collectors.toList());
                 break;
-            } default:{
+            }
+            default: {
                 products = allProductsAlways;
                 break;
             }
         }
         return products;
+    }
+
+    public List<Product> filterByCategory(String text, List<Product> allProductsAlways) {
+        List<Product> filteredList;
+        filteredList = allProductsAlways
+                .stream()
+                .filter(product -> product.getCategory().equals(text))
+                .collect(Collectors.toList());
+
+        return filteredList;
     }
 
 }

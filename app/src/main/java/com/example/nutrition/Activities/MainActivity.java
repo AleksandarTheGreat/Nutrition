@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.nutrition.Adapters.MyIntroFragAdapter;
 import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.R;
@@ -74,15 +75,19 @@ public class MainActivity extends ParentActivity {
         helperMain.setUpCardEventListeners(materialCardViews, binding);
 
         binding.matCardDefinitions.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, "definitions");
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_1);
         });
 
         binding.matCardMythFact.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, "mythFact");
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_2);
         });
 
         binding.matCardQuiz.setOnClickListener(view -> {
-            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, "quiz");
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_3);
+        });
+
+        binding.matCardSearchExamples.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
 
         binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
@@ -104,6 +109,8 @@ public class MainActivity extends ParentActivity {
             binding.textView1.setTextColor(colorBright);
             binding.textView2.setTextColor(colorBright);
             binding.textView3.setTextColor(colorBright);
+            binding.textView4.setTextColor(colorBright);
+            binding.textView5.setTextColor(colorBright);
         } else {
             binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
             binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
@@ -116,15 +123,17 @@ public class MainActivity extends ParentActivity {
             binding.textView1.setTextColor(colorDark);
             binding.textView2.setTextColor(colorDark);
             binding.textView3.setTextColor(colorDark);
+            binding.textView4.setTextColor(colorDark);
+            binding.textView5.setTextColor(colorDark);
         }
 
-        int primaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
-        int secondaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
-        int tertiaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorTertiaryContainer, Color.BLACK);
-
-        binding.matCardDefinitions.setCardBackgroundColor(primaryContainer);
-        binding.matCardMythFact.setCardBackgroundColor(secondaryContainer);
-        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
+//        int primaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
+//        int secondaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
+//        int tertiaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorTertiaryContainer, Color.BLACK);
+//
+//        binding.matCardDefinitions.setCardBackgroundColor(primaryContainer);
+//        binding.matCardMythFact.setCardBackgroundColor(secondaryContainer);
+//        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);
     }

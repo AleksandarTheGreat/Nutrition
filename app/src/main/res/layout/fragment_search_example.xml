@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Fragments.FragmentSearchExample">
+
+    <ImageView
+        android:id="@+id/imageViewFragmentSearchExample"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="24dp"
+        />
+
+    <TextView
+        android:id="@+id/textViewTitleFragmentSearchExample"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="12dp"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:text="Le Measurment Unit"
+        />
+
+    <TextView
+        android:id="@+id/textViewTitleDescriptionFragmentSearchExample"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="24dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:text="Le Measurment Unit"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutExamplesFragmentSearchExample"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="- Some text here"
+            android:layout_marginBottom="4dp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

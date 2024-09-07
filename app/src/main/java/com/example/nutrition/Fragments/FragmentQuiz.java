@@ -1,11 +1,14 @@
 package com.example.nutrition.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ public class FragmentQuiz extends Fragment implements IEssentials {
     private FragmentQuizBinding binding;
     private boolean isNightModeActive;
     private Question question;
+    private MediaPlayer mediaPlayer;
 
     public FragmentQuiz() {
         // Required empty public constructor
@@ -67,6 +71,7 @@ public class FragmentQuiz extends Fragment implements IEssentials {
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_correct);
                     binding.imageViewEmoji.setImageResource(R.drawable.ic_smiling);
+                    playWinSounds();
                 } else {
                     binding.textViewStatusFragmentQuiz.setText("Incorrect!");
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
@@ -79,5 +84,10 @@ public class FragmentQuiz extends Fragment implements IEssentials {
 
     private void additionalThemeChanges(){
 
+    }
+
+    private void playWinSounds(){
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.win_bell);
+        mediaPlayer.start();
     }
 }
