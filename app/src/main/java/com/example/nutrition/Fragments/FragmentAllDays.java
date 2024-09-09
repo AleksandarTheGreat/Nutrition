@@ -106,8 +106,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
 
         // Set up the graph with data
-        // As a default selection when first we load the fragment
-
+        // Se the default selection the saved one
         Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
         chip.setChecked(true);
     }
