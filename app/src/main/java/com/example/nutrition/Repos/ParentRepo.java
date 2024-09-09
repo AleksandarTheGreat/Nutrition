@@ -39,6 +39,8 @@ public class ParentRepo extends SQLiteOpenHelper {
                 "FOREIGN KEY(d_id) REFERENCES days(id)" +
                 ");";
 
+        String createSuggestionsTable;
+
         db.execSQL(createDaysTable);
         db.execSQL(createItemsTable);
         Log.d("Tag", "Tables 'days' and 'items' created successfully");
