@@ -253,14 +253,76 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
 
     private void setUpQuoteFragments(){
         fragmentList = new ArrayList<>();
+        List<FragmentQuote> quoteList = new ArrayList<>();
 
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 1", "Author 1")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 2", "Author 2")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 3", "Author 3")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 4", "Author 4")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 5", "Author 5")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 6", "Author 6")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 7", "Author 7")));
-        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 8", "Author 8")));
+        // Nutritional quotes
+
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Take care of your body. It’s the only place you have to live.", "Jim Rohn")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Eat for the body you want, not for the body you have.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Your diet is a bank account. Good food choices are good investments.", "Bethenny Frankel")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Let food be thy medicine and medicine be thy food.", "Hippocrates")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("You are what you eat, so don’t be fast, cheap, easy, or fake.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Every time you eat is an opportunity to nourish your body.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The food you eat can either be the safest and most powerful form of medicine or the slowest form of poison.", "Ann Wigmore")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Eat to fuel your body, not to feed your emotions.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Healthy eating is a way of life, so it’s important to establish routines that are simple, realistically, and ultimately livable.", "Horace")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("To eat is a necessity, but to eat intelligently is an art.", "François de La Rochefoucauld")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The first wealth is health.", "Ralph Waldo Emerson")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("What you eat in private, you wear in public.", "Rudolf")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Don’t dig your grave with your own knife and fork.", "English Proverb")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The more you eat junk food, the less you eat healthy food.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Good nutrition creates health in all areas of our existence. All parts are interconnected.", "T. Colin Campbell")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Food is fuel. You aren’t a garbage truck.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("If you keep good food in your fridge, you will eat good food.", "Angel")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The groundwork for all happiness is good health.", "Leigh Hunt")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("A healthy outside starts from the inside.", "Robert Urich")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The greatest wealth is health.", "Virgil")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Success is the sum of small efforts, repeated day-in and day-out.", "Robert Collier")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Eating well is a form of self-respect.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("You don’t have to eat less, you just have to eat right.", "Damian")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Motivation is what gets you started, habit is what keeps you going.", "Virgil")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("When diet is wrong, medicine is of no use. When diet is correct, medicine is of no need.", "Ayurvedic Proverb")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("No pain, no gain.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Success starts with self-discipline.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Your body can stand almost anything. It’s your mind you have to convince.", "Paulo Andreevich")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The only bad workout is the one that didn’t happen.", "Antonio La Frank")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Sweat is just fat crying.", "Peter")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Push yourself because no one else is going to do it for you.", "David")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The only way to finish is to start.", "Goggins")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Train insane or remain the same.", "Arnold")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Don’t stop when you’re tired. Stop when you’re done.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The body achieves what the mind believes.", "Charlie")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Exercise is a celebration of what your body can do. Not a punishment for what you ate.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Wake up with determination. Go to bed with satisfaction.", "Antonio")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Success isn’t always about greatness. It’s about consistency. Consistent hard work gains success. Greatness will come.", " Dwayne \"The Rock\" Johnson")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("If you think lifting is dangerous, try being weak. Being weak is dangerous.", "Bret Contreras")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The pain you feel today will be the strength you feel tomorrow.", "Davido Gustavo")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Fitness is not about being better than someone else. It’s about being better than you used to be.", "Raffaello")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("What seems impossible today will one day become your warm-up.", "Cillian")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Strength does not come from physical capacity. It comes from an indomitable will.", "Mahatma Gandhi")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("We are what we repeatedly do. Excellence, then, is not an act, but a habit.", "Aristotle")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Rome wasn’t built in a day, but they worked on it every single day.", "Ceaser")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("When you feel like quitting, think about why you started.", "Madrazo")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("It never gets easier, you just get stronger.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("A year from now you will wish you had started today.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Don’t limit your challenges. Challenge your limits.", "Marcus")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Believe you can and you’re halfway there.", "Theodore Roosevelt")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Consistency unlocks many doors", "Someone")));
+
+
+        // To ensure all 10 questions are not repetitive
+        Random random = new Random();
+        Set<Integer> set = new HashSet<>();
+        for (int i=0;i<10;i++){
+            int num = random.nextInt(50);
+            if (!set.contains(num)){
+                set.add(num);
+            } else {
+                while (set.contains(num))
+                    num = random.nextInt(50);
+                set.add(num);
+            }
+            fragmentList.add(quoteList.get(num));
+        }
     }
 }
