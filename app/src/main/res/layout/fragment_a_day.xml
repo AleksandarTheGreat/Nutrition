@@ -149,6 +149,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewNutrient1Number"
+
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -164,8 +165,7 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_marginStart="4dp"
-            android:layout_marginBottom="4dp"
-            >
+            android:layout_marginBottom="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="match_parent"
@@ -322,7 +322,7 @@
         android:layout_width="match_parent"
         android:layout_below="@id/gridLayoutFragmentADay"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="24dp">
+        android:layout_marginBottom="12dp">
 
         <ImageView
             android:id="@+id/imageViewIconDay"
