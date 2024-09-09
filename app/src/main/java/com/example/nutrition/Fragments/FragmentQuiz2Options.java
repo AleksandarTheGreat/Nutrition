@@ -1,7 +1,9 @@
 package com.example.nutrition.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Model.Question2;
 import com.example.nutrition.R;
 import com.example.nutrition.databinding.FragmentQuiz2OptionsBinding;
+import com.google.android.material.color.MaterialColors;
 
 public class FragmentQuiz2Options extends Fragment implements IEssentials {
 
@@ -53,15 +56,24 @@ public class FragmentQuiz2Options extends Fragment implements IEssentials {
         binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton button = group.findViewById(checkedId);
-                String tag = button.getTag().toString().trim();
+                RadioButton radioButton = group.findViewById(checkedId);
+                String tag = radioButton.getTag().toString().trim();
+                int textColor;
 
                 if (tag.equals(question2.getCorrectOption())){
+                    if (isNightModeActive) textColor = MaterialColors.getColor(getContext(), android.R.attr.textColorPrimary, Color.WHITE);
+                    else textColor = MaterialColors.getColor(getContext(), android.R.attr.textColorPrimary, Color.BLACK);
+                    radioButton.setTextColor(textColor);
+
                     binding.textViewStatusFragmentQuiz.setText("Correct!");
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_correct);
                     binding.imageViewEmoji.setImageResource(R.drawable.ic_smiling);
                 } else {
+                    if (isNightModeActive) textColor = ContextCompat.getColor(getContext(), R.color.white60Opacity);
+                    else textColor = ContextCompat.getColor(getContext(), R.color.black60Opacity);
+                    radioButton.setTextColor(textColor);
+
                     binding.textViewStatusFragmentQuiz.setText("Incorrect!");
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_wrong);
@@ -72,6 +84,22 @@ public class FragmentQuiz2Options extends Fragment implements IEssentials {
     }
 
     private void additionalThemeChanges(){
+        setRadioButtonColors();
+    }
 
+    private void setRadioButtonColors(){
+        if (isNightModeActive){
+            int color = ContextCompat.getColor(getContext(), R.color.white60Opacity);
+            for (int i=0;i<binding.radioGroup.getChildCount();i++){
+                RadioButton radioButton = (RadioButton) binding.radioGroup.getChildAt(i);
+                radioButton.setTextColor(color);
+            }
+        } else {
+            int color = ContextCompat.getColor(getContext(), R.color.black60Opacity);
+            for (int i=0;i<binding.radioGroup.getChildCount();i++){
+                RadioButton radioButton = (RadioButton) binding.radioGroup.getChildAt(i);
+                radioButton.setTextColor(color);
+            }
+        }
     }
 }

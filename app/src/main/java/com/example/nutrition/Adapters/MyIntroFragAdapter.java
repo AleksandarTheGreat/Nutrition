@@ -14,9 +14,11 @@ import com.example.nutrition.Fragments.FragmentIntroduction;
 import com.example.nutrition.Fragments.FragmentMythReality;
 import com.example.nutrition.Fragments.FragmentQuiz;
 import com.example.nutrition.Fragments.FragmentQuiz2Options;
+import com.example.nutrition.Fragments.FragmentQuote;
 import com.example.nutrition.Fragments.FragmentSearchExample;
 import com.example.nutrition.Model.MRModel;
 import com.example.nutrition.Model.Macronutrient;
+import com.example.nutrition.Model.QModel;
 import com.example.nutrition.Model.Question;
 import com.example.nutrition.Model.Question2;
 import com.example.nutrition.Model.SEModel;
@@ -35,6 +37,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     public static final String TYPE_2 = "mythFact";
     public static final String TYPE_3 = "quiz";
     public static final String TYPE_4 = "searchExample";
+    public static final String TYPE_5 = "quotes";
 
     private Context context;
     private List<Fragment> fragmentList;
@@ -61,6 +64,9 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
                 break;
             case TYPE_4:
                 setUpSearchExampleFragments();
+                break;
+            case TYPE_5:
+                setUpQuoteFragments();
                 break;
             default:
                 Log.d("Tag", "IDK what happens now");
@@ -185,7 +191,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(64, "Which of the following contains the most kcal per 100g?", "steak", "hard boiled eggs", "avocado", "dark chocolate", "radioD")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(65, "When should people consume creatine?", "after they wake up", "after working out", "before bedtime", "there is no rule, but it’s advisable before doing the activity", "radioD")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(66, "What does creatine do to the body?", "it gives you more energy during exercise", "it only makes you bloated", "it makes you look bigger and fatter", "it doesn’t do anything", "radioA")));
-        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(67, "Alexander ran 10 km, what food should he eat now?", "pasta carbonara (mixture of carbs and protein, but mainly carbs)", "steak (mainly protein)", "eggs (mainly protein and fats)", "he should only drink water", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(67, "Alexandar ran 10 km, what food should he eat now?", "pasta carbonara (mixture of carbs and protein, but mainly carbs)", "steak (mainly protein)", "eggs (mainly protein and fats)", "he should only drink water", "radioA")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(68, "Which food contains the most protein per 100g?", "peanut butter", "eggs", "Greek yoghurt", "chickpeas", "radioA")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(69, "Which nuts contain the most protein?", "macadamia nuts", "walnuts", "peanuts", "almonds", "radioC")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(70, "Angel and Alexander both want to lose weight, but they use different methods, who will lose weight?", "Angel, because he only eats junk food and is in a caloric deficit", "Alexander, because he eats mainly fruits, vegetables and meat and is also in a caloric deficit", "both will lose weight", "neither will lose weight", "radioC")));
@@ -238,10 +244,85 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     private void setUpSearchExampleFragments(){
         fragmentList = new ArrayList<>();
 
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Solid Measurements", "A list of units that are ACCEPTABLE when searching for food items solid form", new String[]{"Grams (g)", "Kilograms (kg)", "Milligrams (mg)", "Ounces (oz)", "Pounds (lb)"}, R.drawable.ic_solid)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Liquid Measurements", "A list of units that are ACCEPTABLE when searching for food items in liquid form", new String[]{"Liters (l)", "Milliliters (ml)", "Teaspoons (tsp)", "Tablespoons (tbsp)", "Cups", "Fluid ounces (fl oz)", "Pints (pt)", "Quarts (qt)", "Gallons (gal)"}, R.drawable.ic_liquid)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Item Measurements", "A list of most commonly USED words also ACCEPTABLE when searching for food items", new String[]{"Slice", "Bowl", "Piece", "Can", "Stick", "Fillet", "Cube", "Bag", "Jar"}, R.drawable.ic_search)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Valid queries", "All of these are examples of HOW we should SEARCH for food items", new String[]{"2 tablespoons of olive oil", "3 slices of bread", "300 grams cooked rice", "100 grams peanut butter", "5 grams of sugar", "2 liters orange juice", "200 grams chicken"}, R.drawable.ic_correct)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Invalid queries", "All of these are examples of HOW we should NOT SEARCH for food items, even though we might still get ABSURD results", new String[]{"1 galaxy of salt", "500 liters of cake", "12345", "pasta and cheese and chicken and beef and broccoli and carrots and spinach and tomatoes and potatoes", "randomfoodthatisnotreal ", "sdfghjk", "1.5x chicken"}, R.drawable.ic_wrong)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Solid Measurements", "A list of units that are acceptable when searching for food items solid form", new String[]{"Grams (g)", "Kilograms (kg)", "Milligrams (mg)", "Ounces (oz)", "Pounds (lb)"}, R.drawable.ic_solid)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Liquid Measurements", "A list of units that are acceptable when searching for food items in liquid form", new String[]{"Liters (l)", "Milliliters (ml)", "Teaspoons (tsp)", "Tablespoons (tbsp)", "Cups", "Fluid ounces (fl oz)", "Pints (pt)", "Quarts (qt)", "Gallons (gal)"}, R.drawable.ic_liquid)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Item Measurements", "A list of most commonly used words also acceptable when searching for food items", new String[]{"Slice", "Bowl", "Piece", "Can", "Stick", "Fillet", "Cube", "Bag", "Jar"}, R.drawable.ic_search)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Valid queries", "All of these are examples of how we should search for food items", new String[]{"2 tablespoons of olive oil", "3 slices of bread", "300 grams cooked rice", "100 grams peanut butter", "5 grams of sugar", "2 liters orange juice", "200 grams chicken"}, R.drawable.ic_correct)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Invalid queries", "All of these are examples of how we should NOT search for food items, even though we might still get absurd results", new String[]{"1 galaxy of salt", "500 liters of cake", "12345", "pasta and cheese and chicken and beef and broccoli and carrots and spinach and tomatoes and potatoes", "randomfoodthatisnotreal ", "sdfghjk", "1.5x chicken"}, R.drawable.ic_wrong)));
+    }
+
+    private void setUpQuoteFragments(){
+        fragmentList = new ArrayList<>();
+        List<FragmentQuote> quoteList = new ArrayList<>();
+
+        // Nutritional quotes
+
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Take care of your body. It’s the only place you have to live.", "Jim Rohn")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Eat for the body you want, not for the body you have.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Your diet is a bank account. Good food choices are good investments.", "Bethenny Frankel")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Let food be thy medicine and medicine be thy food.", "Hippocrates")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("You are what you eat, so don’t be fast, cheap, easy, or fake.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Every time you eat is an opportunity to nourish your body.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The food you eat can either be the safest and most powerful form of medicine or the slowest form of poison.", "Ann Wigmore")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Eat to fuel your body, not to feed your emotions.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Healthy eating is a way of life, so it’s important to establish routines that are simple, realistically, and ultimately livable.", "Horace")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("To eat is a necessity, but to eat intelligently is an art.", "François de La Rochefoucauld")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The first wealth is health.", "Ralph Waldo Emerson")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("What you eat in private, you wear in public.", "Rudolf")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Don’t dig your grave with your own knife and fork.", "English Proverb")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The more you eat junk food, the less you eat healthy food.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Good nutrition creates health in all areas of our existence. All parts are interconnected.", "T. Colin Campbell")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Food is fuel. You aren’t a garbage truck.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("If you keep good food in your fridge, you will eat good food.", "Angel")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The groundwork for all happiness is good health.", "Leigh Hunt")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("A healthy outside starts from the inside.", "Robert Urich")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The greatest wealth is health.", "Virgil")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Success is the sum of small efforts, repeated day-in and day-out.", "Robert Collier")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Eating well is a form of self-respect.", "Someone")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("You don’t have to eat less, you just have to eat right.", "Damian")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Motivation is what gets you started, habit is what keeps you going.", "Virgil")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("When diet is wrong, medicine is of no use. When diet is correct, medicine is of no need.", "Ayurvedic Proverb")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("No pain, no gain.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Success starts with self-discipline.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Your body can stand almost anything. It’s your mind you have to convince.", "Paulo Andreevich")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The only bad workout is the one that didn’t happen.", "Antonio La Frank")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Sweat is just fat crying.", "Peter")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Push yourself because no one else is going to do it for you.", "David")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The only way to finish is to start.", "Goggins")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Train insane or remain the same.", "Arnold")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Don’t stop when you’re tired. Stop when you’re done.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The body achieves what the mind believes.", "Charlie")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Exercise is a celebration of what your body can do. Not a punishment for what you ate.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Wake up with determination. Go to bed with satisfaction.", "Antonio")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Success isn’t always about greatness. It’s about consistency. Consistent hard work gains success. Greatness will come.", " Dwayne \"The Rock\" Johnson")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("If you think lifting is dangerous, try being weak. Being weak is dangerous.", "Bret Contreras")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("The pain you feel today will be the strength you feel tomorrow.", "Davido Gustavo")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Fitness is not about being better than someone else. It’s about being better than you used to be.", "Raffaello")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("What seems impossible today will one day become your warm-up.", "Cillian")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Strength does not come from physical capacity. It comes from an indomitable will.", "Mahatma Gandhi")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("We are what we repeatedly do. Excellence, then, is not an act, but a habit.", "Aristotle")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Rome wasn’t built in a day, but they worked on it every single day.", "Ceaser")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("When you feel like quitting, think about why you started.", "Madrazo")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("It never gets easier, you just get stronger.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("A year from now you will wish you had started today.", "Unknown")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Don’t limit your challenges. Challenge your limits.", "Marcus")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Believe you can and you’re halfway there.", "Theodore Roosevelt")));
+        quoteList.add(new FragmentQuote(isNightModeActive, new QModel("Consistency unlocks many doors", "Someone")));
+
+
+        // To ensure all 10 questions are not repetitive
+        Random random = new Random();
+        Set<Integer> set = new HashSet<>();
+        for (int i=0;i<10;i++){
+            int num = random.nextInt(50);
+            if (!set.contains(num)){
+                set.add(num);
+            } else {
+                while (set.contains(num))
+                    num = random.nextInt(50);
+                set.add(num);
+            }
+            fragmentList.add(quoteList.get(num));
+        }
     }
 }

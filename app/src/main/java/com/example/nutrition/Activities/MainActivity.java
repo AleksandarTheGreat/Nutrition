@@ -90,6 +90,10 @@ public class MainActivity extends ParentActivity {
             helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
 
+        binding.matCardMotivationalQuotes.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_5);
+        });
+
         binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
