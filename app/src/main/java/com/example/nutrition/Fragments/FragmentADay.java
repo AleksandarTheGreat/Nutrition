@@ -1,6 +1,7 @@
 package com.example.nutrition.Fragments;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nutrition.Activities.IntroductionActivity;
 import com.example.nutrition.Adapters.ItemsAdapter;
+import com.example.nutrition.Adapters.MyIntroFragAdapter;
 import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Helper.HelperFragmentADay;
+import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
@@ -26,6 +30,7 @@ import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
+import com.google.android.material.color.MaterialColors;
 
 
 public class FragmentADay extends Fragment implements IEssentials {
@@ -38,6 +43,7 @@ public class FragmentADay extends Fragment implements IEssentials {
     private ItemsAdapter itemsAdapter;
     private ItemsRepo itemsRepo;
     private HelperFragmentADay helperFragmentADay;
+    private HelperMain helperMain;
 
     public FragmentADay() {
     }
@@ -65,6 +71,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
         itemsRepo = new ItemsRepo(getContext());
         helperFragmentADay = new HelperFragmentADay(getContext());
+        helperMain = new HelperMain(getContext());
 
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
@@ -99,6 +106,10 @@ public class FragmentADay extends Fragment implements IEssentials {
                 return false;
             }
         });
+
+        binding.textViewHelp.setOnClickListener(view -> {
+            helperMain.goToActivity(getContext(), IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
+        });
     }
 
     public void additionalThemeSettings(){
@@ -113,6 +124,9 @@ public class FragmentADay extends Fragment implements IEssentials {
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
         }
+
+        int primaryColor = MaterialColors.getColor(getContext(), com.google.android.material.R.attr.colorPrimary, Color.BLACK);
+        binding.textViewHelp.setTextColor(primaryColor);
     }
 
 }
