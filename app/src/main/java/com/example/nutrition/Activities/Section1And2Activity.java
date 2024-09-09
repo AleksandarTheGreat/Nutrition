@@ -153,6 +153,11 @@ public class Section1And2Activity extends ParentActivity {
             }
         });
 
+        binding.searchViewSection1And2.setOnSearchClickListener(view -> {
+            binding.chipGroupSection1And2.clearCheck();
+            binding.chipGroupFiltersSection1And2.clearCheck();
+        });
+
         binding.searchViewSection1And2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

@@ -75,10 +75,9 @@ public class FragmentSearchExample extends Fragment implements IEssentials {
         linearLayout.removeAllViews();
 
         int color = 0;
-        if (isNightModeOn)
-            color = ContextCompat.getColor(getContext(), R.color.white60Opacity);
-        else
-            color = ContextCompat.getColor(getContext(), R.color.black60Opacity);
+
+        if (isNightModeOn) color = ContextCompat.getColor(getContext(), R.color.white60Opacity);
+        else color = ContextCompat.getColor(getContext(), R.color.black60Opacity);
 
         for (int i=0;i<list.size();i++){
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -87,6 +86,7 @@ public class FragmentSearchExample extends Fragment implements IEssentials {
             TextView textView = new TextView(getContext());
             textView.setTextColor(color);
             textView.setLayoutParams(layoutParams);
+            textView.setTextSize(16);
             textView.setText(" - " + list.get(i));
 
             linearLayout.addView(textView);
