@@ -101,6 +101,10 @@ public class HelperFragmentADay {
                                     HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
                                     // Calculate total and change the ui in the material cards
 
+                                    /**
+                                    // Add the string search text to a database table
+                                     */
+
                                     progressDialog.dismiss();
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
                                 }

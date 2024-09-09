@@ -12,10 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.anychart.core.annotations.Line;
+import com.anychart.scales.Linear;
 import com.example.nutrition.Activities.IntroductionActivity;
 import com.example.nutrition.Adapters.ItemsAdapter;
 import com.example.nutrition.Adapters.MyIntroFragAdapter;
@@ -86,6 +93,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
                 // Calculate total and change the ui in the material cards
                 HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
+                addEventListeners();
             });
 
         }).start();
@@ -110,6 +118,21 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.textViewHelp.setOnClickListener(view -> {
             helperMain.goToActivity(getContext(), IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
+
+        binding.searchViewFragmentADay.setOnSearchClickListener(view -> {
+            binding.scrollViewSuggestions.setVisibility(View.VISIBLE);
+            binding.relativeLayoutFragmentADay.setVisibility(View.GONE);
+            setUpTextViewsInTheScrollView();
+        });
+
+        binding.searchViewFragmentADay.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                binding.scrollViewSuggestions.setVisibility(View.GONE);
+                binding.relativeLayoutFragmentADay.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
     }
 
     public void additionalThemeSettings(){
@@ -129,7 +152,66 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.textViewHelp.setTextColor(primaryColor);
     }
 
+    @SuppressLint("SetTextI18n")
+    private void setUpTextViewsInTheScrollView(){
+        binding.linearLayoutSuggestionsFragmentADay.removeAllViews();
+
+        // These layout creations take time, that is why they shall be created on a new thread
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+
+            for (int i=0;i<5;i++){
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(0,0,0,24);
+
+                LinearLayout linearLayout = new LinearLayout(getContext());
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                linearLayout.setLayoutParams(layoutParams);
+                linearLayout.setGravity(Gravity.CENTER_VERTICAL);
+                linearLayout.setBackgroundResource(R.drawable.back_for_suggestion);
+
+
+
+
+                layoutParams = new LinearLayout.LayoutParams(80, 80);
+                layoutParams.setMargins(12,12,12,12);
+
+                ImageView imageView = new ImageView(getContext());
+                imageView.setImageResource(R.drawable.ic_sun_white);
+                imageView.setLayoutParams(layoutParams);
+
+
+
+
+                layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(12, 12, 12, 12);
+
+                TextView textView = new TextView(getContext());
+                textView.setText("Suggestion " + (i + 1));
+                textView.setTextSize(16);
+                textView.setLayoutParams(layoutParams);
+
+                linearLayout.addView(imageView);
+                linearLayout.addView(textView);
+
+                handler.post(() -> {
+                    binding.linearLayoutSuggestionsFragmentADay.addView(linearLayout);
+                    linearLayout.setOnClickListener(view -> {
+                        String text = textView.getText().toString().trim();
+                        binding.searchViewFragmentADay.setQuery(text, false);
+                    });
+                });
+            }
+
+        }).start();
+    }
+
 }
+
+
+
+
+
 
 
 
