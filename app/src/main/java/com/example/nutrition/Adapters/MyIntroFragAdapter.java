@@ -14,9 +14,11 @@ import com.example.nutrition.Fragments.FragmentIntroduction;
 import com.example.nutrition.Fragments.FragmentMythReality;
 import com.example.nutrition.Fragments.FragmentQuiz;
 import com.example.nutrition.Fragments.FragmentQuiz2Options;
+import com.example.nutrition.Fragments.FragmentQuote;
 import com.example.nutrition.Fragments.FragmentSearchExample;
 import com.example.nutrition.Model.MRModel;
 import com.example.nutrition.Model.Macronutrient;
+import com.example.nutrition.Model.QModel;
 import com.example.nutrition.Model.Question;
 import com.example.nutrition.Model.Question2;
 import com.example.nutrition.Model.SEModel;
@@ -35,6 +37,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     public static final String TYPE_2 = "mythFact";
     public static final String TYPE_3 = "quiz";
     public static final String TYPE_4 = "searchExample";
+    public static final String TYPE_5 = "quotes";
 
     private Context context;
     private List<Fragment> fragmentList;
@@ -61,6 +64,9 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
                 break;
             case TYPE_4:
                 setUpSearchExampleFragments();
+                break;
+            case TYPE_5:
+                setUpQuoteFragments();
                 break;
             default:
                 Log.d("Tag", "IDK what happens now");
@@ -185,7 +191,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(64, "Which of the following contains the most kcal per 100g?", "steak", "hard boiled eggs", "avocado", "dark chocolate", "radioD")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(65, "When should people consume creatine?", "after they wake up", "after working out", "before bedtime", "there is no rule, but it’s advisable before doing the activity", "radioD")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(66, "What does creatine do to the body?", "it gives you more energy during exercise", "it only makes you bloated", "it makes you look bigger and fatter", "it doesn’t do anything", "radioA")));
-        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(67, "Alexander ran 10 km, what food should he eat now?", "pasta carbonara (mixture of carbs and protein, but mainly carbs)", "steak (mainly protein)", "eggs (mainly protein and fats)", "he should only drink water", "radioA")));
+        questionsList.add(new FragmentQuiz(isNightModeActive, new Question(67, "Alexandar ran 10 km, what food should he eat now?", "pasta carbonara (mixture of carbs and protein, but mainly carbs)", "steak (mainly protein)", "eggs (mainly protein and fats)", "he should only drink water", "radioA")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(68, "Which food contains the most protein per 100g?", "peanut butter", "eggs", "Greek yoghurt", "chickpeas", "radioA")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(69, "Which nuts contain the most protein?", "macadamia nuts", "walnuts", "peanuts", "almonds", "radioC")));
         questionsList.add(new FragmentQuiz(isNightModeActive, new Question(70, "Angel and Alexander both want to lose weight, but they use different methods, who will lose weight?", "Angel, because he only eats junk food and is in a caloric deficit", "Alexander, because he eats mainly fruits, vegetables and meat and is also in a caloric deficit", "both will lose weight", "neither will lose weight", "radioC")));
@@ -243,5 +249,18 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Item Measurements", "A list of most commonly USED words also ACCEPTABLE when searching for food items", new String[]{"Slice", "Bowl", "Piece", "Can", "Stick", "Fillet", "Cube", "Bag", "Jar"}, R.drawable.ic_search)));
         fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Valid queries", "All of these are examples of HOW we should SEARCH for food items", new String[]{"2 tablespoons of olive oil", "3 slices of bread", "300 grams cooked rice", "100 grams peanut butter", "5 grams of sugar", "2 liters orange juice", "200 grams chicken"}, R.drawable.ic_correct)));
         fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Invalid queries", "All of these are examples of HOW we should NOT SEARCH for food items, even though we might still get ABSURD results", new String[]{"1 galaxy of salt", "500 liters of cake", "12345", "pasta and cheese and chicken and beef and broccoli and carrots and spinach and tomatoes and potatoes", "randomfoodthatisnotreal ", "sdfghjk", "1.5x chicken"}, R.drawable.ic_wrong)));
+    }
+
+    private void setUpQuoteFragments(){
+        fragmentList = new ArrayList<>();
+
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 1", "Author 1")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 2", "Author 2")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 3", "Author 3")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 4", "Author 4")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 5", "Author 5")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 6", "Author 6")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 7", "Author 7")));
+        fragmentList.add(new FragmentQuote(isNightModeActive, new QModel("Quote 8", "Author 8")));
     }
 }

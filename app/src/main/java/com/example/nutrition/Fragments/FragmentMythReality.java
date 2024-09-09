@@ -56,12 +56,12 @@ public class FragmentMythReality extends Fragment implements IEssentials {
 
     public void additionalThemeChanges(){
         if (isNightModeActive){
-            int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
+            int color = ContextCompat.getColor(getContext(), R.color.white60Opacity);
 
             binding.textViewActualMyth.setTextColor(color);
             binding.textViewActualFact.setTextColor(color);
         } else {
-            int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
+            int color = ContextCompat.getColor(getContext(), R.color.black60Opacity);
 
             binding.textViewActualMyth.setTextColor(color);
             binding.textViewActualFact.setTextColor(color);

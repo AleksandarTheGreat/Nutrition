@@ -60,7 +60,6 @@ public class HelperSection1And2Activity {
             return;
         }
 
-
         // Here we only update the UI since the event listeners are already set in the addEventListeners method
         for (int i = 0; i < binding.chipGroupSection1And2.getChildCount(); i++) {
             Chip chip = (Chip) binding.chipGroupSection1And2.getChildAt(i);
