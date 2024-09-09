@@ -9,9 +9,15 @@ import androidx.annotation.Nullable;
 
 public class ParentRepo extends SQLiteOpenHelper {
 
+    /**
+     * In version 1 we had the 2 tables
+     * In version 2 we created the suggestions table
+     * So basically we increment a version number to call the onUpgrade() method
+     */
+
     private final Context context;
     private static final String NAME = "daysAndItems.db";
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
 
     public ParentRepo(@Nullable Context context) {
         super(context, NAME, null, VERSION);
@@ -39,13 +45,25 @@ public class ParentRepo extends SQLiteOpenHelper {
                 "FOREIGN KEY(d_id) REFERENCES days(id)" +
                 ");";
 
-        String createSuggestionsTable;
-
         db.execSQL(createDaysTable);
         db.execSQL(createItemsTable);
-        Log.d("Tag", "Tables 'days' and 'items' created successfully");
+        Log.d("Tag", "Tables 'days', 'items' and 'suggestions' created successfully");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.d("Tag", "Table suggestions should be created now");
+        createSuggestionsTable(db);
+    }
+
+    private void createSuggestionsTable(SQLiteDatabase db){
+        String createSuggestionsTable = "CREATE TABLE suggestions" +
+                "(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "suggestion TEXT" +
+                ");";
+
+        db.execSQL(createSuggestionsTable);
+        Log.d("Tag", "Created table 'suggestions'");
+    }
 }

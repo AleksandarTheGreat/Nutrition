@@ -18,6 +18,7 @@ import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Model.Item;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.Repos.ItemsRepo;
+import com.example.nutrition.Repos.SuggestionsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
 
 import org.json.JSONArray;
@@ -38,7 +39,7 @@ public class HelperFragmentADay {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void addProduct(FragmentADayBinding binding, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
+    public void addProduct(FragmentADayBinding binding, SuggestionsRepo suggestionsRepo, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
         String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
         if (!checkIfInputIsValid(binding)) return;
 
@@ -102,10 +103,15 @@ public class HelperFragmentADay {
                                     // Calculate total and change the ui in the material cards
 
                                     /**
-                                    // Add the string search text to a database table
+                                     Add the string search text to a database table
                                      */
 
+                                    if (!suggestionsRepo.contains(searchedText))
+                                        suggestionsRepo.add(searchedText);
+
                                     progressDialog.dismiss();
+                                    hideSuggestions(binding);
+
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
                                 }
                             }
@@ -159,5 +165,15 @@ public class HelperFragmentADay {
         binding.textViewNutrient2Number.setText(String.format("%.2f", totalCalories));
         binding.textViewNutrient3Number.setText(String.format("%.2f", totalCarbs));
         binding.textViewNutrient4Number.setText(String.format("%.2f", totalSugars));
+    }
+
+    public void showSuggestions(FragmentADayBinding binding){
+        binding.scrollViewSuggestions.setVisibility(View.VISIBLE);
+        binding.relativeLayoutFragmentADay.setVisibility(View.GONE);
+    }
+
+    public void hideSuggestions(FragmentADayBinding binding){
+        binding.scrollViewSuggestions.setVisibility(View.GONE);
+        binding.relativeLayoutFragmentADay.setVisibility(View.VISIBLE);
     }
 }

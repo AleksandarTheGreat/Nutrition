@@ -33,11 +33,15 @@ import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Item;
+import com.example.nutrition.Model.Suggestion;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
+import com.example.nutrition.Repos.SuggestionsRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
 import com.google.android.material.color.MaterialColors;
+
+import java.util.List;
 
 
 public class FragmentADay extends Fragment implements IEssentials {
@@ -46,11 +50,13 @@ public class FragmentADay extends Fragment implements IEssentials {
     private Toaster toaster;
     private FragmentADayBinding binding;
     private AppCompatActivity appCompatActivity;
+    private SuggestionsRepo suggestionsRepo;
 
     private ItemsAdapter itemsAdapter;
     private ItemsRepo itemsRepo;
     private HelperFragmentADay helperFragmentADay;
     private HelperMain helperMain;
+    private boolean isNightModeOn;
 
     public FragmentADay() {
     }
@@ -59,6 +65,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         // This day already contains the products list
         this.day = day;
         this.appCompatActivity = appCompatActivity;
+        this.isNightModeOn = ThemeUtils.isNightModeActive(appCompatActivity);
     }
 
     @Override
@@ -77,6 +84,8 @@ public class FragmentADay extends Fragment implements IEssentials {
         toaster = new Toaster(getContext());
 
         itemsRepo = new ItemsRepo(getContext());
+        suggestionsRepo = new SuggestionsRepo(getContext());
+
         helperFragmentADay = new HelperFragmentADay(getContext());
         helperMain = new HelperMain(getContext());
 
@@ -105,7 +114,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.searchViewFragmentADay.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                helperFragmentADay.addProduct(binding, itemsAdapter, itemsRepo, day.getId());
+                helperFragmentADay.addProduct(binding, suggestionsRepo, itemsAdapter, itemsRepo, day.getId());
                 return true;
             }
 
@@ -120,16 +129,14 @@ public class FragmentADay extends Fragment implements IEssentials {
         });
 
         binding.searchViewFragmentADay.setOnSearchClickListener(view -> {
-            binding.scrollViewSuggestions.setVisibility(View.VISIBLE);
-            binding.relativeLayoutFragmentADay.setVisibility(View.GONE);
-            setUpTextViewsInTheScrollView();
+            helperFragmentADay.showSuggestions(binding);
+            setUpTextViewsInTheScrollView(suggestionsRepo.listAll());
         });
 
         binding.searchViewFragmentADay.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                binding.scrollViewSuggestions.setVisibility(View.GONE);
-                binding.relativeLayoutFragmentADay.setVisibility(View.VISIBLE);
+                helperFragmentADay.hideSuggestions(binding);
                 return false;
             }
         });
@@ -153,14 +160,15 @@ public class FragmentADay extends Fragment implements IEssentials {
     }
 
     @SuppressLint("SetTextI18n")
-    private void setUpTextViewsInTheScrollView(){
+    private void setUpTextViewsInTheScrollView(List<Suggestion> suggestionList){
         binding.linearLayoutSuggestionsFragmentADay.removeAllViews();
 
         // These layout creations take time, that is why they shall be created on a new thread
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
+            for (int i=0;i<suggestionList.size();i++){
+                Suggestion suggestion = suggestionList.get(i);
 
-            for (int i=0;i<5;i++){
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 layoutParams.setMargins(0,0,0,24);
 
@@ -173,12 +181,13 @@ public class FragmentADay extends Fragment implements IEssentials {
 
 
 
-                layoutParams = new LinearLayout.LayoutParams(80, 80);
+                layoutParams = new LinearLayout.LayoutParams(60, 60);
                 layoutParams.setMargins(12,12,12,12);
 
                 ImageView imageView = new ImageView(getContext());
-                imageView.setImageResource(R.drawable.ic_sun_white);
                 imageView.setLayoutParams(layoutParams);
+                if (isNightModeOn) imageView.setImageResource(R.drawable.ic_recent_light);
+                else imageView.setImageResource(R.drawable.ic_recent_dark);
 
 
 
@@ -187,7 +196,7 @@ public class FragmentADay extends Fragment implements IEssentials {
                 layoutParams.setMargins(12, 12, 12, 12);
 
                 TextView textView = new TextView(getContext());
-                textView.setText("Suggestion " + (i + 1));
+                textView.setText(suggestion.getText());
                 textView.setTextSize(16);
                 textView.setLayoutParams(layoutParams);
 
