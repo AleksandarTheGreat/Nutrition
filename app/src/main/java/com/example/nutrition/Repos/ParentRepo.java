@@ -26,6 +26,30 @@ public class ParentRepo extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        createDaysTable(db);
+        createItemsTable(db);
+        createSuggestionsTable(db);
+
+        Log.d("Tag", "Tables 'days', 'items' and 'suggestions' created successfully");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+    private void createSuggestionsTable(SQLiteDatabase db){
+        String createSuggestionsTable = "CREATE TABLE suggestions" +
+                "(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "suggestion TEXT" +
+                ");";
+
+        db.execSQL(createSuggestionsTable);
+        Log.d("Tag", "Created table 'suggestions'");
+    }
+
+    private void createDaysTable(SQLiteDatabase db){
         String createDaysTable = "CREATE TABLE days" +
                 "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -33,6 +57,11 @@ public class ParentRepo extends SQLiteOpenHelper {
                 "createdAt TEXT" +
                 ");";
 
+        db.execSQL(createDaysTable);
+        Log.d("Tag","Created table 'days'");
+    }
+
+    private void createItemsTable(SQLiteDatabase db){
         String createItemsTable = "CREATE TABLE items" +
                 "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -45,25 +74,7 @@ public class ParentRepo extends SQLiteOpenHelper {
                 "FOREIGN KEY(d_id) REFERENCES days(id)" +
                 ");";
 
-        db.execSQL(createDaysTable);
         db.execSQL(createItemsTable);
-        Log.d("Tag", "Tables 'days', 'items' and 'suggestions' created successfully");
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.d("Tag", "Table suggestions should be created now");
-        createSuggestionsTable(db);
-    }
-
-    private void createSuggestionsTable(SQLiteDatabase db){
-        String createSuggestionsTable = "CREATE TABLE suggestions" +
-                "(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "suggestion TEXT" +
-                ");";
-
-        db.execSQL(createSuggestionsTable);
-        Log.d("Tag", "Created table 'suggestions'");
+        Log.d("Tag","Created table 'items'");
     }
 }

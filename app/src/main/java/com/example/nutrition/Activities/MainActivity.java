@@ -72,7 +72,7 @@ public class MainActivity extends ParentActivity {
 
     @Override
     public void addEventListeners() {
-        helperMain.setUpCardEventListeners(materialCardViews, binding);
+        helperMain.setUpCardEventListeners(materialCardViews);
 
         binding.matCardDefinitions.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_1);

@@ -24,7 +24,7 @@ public class HelperMain {
         this.context = context;
     }
 
-    public void setUpCardEventListeners(MaterialCardView [] materialCardViews, ActivityMainBinding binding) {
+    public void setUpCardEventListeners(MaterialCardView [] materialCardViews) {
         for (MaterialCardView materialCardView : materialCardViews) {
             materialCardView.setOnClickListener(view -> {
                 String text = materialCardView.getTag().toString().trim();
