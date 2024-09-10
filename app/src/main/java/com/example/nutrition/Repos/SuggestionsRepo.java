@@ -14,6 +14,7 @@ import com.example.nutrition.Model.Suggestion;
 import java.sql.SQLData;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class SuggestionsRepo extends ParentRepo implements ISuggestionsRepo{
@@ -41,6 +42,8 @@ public class SuggestionsRepo extends ParentRepo implements ISuggestionsRepo{
 
         cursor.close();
         database.close();
+
+        suggestions.sort(Comparator.comparing(Suggestion::getId).reversed());
 
         Log.d("Tag", "Read '" + suggestions.size() + "' suggestions");
         return suggestions;

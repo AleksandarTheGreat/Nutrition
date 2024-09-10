@@ -42,6 +42,8 @@ import com.example.nutrition.databinding.FragmentADayBinding;
 import com.google.android.material.color.MaterialColors;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 public class FragmentADay extends Fragment implements IEssentials {
@@ -57,6 +59,7 @@ public class FragmentADay extends Fragment implements IEssentials {
     private HelperFragmentADay helperFragmentADay;
     private HelperMain helperMain;
     private boolean isNightModeOn;
+    private List<Suggestion> allSuggestions;
 
     public FragmentADay() {
     }
@@ -92,6 +95,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
             itemsAdapter = new ItemsAdapter(getContext(), appCompatActivity, binding, itemsRepo, day);
+            allSuggestions = suggestionsRepo.listAll();
 
             handler.post(() -> {
                 binding.recyclerViewFragmentADay.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -120,7 +124,12 @@ public class FragmentADay extends Fragment implements IEssentials {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                List<Suggestion> filtered = allSuggestions.stream()
+                        .filter(suggestion -> suggestion.getText().toLowerCase().contains(newText.toLowerCase()))
+                        .collect(Collectors.toList());
+
+                setUpTextViewsInTheScrollView(filtered);
+                return true;
             }
         });
 
@@ -170,9 +179,10 @@ public class FragmentADay extends Fragment implements IEssentials {
                 Suggestion suggestion = suggestionList.get(i);
 
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(0,0,0,24);
+                layoutParams.setMargins(0,0,0,12);
 
                 LinearLayout linearLayout = new LinearLayout(getContext());
+                linearLayout.setPadding(4,4,4,4);
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                 linearLayout.setLayoutParams(layoutParams);
                 linearLayout.setGravity(Gravity.CENTER_VERTICAL);
@@ -181,7 +191,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
 
 
-                layoutParams = new LinearLayout.LayoutParams(60, 60);
+                layoutParams = new LinearLayout.LayoutParams(50, 50);
                 layoutParams.setMargins(12,12,12,12);
 
                 ImageView imageView = new ImageView(getContext());
