@@ -55,11 +55,6 @@ public class Section1And2Activity extends ParentActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        // Either the first method will be called or the second one
-
-        // The first shall be called if we come here via the List button
-        helperSection1And2Activity.setUpByPyramidCategories(this, binding);
     }
 
     @Override
@@ -88,6 +83,8 @@ public class Section1And2Activity extends ParentActivity {
                 // because the allProductsAlways is not loaded on the main thread yet
                 // and causes some null pointer exceptions
                 addEventListeners();
+                // The first shall be called if we come here via the List button
+                helperSection1And2Activity.setUpByPyramidCategories(this, binding);
             });
 
         }).start();
