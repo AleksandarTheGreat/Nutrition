@@ -16,6 +16,7 @@ public class Day {
     private LocalDate createdAt;
     private List<Item> itemList;
 
+    public Day(){}
     public Day(String title, LocalDate createdAt){
         this.title = title;
         this.createdAt = createdAt;
@@ -32,6 +33,7 @@ public class Day {
     public static Day createANewDay(String title, LocalDate createdAt){
         return new Day(title, createdAt);
     }
+
 
     public String getDateIntoStringFormat(){
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -109,5 +111,9 @@ public class Day {
     }
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

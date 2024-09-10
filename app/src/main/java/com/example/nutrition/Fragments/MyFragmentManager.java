@@ -9,16 +9,25 @@ import com.example.nutrition.R;
 
 public class MyFragmentManager {
 
-    public static void change(AppCompatActivity activity, Fragment fragment) {
+    public static void change(AppCompatActivity activity, Fragment fragment, boolean cameFromMainActivityAdapter) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
 
         if (fragment instanceof FragmentADay)
-            fragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.right_to_center, R.anim.center_to_left, R.anim.left_to_center, R.anim.center_to_right)
-                    .replace(R.id.fragmentContainerViewSection3Activity, fragment)
-                    .addToBackStack("days")
-                    .commit();
+            // I do not add this fragment to a stack because I want to go back to main when I exit
+            if (cameFromMainActivityAdapter){
+                fragmentManager
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.right_to_center, R.anim.center_to_left, R.anim.left_to_center, R.anim.center_to_right)
+                        .replace(R.id.fragmentContainerViewSection3Activity, fragment)
+                        .commit();
+            } else {
+                fragmentManager
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.right_to_center, R.anim.center_to_left, R.anim.left_to_center, R.anim.center_to_right)
+                        .replace(R.id.fragmentContainerViewSection3Activity, fragment)
+                        .addToBackStack("days")
+                        .commit();
+            }
         else
             fragmentManager
                     .beginTransaction()

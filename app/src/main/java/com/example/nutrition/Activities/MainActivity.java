@@ -6,6 +6,9 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -14,12 +17,15 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.nutrition.Adapters.DaysAdapter;
 import com.example.nutrition.Adapters.MyIntroFragAdapter;
 import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.R;
+import com.example.nutrition.Repos.DaysRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
@@ -40,6 +46,7 @@ public class MainActivity extends ParentActivity {
     private MaterialCardView[] materialCardViews;
     private HelperMain helperMain;
     private AppCompatActivity appCompatActivity;
+    private DaysAdapter daysAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +75,24 @@ public class MainActivity extends ParentActivity {
         materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3,
                 binding.matCard4, binding.matCard5, binding.matCard6, binding.matCard7};
         helperMain = new HelperMain(MainActivity.this);
+
+
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+            daysAdapter = new DaysAdapter(MainActivity.this, appCompatActivity);
+
+            handler.post(() -> {
+                binding.recyclerViewDaysMainActivity.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                binding.recyclerViewDaysMainActivity.setHasFixedSize(true);
+                binding.recyclerViewDaysMainActivity.setAdapter(daysAdapter);
+
+                // check if the adapter is empty
+                // and since we only interact via click
+                // and don't load or delete new days this is enough
+                if (daysAdapter.isEmpty()) binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
+                else binding.textViewNoDaysMainActivity.setVisibility(View.INVISIBLE);
+            });
+        }).start();
     }
 
     @Override
@@ -94,7 +119,7 @@ public class MainActivity extends ParentActivity {
             helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_5);
         });
 
-        binding.constraintLayoutDaysMainActivity.setOnClickListener(view -> {
+        binding.section3LayoutMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
     }
@@ -102,8 +127,6 @@ public class MainActivity extends ParentActivity {
     @Override
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(this)){
-            binding.imageViewGoRight.setImageResource(R.drawable.ic_right_white);
-            binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.dark_list));
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
             int colorBright = ContextCompat.getColor(MainActivity.this, R.color.colorTextLight);
@@ -116,8 +139,6 @@ public class MainActivity extends ParentActivity {
             binding.textView4.setTextColor(colorBright);
             binding.textView5.setTextColor(colorBright);
         } else {
-            binding.imageViewGoRight.setImageResource(R.drawable.ic_right_black);
-            binding.viewTrackingMask.setBackground(ContextCompat.getDrawable(this, R.drawable.light_list));
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
             int colorDark = ContextCompat.getColor(MainActivity.this, R.color.colorTextDark);

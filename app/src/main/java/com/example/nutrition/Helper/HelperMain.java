@@ -67,6 +67,12 @@ public class HelperMain {
         context.startActivity(intent);
     }
 
+    public void goToActivity(Context context, Class clas, long id){
+        Intent intent = new Intent(context, clas);
+        intent.putExtra("dayId", id);
+        context.startActivity(intent);
+    }
+
     public void goToActivity(Context context, Class clas, String type){
         Intent intent = new Intent(context, clas);
         intent.putExtra("type", type);

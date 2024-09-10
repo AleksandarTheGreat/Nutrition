@@ -76,8 +76,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 Day day = daysList.get(myViewHolder.getAdapterPosition());
-
-                MyFragmentManager.change(appCompatActivity, new FragmentADay(day, appCompatActivity));
+                MyFragmentManager.change(appCompatActivity, new FragmentADay(day, appCompatActivity), false);
             }
         });
 
@@ -184,37 +183,6 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
                 }
-            }
-        }
-    }
-
-    // For today and yesterday, but disabled for now
-    public void checkIfDayIsToday(Day day, MyViewHolder holder){
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            LocalDate date = LocalDate.now();
-            if (date.equals(day.getCreatedAt())){
-                int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
-                int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
-
-                holder.materialCardView.setCardBackgroundColor(primaryContainer);
-                holder.textViewDays.setText("Today");
-                holder.textViewDays.setTextColor(onPrimaryContainer);
-                holder.textViewDate.setTextColor(onPrimaryContainer);
-            }
-        }
-    }
-
-    public void checkIfDayIsYesterday(Day day, MyViewHolder holder){
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            LocalDate date = LocalDate.now();
-            if (date.minusDays(1).equals(day.getCreatedAt())){
-                int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
-                int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
-
-                holder.materialCardView.setCardBackgroundColor(secondaryContainer);
-                holder.textViewDays.setText("Yesterday");
-                holder.textViewDays.setTextColor(onSecondaryContainer);
-                holder.textViewDate.setTextColor(onSecondaryContainer);
             }
         }
     }

@@ -25,8 +25,6 @@ import java.util.stream.Collectors;
 
 public class DaysRepo extends ParentRepo implements IDays {
 
-    private static final String tableName = "days";
-
     public DaysRepo(@Nullable Context context) {
         super(context);
     }
@@ -78,7 +76,7 @@ public class DaysRepo extends ParentRepo implements IDays {
         return list;
     }
 
-    public List<Day> listAllSorted(){
+    public List<Day> listAllSorted() {
         return listAll().stream()
                 .sorted(Comparator.comparing(Day::getId).reversed())
                 .collect(Collectors.toList());
@@ -100,8 +98,45 @@ public class DaysRepo extends ParentRepo implements IDays {
 
     @Override
     public Day get(long id) {
+        String query = "SELECT * FROM days d LEFT JOIN items i ON d.id = i.d_id WHERE d.id = " + id;
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(query, null);
 
-        return null;
+        Day day = new Day();
+        List<Item> itemList = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                long idd = cursor.getLong(0);
+                String title = cursor.getString(1);
+                String dateTime = cursor.getString(2);
+                LocalDate dateCreated = LocalDate.parse(dateTime);
+
+                long i_id = cursor.getLong(3);
+                String ingredient = cursor.getString(4);
+                float protein = cursor.getFloat(5);
+                float carbohydrates = cursor.getFloat(6);
+                float calories = cursor.getFloat(7);
+                float sugar = cursor.getFloat(8);
+                long d_id = cursor.getLong(9);
+
+                // Create the day
+                // First row
+                if (day.getTitle() == null){
+                    day.setId(idd);
+                    day.setTitle(title);
+                    day.setCreatedAt(dateCreated);
+                }
+                itemList.add(new Item(i_id, ingredient, protein, carbohydrates, calories, sugar, d_id));
+            }
+        }
+
+        day.setItemList(itemList);
+
+        cursor.close();
+        database.close();
+
+        return day;
     }
 
     @Override
