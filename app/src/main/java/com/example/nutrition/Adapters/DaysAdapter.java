@@ -62,8 +62,6 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         myViewHolder.materialCardView.setOnClickListener(v -> {
             Day day = dayList.get(myViewHolder.getAdapterPosition());
             helperMain.goToActivity(context, Section3Activity.class, day.getId());
-
-            toaster.text("Not ready yet bae");
         });
 
         return myViewHolder;
