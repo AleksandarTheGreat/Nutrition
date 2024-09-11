@@ -1,5 +1,6 @@
 package com.example.nutrition.Activities;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,19 +17,20 @@ public abstract class ParentActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // This here is commented because dynamic colors are applied while under development
-
-        /*
-
-        if (ThemeUtils.isNightModeActive(this)) {
-            setTheme(R.style.NightThemeNutrition);
-            Log.d("Tag", "Night mode on");
+        int res = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (res == Configuration.UI_MODE_NIGHT_YES){
+            Log.d("Tag", "Theme is night");
         } else {
-            setTheme(R.style.DayThemeNutrition);
-            Log.d("Tag", "Day mode on");
+            Log.d("Tag", "Theme is day");
         }
+//        if (ThemeUtils.isNightModeActive(this)) {
+//            setTheme(R.style.NightThemeNutrition);
+//            Log.d("Tag", "Night mode on");
+//        } else {
+//            setTheme(R.style.DayThemeNutrition);
+//            Log.d("Tag", "Day mode on");
+//        }
 
-        */
     }
 
     public abstract void instantiateObjects();

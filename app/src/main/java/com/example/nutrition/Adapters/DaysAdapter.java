@@ -3,6 +3,7 @@ package com.example.nutrition.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,9 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
 
                 if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_today_light);
                 else holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+
+                holder.textViewDay.setTypeface(null, Typeface.BOLD);
+                holder.textViewDate.setTypeface(null, Typeface.BOLD);
                 holder.textViewDay.setText("Today");
                 holder.textViewDay.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
@@ -127,6 +131,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_light);
                 else holder.imageView.setImageResource(R.drawable.ic_24_dark);
 
+                holder.textViewDay.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDay.setText("Yesterday");
                 holder.textViewDay.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
@@ -145,6 +151,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
                 }
+                holder.textViewDay.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
             }
         }
     }

@@ -3,6 +3,7 @@ package com.example.nutrition.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,6 +151,9 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
                 if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_today_light);
                 else holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+
+                holder.textViewDays.setTypeface(null, Typeface.BOLD);
+                holder.textViewDate.setTypeface(null, Typeface.BOLD);
                 holder.textViewDays.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
                 holder.textViewDays.setText("Today");
@@ -162,10 +166,13 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
                 if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_light);
                 else holder.imageView.setImageResource(R.drawable.ic_24_dark);
-                holder.materialCardView.setCardBackgroundColor(secondaryContainer);
+
+                holder.textViewDays.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDays.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
                 holder.textViewDays.setText("Yesterday");
+                holder.materialCardView.setCardBackgroundColor(secondaryContainer);
             }
             // Every other day
             else {
@@ -180,6 +187,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
                 }
+                holder.textViewDays.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
             }
         }
     }
