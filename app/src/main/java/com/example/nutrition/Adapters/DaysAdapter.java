@@ -112,7 +112,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
                 int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
 
-                holder.imageView.setImageResource(R.drawable.ic_sun_day);
+                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_today_light);
+                else holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
                 holder.textViewDay.setText("Today");
                 holder.textViewDay.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
@@ -123,8 +124,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
                 int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_sun_white);
-                else holder.imageView.setImageResource(R.drawable.ic_sun_black);
+                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_light);
+                else holder.imageView.setImageResource(R.drawable.ic_24_dark);
 
                 holder.textViewDay.setText("Yesterday");
                 holder.textViewDay.setTextColor(onSecondaryContainer);
@@ -134,12 +135,12 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
             // Every other day
             else {
                 if (isNightMode){
-                    holder.imageView.setImageResource(R.drawable.ic_sun_white);
+                    holder.imageView.setImageResource(R.drawable.ic_24_light);
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
                 } else {
-                    holder.imageView.setImageResource(R.drawable.ic_sun_black);
+                    holder.imageView.setImageResource(R.drawable.ic_24_dark);
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));

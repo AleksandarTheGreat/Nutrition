@@ -126,7 +126,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     static class MyViewHolder extends RecyclerView.ViewHolder {
         protected MaterialCardView materialCardView;
         protected ConstraintLayout constraintLayout;
-        protected ImageView imageViewSun;
+        protected ImageView imageView;
         protected TextView textViewDays;
         protected TextView textViewDate;
 
@@ -134,7 +134,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             super(itemView);
             this.materialCardView = itemView.findViewById(R.id.materialCardViewSingleDay);
             this.constraintLayout = itemView.findViewById(R.id.constraintLayoutSingleDay);
-            this.imageViewSun = itemView.findViewById(R.id.imageViewSunSingleDayLayout);
+            this.imageView = itemView.findViewById(R.id.imageViewSunSingleDayLayout);
             this.textViewDays = itemView.findViewById(R.id.textViewDaySingleDayLayout);
             this.textViewDate = itemView.findViewById(R.id.textViewCreatedSingleDayLayout);
         }
@@ -148,7 +148,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
                 int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
 
-                holder.imageViewSun.setImageResource(R.drawable.ic_sun_day);
+                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_today_light);
+                else holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
                 holder.textViewDays.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
                 holder.textViewDays.setText("Today");
@@ -159,8 +160,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
                 int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
-                else holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
+                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_light);
+                else holder.imageView.setImageResource(R.drawable.ic_24_dark);
                 holder.materialCardView.setCardBackgroundColor(secondaryContainer);
                 holder.textViewDays.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
@@ -169,12 +170,12 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             // Every other day
             else {
                 if (isNightMode){
-                    holder.imageViewSun.setImageResource(R.drawable.ic_sun_white);
+                    holder.imageView.setImageResource(R.drawable.ic_24_light);
                     holder.textViewDays.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
                 } else {
-                    holder.imageViewSun.setImageResource(R.drawable.ic_sun_black);
+                    holder.imageView.setImageResource(R.drawable.ic_24_dark);
                     holder.textViewDays.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
