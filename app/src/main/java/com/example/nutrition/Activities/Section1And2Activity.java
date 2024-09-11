@@ -176,19 +176,17 @@ public class Section1And2Activity extends ParentActivity {
                 return true;
             }
         });
-
-        binding.imageViewIconHeaderLayoutSection1And2.setOnClickListener(view -> {
-            helperSection1And2Activity.showStatistics(productsAdapter);
-        });
     }
 
     @Override
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Light);
+            binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_white);
             binding.textViewSub1.setTextColor(color);
         } else {
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Dark);
+            binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_black);
             binding.textViewSub1.setTextColor(color);
         }
     }

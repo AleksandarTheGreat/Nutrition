@@ -154,11 +154,17 @@ public class FragmentADay extends Fragment implements IEssentials {
     public void additionalThemeSettings(){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
+            binding.imageViewIconTotal.setImageResource(R.drawable.ic_energy_light);
+            binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_light);
+
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
         } else {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
+            binding.imageViewIconTotal.setImageResource(R.drawable.ic_energy_dark);
+            binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_dark);
+
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);

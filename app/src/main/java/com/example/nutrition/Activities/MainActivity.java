@@ -119,6 +119,10 @@ public class MainActivity extends ParentActivity {
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
             int colorBright = ContextCompat.getColor(MainActivity.this, R.color.colorTextLight);
 
+            binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
+            binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
+            binding.imageViewIconSection0.setImageResource(R.drawable.ic_educate_light);
+
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorBright);
@@ -130,6 +134,10 @@ public class MainActivity extends ParentActivity {
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
             int colorDark = ContextCompat.getColor(MainActivity.this, R.color.colorTextDark);
+
+            binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
+            binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
+            binding.imageViewIconSection0.setImageResource(R.drawable.ic_educate_dark);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
