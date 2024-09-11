@@ -122,6 +122,7 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
             binding.imageViewIconSection0.setImageResource(R.drawable.ic_educate_light);
+            binding.imageViewArrow.setImageResource(R.drawable.ic_right_white);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
@@ -138,6 +139,7 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewIconSection0.setImageResource(R.drawable.ic_educate_dark);
+            binding.imageViewArrow.setImageResource(R.drawable.ic_right_black);
 
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
