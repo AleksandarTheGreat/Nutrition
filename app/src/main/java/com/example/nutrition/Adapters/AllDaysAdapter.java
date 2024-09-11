@@ -24,19 +24,15 @@ import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
 import com.example.nutrition.Utils.ThemeUtils;
-import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
 
