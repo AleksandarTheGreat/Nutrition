@@ -18,6 +18,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
 
@@ -48,30 +49,45 @@ public class HelperFragmentAllDays {
     public void setUpAnyChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
-        int index = 0;
+        int index = 1;
         List<String> xValuesDays = new ArrayList<>();
+
+        // Set the description of the graph
+        switch (macronutrient) {
+            case "Carbohydrates":
+                binding.anyChartFragmentAllDays.getDescription().setText("Carbohydrates");
+                break;
+            case "Calories":
+                binding.anyChartFragmentAllDays.getDescription().setText("Calories");
+                break;
+            case "Sugars":
+                binding.anyChartFragmentAllDays.getDescription().setText("Sugars");
+                break;
+            case "Proteins":
+            default:
+                binding.anyChartFragmentAllDays.getDescription().setText("Proteins");
+                break;
+        }
 
         for (Day day : allDaysAdapter.getDaysList()) {
             switch (macronutrient) {
                 case "Carbohydrates":
                     barEntries.add(new BarEntry(index, day.totalCarbohydrates()));
-                    binding.anyChartFragmentAllDays.getDescription().setText("Carbohydrates");
                     break;
                 case "Calories":
                     barEntries.add(new BarEntry(index, day.totalCalories()));
-                    binding.anyChartFragmentAllDays.getDescription().setText("Calories");
                     break;
                 case "Sugars":
                     barEntries.add(new BarEntry(index, day.totalSugar()));
-                    binding.anyChartFragmentAllDays.getDescription().setText("Sugars");
                     break;
                 case "Proteins":
                 default:
                     barEntries.add(new BarEntry(index, day.totalProteins()));
-                    binding.anyChartFragmentAllDays.getDescription().setText("Proteins");
                     break;
             }
             xValuesDays.add(day.getTitle() + " " + index);
+            // This index is just a number incrementing each time
+            // and this represents the position of the day in the graph
             index++;  // Increment index for each day
         }
 

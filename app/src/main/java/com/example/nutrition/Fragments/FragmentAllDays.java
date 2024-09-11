@@ -82,7 +82,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         daysRepo = new DaysRepo(getContext());
 
         toaster = new Toaster(getContext());
-
+        helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
 
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
@@ -101,9 +101,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             });
 
         }).start();
-
-
-        helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
 
         // Set up the graph with data
         // Se the default selection the saved one
