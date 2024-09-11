@@ -65,6 +65,12 @@ public class MainActivity extends ParentActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        setUpMainActivityDaysAdapter();
+    }
+
+    @Override
     public void instantiateObjects() {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -75,24 +81,6 @@ public class MainActivity extends ParentActivity {
         materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3,
                 binding.matCard4, binding.matCard5, binding.matCard6, binding.matCard7};
         helperMain = new HelperMain(MainActivity.this);
-
-
-        Handler handler = new Handler(Looper.getMainLooper());
-        new Thread(() -> {
-            daysAdapter = new DaysAdapter(MainActivity.this, appCompatActivity);
-
-            handler.post(() -> {
-                binding.recyclerViewDaysMainActivity.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                binding.recyclerViewDaysMainActivity.setHasFixedSize(true);
-                binding.recyclerViewDaysMainActivity.setAdapter(daysAdapter);
-
-                // check if the adapter is empty
-                // and since we only interact via click
-                // and don't load or delete new days this is enough
-                if (daysAdapter.isEmpty()) binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
-                else binding.textViewNoDaysMainActivity.setVisibility(View.INVISIBLE);
-            });
-        }).start();
     }
 
     @Override
@@ -161,6 +149,25 @@ public class MainActivity extends ParentActivity {
 //        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
 
         helperMain.setUpUIMasksOnCards(this, materialCardViews);
+    }
+
+    private void setUpMainActivityDaysAdapter(){
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+            daysAdapter = new DaysAdapter(MainActivity.this, appCompatActivity);
+
+            handler.post(() -> {
+                binding.recyclerViewDaysMainActivity.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                binding.recyclerViewDaysMainActivity.setHasFixedSize(true);
+                binding.recyclerViewDaysMainActivity.setAdapter(daysAdapter);
+
+                // check if the adapter is empty
+                // and since we only interact via click
+                // and don't load or delete new days this is enough
+                if (daysAdapter.isEmpty()) binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
+                else binding.textViewNoDaysMainActivity.setVisibility(View.INVISIBLE);
+            });
+        }).start();
     }
 }
 

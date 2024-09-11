@@ -3,15 +3,19 @@ package com.example.nutrition.Helper;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.nutrition.Activities.MainActivity;
 import com.example.nutrition.Activities.Section1And2Activity;
+import com.example.nutrition.Adapters.DaysAdapter;
 import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivityMainBinding;
