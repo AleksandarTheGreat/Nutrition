@@ -89,6 +89,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
             allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
             checkIfDaysAreEmpty(binding, allDaysAdapter);
+            updateTotalDays(binding, allDaysAdapter);
 
             handler.post(() ->{
                 binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -127,6 +128,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 allDaysAdapter.notifyDataSetChanged();
 
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
+                updateTotalDays(binding, allDaysAdapter);
 
                 Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
                 chip.setChecked(true);
@@ -180,6 +182,10 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.VISIBLE);
         else
             binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.INVISIBLE);
+    }
+
+    public static void updateTotalDays(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+        binding.textViewSub2.setText("Total days " + allDaysAdapter.getItemCount());
     }
 }
 

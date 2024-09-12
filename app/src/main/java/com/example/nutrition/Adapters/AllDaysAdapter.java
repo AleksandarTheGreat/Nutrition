@@ -77,6 +77,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             }
         });
 
+        // We are deleting a day, and all of it's items.
         myViewHolder.materialCardView.setOnLongClickListener(new View.OnLongClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -88,6 +89,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
                 notifyDataSetChanged();
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
+                FragmentAllDays.updateTotalDays(fragmentAllDaysBinding, allDaysAdapter);
 
                 Chip chip = (Chip) fragmentAllDaysBinding.chipGroupGraphFragmentAllDays.getChildAt(0);
                 chip.setChecked(true);

@@ -69,9 +69,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
                 Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
 
                 HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
-
-                // Calculate total and change the UI in the material cards
                 HelperFragmentADay.calculateTotalNutrients(binding, ItemsAdapter.this);
+
                 return true;
             }
         });

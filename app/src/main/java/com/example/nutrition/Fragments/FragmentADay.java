@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +42,9 @@ import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
 import com.google.android.material.color.MaterialColors;
 
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -82,6 +85,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         return binding.getRoot();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void instantiateObjects() {
         toaster = new Toaster(getContext());
@@ -91,6 +95,11 @@ public class FragmentADay extends Fragment implements IEssentials {
 
         helperFragmentADay = new HelperFragmentADay(getContext());
         helperMain = new HelperMain(getContext());
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            String dayName = day.getCreatedAt().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+            binding.textViewSub2.setText(dayName + " - " + day.getDateIntoStringFormat());
+        }
 
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
@@ -102,10 +111,10 @@ public class FragmentADay extends Fragment implements IEssentials {
                 binding.recyclerViewFragmentADay.setHasFixedSize(true);
                 binding.recyclerViewFragmentADay.setAdapter(itemsAdapter);
 
-                HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
-
                 // Calculate total and change the ui in the material cards
+                HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
                 HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
+
                 addEventListeners();
             });
 
@@ -133,10 +142,6 @@ public class FragmentADay extends Fragment implements IEssentials {
             }
         });
 
-        binding.textViewHelp.setOnClickListener(view -> {
-            helperMain.goToActivity(getContext(), IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
-        });
-
         binding.searchViewFragmentADay.setOnSearchClickListener(view -> {
             helperFragmentADay.showSuggestions(binding);
             setUpTextViewsInTheScrollView(suggestionsRepo.listAll());
@@ -148,6 +153,10 @@ public class FragmentADay extends Fragment implements IEssentials {
                 helperFragmentADay.hideSuggestions(binding);
                 return false;
             }
+        });
+
+        binding.textViewHelp.setOnClickListener(view -> {
+            helperMain.goToActivity(getContext(), IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
     }
 
@@ -188,7 +197,7 @@ public class FragmentADay extends Fragment implements IEssentials {
                 layoutParams.setMargins(0,0,0,12);
 
                 LinearLayout linearLayout = new LinearLayout(getContext());
-                linearLayout.setPadding(4,4,4,4);
+                linearLayout.setPadding(4,24,4,24);
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                 linearLayout.setLayoutParams(layoutParams);
                 linearLayout.setGravity(Gravity.CENTER_VERTICAL);
@@ -198,7 +207,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
 
                 layoutParams = new LinearLayout.LayoutParams(50, 50);
-                layoutParams.setMargins(12,12,12,12);
+                layoutParams.setMargins(24,12,12,12);
 
                 ImageView imageView = new ImageView(getContext());
                 imageView.setLayoutParams(layoutParams);

@@ -26,6 +26,7 @@ import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -119,6 +120,8 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         fragmentList.add(new FragmentMythReality(isNightModeActive, new MRModel("You should train AT LEAST for an hour, if not, you will not grow your muscles.", "The time in the gym is not even important, just give it your ALL in the time that you will be in the gym.")));
         fragmentList.add(new FragmentMythReality(isNightModeActive, new MRModel("Intermittent fasting is healthier than eating whenever you want.", "As long as the caloric intake is the same, there is no difference in having an intermittent fast or not.")));
         fragmentList.add(new FragmentMythReality(isNightModeActive, new MRModel("You must do cardio in order to lose weight!", "The most important thing in losing weight is being in a caloric deficit.")));
+
+        Collections.shuffle(fragmentList);
     }
 
     private void setUpQuizFragments() {

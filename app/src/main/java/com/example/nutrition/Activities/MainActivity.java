@@ -176,6 +176,8 @@ public class MainActivity extends ParentActivity {
                 // and don't load or delete new days this is enough
                 if (daysAdapter.isEmpty()) binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
                 else binding.textViewNoDaysMainActivity.setVisibility(View.INVISIBLE);
+
+                binding.textViewTotalDays.setText(String.valueOf(daysAdapter.getItemCount()));
             });
         }).start();
     }

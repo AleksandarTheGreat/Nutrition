@@ -96,21 +96,19 @@ public class HelperFragmentADay {
                                     itemsAdapter.setItemList(itemsRepo.listAll(d_id));
                                     itemsAdapter.notifyDataSetChanged();
 
+                                    // This triggers the onTextChange() event which is responsible for the suggestions
                                     binding.searchViewFragmentADay.setQuery("", false);
-                                    HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
 
+                                    HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
                                     HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
                                     // Calculate total and change the ui in the material cards
 
-                                    /**
-                                     Add the string search text to a database table
-                                     */
+                                    // Add the string search text to a database table
 
                                     if (!suggestionsRepo.contains(searchedText))
                                         suggestionsRepo.add(searchedText);
 
                                     progressDialog.dismiss();
-                                    hideSuggestions(binding);
 
                                     Log.d("Tag", "Added '" + searchedText + "' to repo");
                                 }
