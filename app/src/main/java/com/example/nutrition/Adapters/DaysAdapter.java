@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.tv.TsRequest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.example.nutrition.Activities.Section3Activity;
 import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Helper.HelperMain;
+import com.example.nutrition.Helper.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
@@ -41,6 +43,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     private List<Day> dayList;
     private Toaster toaster;
     private boolean isNightMode;
+    private String macro;
     public DaysAdapter(Context context, AppCompatActivity appCompatActivity){
         this.context = context;
         this.appCompatActivity = appCompatActivity;
@@ -50,6 +53,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         this.dayList = daysRepo.listAllSorted();
         this.toaster = new Toaster(context);
         this.isNightMode = ThemeUtils.isNightModeActive(appCompatActivity);
+        this.macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
     }
 
     @NonNull
@@ -82,6 +86,9 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         holder.textViewDate.setText(day.getDateIntoStringFormat());
 
         additionalThemeChanges(day, holder);
+
+        // The saved macronutrients
+        calculateCorrectMacronutrient(macro, holder, day);
     }
 
     @Override
@@ -95,6 +102,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         protected ImageView imageView;
         protected TextView textViewDay;
         protected TextView textViewDate;
+        protected TextView textViewNumberMacro;
+        protected TextView textViewLabelMacro;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -102,6 +111,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
             this.imageView = itemView.findViewById(R.id.imageViewSingleDay);
             this.textViewDay = itemView.findViewById(R.id.textViewDay);
             this.textViewDate = itemView.findViewById(R.id.textViewDate);
+            this.textViewNumberMacro = itemView.findViewById(R.id.textViewNumberMacro);
+            this.textViewLabelMacro = itemView.findViewById(R.id.textViewLabelMacro);
         }
     }
 
@@ -118,6 +129,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
 
                 holder.textViewDay.setTypeface(null, Typeface.BOLD);
                 holder.textViewDate.setTypeface(null, Typeface.BOLD);
+                holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
+                holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewDay.setText("Today");
                 holder.textViewDay.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
@@ -133,6 +146,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
 
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
+                holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDay.setText("Yesterday");
                 holder.textViewDay.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
@@ -153,7 +168,31 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 }
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
+                holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
             }
+        }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void calculateCorrectMacronutrient(String macro, MyViewHolder holder, Day day){
+        switch (macro) {
+            case "Proteins":
+                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalProteins()));
+                holder.textViewLabelMacro.setText(macro);
+                break;
+            case "Calories":
+                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalCalories()));
+                holder.textViewLabelMacro.setText(macro);
+                break;
+            case "Carbohydrates":
+                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalCarbohydrates()));
+                holder.textViewLabelMacro.setText("Carbs");
+                break;
+            case "Sugars":
+                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalSugar()));
+                holder.textViewLabelMacro.setText(macro);
+                break;
         }
     }
 

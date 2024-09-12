@@ -20,6 +20,7 @@ import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Fragments.FragmentAllDays;
 import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Helper.HelperFragmentAllDays;
+import com.example.nutrition.Helper.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
@@ -91,9 +92,9 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
                 FragmentAllDays.updateTotalDays(fragmentAllDaysBinding, allDaysAdapter);
 
-                Chip chip = (Chip) fragmentAllDaysBinding.chipGroupGraphFragmentAllDays.getChildAt(0);
-                chip.setChecked(true);
-                helperFragmentAllDays.setUpAnyChart("Proteins", fragmentAllDaysBinding, allDaysAdapter);
+                String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
+                helperFragmentAllDays.setUpAnyChart(macro, fragmentAllDaysBinding, allDaysAdapter);
+                helperFragmentAllDays.checkAndSelectCorrectChip(macro, fragmentAllDaysBinding);
 
                 return true;
             }

@@ -28,7 +28,6 @@
             android:layout_marginStart="8dp"
             android:text="Day name here"
             android:textSize="16sp"
-
             app:layout_constraintTop_toTopOf="@id/imageViewSingleDay"
             app:layout_constraintLeft_toRightOf="@id/imageViewSingleDay"
             />
@@ -43,6 +42,29 @@
             app:layout_constraintBottom_toBottomOf="@id/imageViewSingleDay"
             app:layout_constraintLeft_toRightOf="@id/imageViewSingleDay"
             app:layout_constraintTop_toBottomOf="@id/textViewDay"
+            />
+
+        <TextView
+            android:id="@+id/textViewNumberMacro"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="3043"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textViewLabelMacro"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Label"
+            android:textSize="12sp"
+            android:layout_marginTop="-2dp"
+            app:layout_constraintRight_toRightOf="@id/textViewNumberMacro"
+            app:layout_constraintTop_toBottomOf="@id/textViewNumberMacro"
+            app:layout_constraintLeft_toLeftOf="@id/textViewNumberMacro"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

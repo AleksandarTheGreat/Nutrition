@@ -79,7 +79,6 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding = FragmentADayBinding.bind(inflater.inflate(R.layout.fragment_a_day, container, false));
 
         instantiateObjects();
-        addEventListeners();
         additionalThemeSettings();
 
         return binding.getRoot();

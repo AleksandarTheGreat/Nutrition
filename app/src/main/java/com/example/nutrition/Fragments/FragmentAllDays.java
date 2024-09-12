@@ -31,6 +31,7 @@ import com.anychart.enums.TooltipPositionMode;
 import com.example.nutrition.Adapters.AllDaysAdapter;
 import com.example.nutrition.Helper.HelperFragmentAllDays;
 import com.example.nutrition.Helper.IEssentials;
+import com.example.nutrition.Helper.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.Model.Product;
@@ -72,7 +73,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
         instantiateObjects();
         additionalThemeChanges();
-        addEventListeners();
 
         return binding.getRoot();
     }
@@ -98,15 +98,18 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
                 // This is also here since we are using a binding
                 // And binding is a main UI component
-                helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
+
+                // Set up the graph with data
+                // Se the default selection the saved one
+
+                String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
+                helperFragmentAllDays.setUpAnyChart(macro, binding, allDaysAdapter);
+                helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
+
+                addEventListeners();
             });
 
         }).start();
-
-        // Set up the graph with data
-        // Se the default selection the saved one
-        Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
-        chip.setChecked(true);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -130,9 +133,9 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
                 updateTotalDays(binding, allDaysAdapter);
 
-                Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(0);
-                chip.setChecked(true);
-                helperFragmentAllDays.setUpAnyChart("Proteins", binding, allDaysAdapter);
+                String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
+                helperFragmentAllDays.setUpAnyChart(macro, binding, allDaysAdapter);
+                helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
             }
         });
 
@@ -148,6 +151,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 String text = chip.getTag().toString().trim();
 
                 helperFragmentAllDays.setUpAnyChart(text, binding, allDaysAdapter);
+                SharedPrefMacronutrients.writeMacronutrientToSharedPref(getContext(), text);
             }
         });
 
@@ -187,6 +191,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     public static void updateTotalDays(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
         binding.textViewSub2.setText("Total days " + allDaysAdapter.getItemCount());
     }
+
+
 }
 
 

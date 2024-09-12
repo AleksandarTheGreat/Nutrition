@@ -161,6 +161,16 @@ public class HelperFragmentAllDays {
             }
         }
     }
+
+    public void checkAndSelectCorrectChip(String macronutrient, FragmentAllDaysBinding binding){
+        for (int i=0;i<binding.chipGroupGraphFragmentAllDays.getChildCount();i++){
+            Chip chip = (Chip) binding.chipGroupGraphFragmentAllDays.getChildAt(i);
+            if (chip.getTag().toString().trim().equals(macronutrient)){
+                chip.setChecked(true);
+                break;
+            }
+        }
+    }
 }
 
 
