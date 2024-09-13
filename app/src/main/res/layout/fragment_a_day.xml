@@ -95,6 +95,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textViewSubTitleSection1"
                 style="@style/SubTitlePart"
                 android:text="Macronutrients"
                 app:layout_constraintLeft_toRightOf="@id/imageViewIconTotal"
@@ -133,6 +134,7 @@
                 android:layout_gravity="fill"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
+                app:cardElevation="2dp"
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -186,7 +188,9 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="fill"
                 android:layout_marginStart="4dp"
-                android:layout_marginBottom="4dp">
+                android:layout_marginBottom="4dp"
+                app:cardElevation="2dp"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_height="match_parent"
@@ -239,6 +243,7 @@
                 android:layout_gravity="fill"
                 android:layout_marginEnd="4dp"
                 android:layout_marginTop="4dp"
+                app:cardElevation="2dp"
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -292,6 +297,7 @@
                 android:layout_gravity="fill"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
+                app:cardElevation="2dp"
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -355,6 +361,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textViewSubTitleSection2"
                 style="@style/SubTitlePart"
                 android:text="My meals"
                 app:layout_constraintLeft_toRightOf="@id/imageViewIconDay"

@@ -162,20 +162,31 @@ public class FragmentADay extends Fragment implements IEssentials {
     public void additionalThemeSettings(){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+
             binding.imageViewIconTotal.setImageResource(R.drawable.ic_energy_light);
             binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_light);
 
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
+
+            binding.textViewSubTitleSection1.setTextColor(colorWhite);
+            binding.textViewSubTitleSection2.setTextColor(colorWhite);
+
         } else {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+
             binding.imageViewIconTotal.setImageResource(R.drawable.ic_energy_dark);
             binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_dark);
 
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
+
+            binding.textViewSubTitleSection1.setTextColor(colorBlack);
+            binding.textViewSubTitleSection2.setTextColor(colorBlack);
         }
 
         int primaryColor = MaterialColors.getColor(getContext(), com.google.android.material.R.attr.colorPrimary, Color.BLACK);

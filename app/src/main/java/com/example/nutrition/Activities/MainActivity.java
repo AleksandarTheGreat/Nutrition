@@ -118,6 +118,7 @@ public class MainActivity extends ParentActivity {
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Light);
             int colorBright = ContextCompat.getColor(MainActivity.this, R.color.colorTextLight);
+            int colorWhite = ContextCompat.getColor(MainActivity.this, R.color.white);
 
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
@@ -131,10 +132,15 @@ public class MainActivity extends ParentActivity {
             binding.textView3.setTextColor(colorBright);
             binding.textView4.setTextColor(colorBright);
             binding.textView5.setTextColor(colorBright);
+
+            binding.textViewSubTitleSection0.setTextColor(colorWhite);
+            binding.textViewSubTitleSection1.setTextColor(colorWhite);
+            binding.textViewSubTitleSection3.setTextColor(colorWhite);
         } else {
 
             int color = ContextCompat.getColor(MainActivity.this, R.color.colorText60Dark);
             int colorDark = ContextCompat.getColor(MainActivity.this, R.color.colorTextDark);
+            int colorBlack = ContextCompat.getColor(MainActivity.this, R.color.black);
 
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_black);
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
@@ -148,6 +154,10 @@ public class MainActivity extends ParentActivity {
             binding.textView3.setTextColor(colorDark);
             binding.textView4.setTextColor(colorDark);
             binding.textView5.setTextColor(colorDark);
+
+            binding.textViewSubTitleSection0.setTextColor(colorBlack);
+            binding.textViewSubTitleSection1.setTextColor(colorBlack);
+            binding.textViewSubTitleSection3.setTextColor(colorBlack);
         }
 
 //        int primaryContainer = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);

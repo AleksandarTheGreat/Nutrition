@@ -159,23 +159,33 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
+            int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_light);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_white);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
 
-            int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
+
+            binding.textViewTrackedDays.setTextColor(colorWhite);
+            binding.textViewStatistics.setTextColor(colorWhite);
         } else {
+            int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+
             binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_dark);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
 
-            int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
+
+            binding.textViewTrackedDays.setTextColor(colorBlack);
+            binding.textViewStatistics.setTextColor(colorBlack);
         }
     }
 
