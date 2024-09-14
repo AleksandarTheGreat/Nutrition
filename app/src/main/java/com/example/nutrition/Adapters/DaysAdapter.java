@@ -134,6 +134,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDay.setText("Today");
                 holder.textViewDay.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
+                holder.textViewLabelMacro.setTextColor(onPrimaryContainer);
+                holder.textViewNumberMacro.setTextColor(onPrimaryContainer);
                 holder.materialCardView.setCardBackgroundColor(primaryContainer);
             }
             // Yesterday
@@ -151,6 +153,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDay.setText("Yesterday");
                 holder.textViewDay.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
+                holder.textViewLabelMacro.setTextColor(onSecondaryContainer);
+                holder.textViewNumberMacro.setTextColor(onSecondaryContainer);
                 holder.materialCardView.setCardBackgroundColor(secondaryContainer);
             }
             // Every other day
@@ -159,11 +163,15 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                     holder.imageView.setImageResource(R.drawable.ic_24_light);
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
+                    holder.textViewLabelMacro.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
+                    holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
                 } else {
                     holder.imageView.setImageResource(R.drawable.ic_24_dark);
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
+                    holder.textViewLabelMacro.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
+                    holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
                 }
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
