@@ -37,11 +37,11 @@
             app:layout_constraintLeft_toRightOf="@id/imageViewLogoMainActivity"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/imageViewFlame"
             android:layout_height="25dp"
             android:layout_width="25dp"
-            android:src="@drawable/ic_flame"
+            android:src="@drawable/flame"
             app:layout_constraintRight_toLeftOf="@id/textViewTotalDays"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
