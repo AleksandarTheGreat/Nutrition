@@ -616,8 +616,8 @@
                 android:id="@+id/textViewNoDaysMainActivity"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="No days, yet"
                 android:layout_centerInParent="true"
+                android:text="No days, yet"
                 android:drawableLeft="@drawable/ic_info"
                 android:drawablePadding="8dp"
                 />
