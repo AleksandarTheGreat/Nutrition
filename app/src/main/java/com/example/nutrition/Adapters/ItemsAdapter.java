@@ -26,7 +26,9 @@ import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder> {
 
@@ -44,7 +46,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         this.itemsRepo = itemsRepo;
         this.day = day;
 
-        this.itemList = day.getItemList();
+        // Sort the items as in the searched order
+        this.itemList = day.getItemList()
+                .stream()
+                .sorted(Comparator.comparing(Item::getId).reversed())
+                .collect(Collectors.toList());
 
         // We check this once so that we don't have to check it every time in the onBindViewHolder method
         this.isNightModeOn = ThemeUtils.isNightModeActive(appCompatActivity);

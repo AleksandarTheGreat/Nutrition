@@ -13,7 +13,9 @@ import com.example.nutrition.Model.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemsRepo extends ParentRepo implements IItems {
 
@@ -55,6 +57,13 @@ public class ItemsRepo extends ParentRepo implements IItems {
         Log.d("Tag", "Read '" + list.size() + "' items for day '" + d_id + "'");
 
         return list;
+    }
+
+    public List<Item> listAllSorted(long d_id){
+        return listAll(d_id)
+                .stream()
+                .sorted(Comparator.comparing(Item::getId))
+                .collect(Collectors.toList());
     }
 
     @Override

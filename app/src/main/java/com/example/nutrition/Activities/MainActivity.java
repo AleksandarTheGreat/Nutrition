@@ -133,6 +133,7 @@ public class MainActivity extends ParentActivity {
             binding.textView4.setTextColor(colorBright);
             binding.textView5.setTextColor(colorBright);
 
+            binding.textViewTotalDays.setTextColor(colorWhite);
             binding.textViewSubTitleSection0.setTextColor(colorWhite);
             binding.textViewSubTitleSection1.setTextColor(colorWhite);
             binding.textViewSubTitleSection3.setTextColor(colorWhite);
@@ -155,6 +156,7 @@ public class MainActivity extends ParentActivity {
             binding.textView4.setTextColor(colorDark);
             binding.textView5.setTextColor(colorDark);
 
+            binding.textViewTotalDays.setTextColor(colorBlack);
             binding.textViewSubTitleSection0.setTextColor(colorBlack);
             binding.textViewSubTitleSection1.setTextColor(colorBlack);
             binding.textViewSubTitleSection3.setTextColor(colorBlack);
