@@ -146,12 +146,9 @@ public class FragmentADay extends Fragment implements IEssentials {
             setUpTextViewsInTheScrollView(suggestionsRepo.listAll());
         });
 
-        binding.searchViewFragmentADay.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                helperFragmentADay.hideSuggestions(binding);
-                return false;
-            }
+        binding.searchViewFragmentADay.setOnCloseListener(() -> {
+            helperFragmentADay.hideSuggestions(binding);
+            return true;
         });
 
         binding.textViewHelp.setOnClickListener(view -> {
