@@ -88,8 +88,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         new Thread(() -> {
 
             allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
-            checkIfDaysAreEmpty(binding, allDaysAdapter);
-            updateTotalDays(binding, allDaysAdapter);
 
             handler.post(() ->{
                 binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -107,6 +105,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
 
                 addEventListeners();
+                checkIfDaysAreEmpty(binding, allDaysAdapter);
+                updateTotalDays(binding, allDaysAdapter);
             });
 
         }).start();
