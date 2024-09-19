@@ -151,6 +151,12 @@ public class HelperFragmentAllDays {
         binding.anyChartFragmentAllDays.invalidate();
     }
 
+    public void createCustomChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+
+
+
+    }
+
     private void changeChipsColors(FragmentAllDaysBinding binding){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             for (int i=0;i<binding.chipGroupGraphFragmentAllDays.getChildCount();i++){
