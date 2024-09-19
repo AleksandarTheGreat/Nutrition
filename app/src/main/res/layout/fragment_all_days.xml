@@ -196,14 +196,21 @@
 
     </HorizontalScrollView>
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/anyChartFragmentAllDays"
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/horizontalScrollViewGraphSelections"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="12dp"
-        />
+        android:layout_marginBottom="12dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCustomGraph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            />
+
+    </HorizontalScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonAddDay"

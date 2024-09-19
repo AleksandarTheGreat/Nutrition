@@ -77,11 +77,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull DaysAdapter.MyViewHolder holder, int position) {
         Day day = dayList.get(position);
 
-        LocalDate ldt = day.getCreatedAt();
-        @SuppressLint({"NewApi", "LocalSuppress"})
-        String dayName = ldt.getDayOfWeek()
-                .getDisplayName(TextStyle.FULL, Locale.ENGLISH);
-
+        String dayName = day.calculateDayNameOfDate();
         holder.textViewDay.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
 

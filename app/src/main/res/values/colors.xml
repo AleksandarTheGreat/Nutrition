@@ -9,6 +9,7 @@
     <color name="fullyTransparent">#00ffffff</color>
     <color name="veryTransparent">#03FFFFFF</color>
     <color name="blackTransparent">#321B1B1B</color>
+    <color name="backForSearchBar">#3981838C</color>
 
     <color name="greenLight">#5FE264</color>
     <color name="greenDark">#3B893E</color>

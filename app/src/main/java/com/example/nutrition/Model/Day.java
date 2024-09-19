@@ -1,12 +1,16 @@
 package com.example.nutrition.Model;
 
+import android.os.Build;
+
 import androidx.annotation.Nullable;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Day {
@@ -41,6 +45,13 @@ public class Day {
             return createdAt.format(dtf);
         }
         return createdAt.toString();
+    }
+
+    public String calculateDayNameOfDate(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return createdAt.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+        }
+        return "";
     }
 
     @Override

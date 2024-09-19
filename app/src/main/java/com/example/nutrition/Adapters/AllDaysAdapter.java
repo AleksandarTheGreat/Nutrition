@@ -93,7 +93,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 FragmentAllDays.updateTotalDays(fragmentAllDaysBinding, allDaysAdapter);
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
-                helperFragmentAllDays.setUpAnyChart(macro, fragmentAllDaysBinding, allDaysAdapter);
+                helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, allDaysAdapter);
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, fragmentAllDaysBinding);
 
                 return true;
@@ -108,12 +108,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
 
-
-        LocalDate ldt = day.getCreatedAt();
-        @SuppressLint({"NewApi", "LocalSuppress"})
-        String dayName = ldt.getDayOfWeek()
-                        .getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
-
+        String dayName = day.calculateDayNameOfDate();
         holder.textViewDays.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
 
