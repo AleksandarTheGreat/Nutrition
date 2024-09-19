@@ -3,9 +3,16 @@ package com.example.nutrition.Helper;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,6 +24,8 @@ import com.example.nutrition.Adapters.ItemsAdapter;
 import com.example.nutrition.Adapters.ProductsAdapter;
 import com.example.nutrition.Model.Item;
 import com.example.nutrition.Model.Product;
+import com.example.nutrition.Model.Suggestion;
+import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Repos.SuggestionsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
@@ -173,5 +182,62 @@ public class HelperFragmentADay {
     public void hideSuggestions(FragmentADayBinding binding){
         binding.scrollViewSuggestions.setVisibility(View.GONE);
         binding.relativeLayoutFragmentADay.setVisibility(View.VISIBLE);
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setUpTextViewsInTheScrollView(FragmentADayBinding binding, Context context, boolean isNightModeOn, List<Suggestion> suggestionList){
+        binding.linearLayoutSuggestionsFragmentADay.removeAllViews();
+
+        // These layout creations take time, that is why they shall be created on a new thread
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+            for (int i=0;i<suggestionList.size();i++){
+                Suggestion suggestion = suggestionList.get(i);
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(0,0,0,12);
+
+                LinearLayout linearLayout = new LinearLayout(context);
+                linearLayout.setPadding(4,24,4,24);
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                linearLayout.setLayoutParams(layoutParams);
+                linearLayout.setGravity(Gravity.CENTER_VERTICAL);
+                linearLayout.setBackgroundResource(R.drawable.back_for_suggestion);
+
+
+
+
+                layoutParams = new LinearLayout.LayoutParams(50, 50);
+                layoutParams.setMargins(24,12,12,12);
+
+                ImageView imageView = new ImageView(context);
+                imageView.setLayoutParams(layoutParams);
+                if (isNightModeOn) imageView.setImageResource(R.drawable.ic_recent_light);
+                else imageView.setImageResource(R.drawable.ic_recent_dark);
+
+
+
+
+                layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(12, 12, 12, 12);
+
+                TextView textView = new TextView(context);
+                textView.setText(suggestion.getText());
+                textView.setTextSize(16);
+                textView.setLayoutParams(layoutParams);
+
+                linearLayout.addView(imageView);
+                linearLayout.addView(textView);
+
+                handler.post(() -> {
+                    binding.linearLayoutSuggestionsFragmentADay.addView(linearLayout);
+                    linearLayout.setOnClickListener(view -> {
+                        String text = textView.getText().toString().trim();
+                        binding.searchViewFragmentADay.setQuery(text, false);
+                    });
+                });
+            }
+
+        }).start();
     }
 }

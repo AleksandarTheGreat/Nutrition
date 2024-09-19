@@ -132,22 +132,24 @@ public class FragmentADay extends Fragment implements IEssentials {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                List<Suggestion> filtered = allSuggestions.stream()
+                List<Suggestion> filtered = allSuggestions
+                        .stream()
                         .filter(suggestion -> suggestion.getText().toLowerCase().contains(newText.toLowerCase()))
                         .collect(Collectors.toList());
 
-                setUpTextViewsInTheScrollView(filtered);
+                helperFragmentADay.setUpTextViewsInTheScrollView(binding, getContext(), isNightModeOn, filtered);
                 return true;
             }
         });
 
         binding.searchViewFragmentADay.setOnSearchClickListener(view -> {
             helperFragmentADay.showSuggestions(binding);
-            setUpTextViewsInTheScrollView(suggestionsRepo.listAll());
+            helperFragmentADay.setUpTextViewsInTheScrollView(binding, getContext(), isNightModeOn, suggestionsRepo.listAll());
         });
 
         binding.searchViewFragmentADay.setOnCloseListener(() -> {
             helperFragmentADay.hideSuggestions(binding);
+            binding.searchViewFragmentADay.clearFocus();
             return true;
         });
 
@@ -190,62 +192,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.textViewHelp.setTextColor(primaryColor);
     }
 
-    @SuppressLint("SetTextI18n")
-    private void setUpTextViewsInTheScrollView(List<Suggestion> suggestionList){
-        binding.linearLayoutSuggestionsFragmentADay.removeAllViews();
 
-        // These layout creations take time, that is why they shall be created on a new thread
-        Handler handler = new Handler(Looper.getMainLooper());
-        new Thread(() -> {
-            for (int i=0;i<suggestionList.size();i++){
-                Suggestion suggestion = suggestionList.get(i);
-
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(0,0,0,12);
-
-                LinearLayout linearLayout = new LinearLayout(getContext());
-                linearLayout.setPadding(4,24,4,24);
-                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                linearLayout.setLayoutParams(layoutParams);
-                linearLayout.setGravity(Gravity.CENTER_VERTICAL);
-                linearLayout.setBackgroundResource(R.drawable.back_for_suggestion);
-
-
-
-
-                layoutParams = new LinearLayout.LayoutParams(50, 50);
-                layoutParams.setMargins(24,12,12,12);
-
-                ImageView imageView = new ImageView(getContext());
-                imageView.setLayoutParams(layoutParams);
-                if (isNightModeOn) imageView.setImageResource(R.drawable.ic_recent_light);
-                else imageView.setImageResource(R.drawable.ic_recent_dark);
-
-
-
-
-                layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(12, 12, 12, 12);
-
-                TextView textView = new TextView(getContext());
-                textView.setText(suggestion.getText());
-                textView.setTextSize(16);
-                textView.setLayoutParams(layoutParams);
-
-                linearLayout.addView(imageView);
-                linearLayout.addView(textView);
-
-                handler.post(() -> {
-                    binding.linearLayoutSuggestionsFragmentADay.addView(linearLayout);
-                    linearLayout.setOnClickListener(view -> {
-                        String text = textView.getText().toString().trim();
-                        binding.searchViewFragmentADay.setQuery(text, false);
-                    });
-                });
-            }
-
-        }).start();
-    }
 
 }
 
