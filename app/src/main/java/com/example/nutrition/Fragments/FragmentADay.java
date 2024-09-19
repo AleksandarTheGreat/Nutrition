@@ -95,10 +95,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         helperFragmentADay = new HelperFragmentADay(getContext());
         helperMain = new HelperMain(getContext());
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            String dayName = day.getCreatedAt().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
-            binding.textViewSub2.setText(dayName + " - " + day.getDateIntoStringFormat());
-        }
+        binding.textViewSub2.setText(day.calculateLongDayNameOfDate() + " - " + day.getDateIntoStringFormat());
 
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {

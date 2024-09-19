@@ -47,9 +47,16 @@ public class Day {
         return createdAt.toString();
     }
 
-    public String calculateDayNameOfDate(){
+    public String calculateShortDayNameOfDate(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return createdAt.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+        }
+        return "";
+    }
+
+    public String calculateLongDayNameOfDate(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return createdAt.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
         }
         return "";
     }

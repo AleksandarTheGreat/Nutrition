@@ -108,7 +108,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
 
-        String dayName = day.calculateDayNameOfDate();
+        String dayName = day.calculateShortDayNameOfDate();
         holder.textViewDays.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
 

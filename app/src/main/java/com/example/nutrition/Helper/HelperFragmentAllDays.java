@@ -3,7 +3,12 @@ package com.example.nutrition.Helper;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,15 +34,18 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HelperFragmentAllDays {
     private Context context;
     private AppCompatActivity appCompatActivity;
+    private boolean isNightModeOn;
     public HelperFragmentAllDays(Context context, AppCompatActivity appCompatActivity){
         this.context = context;
         this.appCompatActivity = appCompatActivity;
+        this.isNightModeOn = ThemeUtils.isNightModeActive(appCompatActivity);
     }
 
     public boolean isANewDayValidToAdd(AllDaysAdapter allDaysAdapter, Toaster toaster) {
@@ -54,79 +62,91 @@ public class HelperFragmentAllDays {
 
     @SuppressLint("DefaultLocale")
     public void createCustomChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+        Handler handler = new Handler(Looper.getMainLooper());
         binding.linearLayoutCustomGraph.removeAllViews();
 
-        int max = findMaxProgressOfACertainMacronutrient(macronutrient, allDaysAdapter.getDaysList());
-        for (Day day: allDaysAdapter.getDaysList()){
-            float progress = 0.0f;
-            String dayShort = day.calculateDayNameOfDate();
+        new Thread(() -> {
+            int max = findMaxProgressOfACertainMacronutrient(macronutrient, allDaysAdapter.getDaysList());
+            for (Day day: allDaysAdapter.getDaysList()){
+                float progress = 0.0f;
+                String dayShort = day.calculateShortDayNameOfDate();
 
-            switch (macronutrient){
-                case "Proteins":{
-                    progress = day.totalProteins();
-                    break;
+                switch (macronutrient){
+                    case "Proteins":{
+                        progress = day.totalProteins();
+                        break;
+                    }
+                    case "Carbohydrates":{
+                        progress = day.totalCarbohydrates();
+                        break;
+                    }
+                    case "Calories":{
+                        progress = day.totalCalories();
+                        break;
+                    }
+                    case "Sugars":{
+                        progress = day.totalSugar();
+                        break;
+                    }
                 }
-                case "Carbohydrates":{
-                    progress = day.totalCarbohydrates();
-                    break;
-                }
-                case "Calories":{
-                    progress = day.totalCalories();
-                    break;
-                }
-                case "Sugars":{
-                    progress = day.totalSugar();
-                    break;
-                }
+
+                TextView textViewProgress = new TextView(context);
+                textViewProgress.setText(String.format("%.0f", progress));
+                textViewProgress.setId(View.generateViewId());
+                textViewProgress.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                TextView textViewDay = new TextView(context);
+                textViewDay.setText(dayShort);
+                textViewDay.setId(View.generateViewId());
+                textViewDay.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+
+                ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
+                progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.list_progress_bar_vertical));
+                progressBar.setMax(max);
+                progressBar.setProgress((int) progress);
+
+                LinearLayout linearLayout = new LinearLayout(context);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.setGravity(Gravity.CENTER);
+                linearLayout.setOnClickListener(view -> {
+                    Log.d("Tag", day.calculateShortDayNameOfDate() + " - " + day.getDateIntoStringFormat());
+                });
+
+                // Style importante
+                setUpTodayYesterdayIndicators(day, textViewDay, textViewProgress);
+
+
+
+                LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0);
+                layoutParams1.setMargins(0,0,0,12);
+                textViewProgress.setLayoutParams(layoutParams1);
+
+                LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 4);
+                layoutParams2.setMargins(0,0,0,8);
+                progressBar.setLayoutParams(layoutParams2);
+
+                LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+                layoutParams3.setMargins(0,0,0,12);
+                textViewDay.setLayoutParams(layoutParams3);
+
+                LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutParams4.setMargins(16, 8, 16, 8);
+                linearLayout.setLayoutParams(layoutParams4);
+
+                linearLayout.addView(textViewProgress);
+                linearLayout.addView(progressBar);
+                linearLayout.addView(textViewDay);
+
+                handler.post(() -> {
+                    binding.linearLayoutCustomGraph.addView(linearLayout);
+                });
             }
-
-            TextView textViewProgress = new TextView(context);
-            textViewProgress.setText(String.format("%.0f", progress));
-            textViewProgress.setId(View.generateViewId());
-            textViewProgress.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-            TextView textViewDay = new TextView(context);
-            textViewDay.setText(dayShort);
-            textViewDay.setId(View.generateViewId());
-            textViewDay.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-            ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
-            progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.list_progress_bar_vertical));
-            progressBar.setMax(max);
-            progressBar.setProgress((int) progress);
-
-            LinearLayout linearLayout = new LinearLayout(context);
-            linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setGravity(Gravity.CENTER);
-
-
-
-
-            LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0);
-            layoutParams1.setMargins(0,0,0,12);
-            textViewProgress.setLayoutParams(layoutParams1);
-
-            LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 4);
-            layoutParams2.setMargins(0,0,0,8);
-            progressBar.setLayoutParams(layoutParams2);
-
-            LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-            layoutParams3.setMargins(0,0,0,12);
-            textViewDay.setLayoutParams(layoutParams3);
-
-            LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutParams4.setMargins(16, 8, 16, 8);
-            linearLayout.setLayoutParams(layoutParams4);
-
-            linearLayout.addView(textViewProgress);
-            linearLayout.addView(progressBar);
-            linearLayout.addView(textViewDay);
-            binding.linearLayoutCustomGraph.addView(linearLayout);
-        }
+        }).start();
     }
 
     private int findMaxProgressOfACertainMacronutrient(String macronutrient, List<Day> dayList){
-        float max = 0;
+        float max = 0.0f;
         float progress = 0.0f;
         for (Day day: dayList){
             switch (macronutrient){
@@ -154,6 +174,36 @@ public class HelperFragmentAllDays {
         }
 
         return (int) max;
+    }
+
+    private void setUpTodayYesterdayIndicators(Day day, TextView textViewProgress, TextView textViewDay){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (day.getCreatedAt().equals(LocalDate.now())){
+                if (isNightModeOn){
+                    int colorWhite = ContextCompat.getColor(context, R.color.white);
+                    textViewProgress.setTextColor(colorWhite);
+                    textViewDay.setTextColor(colorWhite);
+                    textViewProgress.setTypeface(null, Typeface.BOLD);
+                    textViewDay.setTypeface(null, Typeface.BOLD);
+                } else {
+                    int colorBlack = ContextCompat.getColor(context, R.color.black);
+                    textViewProgress.setTextColor(colorBlack);
+                    textViewDay.setTextColor(colorBlack);
+                    textViewProgress.setTypeface(null, Typeface.BOLD);
+                    textViewDay.setTypeface(null, Typeface.BOLD);
+                }
+            } else if (day.getCreatedAt().equals(LocalDate.now().minusDays(1))){
+                if (isNightModeOn){
+                    int colorWhite = ContextCompat.getColor(context, R.color.white);
+                    textViewProgress.setTextColor(colorWhite);
+                    textViewDay.setTextColor(colorWhite);
+                } else {
+                    int colorBlack = ContextCompat.getColor(context, R.color.black);
+                    textViewProgress.setTextColor(colorBlack);
+                    textViewDay.setTextColor(colorBlack);
+                }
+            }
+        }
     }
 
     public void checkAndSelectCorrectChip(String macronutrient, FragmentAllDaysBinding binding){
