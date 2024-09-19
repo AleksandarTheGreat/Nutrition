@@ -116,7 +116,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     @Override
     public void addEventListeners() {
         // Add the day to database and to the adapter's list
-        binding.imageViewCreateNewDay.setOnClickListener(view -> {
+        binding.floatingActionButtonAddDay.setOnClickListener(view -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // We create a new day and add it to the database
                 // Then we load all days from the database and set the dayList pointing to that list
@@ -162,7 +162,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
 
-            binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_light);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_white);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
 
@@ -176,7 +175,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
             int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
 
-            binding.imageViewCreateNewDay.setImageResource(R.drawable.ic_add_dark);
             binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
 

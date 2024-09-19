@@ -617,7 +617,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="No days, yet"
+                android:text="Click on the arrow to add a day"
                 android:drawableLeft="@drawable/ic_info"
                 android:drawablePadding="8dp"
                 />
