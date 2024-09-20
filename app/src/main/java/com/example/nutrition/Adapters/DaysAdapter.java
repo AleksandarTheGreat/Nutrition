@@ -120,18 +120,25 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
                 int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_today_light);
-                else holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+                int textColor;
+                if (isNightMode){
+                    holder.imageView.setImageResource(R.drawable.ic_24_today_light);
+                    textColor = ContextCompat.getColor(context, R.color.white);
+                }
+                else {
+                    holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+                    textColor = ContextCompat.getColor(context, R.color.black);
+                }
 
                 holder.textViewDay.setTypeface(null, Typeface.BOLD);
                 holder.textViewDate.setTypeface(null, Typeface.BOLD);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewDay.setText("Today");
-                holder.textViewDay.setTextColor(onPrimaryContainer);
-                holder.textViewDate.setTextColor(onPrimaryContainer);
-                holder.textViewLabelMacro.setTextColor(onPrimaryContainer);
-                holder.textViewNumberMacro.setTextColor(onPrimaryContainer);
+                holder.textViewDay.setTextColor(textColor);
+                holder.textViewDate.setTextColor(textColor);
+                holder.textViewLabelMacro.setTextColor(textColor);
+                holder.textViewNumberMacro.setTextColor(textColor);
                 holder.materialCardView.setCardBackgroundColor(primaryContainer);
             }
             // Yesterday

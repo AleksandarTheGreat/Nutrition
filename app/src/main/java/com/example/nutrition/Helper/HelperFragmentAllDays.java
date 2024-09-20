@@ -2,8 +2,6 @@ package com.example.nutrition.Helper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
@@ -20,22 +18,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.nutrition.Adapters.AllDaysAdapter;
+import com.example.nutrition.Fragments.FragmentADay;
+import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HelperFragmentAllDays {
@@ -102,14 +93,17 @@ public class HelperFragmentAllDays {
 
 
                 ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
-                progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.list_progress_bar_vertical));
+                if (isNightModeOn) progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_light_green));
+                else progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_dark_green));
                 progressBar.setMax(max);
                 progressBar.setProgress((int) progress);
+
 
                 LinearLayout linearLayout = new LinearLayout(context);
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 linearLayout.setGravity(Gravity.CENTER);
                 linearLayout.setOnClickListener(view -> {
+                    MyFragmentManager.change(appCompatActivity, new FragmentADay(day, appCompatActivity), false);
                     Log.d("Tag", day.calculateShortDayNameOfDate() + " - " + day.getDateIntoStringFormat());
                 });
 

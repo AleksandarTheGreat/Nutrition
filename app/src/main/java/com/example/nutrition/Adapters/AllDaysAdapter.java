@@ -147,13 +147,20 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
                 int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_today_light);
-                else holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+                int textColor;
+                if (isNightMode) {
+                    holder.imageView.setImageResource(R.drawable.ic_24_today_light);
+                    textColor = ContextCompat.getColor(context, R.color.white);
+                }
+                else {
+                    holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+                    textColor = ContextCompat.getColor(context, R.color.black);
+                }
 
                 holder.textViewDays.setTypeface(null, Typeface.BOLD);
                 holder.textViewDate.setTypeface(null, Typeface.BOLD);
-                holder.textViewDays.setTextColor(onPrimaryContainer);
-                holder.textViewDate.setTextColor(onPrimaryContainer);
+                holder.textViewDays.setTextColor(textColor);
+                holder.textViewDate.setTextColor(textColor);
                 holder.textViewDays.setText("Today");
                 holder.materialCardView.setCardBackgroundColor(primaryContainer);
             }
