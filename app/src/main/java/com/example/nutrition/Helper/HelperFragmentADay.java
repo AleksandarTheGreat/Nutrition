@@ -48,7 +48,7 @@ public class HelperFragmentADay {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void addProduct(FragmentADayBinding binding, SuggestionsRepo suggestionsRepo, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
+    public void addItem(FragmentADayBinding binding, SuggestionsRepo suggestionsRepo, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
         String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
         if (!checkIfInputIsValid(binding)) return;
 
@@ -88,10 +88,29 @@ public class HelperFragmentADay {
 
                                     String ingredientName = ingredient.getString("text");
 
-                                    protein = (float) nutrients.getJSONObject("PROCNT").getDouble("quantity");
-                                    carbohydrates = (float) nutrients.getJSONObject("CHOCDF").getDouble("quantity");
-                                    calories = (float) nutrients.getJSONObject("ENERC_KCAL").getDouble("quantity");
-                                    sugar = (float) nutrients.getJSONObject("SUGAR").getDouble("quantity");
+                                    try {
+                                        protein = (float) nutrients.getJSONObject("PROCNT").getDouble("quantity");
+                                    } catch (JSONException e){
+                                        protein = 0;
+                                    }
+
+                                    try {
+                                        carbohydrates = (float) nutrients.getJSONObject("CHOCDF").getDouble("quantity");
+                                    } catch (JSONException e){
+                                        carbohydrates = 0;
+                                    }
+
+                                    try {
+                                        calories = (float) nutrients.getJSONObject("ENERC_KCAL").getDouble("quantity");
+                                    } catch (JSONException e){
+                                        calories = 0;
+                                    }
+
+                                    try {
+                                        sugar = (float) nutrients.getJSONObject("SUGAR").getDouble("quantity");
+                                    } catch (JSONException e){
+                                        sugar = 0;
+                                    }
 
                                     @SuppressLint("DefaultLocale")
                                     String result = String.format("Ingredient: %s\n\nProtein: %.2f\nCalories: %.2f\nCarbohydrates: %.2f\nSugar: %.2f\n",
@@ -124,7 +143,7 @@ public class HelperFragmentADay {
                             }
                         } catch (JSONException e) {
                             Log.d("Tag", "Error: " + e.getMessage());
-                            toaster.text("Some nutrients are missing sadly :(");
+                            toaster.text("Something is really wrong this time :((");
                             progressDialog.dismiss();
                         }
                     }

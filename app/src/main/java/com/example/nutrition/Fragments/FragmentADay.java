@@ -123,7 +123,7 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.searchViewFragmentADay.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                helperFragmentADay.addProduct(binding, suggestionsRepo, itemsAdapter, itemsRepo, day.getId());
+                helperFragmentADay.addItem(binding, suggestionsRepo, itemsAdapter, itemsRepo, day.getId());
                 return true;
             }
 
