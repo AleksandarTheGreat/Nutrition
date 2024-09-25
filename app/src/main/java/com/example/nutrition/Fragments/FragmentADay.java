@@ -147,15 +147,19 @@ public class FragmentADay extends Fragment implements IEssentials {
             }
         });
 
-        binding.searchViewFragmentADay.setOnSearchClickListener(view -> {
-            helperFragmentADay.showSuggestions(binding);
-            helperFragmentADay.setUpTextViewsInTheScrollView(binding, getContext(), isNightModeOn, suggestionsRepo.listAll());
-        });
-
-        binding.searchViewFragmentADay.setOnCloseListener(() -> {
-            helperFragmentADay.hideSuggestions(binding);
-            binding.searchViewFragmentADay.clearFocus();
-            return true;
+        binding.searchViewFragmentADay.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    toaster.text("Has focus");
+                    helperFragmentADay.showSuggestions(binding);
+                    helperFragmentADay.setUpTextViewsInTheScrollView(binding, getContext(), isNightModeOn, suggestionsRepo.listAll());
+                } else {
+                    toaster.text("No focus");
+                    helperFragmentADay.hideSuggestions(binding);
+                    binding.searchViewFragmentADay.clearFocus();
+                }
+            }
         });
 
         binding.textViewHelp.setOnClickListener(view -> {
