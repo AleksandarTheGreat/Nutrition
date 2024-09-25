@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,7 +51,7 @@ public class HelperFragmentADay {
     @SuppressLint("NotifyDataSetChanged")
     public void addItem(FragmentADayBinding binding, SuggestionsRepo suggestionsRepo, ItemsAdapter itemsAdapter, ItemsRepo itemsRepo, long d_id) {
         String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
-        if (!checkIfInputIsValid(binding)) return;
+        if (searchedText.isEmpty()) return;
 
         // Optional
         // Check if the date is valid (we are not in a past date)
@@ -139,7 +140,7 @@ public class HelperFragmentADay {
                             }
                         } catch (JSONException e) {
                             Log.d("Tag", "Error: " + e.getMessage());
-                            toaster.text("Something is really wrong this time :((");
+                            toaster.text("Invalid searching... probably not a food item");
                             progressDialog.dismiss();
                         }
                     }
@@ -154,11 +155,6 @@ public class HelperFragmentADay {
 
         RequestQueue requestQueue = Volley.newRequestQueue(context.getApplicationContext());
         requestQueue.add(jsonObjectRequest);
-    }
-
-    private boolean checkIfInputIsValid(FragmentADayBinding binding) {
-        String searchedText = binding.searchViewFragmentADay.getQuery().toString().trim();
-        return !searchedText.isEmpty();
     }
 
     public static void checkIfItemsAreEmpty(FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
@@ -254,5 +250,45 @@ public class HelperFragmentADay {
             }
 
         }).start();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void sortedListAccordingToMacronutrient(String macro, ItemsAdapter itemsAdapter){
+        List<Item> itemList;
+        switch (macro){
+            case "proteins": {
+                 itemList = itemsAdapter.getItemList()
+                        .stream()
+                        .sorted(Comparator.comparing(Item::getProtein).reversed())
+                        .collect(Collectors.toList());
+                 break;
+            }
+            case "calories": {
+                itemList = itemsAdapter.getItemList()
+                        .stream()
+                        .sorted(Comparator.comparing(Item::getCalories).reversed())
+                        .collect(Collectors.toList());
+                break;
+            }
+            case "carbohydrates": {
+                itemList = itemsAdapter.getItemList()
+                        .stream()
+                        .sorted(Comparator.comparing(Item::getCarbohydrates).reversed())
+                        .collect(Collectors.toList());
+                break;
+            }
+            case "sugar": {
+                itemList = itemsAdapter.getItemList()
+                        .stream()
+                        .sorted(Comparator.comparing(Item::getSugar).reversed())
+                        .collect(Collectors.toList());
+                break;
+            }
+            default:
+                itemList = itemsAdapter.getItemList();
+        }
+
+        itemsAdapter.setItemList(itemList);
+        itemsAdapter.notifyDataSetChanged();
     }
 }

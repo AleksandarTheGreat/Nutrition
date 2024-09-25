@@ -40,9 +40,11 @@ import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Repos.SuggestionsRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.color.MaterialColors;
 
 import java.time.format.TextStyle;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Predicate;
@@ -63,6 +65,9 @@ public class FragmentADay extends Fragment implements IEssentials {
     private HelperMain helperMain;
     private boolean isNightModeOn;
     private List<Suggestion> allSuggestions;
+
+    private final MaterialCardView [] materialCardViews = {binding.materialCardProteins, binding.materialCardCalories, binding.materialCardCarbohydrates, binding.materialCardSugar};
+    private final TextView [] textViewsMacros = {binding.textViewProteins, binding.textViewCalories, binding.textViewCarbohydrates, binding.textViewSugar};
 
     public FragmentADay() {
     }
@@ -153,10 +158,19 @@ public class FragmentADay extends Fragment implements IEssentials {
         binding.textViewHelp.setOnClickListener(view -> {
             helperMain.goToActivity(getContext(), IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
+
+
+        // Add click events on the cards to sort according to the specific macronutrient
+        binding.materialCardProteins.setOnClickListener(view -> {
+            helperFragmentADay.sortedListAccordingToMacronutrient("proteins", itemsAdapter);
+        });
+        binding.materialCardCalories.setOnClickListener(view -> helperFragmentADay.sortedListAccordingToMacronutrient("calories", itemsAdapter));
+        binding.materialCardCarbohydrates.setOnClickListener(view -> helperFragmentADay.sortedListAccordingToMacronutrient("carbohydrates", itemsAdapter));
+        binding.materialCardSugar.setOnClickListener(view -> helperFragmentADay.sortedListAccordingToMacronutrient("sugar", itemsAdapter));
     }
 
-    public void additionalThemeSettings(){
-        if (ThemeUtils.isNightModeActive(appCompatActivity)){
+    public void additionalThemeSettings() {
+        if (ThemeUtils.isNightModeActive(appCompatActivity)) {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
 
@@ -188,7 +202,6 @@ public class FragmentADay extends Fragment implements IEssentials {
         int primaryColor = MaterialColors.getColor(getContext(), com.google.android.material.R.attr.colorPrimary, Color.BLACK);
         binding.textViewHelp.setTextColor(primaryColor);
     }
-
 
 
 }
