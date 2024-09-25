@@ -66,8 +66,8 @@ public class FragmentADay extends Fragment implements IEssentials {
     private boolean isNightModeOn;
     private List<Suggestion> allSuggestions;
 
-    private final MaterialCardView [] materialCardViews = {binding.materialCardProteins, binding.materialCardCalories, binding.materialCardCarbohydrates, binding.materialCardSugar};
-    private final TextView [] textViewsMacros = {binding.textViewProteins, binding.textViewCalories, binding.textViewCarbohydrates, binding.textViewSugar};
+    private MaterialCardView [] materialCardViews;
+    private TextView [] textViewsMacros;
 
     public FragmentADay() {
     }
@@ -93,6 +93,9 @@ public class FragmentADay extends Fragment implements IEssentials {
     @Override
     public void instantiateObjects() {
         toaster = new Toaster(getContext());
+
+        materialCardViews = new MaterialCardView[]{binding.materialCardProteins, binding.materialCardCalories, binding.materialCardCarbohydrates, binding.materialCardSugar};
+        textViewsMacros = new TextView[]{binding.textViewProteins, binding.textViewCalories, binding.textViewCarbohydrates, binding.textViewSugar};
 
         itemsRepo = new ItemsRepo(getContext());
         suggestionsRepo = new SuggestionsRepo(getContext());
