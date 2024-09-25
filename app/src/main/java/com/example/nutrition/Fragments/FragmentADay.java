@@ -164,12 +164,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
 
         // Add click events on the cards to sort according to the specific macronutrient
-        binding.materialCardProteins.setOnClickListener(view -> {
-            helperFragmentADay.sortedListAccordingToMacronutrient("proteins", itemsAdapter);
-        });
-        binding.materialCardCalories.setOnClickListener(view -> helperFragmentADay.sortedListAccordingToMacronutrient("calories", itemsAdapter));
-        binding.materialCardCarbohydrates.setOnClickListener(view -> helperFragmentADay.sortedListAccordingToMacronutrient("carbohydrates", itemsAdapter));
-        binding.materialCardSugar.setOnClickListener(view -> helperFragmentADay.sortedListAccordingToMacronutrient("sugar", itemsAdapter));
+        helperFragmentADay.addClickEventsForMaterialCardViews(materialCardViews, textViewsMacros, itemsAdapter);
     }
 
     public void additionalThemeSettings() {

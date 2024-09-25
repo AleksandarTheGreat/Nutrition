@@ -3,6 +3,7 @@ package com.example.nutrition.Helper;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -29,6 +30,7 @@ import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Repos.SuggestionsRepo;
 import com.example.nutrition.databinding.FragmentADayBinding;
+import com.google.android.material.card.MaterialCardView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -253,7 +255,7 @@ public class HelperFragmentADay {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void sortedListAccordingToMacronutrient(String macro, ItemsAdapter itemsAdapter){
+    private void sortedListAccordingToMacronutrient(String macro, ItemsAdapter itemsAdapter){
         List<Item> itemList;
         switch (macro){
             case "proteins": {
@@ -290,5 +292,30 @@ public class HelperFragmentADay {
 
         itemsAdapter.setItemList(itemList);
         itemsAdapter.notifyDataSetChanged();
+    }
+
+    public void addClickEventsForMaterialCardViews(MaterialCardView [] materialCardViews, TextView [] textViewsMacros, ItemsAdapter itemsAdapter){
+        for (int i=0;i<materialCardViews.length;i++){
+            MaterialCardView cardView = materialCardViews[i];
+            TextView textViewMacro = textViewsMacros[i];
+
+            cardView.setOnClickListener(view -> {
+                for (int j=0;j<materialCardViews.length;j++){
+                    MaterialCardView card = materialCardViews[j];
+                    TextView textView = textViewsMacros[j];
+
+                    if (cardView == card && textViewMacro == textView){
+                        String macronutrient = cardView.getTag().toString().trim();
+
+                        card.setCardElevation(8);
+                        textView.setTypeface(null, Typeface.BOLD);
+                        sortedListAccordingToMacronutrient(macronutrient, itemsAdapter);
+                    } else {
+                        card.setCardElevation(0);
+                        textView.setTypeface(null, Typeface.NORMAL);
+                    }
+                }
+            });
+        }
     }
 }
