@@ -55,11 +55,7 @@ public class HelperFragmentADay {
         // Optional
         // Check if the date is valid (we are not in a past date)
 
-        String apiKey = "73852b082619618ae5eb814953750853";
-        String appId = "e7be29f8";
-        String baseUrl = "https://api.edamam.com/api/nutrition-data";
-        String url = baseUrl + "?app_id=" + appId + "&app_key=" + apiKey + "&ingr=" + searchedText;
-
+        String url = EdamamAPI.getUrl(searchedText);
 
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Loading...");
