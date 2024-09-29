@@ -2,6 +2,7 @@ package com.example.nutrition.Helper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
@@ -25,6 +26,7 @@ import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -208,6 +210,35 @@ public class HelperFragmentAllDays {
                 break;
             }
         }
+    }
+
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
+    public void calculateAverageMacronutrient(String macronutrient, FragmentAllDaysBinding binding, List<Day> dayList){
+        float sum = 0.0f;
+        for (Day day: dayList){
+            switch (macronutrient){
+                case "Proteins":{
+                    sum += day.totalProteins();
+                    break;
+                } case "Calories":{
+                    sum += day.totalCalories();
+                    break;
+                } case "Carbohydrates": {
+                    sum += day.totalCarbohydrates();
+                    break;
+                } case "Sugars":{
+                    sum += day.totalSugar();
+                    break;
+                }
+            }
+        }
+
+        int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
+
+        binding.textViewSub3.setText("Average " + macronutrient);
+        binding.textViewSub3.setTextColor(colorPrimary);
+        binding.textViewAverage.setText(String.format("%.0f", sum / dayList.size()));
+        binding.textViewAverage.setTextColor(colorPrimary);
     }
 }
 

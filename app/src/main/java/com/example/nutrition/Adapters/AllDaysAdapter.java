@@ -95,6 +95,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
                 helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, allDaysAdapter);
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, fragmentAllDaysBinding);
+                helperFragmentAllDays.calculateAverageMacronutrient(macro, fragmentAllDaysBinding, allDaysAdapter.getDaysList());
 
                 return true;
             }
@@ -108,7 +109,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
 
-        String dayName = day.calculateShortDayNameOfDate();
+        String dayName = day.calculateLongDayNameOfDate();
         holder.textViewDays.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
 
@@ -139,6 +140,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void additionalThemeChanges(Day day, MyViewHolder holder){
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDate currentDate = LocalDate.now();

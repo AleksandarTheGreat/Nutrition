@@ -145,9 +145,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Macronutrients graph for all days"
+            android:text="Average macro"
             app:layout_constraintBottom_toBottomOf="@id/imageViewLogoGraph"
             app:layout_constraintLeft_toRightOf="@id/imageViewLogoGraph" />
+
+        <TextView
+            android:id="@+id/textViewAverage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewLogoGraph"
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -77,7 +77,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull DaysAdapter.MyViewHolder holder, int position) {
         Day day = dayList.get(position);
 
-        String dayName = day.calculateShortDayNameOfDate();
+        String dayName = day.calculateLongDayNameOfDate();
         holder.textViewDay.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
 
@@ -112,6 +112,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void additionalThemeChanges(Day day, DaysAdapter.MyViewHolder holder){
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDate currentDate = LocalDate.now();
@@ -134,7 +135,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDate.setTypeface(null, Typeface.BOLD);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
-                holder.textViewDay.setText("Today");
+                holder.textViewDay.setText("Today - " + day.calculateLongDayNameOfDate());
                 holder.textViewDay.setTextColor(textColor);
                 holder.textViewDate.setTextColor(textColor);
                 holder.textViewLabelMacro.setTextColor(textColor);
@@ -153,7 +154,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
-                holder.textViewDay.setText("Yesterday");
+                holder.textViewDay.setText("Yesterday - " + day.calculateLongDayNameOfDate());
                 holder.textViewDay.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
                 holder.textViewLabelMacro.setTextColor(onSecondaryContainer);

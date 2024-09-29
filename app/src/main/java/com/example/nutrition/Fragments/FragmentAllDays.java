@@ -103,6 +103,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
                 helperFragmentAllDays.createCustomChart(macro, binding, allDaysAdapter);
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
+                helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, allDaysAdapter.getDaysList());
 
                 addEventListeners();
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
@@ -137,6 +138,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
                 helperFragmentAllDays.createCustomChart(macro, binding, allDaysAdapter);
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
+                helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, allDaysAdapter.getDaysList());
             }
         });
 
@@ -152,6 +154,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 String text = chip.getTag().toString().trim();
 
                 helperFragmentAllDays.createCustomChart(text, binding, allDaysAdapter);
+                helperFragmentAllDays.calculateAverageMacronutrient(text, binding, allDaysAdapter.getDaysList());
                 SharedPrefMacronutrients.writeMacronutrientToSharedPref(getContext(), text);
             }
         });
