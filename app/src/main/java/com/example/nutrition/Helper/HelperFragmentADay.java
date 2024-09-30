@@ -202,9 +202,10 @@ public class HelperFragmentADay {
         binding.linearLayoutSuggestionsFragmentADay.removeAllViews();
 
         // These layout creations take time, that is why they shall be created on a new thread
+        int size = Math.min(50, suggestionList.size());
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
-            for (int i=0;i<suggestionList.size();i++){
+            for (int i=0;i<size;i++){
                 Suggestion suggestion = suggestionList.get(i);
 
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

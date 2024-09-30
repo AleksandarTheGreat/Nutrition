@@ -240,6 +240,14 @@ public class HelperFragmentAllDays {
         binding.textViewAverage.setText(String.format("%.0f", sum / dayList.size()));
         binding.textViewAverage.setTextColor(colorPrimary);
     }
+
+    public void countAndSetTotalDays(Context context, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+        int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
+
+        binding.textViewTotalDays.setText(String.valueOf(allDaysAdapter.getItemCount()));
+        binding.textViewTotalDays.setTextColor(colorPrimary);
+        binding.textViewSub2.setTextColor(colorPrimary);
+    }
 }
 
 

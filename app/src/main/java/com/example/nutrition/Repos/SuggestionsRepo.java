@@ -29,7 +29,8 @@ public class SuggestionsRepo extends ParentRepo implements ISuggestionsRepo{
     @Override
     public List<Suggestion> listAll() {
         List<Suggestion> suggestions = new ArrayList<>();
-        String query = "SELECT * FROM suggestions";
+        // So we list the most recently added first
+        String query = "SELECT * FROM suggestions ORDER BY id DESC";
         SQLiteDatabase database = getReadableDatabase();
 
         Cursor cursor = database.rawQuery(query, null);

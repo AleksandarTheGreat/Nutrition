@@ -71,7 +71,7 @@ public class Section1And2Activity extends ParentActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
 
-            allProductsAlways = ContentLoader.createTestList(Section1And2Activity.this);
+            allProductsAlways = ContentLoader.loadPopularFoodsList();
             productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
 
             handler.post(() -> {

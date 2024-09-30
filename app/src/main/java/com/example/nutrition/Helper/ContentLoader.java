@@ -26,7 +26,7 @@ public class ContentLoader {
         }
     }
 
-    public static List<Product> createTestList(Context context) {
+    public static List<Product> loadPopularFoodsList() {
         List<Product> productList = new ArrayList<>();
 
 // Grains
@@ -42,7 +42,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Millet (Cooked)", "Grains", 3.5, 23.7, 119, 0.2, "https://www.marthastewart.com/thmb/mn20v4pinKUFHDGc9Qhua30CoQA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2023-year-of-millet-getty-0423-d023bf36fec148bbb1503b79f1e2c8de.jpg"));
         productList.add(Product.createProduct("Rye Bread", "Grains", 8.5, 48.3, 259, 5, "https://www.jocooks.com/wp-content/uploads/2020/05/dark-rye-bread-1-17-500x500.jpg"));
         productList.add(Product.createProduct("Spelt (Cooked)", "Grains", 5.5, 43, 198, 1.2, "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/10/spelt-grain-in-bowl-1296x728-header.jpg?w=1155&h=1528"));
-        productList.add(Product.createProduct("Sorghum (Cooked)", "Grains", 4, 38, 154, 0.9, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS12XjWK4K5XUuG5LUh3z7dBllGGryHQVfVHw&usqp=CAU"));
+        productList.add(Product.createProduct("Sorghum (Cooked)", "Grains", 4, 38, 154, 0.9, "https://www.feedipedia.org/sites/default/files/images/sorghum_grain_01_0.jpg"));
         productList.add(Product.createProduct("Amaranth (Cooked)", "Grains", 4.7, 23, 102, 1.7, "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/amaranth-on-spoon-1296x728.jpg?w=1155&h=1528"));
 
 // Vegetables
@@ -64,9 +64,9 @@ public class ContentLoader {
         productList.add(Product.createProduct("Pumpkin", "Vegetables", 1, 7, 26, 2.8, "https://www.thespruce.com/thmb/WFSkpFrvIfRfDAMaob945M4UgKA=/2116x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-147003040-86f76dfc543d4a719eed6ccd3395c2b7.jpg"));
         productList.add(Product.createProduct("Sweet Potato", "Vegetables", 2, 20, 86, 4.2, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ipomoea_batatas_006.JPG/800px-Ipomoea_batatas_006.JPG"));
         productList.add(Product.createProduct("Corn", "Vegetables", 3.3, 19, 86, 6.3, "https://chefsmandala.com/wp-content/uploads/2018/03/corn.jpg"));
-        productList.add(Product.createProduct("Onion", "Vegetables", 1.1, 9, 40, 4.2, "https://produits.bienmanger.com/36700-0w470h470_Organic_Red_Onion_From_Italy.jpg"));
+        productList.add(Product.createProduct("Onion", "Vegetables", 1.1, 9, 40, 4.2, "https://cdn.britannica.com/48/82548-050-A61BF320/Onion-bulbs-shapes-variety-colours-sizes.jpg"));
         productList.add(Product.createProduct("Garlic", "Vegetables", 6.4, 33, 149, 1, "https://www.organics.ph/cdn/shop/products/garlic-peeled-250grams-fruits-vegetables-fresh-produce-982039_1024x.jpg?v=1601483078"));
-        productList.add(Product.createProduct("Mushroom", "Vegetables", 3.1, 3.3, 22, 1.7, "https://images.immediate.co.uk/production/volatile/sites/30/2023/08/Chestnut-mushrooms-a223a78.jpg?quality=90&resize=440,400"));
+        productList.add(Product.createProduct("Mushroom", "Vegetables", 3.1, 3.3, 22, 1.7, "https://cdn.britannica.com/90/236590-050-27422B8D/Close-up-of-mushroom-growing-on-field.jpg"));
         productList.add(Product.createProduct("Radish", "Vegetables", 0.7, 3.4, 16, 1.9, "https://www.incredibleseeds.ca/cdn/shop/products/Radish-Champion_6b2e14ab-3ed6-44c1-93d1-89108db0479f.jpg?v=1678153949"));
         productList.add(Product.createProduct("Beetroot", "Vegetables", 1.6, 10, 43, 7, "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2019/11/raw-beetroot-on-a-wooden-surface.jpg"));
         productList.add(Product.createProduct("Celery", "Vegetables", 0.8, 3, 16, 1.8, "https://www.thespruceeats.com/thmb/h5_OYBELY8-WXAbSF2RLJ3evrJg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-is-celery-5199268-hero-01-cb9c645dfb614f0a8eef5b0c316ce16d.jpg"));
@@ -80,7 +80,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Swiss Chard", "Vegetables", 1.8, 3.7, 19, 1.1, "https://www.health.com/thmb/m6gcOGCKNjLCv5mnk8zV_MqDX9U=/2121x0/filters:no_upscale():max_bytes(150000):strip_icc()/SwissChard-6193e3b4941b4479979f5df338ae6ea3.jpg"));
         productList.add(Product.createProduct("Leek", "Vegetables", 1.5, 14, 61, 3.9, "https://www.thespruceeats.com/thmb/k_-YP11JJ6Rj6JCfe---nqmOQ1k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/buttered-leeks-recipe-spring-leeks-4126572-step-01-a27df4fb214e46cfbb127ad561a9f8aa.jpg"));
         productList.add(Product.createProduct("Fennel", "Vegetables", 1.2, 7.3, 31, 3.9, "https://www.thechoppingblock.com/hs-fs/hubfs/Blog/fennel.png?width=600&name=fennel.png"));
-        productList.add(Product.createProduct("Snow Peas", "Vegetables", 2.8, 7.5, 42, 4, "https://fastandfresh.in/cdn/shop/products/snowpeas_800x.jpg?v=1655795564"));
+        productList.add(Product.createProduct("Snow Peas", "Vegetables", 2.8, 7.5, 42, 4, "https://www.nature-and-garden.com/wp-content/uploads/sites/4/2022/01/snow-pea.jpg"));
         productList.add(Product.createProduct("Bamboo Shoots", "Vegetables", 2.6, 5.2, 27, 3, "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/05/bamboo-shoots-shoot-food-1296x728-header.jpg?w=1155&h=1528"));
         productList.add(Product.createProduct("Butternut Squash", "Vegetables", 1, 12, 45, 2.2, "https://www.southernliving.com/thmb/K1sT0DyM7OOzF17Fc2KwAYA5mUE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Roasted_Butternut_Squash_007_4x3-4f15d091869649db9d175801e14c085a.jpg"));
         productList.add(Product.createProduct("Acorn Squash", "Vegetables", 1.4, 15, 58, 0.4, "https://thewoodenskillet.com/wp-content/uploads/2016/10/roasted-acorn-squash-1.jpg"));
@@ -94,9 +94,9 @@ public class ContentLoader {
         productList.add(Product.createProduct("Orange", "Fruits", 0.9, 12, 47, 9, "https://www.hauert.com/fileadmin/MediaValet/_processed_/1/1/csm_Orange_yi1YB_FubH8-unsplash_b6cc0b77ab.jpg"));
         productList.add(Product.createProduct("Grape", "Fruits", 0.6, 18, 69, 16, "https://images.healthshots.com/healthshots/en/uploads/2023/03/01181103/Grapes-1600x900.jpg"));
         productList.add(Product.createProduct("Strawberry", "Fruits", 0.8, 8, 32, 4.9, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg/1200px-Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_single2.jpg"));
-        productList.add(Product.createProduct("Watermelon", "Fruits", 0.6, 8, 30, 6, "https://5.imimg.com/data5/SELLER/Default/2022/3/ZZ/PW/RZ/36905324/fruits-watermelons-500x500.jpg"));
-        productList.add(Product.createProduct("Pineapple", "Fruits", 0.5, 13, 50, 10, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHCebcn-XCvFFmVnX5hAUhTht_uiDzjPDeVg&usqp=CAU"));
-        productList.add(Product.createProduct("Mango", "Fruits", 0.8, 15, 60, 14, "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Mangos_-_single_and_halved.jpg/640px-Mangos_-_single_and_halved.jpg"));
+        productList.add(Product.createProduct("Watermelon", "Fruits", 0.6, 8, 30, 6, "https://snaped.fns.usda.gov/sites/default/files/styles/crop_ratio_7_5/public/seasonal-produce/2018-05/watermelon.jpg?itok=WlQcb2Uh"));
+        productList.add(Product.createProduct("Pineapple", "Fruits", 0.5, 13, 50, 10, "https://www.thespruceeats.com/thmb/2Pdkzy-BBOBG74eziXqSj3hwDeI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-history-of-the-pineapple-1807645-343418eb3b4c41b1b956d3c702550a07.jpg"));
+        productList.add(Product.createProduct("Mango", "Fruits", 0.8, 15, 60, 14, "https://cdn.britannica.com/06/75906-050-16A53398/mango-fruits.jpg"));
         productList.add(Product.createProduct("Kiwi", "Fruits", 1.1, 15, 61, 9, "https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg"));
         productList.add(Product.createProduct("Cherry", "Fruits", 1.0, 12, 50, 8, "https://images.immediate.co.uk/production/volatile/sites/10/2021/10/2048x1365-SEO-Morello-cherry-GettyImages-1330319873-e389763.jpg?resize=1200%2C630"));
         productList.add(Product.createProduct("Peach", "Fruits", 0.9, 10, 39, 8, "https://5.imimg.com/data5/SELLER/Default/2023/9/340781037/XT/KA/ZP/189247658/peach-500x500.jpg"));
@@ -119,7 +119,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Guava", "Fruits", 2.6, 14, 68, 9, "https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-guavas-1296x728-feature.jpg"));
         productList.add(Product.createProduct("Cranberry", "Fruits", 0.4, 12, 46, 4, "https://media.post.rvohealth.io/wp-content/uploads/2020/08/cranberries-101-732x549-thumbnail-732x549.jpg"));
         productList.add(Product.createProduct("Tangerine", "Fruits", 0.8, 13, 53, 11, "https://draxe.com/wp-content/uploads/2019/11/tangerines_thumb.jpg"));
-        productList.add(Product.createProduct("Coconut", "Fruits", 3.3, 15, 354, 6, "https://www.brookstropicals.com/wp-content/uploads/2020/04/halfwholepieces2.jpg"));
+        productList.add(Product.createProduct("Coconut", "Fruits", 3.3, 15, 354, 6, "https://www.jiomart.com/images/product/original/590000086/big-coconut-1-pc-approx-350-g-600-g-product-images-o590000086-p590000086-0-202408070949.jpg?im=Resize=(1000,1000)"));
         productList.add(Product.createProduct("Jackfruit", "Fruits", 1.7, 24, 95, 19, "https://images.everydayhealth.com/images/diet-nutrition/jackfruit-101-1440x810.jpg"));
         productList.add(Product.createProduct("Nectarine", "Fruits", 1.1, 12, 44, 8, "https://cdn.britannica.com/25/182625-050-327FAC9B/Nectarine-fruits.jpg"));
         productList.add(Product.createProduct("Kumquat", "Fruits", 1.9, 16, 71, 9, "https://cdn.britannica.com/17/136017-050-554676CD/Kumquat-fruit.jpg"));
@@ -133,7 +133,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Chicken Breast", "Meat and Proteins", 31, 0, 165, 0, "https://www.southernliving.com/thmb/-TWfCwlFHd-7DIzTIYXh2Zxr_f8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/How_To_Grill_Chicken_010-e4aff40705b247868fe3fb6755e8bdd4.jpg"));
         productList.add(Product.createProduct("Beef", "Meat and Proteins", 26, 0, 250, 0, "https://hips.hearstapps.com/hmg-prod/images/delish-roast-beef-horizontal-1540505165.jpg?crop=1xw:0.84375xh;center,top"));
         productList.add(Product.createProduct("Turkey Breast", "Meat and Proteins", 29, 0, 135, 0, "https://www.southernliving.com/thmb/13oAPmgEoKCWkWxONEFKgpCIqZM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Roasted-Turkey-Breast-130-step5-beauty-4x3-49e93367fca3427c9580e53403cdfa89.jpg"));
-        productList.add(Product.createProduct("Salmon", "Meat and Proteins", 25, 0, 206, 0, "https://www.onceuponachef.com/images/2018/02/pan-seared-salmon-.jpg"));
+        productList.add(Product.createProduct("Salmon", "Meat and Proteins", 25, 0, 206, 0, "https://healthyrecipesblogs.com/wp-content/uploads/2024/06/pan-fried-salmon-featured-new.jpg"));
         productList.add(Product.createProduct("Pork Loin", "Meat and Proteins", 27, 0, 242, 0, "https://www.allrecipes.com/thmb/I5dIo1Nf2FgTSWkned-aoRJoGVs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/21766-roasted-pork-loin-DDMFS-4x3-42648a2d6acf4ef3a05124ef5010c4fb.jpg"));
         productList.add(Product.createProduct("Cod", "Meat and Proteins", 20, 0, 82, 0, "https://images.getbento.com/accounts/f0bb46b4cd2ed810d3f2dc53bbcc07c2/media/images/12589shutterstock_1739796365.jpg?w=1200&fit=crop&auto=compress,format&crop=focalpoint&fp-x=0.5&fp-y=0.5"));
         productList.add(Product.createProduct("Bacon", "Meat and Proteins", 37, 1.4, 541, 0, "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2Farchive%2Fad4881c2ec9f21cafb7f5d209c83b6849d6b0d23"));
@@ -148,7 +148,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Chickpeas", "Meat and Proteins", 8.9, 27.4, 164, 4.8, "https://www.inspiredtaste.net/wp-content/uploads/2016/06/How-to-Cook-Chickpeas-Recipe-1-1200.jpg"));
         productList.add(Product.createProduct("Peanuts", "Meat and Proteins", 25.8, 16.1, 567, 4.7, "https://d131k5wuh4trw5.cloudfront.net/uploads/9-1-1024x1024.png"));
         productList.add(Product.createProduct("Edamame", "Meat and Proteins", 11, 9, 122, 2.2, "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/12/edamame_shelled_header-1024x575.jpg"));
-        productList.add(Product.createProduct("Tempeh", "Meat and Proteins", 19, 9, 192, 0.5, "https://upload.wikimedia.org/wikipedia/commons/e/e1/Tempeh_%288681605421%29.jpg"));
+        productList.add(Product.createProduct("Tempeh", "Meat and Proteins", 19, 9, 192, 0.5, "https://rainbowplantlife.com/wp-content/uploads/2023/07/Tempeh-Bacon_Hero-3.jpg"));
         productList.add(Product.createProduct("Pumpkin Seeds", "Meat and Proteins", 19, 53, 446, 1.4, "https://www.heart.org/-/media/Images/News/2018/October-2018/1016PumpkinSeeds_SC.jpg"));
         productList.add(Product.createProduct("Sunflower Seeds", "Meat and Proteins", 21, 20, 584, 2.6, "https://media.post.rvohealth.io/wp-content/uploads/2020/06/sunflower-seeds-1200x628-facebook-1200x628.jpg"));
         productList.add(Product.createProduct("Black Beans", "Meat and Proteins", 9, 23, 132, 0.3, "https://cdn.loveandlemons.com/wp-content/uploads/2021/02/black-bean-recipes.jpg"));
@@ -185,18 +185,18 @@ public class ContentLoader {
         productList.add(Product.createProduct("Canola Oil", "Fats, Oils, and Sweets", 0, 0, 884, 0, "https://cdn.britannica.com/16/234016-050-0220A0BE/canola-oil-and-canola-blossoms.jpg"));
         productList.add(Product.createProduct("Coconut Oil", "Fats, Oils, and Sweets", 0, 0, 862, 0, "https://www.healthshots.com/wp-content/uploads/2023/09/coconut-oil.jpg"));
         productList.add(Product.createProduct("Sunflower Oil", "Fats, Oils, and Sweets", 0, 0, 884, 0, "https://www.eatingwell.com/thmb/BatmJma8il7UHs58eyBSdGTg_sc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/sunflower-oil-caebdc08b58c4afe8456a40e5e8dd030.jpg"));
-        productList.add(Product.createProduct("Honey", "Fats, Oils, and Sweets", 0.3, 82, 304, 82, "https://images.immediate.co.uk/production/volatile/sites/30/2024/03/Honey440-bb52330.jpg"));
+        productList.add(Product.createProduct("Honey", "Fats, Oils, and Sweets", 0.3, 82, 304, 82, "https://post.healthline.com/wp-content/uploads/2021/04/honey-1296x728-header.jpg"));
         productList.add(Product.createProduct("Maple Syrup", "Fats, Oils, and Sweets", 0, 67, 260, 67, "https://assets.clevelandclinic.org/transform/cc1fbafa-ad14-4db0-a132-0357234bd8a3/MapleSyrup-538184814-770x533-1_jpg"));
         productList.add(Product.createProduct("Granulated Sugar", "Fats, Oils, and Sweets", 0, 100, 387, 100, "https://recipes.net/wp-content/uploads/2024/02/what-is-a-granulated-sugar-substitute-1707787534.jpg"));
-        productList.add(Product.createProduct("Brown Sugar", "Fats, Oils, and Sweets", 0, 97, 380, 97, "https://cdn.jwplayer.com/v2/media/F9e0EImz/thumbnails/VCZN7qMW.jpg"));
+        productList.add(Product.createProduct("Brown Sugar", "Fats, Oils, and Sweets", 0, 97, 380, 97, "https://alldayidreamaboutfood.com/wp-content/uploads/2024/02/Keto-Brown-Sugar-Replacement.jpg"));
         productList.add(Product.createProduct("Corn Syrup", "Fats, Oils, and Sweets", 0, 77, 286, 77, "https://static.toiimg.com/photo/89750962.cms"));
-        productList.add(Product.createProduct("Margarine", "Fats, Oils, and Sweets", 0, 0, 717, 0, "https://www.bakels.com.au/wp-content/uploads/sites/21/2019/06/Margarine.jpg"));
+        productList.add(Product.createProduct("Margarine", "Fats, Oils, and Sweets", 0, 0, 717, 0, "https://cdn.justgotochef.com/uploads/1551505099-margarine.png?w=633&h=381&fit=crop"));
         productList.add(Product.createProduct("Mayonnaise", "Fats, Oils, and Sweets", 0.3, 0.6, 680, 0.6, "https://drizzleanddip.com/wp-content/uploads/2023/02/pack-shot.jpg"));
         productList.add(Product.createProduct("Jam", "Fats, Oils, and Sweets", 0.4, 65, 239, 65, "https://i0.wp.com/www.pardonyourfrench.com/wp-content/uploads/2022/05/strawberry-jam-5.jpg?fit=1200%2C1798&ssl=1"));
         productList.add(Product.createProduct("Jelly", "Fats, Oils, and Sweets", 0.4, 65, 235, 65, "https://www.comptoir-irlandais.com/26063/chivers-strawberry-jelly.jpg"));
         productList.add(Product.createProduct("Candy", "Fats, Oils, and Sweets", 0, 98, 394, 98, "https://m.media-amazon.com/images/I/91-ZQLmWkhL._AC_UF894,1000_QL80_.jpg"));
         productList.add(Product.createProduct("Syrup", "Fats, Oils, and Sweets", 0, 77, 286, 77, "https://www.allrecipes.com/thmb/hGltqtjyrl-rHWe9ksVbKNpaldQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/152002_homemademaplesyrup_ddmfs_3x4_2639-3d749bab68994949abef4882cecdeafd.jpg"));
-        productList.add(Product.createProduct("Pastries", "Fats, Oils, and Sweets", 4, 52, 350, 22, "https://bakerpedia.com/wp-content/uploads/2020/06/Pastry_baking-processes-e1593464950587.jpg"));
+        productList.add(Product.createProduct("Pastries", "Fats, Oils, and Sweets", 4, 52, 350, 22, "https://images.squarespace-cdn.com/content/v1/5df30445f2ddcd13d5032b07/1688086309362-7PSZQ01YNWR6NSP93FQC/BI4A4583.jpg"));
         productList.add(Product.createProduct("Cookies", "Fats, Oils, and Sweets", 5, 68, 502, 29, "https://cdn.loveandlemons.com/wp-content/uploads/2020/12/cookie-recipes.jpg"));
         productList.add(Product.createProduct("Cake", "Fats, Oils, and Sweets", 3.2, 62, 390, 35, "https://bakingamoment.com/wp-content/uploads/2023/07/IMG_2051-ice-cream-cake.jpg"));
         productList.add(Product.createProduct("Ice Cream", "Fats, Oils, and Sweets", 3.5, 23, 207, 21, "https://carveyourcraving.com/wp-content/uploads/2021/06/chocolate-icecream-in-an-icecream-maker.jpg"));
@@ -222,7 +222,7 @@ public class ContentLoader {
         productList.add(Product.createProduct("Onion Rings", "Fast Food", 3, 31, 340, 5, "https://kristineskitchenblog.com/wp-content/uploads/2022/03/crispy-air-fryer-onion-rings-recipe-0775.jpg"));
         productList.add(Product.createProduct("Milkshake", "Fast Food", 5, 50, 300, 40, "https://www.dessertfortwo.com/wp-content/uploads/2022/08/How-to-Make-a-Milkshake-11-735x1103.jpg"));
         productList.add(Product.createProduct("Chicken Wrap", "Fast Food", 18, 28, 320, 3, "https://www.hiddenvalley.com/wp-content/uploads/2021/04/buffalo-ranch-chicken-wrap-RDP.jpg?width=720&quality=75"));
-        productList.add(Product.createProduct("Caesar Salad", "Fast Food", 12, 15, 250, 3, "https://itsavegworldafterall.com/wp-content/uploads/2023/04/Avocado-Caesar-Salad-FI-500x375.jpg"));
+        productList.add(Product.createProduct("Caesar Salad", "Fast Food", 12, 15, 250, 3, "https://www.noracooks.com/wp-content/uploads/2022/06/vegan-caesar-salad-4.jpg"));
         productList.add(Product.createProduct("Breakfast Sandwich (Eggs and Cheese)", "Fast Food", 15, 30, 350, 5, "https://www.seriouseats.com/thmb/FOFHUZtFUfpPnIPQAseHyzbpMfo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/09122022-GrilledCheeseEggplosionRecipe-AmandaSuarez-Hero-eb123d43626f43f4bdd3bc16d497918b.JPG"));
         productList.add(Product.createProduct("Fried Chicken (1 piece)", "Fast Food", 14, 12, 250, 0, "https://www.allrecipes.com/thmb/SoBuPU73KcbYHl3Kp3j8Xx4A3fc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8805-CrispyFriedChicken-mfs-3x2-072-d55b8406d4ae45709fcdeb58a04143c2.jpg"));
         productList.add(Product.createProduct("Quesadilla", "Fast Food", 13, 26, 320, 2, "https://www.onceuponachef.com/images/2024/02/chipotle-chicken-quesadillas.jpg"));

@@ -47,6 +47,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -107,7 +108,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
                 addEventListeners();
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
-                updateTotalDays(binding, allDaysAdapter);
+                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, allDaysAdapter);
             });
 
         }).start();
@@ -132,7 +133,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 allDaysAdapter.notifyDataSetChanged();
 
                 checkIfDaysAreEmpty(binding, allDaysAdapter);
-                updateTotalDays(binding, allDaysAdapter);
+                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, allDaysAdapter);
 
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
@@ -199,11 +200,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         else
             binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.INVISIBLE);
     }
-
-    public static void updateTotalDays(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
-        binding.textViewSub2.setText("Total days " + allDaysAdapter.getItemCount());
-    }
-
 
 }
 

@@ -75,13 +75,24 @@
 
         <TextView
             android:id="@+id/textViewSub2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Created days from most to least recent"
+            android:text="Total days"
             app:layout_constraintBottom_toBottomOf="@id/imageViewLogoTrackedDays"
-            app:layout_constraintLeft_toRightOf="@id/imageViewLogoTrackedDays"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintLeft_toRightOf="@id/imageViewLogoTrackedDays" />
+
+        <TextView
+            android:id="@+id/textViewTotalDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewLogoTrackedDays"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -155,8 +166,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
+            android:textAlignment="textEnd"
             app:layout_constraintBottom_toBottomOf="@id/imageViewLogoGraph"
             app:layout_constraintRight_toRightOf="parent" />
 

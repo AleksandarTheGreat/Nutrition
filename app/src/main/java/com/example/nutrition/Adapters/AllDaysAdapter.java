@@ -90,7 +90,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
                 notifyDataSetChanged();
                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
-                FragmentAllDays.updateTotalDays(fragmentAllDaysBinding, allDaysAdapter);
+                helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, allDaysAdapter);
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
                 helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, allDaysAdapter);

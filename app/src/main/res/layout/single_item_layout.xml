@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Some Ingredient"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginStart="4dp"
             app:layout_constraintLeft_toRightOf="@id/imageViewItemIcon"
             app:layout_constraintTop_toTopOf="@id/imageViewItemIcon"
