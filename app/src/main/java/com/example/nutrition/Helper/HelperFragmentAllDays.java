@@ -214,6 +214,16 @@ public class HelperFragmentAllDays {
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
     public void calculateAverageMacronutrient(String macronutrient, FragmentAllDaysBinding binding, List<Day> dayList){
+        int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
+
+        if (dayList.size() == 0){
+            binding.textViewSub3.setText("Average " + macronutrient);
+            binding.textViewSub3.setTextColor(colorPrimary);
+            binding.textViewAverage.setText("0");
+            binding.textViewAverage.setTextColor(colorPrimary);
+            return;
+        }
+
         float sum = 0.0f;
         for (Day day: dayList){
             switch (macronutrient){
@@ -232,8 +242,6 @@ public class HelperFragmentAllDays {
                 }
             }
         }
-
-        int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
 
         binding.textViewSub3.setText("Average " + macronutrient);
         binding.textViewSub3.setTextColor(colorPrimary);

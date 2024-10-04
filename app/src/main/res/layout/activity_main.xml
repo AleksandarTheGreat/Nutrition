@@ -115,7 +115,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="32dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -137,16 +137,27 @@
                     android:layout_weight="1"
                     android:padding="8dp">
 
+                    <ImageView
+                        android:id="@+id/imageViewIconSearching"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_searching"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Search Examples"
+                        android:text="Searching"
                         android:textSize="16sp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/imageViewIconSearching" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -163,16 +174,27 @@
                     android:layout_weight="1"
                     android:padding="8dp">
 
+                    <ImageView
+                        android:id="@+id/imageViewIconQuiz"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_quiz"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Quick Quiz"
                         android:textSize="16sp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/imageViewIconQuiz" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,16 +210,27 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp">
 
+                    <ImageView
+                        android:id="@+id/imageViewIconDefinitions"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_definitions"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Definitions"
                         android:textSize="16sp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/imageViewIconDefinitions" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -213,16 +246,27 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp">
 
+                    <ImageView
+                        android:id="@+id/imageViewIconMythsFacts"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_myth_fact"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Myths / Facts"
                         android:textSize="16sp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/imageViewIconMythsFacts"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -240,16 +284,27 @@
                     android:layout_weight="1"
                     android:padding="8dp">
 
+                    <ImageView
+                        android:id="@+id/imageViewIconMotivation"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_motivation"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        />
+
                     <TextView
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Motivational Quotes"
+                        android:text="Motivation"
                         android:textSize="16sp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/imageViewIconMotivation"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -301,7 +356,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="32dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -598,14 +653,33 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp" />
 
+        <ImageView
+            android:id="@+id/imageViewRunning"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:src="@drawable/ic_run"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/textViewNoDaysMainActivity"
+            />
+
         <TextView
             android:id="@+id/textViewNoDaysMainActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:drawableLeft="@drawable/ic_info"
-            android:drawablePadding="8dp"
-            android:text="Click on the arrow to add a day" />
+            android:drawablePadding="4dp"
+            android:text="You have no days to track, yet" />
+
+        <Button
+            android:id="@+id/buttonGetStarted"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/textViewNoDaysMainActivity"
+            android:layout_marginTop="12dp"
+            android:text="Get started!"
+            />
 
     </RelativeLayout>
 

@@ -110,6 +110,10 @@ public class MainActivity extends ParentActivity {
         binding.section3LayoutMainActivity.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
+
+        binding.buttonGetStarted.setOnClickListener(view -> {
+            helperMain.goToActivity(MainActivity.this, Section3Activity.class);
+        });
     }
 
     @Override
@@ -186,8 +190,15 @@ public class MainActivity extends ParentActivity {
                 // check if the adapter is empty
                 // and since we only interact via click
                 // and don't load or delete new days this is enough
-                if (daysAdapter.isEmpty()) binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
-                else binding.textViewNoDaysMainActivity.setVisibility(View.INVISIBLE);
+                if (daysAdapter.isEmpty()){
+                    binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
+                    binding.imageViewRunning.setVisibility(View.VISIBLE);
+                    binding.buttonGetStarted.setVisibility(View.VISIBLE);
+                } else {
+                    binding.textViewNoDaysMainActivity.setVisibility(View.GONE);
+                    binding.imageViewRunning.setVisibility(View.GONE);
+                    binding.buttonGetStarted.setVisibility(View.GONE);
+                }
 
                 binding.textViewTotalDays.setText(String.valueOf(daysAdapter.getItemCount()));
             });
