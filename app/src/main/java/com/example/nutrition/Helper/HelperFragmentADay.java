@@ -162,8 +162,12 @@ public class HelperFragmentADay {
     public static void checkIfItemsAreEmpty(FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
         if (itemsAdapter.isListEmpty()) {
             binding.textViewNoItemsFragmentADay.setVisibility(View.VISIBLE);
+            binding.textViewSearchForWhat.setVisibility(View.VISIBLE);
+            binding.imageViewSearching.setVisibility(View.VISIBLE);
         } else {
             binding.textViewNoItemsFragmentADay.setVisibility(View.INVISIBLE);
+            binding.textViewSearchForWhat.setVisibility(View.INVISIBLE);
+            binding.imageViewSearching.setVisibility(View.INVISIBLE);
         }
     }
 
