@@ -117,11 +117,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         protected TextView textViewCalories;
         protected TextView textViewSugar;
 
-        protected TextView textViewProteinLabel;
-        protected TextView textViewCaloriesLabel;
-        protected TextView textViewCarbohydratesLabel;
-        protected TextView textViewSugarLabel;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.linearLayout = itemView.findViewById(R.id.mainLayoutSingleItem);
@@ -132,11 +127,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             this.textViewCarbohydrates = itemView.findViewById(R.id.textViewActualCarbs);
             this.textViewCalories = itemView.findViewById(R.id.textViewActualCalories);
             this.textViewSugar = itemView.findViewById(R.id.textViewActualSugar);
-
-            this.textViewProteinLabel = itemView.findViewById(R.id.textViewProteinsLabel);
-            this.textViewCaloriesLabel = itemView.findViewById(R.id.textViewCaloriesLabel);
-            this.textViewCarbohydratesLabel = itemView.findViewById(R.id.textViewCarbsLabel);
-            this.textViewSugarLabel = itemView.findViewById(R.id.textViewSugarLabel);
         }
     }
 
@@ -144,20 +134,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         if (isNightModeOn) {
             int colorWhite60 = ContextCompat.getColor(context, R.color.white60Opacity);
             holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_white);
-
-            holder.textViewProteinLabel.setTextColor(colorWhite60);
-            holder.textViewCaloriesLabel.setTextColor(colorWhite60);
-            holder.textViewCarbohydratesLabel.setTextColor(colorWhite60);
-            holder.textViewSugarLabel.setTextColor(colorWhite60);
         }
         else {
             int colorBlack60 = ContextCompat.getColor(context, R.color.black60Opacity);
             holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_black);
-
-            holder.textViewProteinLabel.setTextColor(colorBlack60);
-            holder.textViewCaloriesLabel.setTextColor(colorBlack60);
-            holder.textViewCarbohydratesLabel.setTextColor(colorBlack60);
-            holder.textViewSugarLabel.setTextColor(colorBlack60);
         }
     }
 
