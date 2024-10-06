@@ -2,6 +2,7 @@ package com.example.nutrition.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -69,14 +71,29 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             public boolean onLongClick(View v) {
                 Item item = itemList.get(myViewHolder.getAdapterPosition());
 
-                itemsRepo.delete(item.getId());
-                itemList.remove(item);
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                builder.setTitle("Delete")
+                        .setMessage("Are you sure you want to delete '" + item.getIngredient() + "' from the list ??")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        itemsRepo.delete(item.getId());
+                                        itemList.remove(item);
 
-                notifyItemRemoved(myViewHolder.getAdapterPosition());
-                Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
+                                        notifyItemRemoved(myViewHolder.getAdapterPosition());
+                                        Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
 
-                HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
-                HelperFragmentADay.calculateTotalNutrients(binding, ItemsAdapter.this);
+                                        HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
+                                        HelperFragmentADay.calculateTotalNutrients(binding, ItemsAdapter.this);
+                                    }
+                                })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
 
                 return true;
             }
