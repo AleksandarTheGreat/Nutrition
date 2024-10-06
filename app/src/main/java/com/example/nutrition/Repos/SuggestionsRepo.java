@@ -44,8 +44,6 @@ public class SuggestionsRepo extends ParentRepo implements ISuggestionsRepo{
         cursor.close();
         database.close();
 
-        suggestions.sort(Comparator.comparing(Suggestion::getId).reversed());
-
         Log.d("Tag", "Read '" + suggestions.size() + "' suggestions");
         return suggestions;
     }
