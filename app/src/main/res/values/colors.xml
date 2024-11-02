@@ -14,14 +14,14 @@
     <color name="greenLight">#5FE264</color>
     <color name="greenDark">#43B648</color>
 
-    <color name="color_grains">#1ACAAA7B</color>
-    <color name="color_vegetables">#1A3CB341</color>
-    <color name="color_fruit">#1A7C5B81</color>
-    <color name="color_meat">#1AB35252</color>
-    <color name="color_dairy">#1AF2ECB1</color>
-    <color name="color_fats">#1AA2962C</color>
-    <color name="color_fast_food">#1AEF744E</color>
-    <color name="color_no_category_selected">#1AABABAB</color>
+    <color name="color_grains">#80CAAA7B</color>
+    <color name="color_vegetables">#803CB341</color>
+    <color name="color_fruit">#807C5B81</color>
+    <color name="color_meat">#80B35252</color>
+    <color name="color_dairy">#80F2ECB1</color>
+    <color name="color_fats">#80A2962C</color>
+    <color name="color_fast_food">#80EF744E</color>
+    <color name="color_no_category_selected">#80ABABAB</color>
 
     <color name="colorPrimaryDark">#F8A428</color>
     <color name="colorAccentDark">#3B893E</color>

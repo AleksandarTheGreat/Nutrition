@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Option A"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:paddingStart="8dp"
             />
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Option B"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:paddingStart="8dp"
 
             />
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Option C"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:paddingStart="8dp"
             />
 
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Option D"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:paddingStart="8dp"
             />
 

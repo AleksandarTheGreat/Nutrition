@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -95,8 +96,9 @@ public class HelperFragmentAllDays {
 
 
                 ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
-                if (isNightModeOn) progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_light_green));
-                else progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_dark_green));
+//                if (isNightModeOn) progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_light_green));
+//                else progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_dark_green));
+                progressBar.setProgressDrawable(findProgressBarDrawable(macronutrient));
                 progressBar.setMax(max);
                 progressBar.setProgress((int) progress);
 
@@ -139,6 +141,21 @@ public class HelperFragmentAllDays {
                 });
             }
         }).start();
+    }
+
+    private Drawable findProgressBarDrawable(String macro){
+        switch (macro){
+            case "Proteins":
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_protein_light);
+            case "Carbohydrates":
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_carbs_light);
+            case "Calories":
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_calorie_light);
+            case "Sugars":
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_sugar_light);
+            default:
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_light_green);
+        }
     }
 
     private int findMaxProgressOfACertainMacronutrient(String macronutrient, List<Day> dayList){

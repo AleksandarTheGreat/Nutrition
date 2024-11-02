@@ -2,6 +2,7 @@ package com.example.nutrition.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -85,17 +87,33 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             public boolean onLongClick(View v) {
                 Day day = daysList.get(myViewHolder.getAdapterPosition());
 
-                daysRepo.delete(day.getId());
-                daysList = daysRepo.listAllSorted();
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                builder.setTitle("Alert")
+                        .setMessage("Are you sure you want to delete\n'" + day.calculateLongDayNameOfDate() + " - " + day.getDateIntoStringFormat() + "' ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                daysRepo.delete(day.getId());
+                                daysList = daysRepo.listAllSorted();
 
-                notifyDataSetChanged();
-                FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
-                helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, allDaysAdapter);
+                                notifyDataSetChanged();
+                                FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
+                                helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, allDaysAdapter);
 
-                String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
-                helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, allDaysAdapter);
-                helperFragmentAllDays.checkAndSelectCorrectChip(macro, fragmentAllDaysBinding);
-                helperFragmentAllDays.calculateAverageMacronutrient(macro, fragmentAllDaysBinding, allDaysAdapter.getDaysList());
+                                String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
+                                helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, allDaysAdapter);
+                                helperFragmentAllDays.checkAndSelectCorrectChip(macro, fragmentAllDaysBinding);
+                                helperFragmentAllDays.calculateAverageMacronutrient(macro, fragmentAllDaysBinding, allDaysAdapter.getDaysList());
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setCancelable(true)
+                        .show();
 
                 return true;
             }
