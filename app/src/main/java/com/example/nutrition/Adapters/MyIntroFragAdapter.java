@@ -92,7 +92,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         if (!isNightModeActive)
             color = R.color.black;
 
-        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "In the following slides, you will learn about some generic and most commonly used TERMS in nutrition\n\n", R.drawable.icon_hello, color), isNightModeActive));
+        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "Quickly learn about Proteins, Calories, Carbohydrates and Sugars\n\n", R.drawable.icon_hello, color), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak, R.color.colorProtein), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
@@ -250,11 +250,11 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     private void setUpSearchExampleFragments(){
         fragmentList = new ArrayList<>();
 
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Valid Searches", "Examples of how we should search for food items.", new String[]{"100g peanuts", "2l orange juice", "2 tbs of olive oil", "3 slices of bread", "300 grams cooked potatoes", "3 bowls of spaghetti", "100 grams peanut butter", "5 grams of sugar", "2 liters orange juice", "200 grams chicken"}, R.drawable.ic_correct)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Invalid Searches", "Examples of how we should NOT search for food items.", new String[]{"1 galaxy of salt", "500 liters of cake", "12345", "randomfoodthatisnotreal ", "sdfghjk", "1.5x chicken", "pasta and cheese and chicken and beef and broccoli and carrots and spinach and tomatoes and potatoes"}, R.drawable.ic_wrong)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Solid Measurements", "A list of units that are acceptable when searching for food items in solid form.", new String[]{"Grams (g)", "Kilograms (kg)", "Milligrams (mg)", "Ounces (oz)", "Pounds (lb)"}, R.drawable.ic_solid)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Liquid Measurements", "A list of units that are acceptable when searching for food items in liquid form.", new String[]{"Liters (l)", "Milliliters (ml)", "Teaspoons (tsp)", "Tablespoons (tbsp)", "Cups", "Fluid ounces (fl oz)", "Pints (pt)", "Quarts (qt)", "Gallons (gal)"}, R.drawable.ic_liquid)));
-        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Item Measurements", "A list of most commonly used words also acceptable when searching for food items.", new String[]{"Slice", "Bowl", "Piece", "Can", "Stick", "Fillet", "Cube", "Bag", "Jar"}, R.drawable.ic_search)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Valid Searches", "How we should search for food items.\nQuantity + Food item", new String[]{"100g peanuts", "2l orange juice", "2 tbs of olive oil", "3 slices of bread", "300 grams cooked potatoes", "3 bowls of spaghetti", "100 grams peanut butter", "5 grams of sugar", "2 liters orange juice", "200 grams chicken"}, R.drawable.ic_correct, R.drawable.ic_correct)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Invalid Searches", "How we should NOT search for food items.", new String[]{"1 galaxy of salt", "500 liters of cake", "12345", "randomfoodthatisnotreal ", "sdfghjk", "1.5x chicken", "pasta and cheese and chicken and beef and broccoli and carrots and spinach and tomatoes and potatoes"}, R.drawable.ic_wrong, R.drawable.ic_wrong)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Solid Measurements", "Acceptable units for solid form.", new String[]{"Grams (g)", "Kilograms (kg)", "Milligrams (mg)", "Ounces (oz)", "Pounds (lb)"}, R.drawable.icon_solid, R.drawable.ic_correct)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Liquid Measurements", "Acceptable units for liquid form", new String[]{"Liters (l)", "Milliliters (ml)", "Teaspoons (tsp)", "Tablespoons (tbsp)", "Cups", "Fluid ounces (fl oz)", "Pints (pt)", "Quarts (qt)", "Gallons (gal)"}, R.drawable.ic_liquid, R.drawable.ic_correct)));
+        fragmentList.add(new FragmentSearchExample(isNightModeActive, new SEModel("Item Measurements", "Everyday items used for cooking", new String[]{"Slice", "Bowl", "Piece", "Can", "Stick", "Fillet", "Cube", "Bag", "Jar"}, R.drawable.ic_search, R.drawable.ic_correct)));
     }
 
     private void setUpQuoteFragments(){

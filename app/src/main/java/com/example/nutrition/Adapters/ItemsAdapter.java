@@ -26,6 +26,7 @@ import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentADayBinding;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
@@ -111,10 +112,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
         holder.textViewIngredient.setText(item.getIngredient());
 
-        holder.textViewProtein.setText(String.format("%.2f", item.getProtein()));
-        holder.textViewCalories.setText(String.format("%.2f", item.getCalories()));
-        holder.textViewCarbohydrates.setText(String.format("%.2f", item.getCarbohydrates()));
-        holder.textViewSugar.setText(String.format("%.2f", item.getSugar()));
+        holder.chipProtein.setText(String.format("%.2f", item.getProtein()));
+        holder.chipCalories.setText(String.format("%.2f", item.getCalories()));
+        holder.chipCarbohydrates.setText(String.format("%.2f", item.getCarbohydrates()));
+        holder.chipSugar.setText(String.format("%.2f", item.getSugar()));
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.come_from_left);
         holder.linearLayout.startAnimation(animation);
@@ -129,10 +130,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         protected LinearLayout linearLayout;
         protected ImageView imageViewItemIcon;
         protected TextView textViewIngredient;
-        protected TextView textViewProtein;
-        protected TextView textViewCarbohydrates;
-        protected TextView textViewCalories;
-        protected TextView textViewSugar;
+        protected Chip chipProtein;
+        protected Chip chipCarbohydrates;
+        protected Chip chipCalories;
+        protected Chip chipSugar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -140,10 +141,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             this.imageViewItemIcon = itemView.findViewById(R.id.imageViewItemIcon);
 
             this.textViewIngredient = itemView.findViewById(R.id.textViewSingleItemTitle);
-            this.textViewProtein = itemView.findViewById(R.id.textViewActualProteins);
-            this.textViewCarbohydrates = itemView.findViewById(R.id.textViewActualCarbs);
-            this.textViewCalories = itemView.findViewById(R.id.textViewActualCalories);
-            this.textViewSugar = itemView.findViewById(R.id.textViewActualSugar);
+            this.chipProtein = itemView.findViewById(R.id.textViewActualProteins);
+            this.chipCarbohydrates = itemView.findViewById(R.id.textViewActualCarbs);
+            this.chipCalories = itemView.findViewById(R.id.textViewActualCalories);
+            this.chipSugar = itemView.findViewById(R.id.textViewActualSugar);
         }
     }
 

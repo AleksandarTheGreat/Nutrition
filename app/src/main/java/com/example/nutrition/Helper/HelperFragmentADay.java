@@ -142,7 +142,7 @@ public class HelperFragmentADay {
                             }
                         } catch (JSONException e) {
                             Log.d("Tag", "Error: " + e.getMessage());
-                            toaster.text("Invalid searching... probably not a food item");
+                            toaster.text("Failed to receive the response, please check your input request");
                             progressDialog.dismiss();
                         }
                     }

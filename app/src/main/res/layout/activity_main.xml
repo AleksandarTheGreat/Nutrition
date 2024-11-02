@@ -141,7 +141,7 @@
                         android:id="@+id/imageViewIconSearching"
                         android:layout_height="50dp"
                         android:layout_width="50dp"
-                        android:src="@drawable/icon_searching2"
+                        android:src="@drawable/icon_searching"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintRight_toRightOf="parent"

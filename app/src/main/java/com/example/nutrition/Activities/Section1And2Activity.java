@@ -182,12 +182,18 @@ public class Section1And2Activity extends ParentActivity {
     public void additionalThemeChanges() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Light);
+            int colorWhite = ContextCompat.getColor(Section1And2Activity.this, R.color.white);
+
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_white);
             binding.textViewSub1.setTextColor(color);
+            binding.textViewSubTitleSection1And2.setTextColor(colorWhite);
         } else {
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Dark);
+            int colorBlack = ContextCompat.getColor(Section1And2Activity.this, R.color.black);
+
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_black);
             binding.textViewSub1.setTextColor(color);
+            binding.textViewSubTitleSection1And2.setTextColor(colorBlack);
         }
     }
 }

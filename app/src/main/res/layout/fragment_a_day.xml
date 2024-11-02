@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:background="@drawable/back_for_search_view"
             app:iconifiedByDefault="true"
             app:queryHint="What did you eat ?"
             app:layout_constraintRight_toRightOf="parent"
@@ -96,7 +95,7 @@
             <TextView
                 android:id="@+id/textViewSubTitleSection1"
                 style="@style/SubTitlePart"
-                android:text="Macronutrients"
+                android:text="Total Macronutrients"
                 app:layout_constraintLeft_toRightOf="@id/imageViewIconTotal"
                 app:layout_constraintTop_toTopOf="@id/imageViewIconTotal"
                 />

@@ -10,12 +10,14 @@ public class SEModel {
     private String description;
     private List<String> examples;
     private int imageResource;
+    private int smallIconResource;
 
-    public SEModel(String title, String description, String [] array, int imageResource){
+    public SEModel(String title, String description, String [] array, int imageResource, int smallIconResource){
         this.title = title;
         this.description = description;
         this.examples = Arrays.asList(array);
         this.imageResource = imageResource;
+        this.smallIconResource = smallIconResource;
     }
 
     @Override
@@ -26,6 +28,14 @@ public class SEModel {
             return false;
         return title.equals(((SEModel) obj).title)
                 && description.equals(((SEModel) obj).description);
+    }
+
+    public int getSmallIconResource() {
+        return smallIconResource;
+    }
+
+    public void setSmallIconResource(int smallIconResource) {
+        this.smallIconResource = smallIconResource;
     }
 
     public int getImageResource() {

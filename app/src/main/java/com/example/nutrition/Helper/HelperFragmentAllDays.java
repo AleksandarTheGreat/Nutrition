@@ -146,13 +146,13 @@ public class HelperFragmentAllDays {
     private Drawable findProgressBarDrawable(String macro){
         switch (macro){
             case "Proteins":
-                return ContextCompat.getDrawable(context, R.drawable.progress_bar_protein_light);
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_protein);
             case "Carbohydrates":
-                return ContextCompat.getDrawable(context, R.drawable.progress_bar_carbs_light);
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_carbs);
             case "Calories":
-                return ContextCompat.getDrawable(context, R.drawable.progress_bar_calorie_light);
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_calorie);
             case "Sugars":
-                return ContextCompat.getDrawable(context, R.drawable.progress_bar_sugar_light);
+                return ContextCompat.getDrawable(context, R.drawable.progress_bar_sugar);
             default:
                 return ContextCompat.getDrawable(context, R.drawable.progress_bar_light_green);
         }

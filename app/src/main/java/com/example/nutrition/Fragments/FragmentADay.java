@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -151,11 +152,11 @@ public class FragmentADay extends Fragment implements IEssentials {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
-                    toaster.text("Has focus");
+                    Log.d("Tag","Has focus");
                     helperFragmentADay.showSuggestions(binding);
                     helperFragmentADay.setUpTextViewsInTheScrollView(binding, getContext(), isNightModeOn, suggestionsRepo.listAll());
                 } else {
-                    toaster.text("No focus");
+                    Log.d("Tag","No focus");
                     helperFragmentADay.hideSuggestions(binding);
                     binding.searchViewFragmentADay.clearFocus();
                 }
