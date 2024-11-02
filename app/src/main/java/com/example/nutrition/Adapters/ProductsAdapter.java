@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -34,13 +36,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
     private final Context context;
     private List<Product> productList;
 
+    private boolean isNightModeOn = false;
     private Toaster toaster;
 
-    public ProductsAdapter(Context context, List<Product> productList){
+    public ProductsAdapter(Context context, AppCompatActivity appCompatActivity, List<Product> productList){
         this.context = context;
         this.productList = productList;
 
         this.toaster = new Toaster(context);
+        this.isNightModeOn = ThemeUtils.isNightModeActive(appCompatActivity);
     }
 
     @NonNull
@@ -50,6 +54,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
                 .inflate(R.layout.single_product_layout, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
+
+        if (isNightModeOn){
+            myViewHolder.viewMask.setBackground(ContextCompat.getDrawable(context, R.drawable.dark_mask_45_angle));
+            myViewHolder.textViewName.setTextColor(ContextCompat.getColor(context, R.color.white));
+        } else {
+            myViewHolder.viewMask.setBackground(ContextCompat.getDrawable(context, R.drawable.light_mask_45_angle));
+            myViewHolder.textViewName.setTextColor(ContextCompat.getColor(context, R.color.black));
+        }
+
 
         myViewHolder.progressBarProtein.setMax(80);
         myViewHolder.progressBarCarbs.setMax(100);
@@ -106,6 +119,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         protected ConstraintLayout constraintLayout;
+        protected View viewMask;
 
         protected ImageView imageView;
         protected TextView textViewName;
@@ -123,6 +137,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.constraintLayout = itemView.findViewById(R.id.constraintLayoutSingleProduct);
+            this.viewMask = itemView.findViewById(R.id.viewMaskSingleProduct);
+
             this.imageView = itemView.findViewById(R.id.imageViewSingleProduct);
             this.textViewName = itemView.findViewById(R.id.textViewNameSingleProduct);
 

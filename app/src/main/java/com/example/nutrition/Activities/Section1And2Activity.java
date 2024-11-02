@@ -72,7 +72,7 @@ public class Section1And2Activity extends ParentActivity {
         new Thread(() -> {
 
             allProductsAlways = ContentLoader.loadPopularFoodsList();
-            productsAdapter = new ProductsAdapter(Section1And2Activity.this, allProductsAlways);
+            productsAdapter = new ProductsAdapter(Section1And2Activity.this, appCompatActivity, allProductsAlways);
 
             handler.post(() -> {
                 binding.recyclerViewSection1And2.setLayoutManager(new LinearLayoutManager(Section1And2Activity.this));
