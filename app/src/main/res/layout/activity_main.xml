@@ -141,7 +141,7 @@
                         android:id="@+id/imageViewIconSearching"
                         android:layout_height="50dp"
                         android:layout_width="50dp"
-                        android:src="@drawable/icon_searching"
+                        android:src="@drawable/icon_searching2"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -214,7 +214,7 @@
                         android:id="@+id/imageViewIconDefinitions"
                         android:layout_height="50dp"
                         android:layout_width="50dp"
-                        android:src="@drawable/icon_definitions"
+                        android:src="@drawable/icon_definitions2"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -378,7 +378,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="GRAINS"
+                        android:text="Grains"
                         android:translationZ="1dp" />
 
                     <ImageView
@@ -410,7 +410,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="VEGETABLES"
+                        android:text="Vegetables"
                         android:translationZ="1dp" />
 
                     <ImageView
@@ -442,7 +442,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="FRUITS"
+                        android:text="Fruits"
                         android:translationZ="1dp" />
 
                     <ImageView
@@ -474,7 +474,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="MEAT &amp; PROTEINS"
+                        android:text="Meat &amp; Proteins"
                         android:translationZ="1dp" />
 
                     <ImageView
@@ -506,7 +506,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="DAIRY"
+                        android:text="Dairy"
                         android:translationZ="1dp" />
 
                     <ImageView
@@ -538,7 +538,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="FATS, OILS &amp; SWEETS"
+                        android:text="Fats, oils &amp; sweets"
                         android:translationZ="1dp" />
 
                     <ImageView
@@ -571,7 +571,7 @@
                         style="@style/FoodPyramidCategory"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:text="FAST FOOD"
+                        android:text="Fast food"
                         android:translationZ="1dp" />
 
                     <ImageView

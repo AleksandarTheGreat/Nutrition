@@ -8,11 +8,13 @@ public class Macronutrient {
     private String title;
     private String explanation;
     private int imageResource;
+    private int colorResource;
 
-    public Macronutrient(String title, String explanation, int imageResource) {
+    public Macronutrient(String title, String explanation, int imageResource, int colorResource) {
         this.title = title;
         this.explanation = explanation;
         this.imageResource = imageResource;
+        this.colorResource = colorResource;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class Macronutrient {
             return false;
 
         return title.equals(((Macronutrient) obj).title) && explanation.equals(((Macronutrient) obj).explanation)
-                && imageResource == ((Macronutrient) obj).imageResource;
+                && imageResource == ((Macronutrient) obj).imageResource && colorResource == ((Macronutrient) obj).colorResource;
     }
 
     @NonNull
@@ -54,5 +56,13 @@ public class Macronutrient {
 
     public void setImageResource(int imageResource) {
         this.imageResource = imageResource;
+    }
+
+    public int getColorResource() {
+        return colorResource;
+    }
+
+    public void setColorResource(int colorResource) {
+        this.colorResource = colorResource;
     }
 }

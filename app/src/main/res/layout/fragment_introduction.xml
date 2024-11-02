@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_below="@id/textViewTitleIntroductionFragment"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textAlignment="center"
         android:text="Le Explanation for product and all a little bit longer text than the title but that is ofcourse recommended and all"
         />

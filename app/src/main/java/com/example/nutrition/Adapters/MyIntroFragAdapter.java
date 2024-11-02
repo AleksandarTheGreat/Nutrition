@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -22,8 +21,8 @@ import com.example.nutrition.Model.QModel;
 import com.example.nutrition.Model.Question;
 import com.example.nutrition.Model.Question2;
 import com.example.nutrition.Model.SEModel;
-import com.example.nutrition.R;
 import com.example.nutrition.Utils.ThemeUtils;
+import com.example.nutrition.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -89,15 +88,19 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
     private void setUpDefinitionFragments(){
         fragmentList = new ArrayList<>();
 
-        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "In the following slides, you will learn about some generic and most commonly used TERMS in nutrition\n\n", R.drawable.ic_enter), isNightModeActive));
+        int color = R.color.white;
+        if (!isNightModeActive)
+            color = R.color.black;
+
+        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "In the following slides, you will learn about some generic and most commonly used TERMS in nutrition\n\n", R.drawable.icon_hello, color), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak), isNightModeActive));
+                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak, R.color.colorProtein), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Carbohydrate", "Carbohydrates, or carbs, are sugar molecules.\n\nAlong with proteins and fats, carbohydrates are one of three main nutrients found in foods and drinks.\n\nYour body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy for your body's cells, tissues, and organs.", R.drawable.ic_wheat), isNightModeActive));
+                new Macronutrient("Carbohydrate", "Carbohydrates, or carbs, are sugar molecules.\n\nAlong with proteins and fats, carbohydrates are one of three main nutrients found in foods and drinks.\n\nYour body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy for your body's cells, tissues, and organs.", R.drawable.ic_wheat, R.color.colorCarbohydrate), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Calorie", "A calorie is a unit of energy.\n\nIn nutrition, calories refer to the energy people get from the food and drinks they consume, and the energy they use in physical activity. Calories are listed in the nutritional information on all food packaging.\n\nMany weight loss programs center around reducing the intake of calories.", R.drawable.ic_olive_oil), isNightModeActive));
+                new Macronutrient("Calorie", "A calorie is a unit of energy.\n\nIn nutrition, calories refer to the energy people get from the food and drinks they consume, and the energy they use in physical activity. Calories are listed in the nutritional information on all food packaging.\n\nMany weight loss programs center around reducing the intake of calories.", R.drawable.ic_olive_oil, R.color.colorCalorie), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Sugar", "Sugars are the smallest unit of carbohydrates.\n\nThey include both naturally occurring sugars (like those found in fruits and milk) and added sugars (like table sugar or high-fructose corn syrup).", R.drawable.ic_sugar), isNightModeActive));
+                new Macronutrient("Sugar", "Sugars are the smallest unit of carbohydrates.\n\nThey include both naturally occurring sugars (like those found in fruits and milk) and added sugars (like table sugar or high-fructose corn syrup).", R.drawable.ic_sugar, R.color.colorSugar), isNightModeActive));
     }
 
     private void setUpMythFactFragments() {
