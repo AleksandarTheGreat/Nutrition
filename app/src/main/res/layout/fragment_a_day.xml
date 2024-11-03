@@ -14,15 +14,24 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="24dp">
 
+        <ImageView
+            android:id="@+id/imageViewLogoFragmentDay"
+            android:layout_height="45dp"
+            android:layout_width="45dp"
+            android:src="@drawable/icon_food_calculator2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchViewFragmentADay"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             app:iconifiedByDefault="true"
             app:queryHint="What did you eat ?"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/imageViewLogoFragmentDay"
             app:layout_constraintTop_toTopOf="parent"
             />
 
