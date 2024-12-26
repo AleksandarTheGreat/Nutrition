@@ -44,7 +44,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
     private Day day;
     private boolean isNightModeOn = false;
 
-    public ItemsAdapter(Context context, AppCompatActivity appCompatActivity, FragmentADayBinding binding, ItemsRepo itemsRepo, Day day){
+    public ItemsAdapter(Context context, AppCompatActivity appCompatActivity, FragmentADayBinding binding, ItemsRepo itemsRepo, Day day) {
         this.context = context;
         this.binding = binding;
         this.itemsRepo = itemsRepo;
@@ -67,41 +67,35 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
                 .inflate(R.layout.single_item_layout, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
-        myViewHolder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Item item = itemList.get(myViewHolder.getAdapterPosition());
+        myViewHolder.linearLayout.setOnClickListener(v -> {
+            Item item = itemList.get(myViewHolder.getAdapterPosition());
 
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                builder.setTitle("Delete")
-                        .setMessage("Are you sure you want to delete '" + item.getIngredient() + "' from the list ??")
-                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        itemsRepo.delete(item.getId());
-                                        itemList.remove(item);
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            builder.setTitle("Delete")
+                    .setMessage("Are you sure you want to delete '" + item.getIngredient() + "' from the list ??")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            itemsRepo.delete(item.getId());
+                            itemList.remove(item);
 
-                                        notifyItemRemoved(myViewHolder.getAdapterPosition());
-                                        Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
+                            notifyItemRemoved(myViewHolder.getAdapterPosition());
+                            Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
 
-                                        HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
-                                        HelperFragmentADay.calculateTotalNutrients(binding, ItemsAdapter.this);
-                                    }
-                                })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
-
-                return true;
-            }
+                            HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
+                            HelperFragmentADay.calculateTotalNutrients(binding, ItemsAdapter.this);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
         });
 
         additionalThemeChanges(myViewHolder);
-
         return myViewHolder;
     }
 
@@ -148,18 +142,17 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         }
     }
 
-    private void additionalThemeChanges(MyViewHolder holder){
+    private void additionalThemeChanges(MyViewHolder holder) {
         if (isNightModeOn) {
             int colorWhite60 = ContextCompat.getColor(context, R.color.white60Opacity);
             holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_white);
-        }
-        else {
+        } else {
             int colorBlack60 = ContextCompat.getColor(context, R.color.black60Opacity);
             holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_black);
         }
     }
 
-    public boolean isListEmpty(){
+    public boolean isListEmpty() {
         return itemList != null && itemList.isEmpty();
     }
 

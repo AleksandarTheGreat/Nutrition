@@ -174,6 +174,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
 
+            binding.textViewTitleFragmentAllDays.setTextColor(colorWhite);
             binding.textViewTrackedDays.setTextColor(colorWhite);
             binding.textViewStatistics.setTextColor(colorWhite);
         } else {
@@ -187,6 +188,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
 
+            binding.textViewTitleFragmentAllDays.setTextColor(colorBlack);
             binding.textViewTrackedDays.setTextColor(colorBlack);
             binding.textViewStatistics.setTextColor(colorBlack);
         }

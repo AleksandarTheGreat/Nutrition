@@ -100,8 +100,6 @@ public class HelperFragmentAllDays {
 
 
                 ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
-//                if (isNightModeOn) progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_light_green));
-//                else progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progress_bar_dark_green));
                 progressBar.setProgressDrawable(findProgressBarDrawable(macronutrient));
                 progressBar.setMax(max);
                 progressBar.setProgress((int) progress);
