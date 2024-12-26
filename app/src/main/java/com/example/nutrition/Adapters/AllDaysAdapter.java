@@ -229,4 +229,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public boolean isListEmpty(){
         return daysList != null && daysList.isEmpty();
     }
+
+    public DaysRepo getDaysRepo() {
+        return daysRepo;
+    }
 }

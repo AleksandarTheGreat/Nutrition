@@ -2,6 +2,7 @@ package com.example.nutrition.Helper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -21,13 +22,16 @@ import androidx.core.content.ContextCompat;
 
 import com.example.nutrition.Adapters.AllDaysAdapter;
 import com.example.nutrition.Fragments.FragmentADay;
+import com.example.nutrition.Fragments.FragmentAllDays;
 import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
+import com.example.nutrition.Repos.DaysRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -106,10 +110,50 @@ public class HelperFragmentAllDays {
                 LinearLayout linearLayout = new LinearLayout(context);
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 linearLayout.setGravity(Gravity.CENTER);
+
                 linearLayout.setOnClickListener(view -> {
                     MyFragmentManager.change(appCompatActivity, new FragmentADay(day, appCompatActivity), false);
                     Log.d("Tag", day.calculateShortDayNameOfDate() + " - " + day.getDateIntoStringFormat());
                 });
+
+                linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                        builder.setTitle("Alert")
+                                .setMessage("Are you sure you want to delete\n'" + day.calculateLongDayNameOfDate() + " - " + day.getDateIntoStringFormat() + "' ")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @SuppressLint("NotifyDataSetChanged")
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        DaysRepo daysRepo = allDaysAdapter.getDaysRepo();
+
+                                        daysRepo.delete(day.getId());
+                                        allDaysAdapter.setDaysList(daysRepo.listAllSorted());
+                                        allDaysAdapter.notifyDataSetChanged();
+
+                                        FragmentAllDays.checkIfDaysAreEmpty(binding, allDaysAdapter);
+                                        countAndSetTotalDays(context, binding, allDaysAdapter);
+
+                                        String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
+                                        createCustomChart(macro, binding, allDaysAdapter);
+                                        checkAndSelectCorrectChip(macro, binding);
+                                        calculateAverageMacronutrient(macro, binding, allDaysAdapter.getDaysList());
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .setCancelable(true)
+                                .show();
+
+                        return true;
+                    }
+                });
+
 
                 // Style importante
                 setUpTodayYesterdayIndicators(day, textViewDay, textViewProgress);

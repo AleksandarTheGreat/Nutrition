@@ -89,25 +89,25 @@ public class HelperFragmentADay {
 
                                     try {
                                         protein = (float) nutrients.getJSONObject("PROCNT").getDouble("quantity");
-                                    } catch (JSONException e){
+                                    } catch (JSONException e) {
                                         protein = 0;
                                     }
 
                                     try {
                                         carbohydrates = (float) nutrients.getJSONObject("CHOCDF").getDouble("quantity");
-                                    } catch (JSONException e){
+                                    } catch (JSONException e) {
                                         carbohydrates = 0;
                                     }
 
                                     try {
                                         calories = (float) nutrients.getJSONObject("ENERC_KCAL").getDouble("quantity");
-                                    } catch (JSONException e){
+                                    } catch (JSONException e) {
                                         calories = 0;
                                     }
 
                                     try {
                                         sugar = (float) nutrients.getJSONObject("SUGAR").getDouble("quantity");
-                                    } catch (JSONException e){
+                                    } catch (JSONException e) {
                                         sugar = 0;
                                     }
 
@@ -172,13 +172,13 @@ public class HelperFragmentADay {
     }
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    public static void calculateTotalNutrients(FragmentADayBinding binding, ItemsAdapter itemsAdapter){
+    public static void calculateTotalNutrients(FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
         float totalProtein = 0;
         float totalCalories = 0;
         float totalCarbs = 0;
         float totalSugars = 0;
 
-        for (Item item: itemsAdapter.getItemList()){
+        for (Item item : itemsAdapter.getItemList()) {
             totalProtein += item.getProtein();
             totalCalories += item.getCalories();
             totalCarbs += item.getCarbohydrates();
@@ -191,49 +191,45 @@ public class HelperFragmentADay {
         binding.textViewNutrient4Number.setText(String.format("%.2f", totalSugars));
     }
 
-    public void showSuggestions(FragmentADayBinding binding){
+    public void showSuggestions(FragmentADayBinding binding) {
         binding.scrollViewSuggestions.setVisibility(View.VISIBLE);
         binding.relativeLayoutFragmentADay.setVisibility(View.GONE);
     }
 
-    public void hideSuggestions(FragmentADayBinding binding){
+    public void hideSuggestions(FragmentADayBinding binding) {
         binding.scrollViewSuggestions.setVisibility(View.GONE);
         binding.relativeLayoutFragmentADay.setVisibility(View.VISIBLE);
     }
 
     @SuppressLint("SetTextI18n")
-    public void setUpTextViewsInTheScrollView(FragmentADayBinding binding, Context context, boolean isNightModeOn, List<Suggestion> suggestionList){
+    public void setUpTextViewsInTheScrollView(FragmentADayBinding binding, Context context, boolean isNightModeOn, List<Suggestion> suggestionList) {
         binding.linearLayoutSuggestionsFragmentADay.removeAllViews();
 
         // These layout creations take time, that is why they shall be created on a new thread
         int size = Math.min(50, suggestionList.size());
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
-            for (int i=0;i<size;i++){
+            for (int i = 0; i < size; i++) {
                 Suggestion suggestion = suggestionList.get(i);
 
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(0,0,0,12);
+                layoutParams.setMargins(0, 0, 0, 12);
 
                 LinearLayout linearLayout = new LinearLayout(context);
-                linearLayout.setPadding(4,24,4,24);
+                linearLayout.setPadding(4, 24, 4, 24);
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                 linearLayout.setLayoutParams(layoutParams);
                 linearLayout.setGravity(Gravity.CENTER_VERTICAL);
                 linearLayout.setBackgroundResource(R.drawable.back_for_suggestion);
 
 
-
-
                 layoutParams = new LinearLayout.LayoutParams(50, 50);
-                layoutParams.setMargins(24,12,12,12);
+                layoutParams.setMargins(24, 12, 12, 12);
 
                 ImageView imageView = new ImageView(context);
                 imageView.setLayoutParams(layoutParams);
                 if (isNightModeOn) imageView.setImageResource(R.drawable.ic_recent_light);
                 else imageView.setImageResource(R.drawable.ic_recent_dark);
-
-
 
 
                 layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -260,15 +256,15 @@ public class HelperFragmentADay {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void sortedListAccordingToMacronutrient(String macro, ItemsAdapter itemsAdapter){
+    private void sortedListAccordingToMacronutrient(String macro, ItemsAdapter itemsAdapter) {
         List<Item> itemList;
-        switch (macro){
+        switch (macro) {
             case "proteins": {
-                 itemList = itemsAdapter.getItemList()
+                itemList = itemsAdapter.getItemList()
                         .stream()
                         .sorted(Comparator.comparing(Item::getProtein).reversed())
                         .collect(Collectors.toList());
-                 break;
+                break;
             }
             case "calories": {
                 itemList = itemsAdapter.getItemList()
@@ -299,28 +295,31 @@ public class HelperFragmentADay {
         itemsAdapter.notifyDataSetChanged();
     }
 
-    public void addClickEventsForMaterialCardViews(MaterialCardView [] materialCardViews, TextView [] textViewsMacros, ItemsAdapter itemsAdapter){
-        for (int i=0;i<materialCardViews.length;i++){
-            MaterialCardView cardView = materialCardViews[i];
-            TextView textViewMacro = textViewsMacros[i];
+    public void addClickEventsForMaterialCardViews(MaterialCardView[] materialCardViews, TextView[] textViewsMacros, ItemsAdapter itemsAdapter) {
+        new Thread(() -> {
+            for (int i = 0; i < materialCardViews.length; i++) {
+                MaterialCardView cardView = materialCardViews[i];
+                TextView textViewMacro = textViewsMacros[i];
 
-            cardView.setOnClickListener(view -> {
-                for (int j=0;j<materialCardViews.length;j++){
-                    MaterialCardView card = materialCardViews[j];
-                    TextView textView = textViewsMacros[j];
+                cardView.setOnClickListener(view -> {
 
-                    if (cardView == card && textViewMacro == textView){
-                        String macronutrient = cardView.getTag().toString().trim();
+                    for (int j = 0; j < materialCardViews.length; j++) {
+                        MaterialCardView card = materialCardViews[j];
+                        TextView textView = textViewsMacros[j];
 
-                        card.setCardElevation(8);
-                        textView.setTypeface(null, Typeface.BOLD);
-                        sortedListAccordingToMacronutrient(macronutrient, itemsAdapter);
-                    } else {
-                        card.setCardElevation(0);
-                        textView.setTypeface(null, Typeface.NORMAL);
+                        if (cardView == card && textViewMacro == textView) {
+                            String macronutrient = cardView.getTag().toString().trim();
+
+                            card.setCardElevation(8);
+                            textView.setTypeface(null, Typeface.BOLD);
+                            sortedListAccordingToMacronutrient(macronutrient, itemsAdapter);
+                        } else {
+                            card.setCardElevation(0);
+                            textView.setTypeface(null, Typeface.NORMAL);
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+        }).start();
     }
 }
