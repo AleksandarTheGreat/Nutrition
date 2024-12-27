@@ -119,6 +119,7 @@ public class HelperFragmentAllDays {
                     public boolean onLongClick(View v) {
                         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
                         builder.setTitle("Alert")
+                                .setIcon(R.drawable.ic_remove)
                                 .setMessage("Are you sure you want to delete\n'" + day.calculateLongDayNameOfDate() + " - " + day.getDateIntoStringFormat() + "' ")
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @SuppressLint("NotifyDataSetChanged")

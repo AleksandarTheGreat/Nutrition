@@ -72,6 +72,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setTitle("Delete")
+                    .setIcon(R.drawable.ic_remove)
                     .setMessage("Are you sure you want to delete '" + item.getIngredient() + "' from the list ??")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override

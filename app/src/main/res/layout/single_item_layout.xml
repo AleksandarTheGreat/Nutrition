@@ -43,64 +43,60 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/textViewActualProteins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorProtein"
             android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualCalories"
+            android:clickable="false"
             />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/textViewActualCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorCalorie"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/textViewActualProteins"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualCarbs"
+            android:clickable="false"
             />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/textViewActualCarbs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorCarbohydrate"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/textViewActualSugar"
-            app:layout_constraintLeft_toRightOf="@id/textViewActualCalories"
+            android:clickable="false"
             />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/textViewActualSugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorSugar"
             android:textSize="16sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/textViewActualCarbs"
+            android:clickable="false"
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </LinearLayout>

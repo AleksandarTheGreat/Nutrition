@@ -176,7 +176,7 @@ public class MainActivity extends ParentActivity {
 //        binding.matCardMythFact.setCardBackgroundColor(secondaryContainer);
 //        binding.matCardQuiz.setCardBackgroundColor(tertiaryContainer);
 
-        helperMain.setUpUIMasksOnCards(this, materialCardViews);
+        // helperMain.setUpUIMasksOnCards(this, materialCardViews);
     }
 
     private void setUpMainActivityDaysAdapter(){

@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -44,13 +46,13 @@ public class HelperMain {
     public void setUpUIMasksOnCards(AppCompatActivity appCompatActivity, MaterialCardView [] materialCardView){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             for (MaterialCardView cardView: materialCardView){
-                RelativeLayout relativeLayout = (RelativeLayout) cardView.getChildAt(0);
+                ConstraintLayout relativeLayout = (ConstraintLayout) cardView.getChildAt(0);
                 View view = relativeLayout.getChildAt(2);
                 view.setBackground(ContextCompat.getDrawable(context, R.drawable.dark_list));
             }
         } else {
             for (MaterialCardView cardView: materialCardView){
-                RelativeLayout relativeLayout = (RelativeLayout) cardView.getChildAt(0);
+                ConstraintLayout relativeLayout = (ConstraintLayout) cardView.getChildAt(0);
                 View view = relativeLayout.getChildAt(2);
                 view.setBackground(ContextCompat.getDrawable(context, R.drawable.light_list));
             }
