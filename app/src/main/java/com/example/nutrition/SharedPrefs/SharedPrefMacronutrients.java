@@ -1,4 +1,4 @@
-package com.example.nutrition.Helper;
+package com.example.nutrition.SharedPrefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;

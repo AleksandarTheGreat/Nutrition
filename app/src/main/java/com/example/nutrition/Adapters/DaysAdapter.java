@@ -4,12 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.tv.TsRequest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +16,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrition.Activities.Section3Activity;
-import com.example.nutrition.Fragments.FragmentADay;
-import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Helper.HelperMain;
-import com.example.nutrition.Helper.SharedPrefMacronutrients;
+import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
@@ -31,9 +27,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
-import java.time.format.TextStyle;
 import java.util.List;
-import java.util.Locale;
 
 public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> {
 

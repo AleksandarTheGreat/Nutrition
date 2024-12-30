@@ -1,5 +1,8 @@
 package com.example.nutrition.Activities;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -8,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -22,10 +26,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.nutrition.Adapters.DaysAdapter;
 import com.example.nutrition.Adapters.MyIntroFragAdapter;
+import com.example.nutrition.BroadcastReceivers.DayReceiver;
 import com.example.nutrition.Helper.HelperMain;
 import com.example.nutrition.Helper.Toaster;
+import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
+import com.example.nutrition.SharedPrefs.DaySharedPreferences;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
@@ -36,6 +43,7 @@ import com.google.android.material.color.MaterialColors;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
@@ -81,6 +89,13 @@ public class MainActivity extends ParentActivity {
         materialCardViews = new MaterialCardView[]{binding.matCard1, binding.matCard2, binding.matCard3,
                 binding.matCard4, binding.matCard5, binding.matCard6, binding.matCard7};
         helperMain = new HelperMain(MainActivity.this);
+
+//        if (!DaySharedPreferences.readFromSharedPref(getApplicationContext())){
+//            Calendar calendar = Calendar.getInstance();
+//
+//            DayReceiver.scheduleNewDayAlarm(getApplicationContext(), calendar);
+//            DaySharedPreferences.writeToSharedPref(getApplicationContext(), true);
+//        }
     }
 
     @Override

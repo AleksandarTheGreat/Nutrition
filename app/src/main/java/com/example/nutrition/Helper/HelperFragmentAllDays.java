@@ -27,6 +27,7 @@ import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
+import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.chip.Chip;

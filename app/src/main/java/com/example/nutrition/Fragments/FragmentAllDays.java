@@ -1,7 +1,6 @@
 package com.example.nutrition.Fragments;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -9,48 +8,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.anychart.AnyChart;
-import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.charts.Cartesian;
-import com.anychart.core.cartesian.series.Column;
-import com.anychart.enums.Anchor;
-import com.anychart.enums.HoverMode;
-import com.anychart.enums.Position;
-import com.anychart.enums.TooltipPositionMode;
 import com.example.nutrition.Adapters.AllDaysAdapter;
 import com.example.nutrition.Helper.HelperFragmentAllDays;
 import com.example.nutrition.Helper.IEssentials;
-import com.example.nutrition.Helper.SharedPrefMacronutrients;
+import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
-import com.example.nutrition.Model.Product;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
-import com.example.nutrition.Threads.ThreadDays;
 import com.example.nutrition.Utils.ThemeUtils;
-import com.example.nutrition.databinding.ActivitySection3Binding;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.color.MaterialColors;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 

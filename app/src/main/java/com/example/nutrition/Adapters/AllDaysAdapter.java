@@ -21,7 +21,7 @@ import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Fragments.FragmentAllDays;
 import com.example.nutrition.Fragments.MyFragmentManager;
 import com.example.nutrition.Helper.HelperFragmentAllDays;
-import com.example.nutrition.Helper.SharedPrefMacronutrients;
+import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
@@ -29,14 +29,11 @@ import com.example.nutrition.Repos.DaysRepo;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
-import java.time.format.TextStyle;
 import java.util.List;
-import java.util.Locale;
 
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
 
