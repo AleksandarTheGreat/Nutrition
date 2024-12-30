@@ -108,7 +108,6 @@
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection0"
             app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection0" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <HorizontalScrollView
@@ -151,9 +150,9 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="searching"
+                        android:text="Searching"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -189,9 +188,9 @@
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="quick quiz"
+                        android:text="Quick quiz"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -226,9 +225,9 @@
                         android:id="@+id/textView1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="definitions"
+                        android:text="Definitions"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -263,9 +262,9 @@
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="myths / facts"
+                        android:text="Myths / facts"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -302,9 +301,9 @@
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="motivation"
+                        android:text="Motivation"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -393,11 +392,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewGrains"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Grains"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -432,11 +432,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewVegetables"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Vegetables"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -471,11 +472,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewFruit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fruits"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -510,11 +512,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewMeatAndProtein"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Meat and proteins"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -549,11 +552,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewDairy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dairy"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -588,11 +592,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewFatsOilsAndSweets"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fats, oils and sweets"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -627,11 +632,12 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewFastFood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fast food"
                         android:textSize="16sp"
-                        android:fontFamily="@font/matemasie_regular"
+                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"

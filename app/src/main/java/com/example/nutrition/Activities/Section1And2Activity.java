@@ -2,6 +2,7 @@ package com.example.nutrition.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,6 +32,7 @@ import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.ActivitySection1And2Binding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.color.MaterialColors;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -199,16 +201,18 @@ public class Section1And2Activity extends ParentActivity {
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Light);
             int colorWhite = ContextCompat.getColor(Section1And2Activity.this, R.color.white);
+            int colorPrimary = MaterialColors.getColor(this, android.R.attr.colorPrimary, Color.WHITE);
 
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_white);
-            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub1.setTextColor(colorPrimary);
             binding.textViewSubTitleSection1And2.setTextColor(colorWhite);
         } else {
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Dark);
             int colorBlack = ContextCompat.getColor(Section1And2Activity.this, R.color.black);
+            int colorPrimary = MaterialColors.getColor(this, android.R.attr.colorPrimary, Color.BLACK);
 
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_black);
-            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub1.setTextColor(colorPrimary);
             binding.textViewSubTitleSection1And2.setTextColor(colorBlack);
         }
     }

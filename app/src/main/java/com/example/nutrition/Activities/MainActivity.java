@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -152,6 +153,14 @@ public class MainActivity extends ParentActivity {
             binding.textView4.setTextColor(colorBright);
             binding.textView5.setTextColor(colorBright);
 
+            binding.textViewGrains.setTextColor(colorBright);
+            binding.textViewVegetables.setTextColor(colorBright);
+            binding.textViewFruit.setTextColor(colorBright);
+            binding.textViewMeatAndProtein.setTextColor(colorBright);
+            binding.textViewDairy.setTextColor(colorBright);
+            binding.textViewFatsOilsAndSweets.setTextColor(colorBright);
+            binding.textViewFastFood.setTextColor(colorBright);
+
             binding.textViewTitleMainActivity.setTextColor(colorWhite);
             binding.textViewTotalDays.setTextColor(colorWhite);
             binding.textViewSubTitleSection0.setTextColor(colorWhite);
@@ -175,6 +184,14 @@ public class MainActivity extends ParentActivity {
             binding.textView3.setTextColor(colorDark);
             binding.textView4.setTextColor(colorDark);
             binding.textView5.setTextColor(colorDark);
+
+            binding.textViewGrains.setTextColor(colorDark);
+            binding.textViewVegetables.setTextColor(colorDark);
+            binding.textViewFruit.setTextColor(colorDark);
+            binding.textViewMeatAndProtein.setTextColor(colorDark);
+            binding.textViewDairy.setTextColor(colorDark);
+            binding.textViewFatsOilsAndSweets.setTextColor(colorDark);
+            binding.textViewFastFood.setTextColor(colorDark);
 
             binding.textViewTitleMainActivity.setTextColor(colorBlack);
             binding.textViewTotalDays.setTextColor(colorBlack);
