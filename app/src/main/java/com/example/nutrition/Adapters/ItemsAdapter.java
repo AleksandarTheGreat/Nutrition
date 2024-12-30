@@ -145,11 +145,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
     private void additionalThemeChanges(MyViewHolder holder) {
         if (isNightModeOn) {
-            int colorWhite60 = ContextCompat.getColor(context, R.color.white60Opacity);
+            int colorWhite = ContextCompat.getColor(context, R.color.white);
             holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_white);
+            holder.textViewIngredient.setTextColor(colorWhite);
         } else {
-            int colorBlack60 = ContextCompat.getColor(context, R.color.black60Opacity);
+            int colorBlack = ContextCompat.getColor(context, R.color.black);
             holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_black);
+            holder.textViewIngredient.setTextColor(colorBlack);
         }
     }
 

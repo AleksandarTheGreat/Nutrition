@@ -28,6 +28,11 @@ public class DayReceiver extends BroadcastReceiver {
             daysRepo.add(day);
 
             Log.d("Tag", "Successfully added a new day");
+
+            // schedule a new alarm
+            // with the time parameters
+            // retrieved from the intent
+            // and a new calendar instance
         }
     }
 
@@ -37,8 +42,6 @@ public class DayReceiver extends BroadcastReceiver {
         intent.setAction("com.example.nutrition.dayAlarm");
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context,1, intent, PendingIntent.FLAG_IMMUTABLE);
-
-        calendar.set(Calendar.SECOND, calendar.get(Calendar.SECOND) + 20);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
