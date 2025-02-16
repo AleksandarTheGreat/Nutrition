@@ -185,10 +185,10 @@ public class HelperFragmentADay {
             totalSugars += item.getSugar();
         }
 
-        binding.textViewNutrient1Number.setText(String.format("%.2f", totalProtein));
-        binding.textViewNutrient2Number.setText(String.format("%.2f", totalCalories));
-        binding.textViewNutrient3Number.setText(String.format("%.2f", totalCarbs));
-        binding.textViewNutrient4Number.setText(String.format("%.2f", totalSugars));
+        binding.textViewNutrient1Number.setText(String.format("%d", (int) totalProtein));
+        binding.textViewNutrient2Number.setText(String.format("%d", (int) totalCalories));
+        binding.textViewNutrient3Number.setText(String.format("%d", (int) totalCarbs));
+        binding.textViewNutrient4Number.setText(String.format("%d", (int) totalSugars));
     }
 
     public void showSuggestions(FragmentADayBinding binding) {

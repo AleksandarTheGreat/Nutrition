@@ -34,6 +34,7 @@
             android:letterSpacing="-0.02"
             android:text="NUTRITION"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/imageViewLogoMainActivity"
             app:layout_constraintTop_toTopOf="parent" />
@@ -83,8 +84,8 @@
 
         <ImageView
             android:id="@+id/imageViewIconSection0"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_study"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -96,17 +97,9 @@
             style="@style/SubTitlePart"
             android:text="Educational"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection0"
-            app:layout_constraintTop_toTopOf="@id/imageViewIconSection0" />
-
-        <TextView
-            android:id="@+id/textViewSub0"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Various stuff to learn from"
+            app:layout_constraintTop_toTopOf="@id/imageViewIconSection0"
             app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection0"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection0"
-            app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection0" />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -327,8 +320,8 @@
 
         <ImageView
             android:id="@+id/imageViewIconSection1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_nutrition_pyramid"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -340,17 +333,9 @@
             style="@style/SubTitlePart"
             android:text="Food Pyramid"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
-            app:layout_constraintTop_toTopOf="@id/imageViewIconSection1" />
-
-        <TextView
-            android:id="@+id/textViewSub2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Popular foods and products"
+            app:layout_constraintTop_toTopOf="@id/imageViewIconSection1"
             app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection1"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
-            app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection1" />
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -662,8 +647,8 @@
 
         <ImageView
             android:id="@+id/imageViewIconSection3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_days"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -675,17 +660,9 @@
             style="@style/SubTitlePart"
             android:text="Tracking my progress"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
-            app:layout_constraintTop_toTopOf="@id/imageViewIconSection3" />
-
-        <TextView
-            android:id="@+id/textViewSub3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Keep track of your eaten foods"
+            app:layout_constraintTop_toTopOf="@id/imageViewIconSection3"
             app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection3"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
-            app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection3" />
+            />
 
         <ImageView
             android:id="@+id/imageViewArrow"

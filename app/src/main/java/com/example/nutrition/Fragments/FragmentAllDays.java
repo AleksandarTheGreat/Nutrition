@@ -150,7 +150,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
 
             binding.textViewSub1.setTextColor(color);
-            binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
 
             binding.textViewTitleFragmentAllDays.setTextColor(colorWhite);
@@ -164,7 +163,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
 
             binding.textViewSub1.setTextColor(color);
-            binding.textViewSub2.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
 
             binding.textViewTitleFragmentAllDays.setTextColor(colorBlack);

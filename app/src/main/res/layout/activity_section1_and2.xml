@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontalScrollViewSection1And2"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
@@ -147,13 +147,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontalScrollViewFiltersSection1And2"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:paddingHorizontal="4dp">
 
         <ImageView
             android:id="@+id/imageViewIconSection1And2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_stats"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -166,15 +166,6 @@
             android:text="Food items"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1And2"
             app:layout_constraintTop_toTopOf="@id/imageViewIconSection1And2"
-            />
-
-        <TextView
-            android:id="@+id/textViewSub1"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:text="100 grams per item"
-            android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1And2"
             app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection1And2"
             />
 

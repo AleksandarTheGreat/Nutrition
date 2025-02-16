@@ -180,8 +180,6 @@ public class FragmentADay extends Fragment implements IEssentials {
             binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_light);
 
             binding.textViewSub1.setTextColor(color);
-            binding.textViewSub3.setTextColor(color);
-
             binding.textViewSubTitleSection2.setTextColor(colorWhite);
 
         } else {
@@ -191,8 +189,6 @@ public class FragmentADay extends Fragment implements IEssentials {
             binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_dark);
 
             binding.textViewSub1.setTextColor(color);
-            binding.textViewSub3.setTextColor(color);
-
             binding.textViewSubTitleSection2.setTextColor(colorBlack);
         }
 

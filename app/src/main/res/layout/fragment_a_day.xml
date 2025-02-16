@@ -337,8 +337,8 @@
 
             <ImageView
                 android:id="@+id/imageViewIconDay"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_meal1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -349,16 +349,10 @@
                 style="@style/SubTitlePart"
                 android:text="My meals"
                 app:layout_constraintLeft_toRightOf="@id/imageViewIconDay"
-                app:layout_constraintTop_toTopOf="@id/imageViewIconDay" />
-
-            <TextView
-                android:id="@+id/textViewSub3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="What you ate today"
+                app:layout_constraintTop_toTopOf="@id/imageViewIconDay"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewIconDay"
-                app:layout_constraintLeft_toRightOf="@id/imageViewIconDay" />
+                />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

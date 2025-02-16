@@ -204,7 +204,6 @@ public class Section1And2Activity extends ParentActivity {
             int colorPrimary = MaterialColors.getColor(this, android.R.attr.colorPrimary, Color.WHITE);
 
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_white);
-            binding.textViewSub1.setTextColor(colorPrimary);
             binding.textViewSubTitleSection1And2.setTextColor(colorWhite);
         } else {
             int color = ContextCompat.getColor(Section1And2Activity.this, R.color.colorText60Dark);
@@ -212,7 +211,6 @@ public class Section1And2Activity extends ParentActivity {
             int colorPrimary = MaterialColors.getColor(this, android.R.attr.colorPrimary, Color.BLACK);
 
             binding.imageViewIconSection1And2.setImageResource(R.drawable.ic_stats_black);
-            binding.textViewSub1.setTextColor(colorPrimary);
             binding.textViewSubTitleSection1And2.setTextColor(colorBlack);
         }
     }

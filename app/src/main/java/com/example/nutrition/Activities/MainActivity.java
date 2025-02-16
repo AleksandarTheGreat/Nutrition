@@ -123,7 +123,7 @@ public class MainActivity extends ParentActivity {
             helperMain.goToActivity(MainActivity.this, IntroductionActivity.class, MyIntroFragAdapter.TYPE_5);
         });
 
-        binding.section3LayoutMainActivity.setOnClickListener(view -> {
+        binding.imageViewArrow.setOnClickListener(view -> {
             helperMain.goToActivity(MainActivity.this, Section3Activity.class);
         });
 
@@ -145,8 +145,6 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIconSection0.setImageResource(R.drawable.ic_educate_light);
             binding.imageViewArrow.setImageResource(R.drawable.ic_right_white);
 
-            binding.textViewSub2.setTextColor(color);
-            binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorBright);
             binding.textView2.setTextColor(colorBright);
             binding.textView3.setTextColor(colorBright);
@@ -177,8 +175,6 @@ public class MainActivity extends ParentActivity {
             binding.imageViewIconSection0.setImageResource(R.drawable.ic_educate_dark);
             binding.imageViewArrow.setImageResource(R.drawable.ic_right_black);
 
-            binding.textViewSub2.setTextColor(color);
-            binding.textViewSub3.setTextColor(color);
             binding.textView1.setTextColor(colorDark);
             binding.textView2.setTextColor(colorDark);
             binding.textView3.setTextColor(colorDark);

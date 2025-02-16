@@ -65,8 +65,12 @@ public class HelperFragmentAllDays {
         binding.linearLayoutCustomGraph.removeAllViews();
 
         new Thread(() -> {
-            int max = findMaxProgressOfACertainMacronutrient(macronutrient, allDaysAdapter.getDaysList());
-            for (Day day: allDaysAdapter.getDaysList()){
+            List<Day> dayList = allDaysAdapter.getDaysList();
+
+            int max = findMaxProgressOfACertainMacronutrient(macronutrient, dayList);
+            int dayCounter = 0;
+
+            for (Day day: dayList){
                 float progress = 0.0f;
                 String dayShort = day.calculateShortDayNameOfDate();
 
@@ -98,6 +102,12 @@ public class HelperFragmentAllDays {
                 textViewDay.setText(dayShort);
                 textViewDay.setId(View.generateViewId());
                 textViewDay.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                int reversePosition = dayList.size() - dayCounter++;
+                TextView textViewDayNumber = new TextView(context);
+                textViewDayNumber.setText(String.valueOf(reversePosition));
+                textViewDayNumber.setId(View.generateViewId());
+                textViewDayNumber.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
 
                 ProgressBar progressBar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
@@ -156,7 +166,7 @@ public class HelperFragmentAllDays {
 
 
                 // Style importante
-                setUpTodayYesterdayIndicators(day, textViewDay, textViewProgress);
+                setUpTodayYesterdayIndicators(day, textViewDay, textViewProgress, textViewDayNumber);
 
 
 
@@ -168,9 +178,13 @@ public class HelperFragmentAllDays {
                 layoutParams2.setMargins(0,0,0,8);
                 progressBar.setLayoutParams(layoutParams2);
 
-                LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+                LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0);
                 layoutParams3.setMargins(0,0,0,12);
                 textViewDay.setLayoutParams(layoutParams3);
+
+                LinearLayout.LayoutParams layoutParams5 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+                layoutParams5.setMargins(0,0,0, 12);
+                textViewDayNumber.setLayoutParams(layoutParams5);
 
                 LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 layoutParams4.setMargins(16, 8, 16, 8);
@@ -179,6 +193,7 @@ public class HelperFragmentAllDays {
                 linearLayout.addView(textViewProgress);
                 linearLayout.addView(progressBar);
                 linearLayout.addView(textViewDay);
+                linearLayout.addView(textViewDayNumber);
 
                 handler.post(() -> {
                     binding.linearLayoutCustomGraph.addView(linearLayout);
@@ -233,31 +248,37 @@ public class HelperFragmentAllDays {
         return (int) max;
     }
 
-    private void setUpTodayYesterdayIndicators(Day day, TextView textViewProgress, TextView textViewDay){
+    private void setUpTodayYesterdayIndicators(Day day, TextView textViewProgress, TextView textViewDay, TextView textViewDayNumber){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (day.getCreatedAt().equals(LocalDate.now())){
                 if (isNightModeOn){
                     int colorWhite = ContextCompat.getColor(context, R.color.white);
                     textViewProgress.setTextColor(colorWhite);
-                    textViewDay.setTextColor(colorWhite);
                     textViewProgress.setTypeface(null, Typeface.BOLD);
+                    textViewDay.setTextColor(colorWhite);
                     textViewDay.setTypeface(null, Typeface.BOLD);
+                    textViewDayNumber.setTextColor(colorWhite);
+                    textViewDayNumber.setTypeface(null, Typeface.BOLD);
                 } else {
                     int colorBlack = ContextCompat.getColor(context, R.color.black);
                     textViewProgress.setTextColor(colorBlack);
-                    textViewDay.setTextColor(colorBlack);
                     textViewProgress.setTypeface(null, Typeface.BOLD);
+                    textViewDay.setTextColor(colorBlack);
                     textViewDay.setTypeface(null, Typeface.BOLD);
+                    textViewDayNumber.setTextColor(colorBlack);
+                    textViewDayNumber.setTypeface(null, Typeface.BOLD);
                 }
             } else if (day.getCreatedAt().equals(LocalDate.now().minusDays(1))){
                 if (isNightModeOn){
                     int colorWhite = ContextCompat.getColor(context, R.color.white);
                     textViewProgress.setTextColor(colorWhite);
                     textViewDay.setTextColor(colorWhite);
+                    textViewDayNumber.setTextColor(colorWhite);
                 } else {
                     int colorBlack = ContextCompat.getColor(context, R.color.black);
                     textViewProgress.setTextColor(colorBlack);
                     textViewDay.setTextColor(colorBlack);
+                    textViewDayNumber.setTextColor(colorBlack);
                 }
             }
         }
@@ -315,7 +336,6 @@ public class HelperFragmentAllDays {
 
         binding.textViewTotalDays.setText(String.valueOf(allDaysAdapter.getItemCount()));
         binding.textViewTotalDays.setTextColor(colorPrimary);
-        binding.textViewSub2.setTextColor(colorPrimary);
     }
 }
 

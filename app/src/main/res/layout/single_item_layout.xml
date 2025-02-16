@@ -32,14 +32,14 @@
             app:layout_constraintLeft_toRightOf="@id/imageViewItemIcon"
             app:layout_constraintTop_toTopOf="@id/imageViewItemIcon" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/textViewSingleItemTitle"
+        <ImageView
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:src="@drawable/ic_remove"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -57,7 +57,7 @@
             android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorProtein"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:clickable="false"
             />
 
@@ -69,7 +69,7 @@
             android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorCalorie"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:clickable="false"
             />
 
@@ -81,7 +81,7 @@
             android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorCarbohydrate"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:clickable="false"
             />
 
@@ -93,7 +93,7 @@
             android:layout_marginHorizontal="2dp"
             android:text="0g"
             android:textColor="@color/colorSugar"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:clickable="false"
             />
 

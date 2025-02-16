@@ -71,10 +71,12 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull DaysAdapter.MyViewHolder holder, int position) {
         Day day = dayList.get(position);
+        int reversePosition = dayList.size() - position;
 
         String dayName = day.calculateLongDayNameOfDate();
         holder.textViewDay.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
+        holder.textViewDaysNumber.setText("D" + reversePosition);
 
         additionalThemeChanges(day, holder);
 
@@ -90,7 +92,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         protected MaterialCardView materialCardView;
-        protected ImageView imageView;
+        protected TextView textViewDaysNumber;
         protected TextView textViewDay;
         protected TextView textViewDate;
         protected TextView textViewNumberMacro;
@@ -99,7 +101,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.materialCardView = itemView.findViewById(R.id.materialCardSingleDay);
-            this.imageView = itemView.findViewById(R.id.imageViewSingleDay);
+            this.textViewDaysNumber = itemView.findViewById(R.id.textViewSingleDayNumber);
             this.textViewDay = itemView.findViewById(R.id.textViewDay);
             this.textViewDate = itemView.findViewById(R.id.textViewDate);
             this.textViewNumberMacro = itemView.findViewById(R.id.textViewNumberMacro);
@@ -118,11 +120,11 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
 
                 int textColor;
                 if (isNightMode){
-                    holder.imageView.setImageResource(R.drawable.ic_24_today_light);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.greenLight));
                     textColor = ContextCompat.getColor(context, R.color.white);
                 }
                 else {
-                    holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.greenDark));
                     textColor = ContextCompat.getColor(context, R.color.black);
                 }
 
@@ -130,6 +132,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDate.setTypeface(null, Typeface.BOLD);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
+                holder.textViewDaysNumber.setTypeface(null, Typeface.BOLD);
                 holder.textViewDay.setText("Today - " + day.calculateLongDayNameOfDate());
                 holder.textViewDay.setTextColor(textColor);
                 holder.textViewDate.setTextColor(textColor);
@@ -142,13 +145,14 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
                 int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_light);
-                else holder.imageView.setImageResource(R.drawable.ic_24_dark);
+                if (isNightMode) holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
+                else holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
 
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDay.setText("Yesterday - " + day.calculateLongDayNameOfDate());
                 holder.textViewDay.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
@@ -159,14 +163,14 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
             // Every other day
             else {
                 if (isNightMode){
-                    holder.imageView.setImageResource(R.drawable.ic_24_light);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.textViewLabelMacro.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
                 } else {
-                    holder.imageView.setImageResource(R.drawable.ic_24_dark);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.textViewLabelMacro.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
@@ -177,6 +181,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
             }
         }
     }
@@ -185,19 +190,19 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     private void calculateCorrectMacronutrient(String macro, MyViewHolder holder, Day day){
         switch (macro) {
             case "Proteins":
-                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalProteins()));
+                holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalProteins()));
                 holder.textViewLabelMacro.setText(macro);
                 break;
             case "Calories":
-                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalCalories()));
+                holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalCalories()));
                 holder.textViewLabelMacro.setText(macro);
                 break;
             case "Carbohydrates":
-                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalCarbohydrates()));
+                holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalCarbohydrates()));
                 holder.textViewLabelMacro.setText("Carbs");
                 break;
             case "Sugars":
-                holder.textViewNumberMacro.setText(String.format("%.2f", day.totalSugar()));
+                holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalSugar()));
                 holder.textViewLabelMacro.setText(macro);
                 break;
         }

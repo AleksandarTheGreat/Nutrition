@@ -107,10 +107,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
         holder.textViewIngredient.setText(item.getIngredient());
 
-        holder.chipProtein.setText(String.format("%.2f", item.getProtein()));
-        holder.chipCalories.setText(String.format("%.2f", item.getCalories()));
-        holder.chipCarbohydrates.setText(String.format("%.2f", item.getCarbohydrates()));
-        holder.chipSugar.setText(String.format("%.2f", item.getSugar()));
+        holder.chipProtein.setText(String.format("%d", (int) item.getProtein()));
+        holder.chipCalories.setText(String.format("%d", (int) item.getCalories()));
+        holder.chipCarbohydrates.setText(String.format("%d", (int) item.getCarbohydrates()));
+        holder.chipSugar.setText(String.format("%d", (int) item.getSugar()));
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.come_from_left);
         holder.linearLayout.startAnimation(animation);

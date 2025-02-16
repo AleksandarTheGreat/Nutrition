@@ -93,8 +93,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                             public void onClick(DialogInterface dialog, int which) {
                                 daysRepo.delete(day.getId());
                                 daysList = daysRepo.listAllSorted();
-
                                 notifyDataSetChanged();
+
                                 FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
                                 helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, allDaysAdapter);
 
@@ -124,10 +124,12 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull AllDaysAdapter.MyViewHolder holder, int position) {
         Day day = daysList.get(position);
+        int reversePosition = daysList.size() - position;
 
         String dayName = day.calculateLongDayNameOfDate();
         holder.textViewDays.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
+        holder.textViewDaysNumber.setText(String.valueOf(reversePosition));
 
         // Check if this day is the current day
         // Check if this day is also yesterday
@@ -142,15 +144,15 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     static class MyViewHolder extends RecyclerView.ViewHolder {
         protected MaterialCardView materialCardView;
         protected ConstraintLayout constraintLayout;
-        protected ImageView imageView;
         protected TextView textViewDays;
         protected TextView textViewDate;
+        protected TextView textViewDaysNumber;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.materialCardView = itemView.findViewById(R.id.materialCardViewSingleDay);
             this.constraintLayout = itemView.findViewById(R.id.constraintLayoutSingleDay);
-            this.imageView = itemView.findViewById(R.id.imageViewSunSingleDayLayout);
+            this.textViewDaysNumber = itemView.findViewById(R.id.textViewDaysNumberSingleDayLayout);
             this.textViewDays = itemView.findViewById(R.id.textViewDaySingleDayLayout);
             this.textViewDate = itemView.findViewById(R.id.textViewCreatedSingleDayLayout);
         }
@@ -167,16 +169,17 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
 
                 int textColor;
                 if (isNightMode) {
-                    holder.imageView.setImageResource(R.drawable.ic_24_today_light);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.greenLight));
                     textColor = ContextCompat.getColor(context, R.color.white);
                 }
                 else {
-                    holder.imageView.setImageResource(R.drawable.ic_24_today_dark);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.greenDark));
                     textColor = ContextCompat.getColor(context, R.color.black);
                 }
 
                 holder.textViewDays.setTypeface(null, Typeface.BOLD);
                 holder.textViewDate.setTypeface(null, Typeface.BOLD);
+                holder.textViewDaysNumber.setTypeface(null, Typeface.BOLD);
                 holder.textViewDays.setTextColor(textColor);
                 holder.textViewDate.setTextColor(textColor);
                 holder.textViewDays.setText("Today");
@@ -187,11 +190,12 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
                 int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.imageView.setImageResource(R.drawable.ic_24_light);
-                else holder.imageView.setImageResource(R.drawable.ic_24_dark);
+                if (isNightMode) holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
+                else  holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
 
                 holder.textViewDays.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDays.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
                 holder.textViewDays.setText("Yesterday");
@@ -200,12 +204,12 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             // Every other day
             else {
                 if (isNightMode){
-                    holder.imageView.setImageResource(R.drawable.ic_24_light);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
                     holder.textViewDays.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
                 } else {
-                    holder.imageView.setImageResource(R.drawable.ic_24_dark);
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
                     holder.textViewDays.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
