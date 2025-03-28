@@ -119,7 +119,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCardSearchExamples"
-                style="@style/MaterialCardIntroductionMainActivity"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="4dp">
 
@@ -158,7 +158,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCardQuiz"
-                style="@style/MaterialCardIntroductionMainActivity"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
                 android:layout_marginHorizontal="4dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -196,7 +196,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCardDefinitions"
-                style="@style/MaterialCardIntroductionMainActivity"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
                 android:layout_marginHorizontal="4dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -233,7 +233,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCardMythFact"
-                style="@style/MaterialCardIntroductionMainActivity"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
                 android:layout_marginHorizontal="4dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -270,7 +270,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matCardMotivationalQuotes"
-                style="@style/MaterialCardIntroductionMainActivity"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp">
 
@@ -360,36 +360,32 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconGrains"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_grains_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/grains"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
                         android:id="@+id/textViewGrains"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Grains"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconGrains" />
+                        android:text="Grains"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -400,36 +396,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconVegetables"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_vegetables_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/vegetables"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
                         android:id="@+id/textViewVegetables"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vegetables"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconVegetables" />
+                        android:text="Vegetables"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -440,36 +431,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconFruits"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_fruits_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/fruit"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
                         android:id="@+id/textViewFruit"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fruits"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconFruits" />
+                        android:text="Fruit"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -480,36 +466,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconMeatAndProteins"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_meat_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/meat"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
-                        android:id="@+id/textViewMeatAndProtein"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textViewMeatAndProteins"
                         android:layout_height="wrap_content"
-                        android:text="Meat and proteins"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconMeatAndProteins" />
+                        android:text="Meat"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -520,36 +501,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconDairy"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_dairy_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/dairy"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
                         android:id="@+id/textViewDairy"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dairy"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconDairy" />
+                        android:text="Dairy"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -560,36 +536,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconFatsOilsAndSweets"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_sweets_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/fats_oils_sweets"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
-                        android:id="@+id/textViewFatsOilsAndSweets"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textViewSweets"
                         android:layout_height="wrap_content"
-                        android:text="Fats, oils and sweets"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconFatsOilsAndSweets" />
+                        android:text="Sweets"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -600,36 +571,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="12dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp">
+                    android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconFastFood"
-                        android:layout_height="50dp"
-                        android:layout_width="50dp"
-                        android:src="@drawable/ic_fast_food_128"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/fast_food"
+                        android:scaleType="centerCrop"
                         />
 
                     <TextView
                         android:id="@+id/textViewFastFood"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fast food"
+                        android:layout_width="match_parent"
                         android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageViewIconFastFood" />
+                        android:text="Fast food"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
