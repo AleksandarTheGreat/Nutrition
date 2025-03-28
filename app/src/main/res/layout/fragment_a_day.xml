@@ -117,13 +117,13 @@
                         android:src="@drawable/ic_steak"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient1Number"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textViewNutrient1Number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:text="0.00"
                         android:textColor="@color/colorProtein"
@@ -141,7 +141,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="Proteins"
                         android:textAlignment="textStart"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@id/textViewNutrient1Number"
                         app:layout_constraintTop_toBottomOf="@id/textViewNutrient1Number" />
@@ -175,13 +175,13 @@
                         android:src="@drawable/ic_olive_oil"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient2Number"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textViewNutrient2Number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:text="0.00"
                         android:textColor="@color/colorCalorie"
@@ -199,7 +199,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="Calories"
                         android:textAlignment="textStart"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@id/textViewNutrient2Number"
                         app:layout_constraintTop_toBottomOf="@id/textViewNutrient2Number" />
@@ -233,13 +233,13 @@
                         android:src="@drawable/ic_wheat"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient3Number"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textViewNutrient3Number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:text="0.00"
                         android:textColor="@color/colorCarbohydrate"
@@ -257,7 +257,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="Carbs"
                         android:textAlignment="textStart"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@id/textViewNutrient3Number"
                         app:layout_constraintTop_toBottomOf="@id/textViewNutrient3Number" />
@@ -291,13 +291,13 @@
                         android:src="@drawable/ic_sugar"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient4Number"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textViewNutrient4Number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:text="0.00"
                         android:textColor="@color/colorSugar"
@@ -315,7 +315,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="Sugars"
                         android:textAlignment="textStart"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@id/textViewNutrient4Number"
                         app:layout_constraintTop_toBottomOf="@id/textViewNutrient4Number" />
