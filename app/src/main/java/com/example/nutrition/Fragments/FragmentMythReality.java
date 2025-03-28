@@ -56,15 +56,19 @@ public class FragmentMythReality extends Fragment implements IEssentials {
 
     public void additionalThemeChanges(){
         if (isNightModeActive){
-            int color = ContextCompat.getColor(getContext(), R.color.white60Opacity);
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
 
-            binding.textViewActualMyth.setTextColor(color);
-            binding.textViewActualFact.setTextColor(color);
+            binding.textViewActualMyth.setTextColor(colorWhite);
+            binding.textViewActualFact.setTextColor(colorWhite);
+            binding.textViewMythTitle.setTextColor(colorWhite);
+            binding.textViewFactTitle.setTextColor(colorWhite);
         } else {
-            int color = ContextCompat.getColor(getContext(), R.color.black60Opacity);
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
 
-            binding.textViewActualMyth.setTextColor(color);
-            binding.textViewActualFact.setTextColor(color);
+            binding.textViewActualMyth.setTextColor(colorBlack);
+            binding.textViewActualFact.setTextColor(colorBlack);
+            binding.textViewMythTitle.setTextColor(colorBlack);
+            binding.textViewFactTitle.setTextColor(colorBlack);
         }
     }
 }

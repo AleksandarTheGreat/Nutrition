@@ -52,7 +52,6 @@ public class FragmentSearchExample extends Fragment implements IEssentials {
     public void instantiateObjects() {
         binding.textViewTitleFragmentSearchExample.setText(seModel.getTitle());
         binding.textViewTitleDescriptionFragmentSearchExample.setText(seModel.getDescription());
-        binding.imageViewFragmentSearchExample.setImageResource(seModel.getImageResource());
         setUpLayoutItems();
     }
 
@@ -63,11 +62,15 @@ public class FragmentSearchExample extends Fragment implements IEssentials {
 
     private void additionalThemeChanges(){
         if (isNightModeOn){
-            int textColor = ContextCompat.getColor(getContext(), R.color.white60Opacity);
-            binding.textViewTitleDescriptionFragmentSearchExample.setTextColor(textColor);
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+
+            binding.textViewTitleDescriptionFragmentSearchExample.setTextColor(colorWhite);
+            binding.textViewTitleFragmentSearchExample.setTextColor(colorWhite);
         } else {
-            int textColor = ContextCompat.getColor(getContext(), R.color.black60Opacity);
-            binding.textViewTitleDescriptionFragmentSearchExample.setTextColor(textColor);
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+
+            binding.textViewTitleDescriptionFragmentSearchExample.setTextColor(colorBlack);
+            binding.textViewTitleFragmentSearchExample.setTextColor(colorBlack);
         }
     }
 

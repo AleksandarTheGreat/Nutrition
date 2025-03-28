@@ -98,6 +98,13 @@ public class FragmentQuiz extends Fragment implements IEssentials {
     }
 
     private void additionalThemeChanges(){
+        if (isNightModeActive){
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+            binding.textViewQuestion.setTextColor(colorWhite);
+        } else {
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+            binding.textViewQuestion.setTextColor(colorBlack);
+        }
         setRadioButtonColors();
     }
 

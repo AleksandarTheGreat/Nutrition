@@ -2,6 +2,7 @@ package com.example.nutrition.Fragments;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -24,6 +25,7 @@ public class FragmentQuiz2Options extends Fragment implements IEssentials {
     private FragmentQuiz2OptionsBinding binding;
     private Question2 question2;
     private boolean isNightModeActive;
+    private MediaPlayer mediaPlayer;
 
     public FragmentQuiz2Options() {
         // Required empty public constructor
@@ -70,6 +72,7 @@ public class FragmentQuiz2Options extends Fragment implements IEssentials {
                     binding.textViewStatusFragmentQuiz.setVisibility(View.VISIBLE);
                     binding.imageViewStatusFragmentQuiz.setImageResource(R.drawable.ic_correct);
                     binding.imageViewEmoji.setImageResource(R.drawable.ic_smiling);
+                    playWinSounds();
                 } else {
                     if (isNightModeActive) textColor = ContextCompat.getColor(getContext(), R.color.white60Opacity);
                     else textColor = ContextCompat.getColor(getContext(), R.color.black60Opacity);
@@ -84,7 +87,19 @@ public class FragmentQuiz2Options extends Fragment implements IEssentials {
         });
     }
 
+    private void playWinSounds(){
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.win_bell);
+        mediaPlayer.start();
+    }
+
     private void additionalThemeChanges(){
+        if (isNightModeActive){
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+            binding.textViewQuestion.setTextColor(colorWhite);
+        } else {
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+            binding.textViewQuestion.setTextColor(colorBlack);
+        }
         setRadioButtonColors();
     }
 
