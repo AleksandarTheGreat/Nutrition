@@ -54,9 +54,9 @@ public class FragmentIntroduction extends Fragment implements IEssentials {
 
     public void additionalThemeChanges(){
         if (isNightModeActive){
-            binding.textViewExplanationIntroductionFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.white60Opacity));
+            binding.textViewExplanationIntroductionFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         } else {
-            binding.textViewExplanationIntroductionFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.black60Opacity));
+            binding.textViewExplanationIntroductionFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.black));
         }
     }
 }
