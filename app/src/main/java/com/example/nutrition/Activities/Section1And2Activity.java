@@ -71,6 +71,10 @@ public class Section1And2Activity extends ParentActivity {
 
         appCompatActivity = this;
 
+        // Removes underline on the searchView
+        View searchPlate = binding.searchViewSection1And2.findViewById(androidx.appcompat.R.id.search_plate);
+        if (searchPlate != null) searchPlate.setBackgroundColor(Color.TRANSPARENT);
+
         toaster = new Toaster(Section1And2Activity.this);
         helperSection1And2Activity = new HelperSection1And2Activity(Section1And2Activity.this);
 

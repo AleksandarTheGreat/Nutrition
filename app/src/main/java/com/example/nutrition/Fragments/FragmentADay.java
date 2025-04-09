@@ -95,6 +95,10 @@ public class FragmentADay extends Fragment implements IEssentials {
     public void instantiateObjects() {
         toaster = new Toaster(getContext());
 
+        // Removes underline from searchView
+        View searchPlate = binding.searchViewFragmentADay.findViewById(androidx.appcompat.R.id.search_plate);
+        if (searchPlate != null) searchPlate.setBackgroundColor(Color.TRANSPARENT);
+
         materialCardViews = new MaterialCardView[]{binding.materialCardProteins, binding.materialCardCalories, binding.materialCardCarbohydrates, binding.materialCardSugar};
         textViewsMacros = new TextView[]{binding.textViewProteins, binding.textViewCalories, binding.textViewCarbohydrates, binding.textViewSugar};
 
@@ -133,6 +137,7 @@ public class FragmentADay extends Fragment implements IEssentials {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 helperFragmentADay.addItem(binding, suggestionsRepo, itemsAdapter, itemsRepo, day.getId());
+                binding.searchViewFragmentADay.clearFocus();
                 return true;
             }
 
@@ -174,21 +179,19 @@ public class FragmentADay extends Fragment implements IEssentials {
 
     public void additionalThemeSettings() {
         if (ThemeUtils.isNightModeActive(appCompatActivity)) {
-            int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
 
             binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_light);
 
-            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub1.setTextColor(colorWhite);
             binding.textViewSubTitleSection2.setTextColor(colorWhite);
 
         } else {
-            int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
             int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
 
             binding.imageViewIconDay.setImageResource(R.drawable.ic_meal_dark);
 
-            binding.textViewSub1.setTextColor(color);
+            binding.textViewSub1.setTextColor(colorBlack);
             binding.textViewSubTitleSection2.setTextColor(colorBlack);
         }
 

@@ -671,8 +671,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:drawableLeft="@drawable/ic_info"
-            android:drawablePadding="4dp"
-            android:textSize="18sp"
+            android:drawablePadding="8dp"
+            android:textSize="16sp"
             android:text="You have no days to track, yet" />
 
         <Button

@@ -129,15 +129,15 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 }
 
                 holder.textViewDay.setTypeface(null, Typeface.BOLD);
-                holder.textViewDate.setTypeface(null, Typeface.BOLD);
-                holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
+                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
+                holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewDaysNumber.setTypeface(null, Typeface.BOLD);
-                holder.textViewDay.setText("Today - " + day.calculateLongDayNameOfDate());
-                holder.textViewDay.setTextColor(textColor);
-                holder.textViewDate.setTextColor(textColor);
-                holder.textViewLabelMacro.setTextColor(textColor);
-                holder.textViewNumberMacro.setTextColor(textColor);
+                holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Today)");
+                holder.textViewDay.setTextColor(onPrimaryContainer);
+                holder.textViewDate.setTextColor(onPrimaryContainer);
+                holder.textViewLabelMacro.setTextColor(onPrimaryContainer);
+                holder.textViewNumberMacro.setTextColor(onPrimaryContainer);
                 holder.materialCardView.setCardBackgroundColor(primaryContainer);
             }
             // Yesterday
@@ -153,7 +153,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
-                holder.textViewDay.setText("Yesterday - " + day.calculateLongDayNameOfDate());
+                holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Yesterday)");
                 holder.textViewDay.setTextColor(onSecondaryContainer);
                 holder.textViewDate.setTextColor(onSecondaryContainer);
                 holder.textViewLabelMacro.setTextColor(onSecondaryContainer);

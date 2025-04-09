@@ -92,9 +92,9 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         if (!isNightModeActive)
             color = R.color.black;
 
-        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "Quickly learn about Proteins, Calories, Carbohydrates and Sugars\n\n", R.drawable.icon_hello, color), isNightModeActive));
+        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "Quickly learn about Proteins, Calories, Carbohydrates and Sugars.\n\n", R.drawable.icon_hello, color), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
-                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth", R.drawable.ic_steak, R.color.colorProtein), isNightModeActive));
+                new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth.", R.drawable.ic_steak, R.color.colorProtein), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Carbohydrate", "Carbohydrates, or carbs, are sugar molecules.\n\nAlong with proteins and fats, carbohydrates are one of three main nutrients found in foods and drinks.\n\nYour body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy for your body's cells, tissues, and organs.", R.drawable.ic_wheat, R.color.colorCarbohydrate), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
