@@ -92,4 +92,11 @@
         <item name="android:layout_weight">1</item>
     </style>
 
+    <!-- Not actually used anywhere -->
+    <style name="CustomProgressDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="backgroundColor">@color/greenLight</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="cardCornerRadius">30dp</item>
+    </style>
+
 </resources>

@@ -332,7 +332,7 @@
         <TextView
             android:id="@+id/textViewSubTitleSection1"
             style="@style/SubTitlePart"
-            android:text="Food Pyramid"
+            android:text="Popular foods"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
             app:layout_constraintTop_toTopOf="@id/imageViewIconSection1"
             app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection1"

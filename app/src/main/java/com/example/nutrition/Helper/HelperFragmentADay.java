@@ -60,8 +60,9 @@ public class HelperFragmentADay {
 
         String url = EdamamAPI.getUrl(searchedText);
 
-        ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Loading...");
+        ProgressDialog progressDialog = new ProgressDialog(context, com.anychart.R.style.ThemeOverlay_AppCompat_Dialog_Alert);
+        progressDialog.setTitle("Analyzing");
+        progressDialog.setMessage("Please be patient while we are calculating your ingredient");
         progressDialog.setCancelable(false);
         progressDialog.show();
 

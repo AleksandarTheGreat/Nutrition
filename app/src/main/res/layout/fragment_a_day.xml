@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_marginTop="4dp"
-            android:text="Be as straight forward as you can"
+            android:text="One ingredient at a time!"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/textViewHelp"
             app:layout_constraintTop_toBottomOf="@id/searchViewFragmentADay" />
