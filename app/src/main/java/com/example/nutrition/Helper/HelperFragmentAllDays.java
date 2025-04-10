@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.CloudMediaProvider;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -36,11 +37,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class HelperFragmentAllDays {
     private Context context;
     private AppCompatActivity appCompatActivity;
     private boolean isNightModeOn;
+
     public HelperFragmentAllDays(Context context, AppCompatActivity appCompatActivity){
         this.context = context;
         this.appCompatActivity = appCompatActivity;
@@ -65,6 +69,7 @@ public class HelperFragmentAllDays {
         binding.linearLayoutCustomGraph.removeAllViews();
 
         new Thread(() -> {
+
             int max = findMaxProgressOfACertainMacronutrient(macronutrient, dayList);
             int dayCounter = 0;
 
@@ -194,6 +199,7 @@ public class HelperFragmentAllDays {
                     binding.linearLayoutCustomGraph.addView(linearLayout);
                 });
             }
+
         }).start();
     }
 
