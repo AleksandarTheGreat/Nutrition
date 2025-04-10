@@ -95,11 +95,11 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                                 daysList = daysRepo.listAllSorted();
                                 notifyDataSetChanged();
 
-                                FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, allDaysAdapter);
-                                helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, allDaysAdapter);
+                                FragmentAllDays.checkIfDaysAreEmpty(fragmentAllDaysBinding, daysList);
+                                helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, daysList.size());
 
                                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
-                                helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, allDaysAdapter);
+                                helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, daysRepo, daysList);
                                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, fragmentAllDaysBinding);
                                 helperFragmentAllDays.calculateAverageMacronutrient(macro, fragmentAllDaysBinding, allDaysAdapter.getDaysList());
                             }

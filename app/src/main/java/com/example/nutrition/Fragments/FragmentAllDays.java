@@ -36,13 +36,16 @@ import java.util.List;
 public class FragmentAllDays extends Fragment implements IEssentials {
 
     private FragmentAllDaysBinding binding;
-    private AllDaysAdapter allDaysAdapter;
+    // private AllDaysAdapter allDaysAdapter;
     private AppCompatActivity appCompatActivity;
     private Toaster toaster;
     private DaysRepo daysRepo;
     private HelperFragmentAllDays helperFragmentAllDays;
+    private List<Day> dayList;
 
-    public FragmentAllDays() {}
+    public FragmentAllDays() {
+    }
+
     public FragmentAllDays(AppCompatActivity appCompatActivity) {
         this.appCompatActivity = appCompatActivity;
     }
@@ -67,12 +70,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
 
-            allDaysAdapter = new AllDaysAdapter(getContext(), appCompatActivity, binding, daysRepo);
-
-            handler.post(() ->{
-                binding.recyclerViewAllDaysFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                binding.recyclerViewAllDaysFragment.setHasFixedSize(true);
-                binding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
+            dayList = daysRepo.listAllSorted();
+            handler.post(() -> {
 
                 // This is also here since we are using a binding
                 // And binding is a main UI component
@@ -81,13 +80,13 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 // Se the default selection the saved one
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
-                helperFragmentAllDays.createCustomChart(macro, binding, allDaysAdapter);
+                helperFragmentAllDays.createCustomChart(macro, binding, daysRepo, dayList);
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
-                helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, allDaysAdapter.getDaysList());
+                helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, dayList);
 
                 addEventListeners();
-                checkIfDaysAreEmpty(binding, allDaysAdapter);
-                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, allDaysAdapter);
+                checkIfDaysAreEmpty(binding, dayList);
+                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, dayList.size());
             });
 
         }).start();
@@ -103,38 +102,37 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 // Then we load all days from the database and set the dayList pointing to that list
                 // Finally we update the adapter
 
-                if (!helperFragmentAllDays.isANewDayValidToAdd(allDaysAdapter, toaster)) return;
+                if (!helperFragmentAllDays.isANewDayValidToAdd(dayList, toaster)) return;
 
                 Day day = new Day("Day", LocalDate.now());
                 daysRepo.add(day);
+                dayList = daysRepo.listAllSorted();
 
-                allDaysAdapter.setDaysList(daysRepo.listAllSorted());
-                allDaysAdapter.notifyDataSetChanged();
-
-                checkIfDaysAreEmpty(binding, allDaysAdapter);
-                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, allDaysAdapter);
-
+                checkIfDaysAreEmpty(binding, dayList);
+                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, dayList.size());
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
-                helperFragmentAllDays.createCustomChart(macro, binding, allDaysAdapter);
+                helperFragmentAllDays.createCustomChart(macro, binding, daysRepo, dayList);
                 helperFragmentAllDays.checkAndSelectCorrectChip(macro, binding);
-                helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, allDaysAdapter.getDaysList());
+                helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, dayList);
             }
         });
 
         binding.chipGroupGraphFragmentAllDays.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                if (checkedIds.isEmpty()){
+                if (checkedIds.isEmpty()) {
                     return;
                 }
+
+                dayList = daysRepo.listAllSorted();
 
                 int id = checkedIds.get(0);
                 Chip chip = group.findViewById(id);
                 String text = chip.getTag().toString().trim();
 
-                helperFragmentAllDays.createCustomChart(text, binding, allDaysAdapter);
-                helperFragmentAllDays.calculateAverageMacronutrient(text, binding, allDaysAdapter.getDaysList());
+                helperFragmentAllDays.createCustomChart(text, binding, daysRepo, dayList);
+                helperFragmentAllDays.calculateAverageMacronutrient(text, binding, dayList);
                 SharedPrefMacronutrients.writeMacronutrientToSharedPref(getContext(), text);
             }
         });
@@ -173,8 +171,8 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
     // HELPER METHODS
 
-    public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter) {
-        if (allDaysAdapter.isListEmpty())
+    public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, List<Day> dayList) {
+        if (dayList.isEmpty())
             binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.VISIBLE);
         else
             binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.INVISIBLE);

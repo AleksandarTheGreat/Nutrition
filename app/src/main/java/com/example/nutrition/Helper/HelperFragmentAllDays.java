@@ -47,9 +47,9 @@ public class HelperFragmentAllDays {
         this.isNightModeOn = ThemeUtils.isNightModeActive(appCompatActivity);
     }
 
-    public boolean isANewDayValidToAdd(AllDaysAdapter allDaysAdapter, Toaster toaster) {
+    public boolean isANewDayValidToAdd(List<Day> dayList, Toaster toaster) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            for (Day day : allDaysAdapter.getDaysList()) {
+            for (Day day : dayList) {
                 if (day.getCreatedAt().equals(LocalDate.now())) {
                     toaster.text("Cannot create 2 days, today");
                     return false;
@@ -60,13 +60,11 @@ public class HelperFragmentAllDays {
     }
 
     @SuppressLint("DefaultLocale")
-    public void createCustomChart(String macronutrient, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+    public void createCustomChart(String macronutrient, FragmentAllDaysBinding binding, DaysRepo daysRepo, List<Day> dayList){
         Handler handler = new Handler(Looper.getMainLooper());
         binding.linearLayoutCustomGraph.removeAllViews();
 
         new Thread(() -> {
-            List<Day> dayList = allDaysAdapter.getDaysList();
-
             int max = findMaxProgressOfACertainMacronutrient(macronutrient, dayList);
             int dayCounter = 0;
 
@@ -136,19 +134,16 @@ public class HelperFragmentAllDays {
                                     @SuppressLint("NotifyDataSetChanged")
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        DaysRepo daysRepo = allDaysAdapter.getDaysRepo();
-
                                         daysRepo.delete(day.getId());
-                                        allDaysAdapter.setDaysList(daysRepo.listAllSorted());
-                                        allDaysAdapter.notifyDataSetChanged();
+                                        List<Day> newList = daysRepo.listAllSorted();
 
-                                        FragmentAllDays.checkIfDaysAreEmpty(binding, allDaysAdapter);
-                                        countAndSetTotalDays(context, binding, allDaysAdapter);
+                                        FragmentAllDays.checkIfDaysAreEmpty(binding, newList);
+                                        countAndSetTotalDays(context, binding, newList.size());
 
                                         String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
-                                        createCustomChart(macro, binding, allDaysAdapter);
+                                        createCustomChart(macro, binding, daysRepo, newList);
                                         checkAndSelectCorrectChip(macro, binding);
-                                        calculateAverageMacronutrient(macro, binding, allDaysAdapter.getDaysList());
+                                        calculateAverageMacronutrient(macro, binding, newList);
                                     }
                                 })
                                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -331,10 +326,10 @@ public class HelperFragmentAllDays {
         binding.textViewAverage.setTextColor(colorPrimary);
     }
 
-    public void countAndSetTotalDays(Context context, FragmentAllDaysBinding binding, AllDaysAdapter allDaysAdapter){
+    public void countAndSetTotalDays(Context context, FragmentAllDaysBinding binding, int totalDays){
         int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
 
-        binding.textViewTotalDays.setText(String.valueOf(allDaysAdapter.getItemCount()));
+        binding.textViewTotalDays.setText(String.valueOf(totalDays));
         binding.textViewTotalDays.setTextColor(colorPrimary);
     }
 }
