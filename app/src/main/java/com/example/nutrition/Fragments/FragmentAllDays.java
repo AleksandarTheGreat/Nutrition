@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import android.view.ViewGroup;
 import com.example.nutrition.Adapters.AllDaysAdapter;
 import com.example.nutrition.Helper.HelperFragmentAllDays;
 import com.example.nutrition.Helper.IEssentials;
+import com.example.nutrition.Model.CustomMacros;
+import com.example.nutrition.SharedPrefs.SharedPrefCustomMacros;
 import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
@@ -85,7 +88,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, dayList);
 
                 addEventListeners();
-                checkIfDaysAreEmpty(binding, dayList);
                 helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, dayList.size());
             });
 
@@ -108,7 +110,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 daysRepo.add(day);
                 dayList = daysRepo.listAllSorted();
 
-                checkIfDaysAreEmpty(binding, dayList);
                 helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, dayList.size());
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
@@ -135,6 +136,11 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 helperFragmentAllDays.calculateAverageMacronutrient(text, binding, dayList);
                 SharedPrefMacronutrients.writeMacronutrientToSharedPref(getContext(), text);
             }
+        });
+
+        binding.buttonCalculateMyOwn.setOnClickListener(view -> {
+            MyFragmentManager.change(appCompatActivity, new FragmentCustomMacros(), false);
+            toaster.text("Going there now");
         });
 
     }
@@ -170,13 +176,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     }
 
     // HELPER METHODS
-
-    public static void checkIfDaysAreEmpty(FragmentAllDaysBinding binding, List<Day> dayList) {
-        if (dayList.isEmpty())
-            binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.VISIBLE);
-        else
-            binding.textViewNoDaysYetFragmentAllDays.setVisibility(View.INVISIBLE);
-    }
 
 }
 

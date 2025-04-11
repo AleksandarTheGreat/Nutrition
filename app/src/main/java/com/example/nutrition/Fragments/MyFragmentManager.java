@@ -12,7 +12,8 @@ public class MyFragmentManager {
     public static void change(AppCompatActivity activity, Fragment fragment, boolean cameFromMainActivityAdapter) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
 
-        if (fragment instanceof FragmentADay)
+        if (fragment instanceof FragmentADay || fragment instanceof FragmentCustomMacros)
+
             // I do not add this fragment to a stack because I want to go back to main when I exit
             if (cameFromMainActivityAdapter){
                 fragmentManager

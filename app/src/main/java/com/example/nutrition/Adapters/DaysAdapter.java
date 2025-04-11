@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrition.Activities.Section3Activity;
 import com.example.nutrition.Helper.HelperMain;
+import com.example.nutrition.Model.CustomMacros;
+import com.example.nutrition.SharedPrefs.SharedPrefCustomMacros;
 import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.Day;
@@ -39,7 +41,9 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     private Toaster toaster;
     private boolean isNightMode;
     private String macro;
-    public DaysAdapter(Context context, AppCompatActivity appCompatActivity){
+    private CustomMacros customMacros;
+
+    public DaysAdapter(Context context, AppCompatActivity appCompatActivity) {
         this.context = context;
         this.appCompatActivity = appCompatActivity;
         this.helperMain = new HelperMain(context);
@@ -49,6 +53,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         this.toaster = new Toaster(context);
         this.isNightMode = ThemeUtils.isNightModeActive(appCompatActivity);
         this.macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
+        this.customMacros = SharedPrefCustomMacros.readFromSharedPref(context);
     }
 
     @NonNull
@@ -110,23 +115,13 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     }
 
     @SuppressLint("SetTextI18n")
-    public void additionalThemeChanges(Day day, DaysAdapter.MyViewHolder holder){
+    public void additionalThemeChanges(Day day, DaysAdapter.MyViewHolder holder) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDate currentDate = LocalDate.now();
             // Today
-            if (day.getCreatedAt().equals(currentDate)){
+            if (day.getCreatedAt().equals(currentDate)) {
                 int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
                 int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
-
-                int textColor;
-                if (isNightMode){
-                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.greenLight));
-                    textColor = ContextCompat.getColor(context, R.color.white);
-                }
-                else {
-                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.greenDark));
-                    textColor = ContextCompat.getColor(context, R.color.black);
-                }
 
                 holder.textViewDay.setTypeface(null, Typeface.BOLD);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
@@ -136,6 +131,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Today)");
                 holder.textViewDay.setTextColor(onPrimaryContainer);
                 holder.textViewDate.setTextColor(onPrimaryContainer);
+                holder.textViewDaysNumber.setTextColor(onPrimaryContainer);
                 holder.textViewLabelMacro.setTextColor(onPrimaryContainer);
                 holder.textViewNumberMacro.setTextColor(onPrimaryContainer);
                 holder.materialCardView.setCardBackgroundColor(primaryContainer);
@@ -145,8 +141,10 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
                 int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
 
-                if (isNightMode) holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
-                else holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
+                if (isNightMode)
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
+                else
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
 
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
@@ -162,7 +160,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
             }
             // Every other day
             else {
-                if (isNightMode){
+                if (isNightMode) {
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
@@ -187,28 +185,43 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
     }
 
     @SuppressLint("DefaultLocale")
-    private void calculateCorrectMacronutrient(String macro, MyViewHolder holder, Day day){
+    private void calculateCorrectMacronutrient(String macro, MyViewHolder holder, Day day) {
+        int color = 0;
+        if (isNightMode) {
+            color = ContextCompat.getColor(context, R.color.greenLight);
+        } else {
+            color = ContextCompat.getColor(context, R.color.greenDark);
+        }
+
         switch (macro) {
             case "Proteins":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalProteins()));
                 holder.textViewLabelMacro.setText(macro);
+                if (day.totalProteins() > customMacros.getProteins())
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorProtein));
                 break;
             case "Calories":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalCalories()));
                 holder.textViewLabelMacro.setText(macro);
+                if (day.totalCalories() > customMacros.getCalories())
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCalorie));
                 break;
             case "Carbohydrates":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalCarbohydrates()));
                 holder.textViewLabelMacro.setText("Carbs");
+                if (day.totalCarbohydrates() > customMacros.getCarbs())
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
                 break;
             case "Sugars":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalSugar()));
                 holder.textViewLabelMacro.setText(macro);
+                if (day.totalSugar() > customMacros.getSugars())
+                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorSugar));
                 break;
         }
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return dayList != null && dayList.isEmpty();
     }
 

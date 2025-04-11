@@ -40,10 +40,6 @@ public class ThreadDays extends Thread{
 
         allDaysAdapter = new AllDaysAdapter(context, appCompatActivity, fragmentAllDaysBinding, daysRepo);
 
-        fragmentAllDaysBinding.recyclerViewAllDaysFragment.setLayoutManager(new GridLayoutManager(context, 3));
-        fragmentAllDaysBinding.recyclerViewAllDaysFragment.setHasFixedSize(true);
-        fragmentAllDaysBinding.recyclerViewAllDaysFragment.setAdapter(allDaysAdapter);
-
         Log.d("Tag", "Loaded days from this thread '" + getName() + "'");
     }
 }

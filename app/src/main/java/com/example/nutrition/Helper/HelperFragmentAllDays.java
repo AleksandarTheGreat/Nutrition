@@ -25,9 +25,11 @@ import com.example.nutrition.Adapters.AllDaysAdapter;
 import com.example.nutrition.Fragments.FragmentADay;
 import com.example.nutrition.Fragments.FragmentAllDays;
 import com.example.nutrition.Fragments.MyFragmentManager;
+import com.example.nutrition.Model.CustomMacros;
 import com.example.nutrition.Model.Day;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.DaysRepo;
+import com.example.nutrition.SharedPrefs.SharedPrefCustomMacros;
 import com.example.nutrition.SharedPrefs.SharedPrefMacronutrients;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentAllDaysBinding;
@@ -72,26 +74,39 @@ public class HelperFragmentAllDays {
 
             int max = findMaxProgressOfACertainMacronutrient(macronutrient, dayList);
             int dayCounter = 0;
+            CustomMacros customMacros = SharedPrefCustomMacros.readFromSharedPref(context);
 
             for (Day day: dayList){
                 float progress = 0.0f;
                 String dayShort = day.calculateShortDayNameOfDate();
 
+                int textColor = 0;
+                if (isNightModeOn) textColor = ContextCompat.getColor(context, R.color.white);
+                else textColor = ContextCompat.getColor(context, R.color.black);
+
                 switch (macronutrient){
                     case "Proteins":{
                         progress = day.totalProteins();
+                        if (progress >= customMacros.getProteins())
+                            textColor = ContextCompat.getColor(context, R.color.colorProtein);
                         break;
                     }
                     case "Carbohydrates":{
                         progress = day.totalCarbohydrates();
+                        if (progress >= customMacros.getCarbs())
+                            textColor = ContextCompat.getColor(context, R.color.colorCarbohydrate);
                         break;
                     }
                     case "Calories":{
                         progress = day.totalCalories();
+                        if (progress >= customMacros.getCalories())
+                            textColor = ContextCompat.getColor(context, R.color.colorCalorie);
                         break;
                     }
                     case "Sugars":{
                         progress = day.totalSugar();
+                        if (progress >= customMacros.getSugars())
+                            textColor = ContextCompat.getColor(context, R.color.colorSugar);
                         break;
                     }
                 }
@@ -142,7 +157,6 @@ public class HelperFragmentAllDays {
                                         daysRepo.delete(day.getId());
                                         List<Day> newList = daysRepo.listAllSorted();
 
-                                        FragmentAllDays.checkIfDaysAreEmpty(binding, newList);
                                         countAndSetTotalDays(context, binding, newList.size());
 
                                         String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
@@ -168,6 +182,9 @@ public class HelperFragmentAllDays {
                 // Style importante
                 setUpTodayYesterdayIndicators(day, textViewDay, textViewProgress, textViewDayNumber);
 
+                textViewProgress.setTextColor(textColor);
+                textViewDay.setTextColor(textColor);
+                textViewDayNumber.setTextColor(textColor);
 
 
                 LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0);
