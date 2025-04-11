@@ -197,26 +197,46 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
             case "Proteins":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalProteins()));
                 holder.textViewLabelMacro.setText(macro);
-                if (day.totalProteins() > customMacros.getProteins())
+                if (day.totalProteins() > customMacros.getProteins()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorProtein));
+                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorProtein));
+                } else {
+                    holder.materialCardView.setStrokeWidth(0);
+                }
                 break;
             case "Calories":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalCalories()));
                 holder.textViewLabelMacro.setText(macro);
-                if (day.totalCalories() > customMacros.getCalories())
+                if (day.totalCalories() > customMacros.getCalories()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCalorie));
+                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorCalorie));
+                } else {
+                    holder.materialCardView.setStrokeWidth(0);
+                }
                 break;
             case "Carbohydrates":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalCarbohydrates()));
                 holder.textViewLabelMacro.setText("Carbs");
-                if (day.totalCarbohydrates() > customMacros.getCarbs())
+                if (day.totalCarbohydrates() > customMacros.getCarbs()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
+                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
+                } else {
+                    holder.materialCardView.setStrokeWidth(0);
+                }
                 break;
             case "Sugars":
                 holder.textViewNumberMacro.setText(String.format("%d", (int) day.totalSugar()));
                 holder.textViewLabelMacro.setText(macro);
-                if (day.totalSugar() > customMacros.getSugars())
+                if (day.totalSugar() > customMacros.getSugars()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorSugar));
+                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorSugar));
+                } else {
+                    holder.materialCardView.setStrokeWidth(0);
+                }
                 break;
         }
     }

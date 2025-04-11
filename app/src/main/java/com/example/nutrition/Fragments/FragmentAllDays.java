@@ -45,6 +45,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     private DaysRepo daysRepo;
     private HelperFragmentAllDays helperFragmentAllDays;
     private List<Day> dayList;
+    private CustomMacros customMacros;
 
     public FragmentAllDays() {
     }
@@ -70,6 +71,9 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         toaster = new Toaster(getContext());
         helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
 
+        customMacros = SharedPrefCustomMacros.readFromSharedPref(getContext());
+        setUpCustomMacroLimits();
+
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
 
@@ -88,7 +92,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 helperFragmentAllDays.calculateAverageMacronutrient(macro, binding, dayList);
 
                 addEventListeners();
-                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, dayList.size());
             });
 
         }).start();
@@ -110,7 +113,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
                 daysRepo.add(day);
                 dayList = daysRepo.listAllSorted();
 
-                helperFragmentAllDays.countAndSetTotalDays(getContext(), binding, dayList.size());
 
                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(getContext());
                 helperFragmentAllDays.createCustomChart(macro, binding, daysRepo, dayList);
@@ -138,9 +140,13 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             }
         });
 
-        binding.buttonCalculateMyOwn.setOnClickListener(view -> {
+        binding.buttonSetManually.setOnClickListener(view -> {
             MyFragmentManager.change(appCompatActivity, new FragmentCustomMacros(), false);
             toaster.text("Going there now");
+        });
+
+        binding.buttonCalculateMacros.setOnClickListener(view -> {
+            toaster.text("Not ready yet, babe ;)");
         });
 
     }
@@ -150,29 +156,40 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
 
-            binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_white);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
 
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
+            binding.textViewLimitProteins.setTextColor(colorWhite);
+            binding.textViewLimitCalories.setTextColor(colorWhite);
+            binding.textViewLimitCarbs.setTextColor(colorWhite);
+            binding.textViewLimitSugars.setTextColor(colorWhite);
 
             binding.textViewTitleFragmentAllDays.setTextColor(colorWhite);
-            binding.textViewTrackedDays.setTextColor(colorWhite);
             binding.textViewStatistics.setTextColor(colorWhite);
         } else {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
             int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
 
-            binding.imageViewLogoTrackedDays.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
 
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
+            binding.textViewLimitProteins.setTextColor(colorBlack);
+            binding.textViewLimitCalories.setTextColor(colorBlack);
+            binding.textViewLimitCarbs.setTextColor(colorBlack);
+            binding.textViewLimitSugars.setTextColor(colorBlack);
 
             binding.textViewTitleFragmentAllDays.setTextColor(colorBlack);
-            binding.textViewTrackedDays.setTextColor(colorBlack);
             binding.textViewStatistics.setTextColor(colorBlack);
         }
+    }
+
+    public void setUpCustomMacroLimits(){
+        binding.textViewLimitProteins.setText("Proteins ~ " + customMacros.getProteins());
+        binding.textViewLimitCalories.setText("Calories ~ " + customMacros.getCalories());
+        binding.textViewLimitCarbs.setText("Carbs ~ " + customMacros.getCarbs());
+        binding.textViewLimitSugars.setText("Sugars ~ " + customMacros.getSugars());
     }
 
     // HELPER METHODS

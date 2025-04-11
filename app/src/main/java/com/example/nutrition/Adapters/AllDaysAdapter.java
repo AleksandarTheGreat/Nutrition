@@ -95,7 +95,6 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                                 daysList = daysRepo.listAllSorted();
                                 notifyDataSetChanged();
 
-                                helperFragmentAllDays.countAndSetTotalDays(context, fragmentAllDaysBinding, daysList.size());
 
                                 String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
                                 helperFragmentAllDays.createCustomChart(macro, fragmentAllDaysBinding, daysRepo, daysList);

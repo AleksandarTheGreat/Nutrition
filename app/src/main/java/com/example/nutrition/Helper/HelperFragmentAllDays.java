@@ -157,8 +157,6 @@ public class HelperFragmentAllDays {
                                         daysRepo.delete(day.getId());
                                         List<Day> newList = daysRepo.listAllSorted();
 
-                                        countAndSetTotalDays(context, binding, newList.size());
-
                                         String macro = SharedPrefMacronutrients.readMacronutrientFromSharedPref(context);
                                         createCustomChart(macro, binding, daysRepo, newList);
                                         checkAndSelectCorrectChip(macro, binding);
@@ -351,9 +349,6 @@ public class HelperFragmentAllDays {
 
     public void countAndSetTotalDays(Context context, FragmentAllDaysBinding binding, int totalDays){
         int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
-
-        binding.textViewTotalDays.setText(String.valueOf(totalDays));
-        binding.textViewTotalDays.setTextColor(colorPrimary);
     }
 }
 
