@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Fragments.FragmentPopularFoods">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/section1LayoutMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:paddingHorizontal="4dp">
+
+        <ImageView
+            android:id="@+id/imageViewIconSection1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_nutrition_pyramid"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSubTitleSection1"
+            style="@style/SubTitlePart"
+            android:text="Popular foods"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection1"
+            app:layout_constraintTop_toTopOf="@id/imageViewIconSection1"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection1"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:columnCount="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard1"
+                android:tag="Grains"
+                android:layout_columnWeight="1"
+                style="@style/MaterialCardFoods">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconGrains"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/grains"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewGrains"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Grains"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard2"
+                android:tag="Vegetables"
+                android:layout_columnWeight="1"
+                style="@style/MaterialCardFoods">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconVegetables"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/vegetables"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewVegetables"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Vegetables"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard3"
+                android:tag="Fruits"
+                android:layout_columnWeight="1"
+                style="@style/MaterialCardFoods">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconFruits"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/fruit"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewFruit"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Fruit"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard4"
+                android:tag="Meat and Proteins"
+                android:layout_columnWeight="1"
+                style="@style/MaterialCardFoods">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconMeatAndProteins"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/meat"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewMeatAndProteins"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Meat"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard5"
+                android:tag="Dairy"
+                android:layout_columnWeight="1"
+                style="@style/MaterialCardFoods">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconDairy"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/dairy"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewDairy"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Dairy"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard6"
+                android:tag="Fats, Oils, and Sweets"
+                style="@style/MaterialCardFoods"
+                android:layout_columnWeight="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconFatsOilsAndSweets"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/fats_oils_sweets"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSweets"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Sweets"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCard7"
+                android:tag="Fast Food"
+                android:layout_columnWeight="1"
+                style="@style/MaterialCardFoods"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconFastFood"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/fast_food"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewFastFood"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textSize="16sp"
+                        android:text="Fast food"
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>

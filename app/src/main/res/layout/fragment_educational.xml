@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Fragments.FragmentEducational">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/section0LayoutMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:paddingHorizontal="4dp">
+
+        <ImageView
+            android:id="@+id/imageViewIconSection0"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_study"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSubTitleSection0"
+            style="@style/SubTitlePart"
+            android:text="Educational"
+            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection0"
+            app:layout_constraintTop_toTopOf="@id/imageViewIconSection0"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewIconSection0"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:columnCount="2"
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardSearchExamples"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconSearching"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_searching"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Searching"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/siracha_regular"
+                        android:layout_marginTop="4dp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardQuiz"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconQuiz"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_quiz"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quick quiz"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/siracha_regular"
+                        android:layout_marginTop="4dp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardDefinitions"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconDefinitions"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_definitions2"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Definitions"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/siracha_regular"
+                        android:layout_marginTop="4dp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardMythFact"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconMythsFacts"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_myth_fact"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Myths / facts"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/siracha_regular"
+                        android:layout_marginTop="4dp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardMotivationalQuotes"
+                style="@style/MaterialCardIntroductionMainActivityEducational"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewIconMotivation"
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/icon_motivation"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Motivation"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/siracha_regular"
+                        android:layout_marginTop="4dp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>

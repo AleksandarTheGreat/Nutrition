@@ -82,6 +82,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         holder.textViewDay.setText(dayName);
         holder.textViewDate.setText(day.getDateIntoStringFormat());
         holder.textViewDaysNumber.setText("D" + reversePosition);
+        holder.materialCardView.setBackgroundColor(Color.TRANSPARENT);
 
         additionalThemeChanges(day, holder);
 
@@ -192,7 +193,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText(macro);
                 if (day.totalProteins() > customMacros.getProteins()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorProtein));
-                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeWidth(2);
                     holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorProtein));
                 } else {
                     holder.materialCardView.setStrokeWidth(0);
@@ -203,7 +204,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText(macro);
                 if (day.totalCalories() > customMacros.getCalories()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCalorie));
-                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeWidth(2);
                     holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorCalorie));
                 } else {
                     holder.materialCardView.setStrokeWidth(0);
@@ -214,7 +215,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText("Carbs");
                 if (day.totalCarbohydrates() > customMacros.getCarbs()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
-                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeWidth(2);
                     holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
                 } else {
                     holder.materialCardView.setStrokeWidth(0);
@@ -225,7 +226,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText(macro);
                 if (day.totalSugar() > customMacros.getSugars()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorSugar));
-                    holder.materialCardView.setStrokeWidth(1);
+                    holder.materialCardView.setStrokeWidth(2);
                     holder.materialCardView.setStrokeColor(ContextCompat.getColor(context, R.color.colorSugar));
                 } else {
                     holder.materialCardView.setStrokeWidth(0);

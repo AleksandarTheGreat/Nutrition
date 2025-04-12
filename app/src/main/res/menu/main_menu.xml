@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemEducational"
+        android:title="Educational"
+        android:icon="@drawable/ic_educate_dark"
+        />
+
+    <item
+        android:id="@+id/menuItemDays"
+        android:title="Days"
+        android:icon="@drawable/ic_calendar_black"
+        />
+
+    <item
+        android:id="@+id/menuItemPopularFoods"
+        android:title="Popular foods"
+        android:icon="@drawable/ic_pyramid_black"
+        />
+
+</menu>
