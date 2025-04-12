@@ -119,44 +119,39 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDate currentDate = LocalDate.now();
             // Today
-            if (day.getCreatedAt().equals(currentDate)) {
-                int primaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimaryContainer, Color.BLACK);
-                int onPrimaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnPrimaryContainer, Color.BLACK);
+            int colorText = 0;
+            if (isNightMode) {
+                colorText = ContextCompat.getColor(context, R.color.white);
+            } else {
+                colorText = ContextCompat.getColor(context, R.color.black);
+            }
 
+            if (day.getCreatedAt().equals(currentDate)) {
                 holder.textViewDay.setTypeface(null, Typeface.BOLD);
-                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
-                holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDate.setTypeface(null, Typeface.BOLD);
+                holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
                 holder.textViewDaysNumber.setTypeface(null, Typeface.BOLD);
                 holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Today)");
-                holder.textViewDay.setTextColor(onPrimaryContainer);
-                holder.textViewDate.setTextColor(onPrimaryContainer);
-                holder.textViewDaysNumber.setTextColor(onPrimaryContainer);
-                holder.textViewLabelMacro.setTextColor(onPrimaryContainer);
-                holder.textViewNumberMacro.setTextColor(onPrimaryContainer);
-                holder.materialCardView.setCardBackgroundColor(primaryContainer);
+                holder.textViewDay.setTextColor(colorText);
+                holder.textViewDate.setTextColor(colorText);
+                holder.textViewDaysNumber.setTextColor(colorText);
+                holder.textViewLabelMacro.setTextColor(colorText);
+                holder.textViewNumberMacro.setTextColor(colorText);
             }
             // Yesterday
             else if (day.getCreatedAt().equals(currentDate.minusDays(1))) {
-                int secondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorSecondaryContainer, Color.BLACK);
-                int onSecondaryContainer = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSecondaryContainer, Color.BLACK);
-
-                if (isNightMode)
-                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.white));
-                else
-                    holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
-
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
                 holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Yesterday)");
-                holder.textViewDay.setTextColor(onSecondaryContainer);
-                holder.textViewDate.setTextColor(onSecondaryContainer);
-                holder.textViewLabelMacro.setTextColor(onSecondaryContainer);
-                holder.textViewNumberMacro.setTextColor(onSecondaryContainer);
-                holder.materialCardView.setCardBackgroundColor(secondaryContainer);
+                holder.textViewDay.setTextColor(colorText);
+                holder.textViewDate.setTextColor(colorText);
+                holder.textViewDaysNumber.setTextColor(colorText);
+                holder.textViewLabelMacro.setTextColor(colorText);
+                holder.textViewNumberMacro.setTextColor(colorText);
             }
             // Every other day
             else {
@@ -166,14 +161,12 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.textViewLabelMacro.setTextColor(ContextCompat.getColor(context, R.color.white60Opacity));
                     holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorTextLight));
-                    holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostBlack));
                 } else {
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.black));
                     holder.textViewDay.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
                     holder.textViewDate.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.textViewLabelMacro.setTextColor(ContextCompat.getColor(context, R.color.black60Opacity));
                     holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorTextDark));
-                    holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.almostWhite));
                 }
                 holder.textViewDay.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDate.setTypeface(null, Typeface.NORMAL);
