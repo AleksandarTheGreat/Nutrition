@@ -52,104 +52,181 @@
 
 
         <LinearLayout
-            android:id="@+id/relativeLayoutDaysFragmentAllDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:padding="2dp">
+
+            <Button
+                android:id="@+id/buttonCalculateMacros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1"
+                android:text="Calculate Macros"/>
+
+            <Button
+                android:id="@+id/buttonSetManually"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1"
+                android:text="Set manually"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                />
+
+        </LinearLayout>
+
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_marginHorizontal="12dp"
-            android:orientation="horizontal">
+            android:scrollbars="none">
 
             <LinearLayout
+                android:id="@+id/relativeLayoutDaysFragmentAllDays"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="4dp"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textViewLimitProteins"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linearLayoutProteinsCircle"
                     android:layout_width="match_parent"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Limit Proteins: 105"
-                    android:textSize="16sp"
-                    android:background="@drawable/back_for_limit_protein"
-                    />
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/textViewLimitCalories"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Limit Calories: 105"
-                    android:textSize="16sp"
-                    android:background="@drawable/back_for_limit_calories"
-                    />
+                    <ProgressBar
+                        android:id="@+id/progressBarProteinsCircle"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:max="100"
+                        android:progress="70"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/progress_bar_circle_proteins"
+                        />
 
-                <TextView
-                    android:id="@+id/textViewLimitCarbs"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Limit Carbs: 105"
-                    android:textSize="16sp"
-                    android:background="@drawable/back_for_limit_carbs"
-                    />
+                    <TextView
+                        android:id="@+id/textViewLimitProteins"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="Limit Proteins: 105"
+                        android:textSize="16sp"
+                        android:background="@drawable/back_for_limit_protein"
+                        />
 
-                <TextView
-                    android:id="@+id/textViewLimitSugars"
-                    android:layout_height="wrap_content"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutCaloriesCircle"
                     android:layout_width="match_parent"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Limit Sugars: 105"
-                    android:textSize="16sp"
-                    android:background="@drawable/back_for_limit_sugars"
-                    />
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/progressBarCaloriesCircle"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:max="100"
+                        android:progress="20"
+                        android:progressDrawable="@drawable/progress_bar_circle_calories"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewLimitCalories"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="Limit Proteins: 105"
+                        android:textSize="16sp"
+                        android:background="@drawable/back_for_limit_calories"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutCarbsCircle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/progressBarCarbsCircle"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:max="100"
+                        android:progress="53"
+                        android:progressDrawable="@drawable/progress_bar_circle_carbs"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewLimitCarbs"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="Limit Proteins: 105"
+                        android:textSize="16sp"
+                        android:background="@drawable/back_for_limit_carbs"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutSugarsCircle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/progressBarSugarsCircle"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:max="100"
+                        android:progress="67"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/progress_bar_circle_sugar"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewLimitSugars"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:text="Limit Proteins: 105"
+                        android:textSize="16sp"
+                        android:background="@drawable/back_for_limit_sugars"
+                        />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="4dp"
-                android:gravity="center"
-                android:padding="2dp"
-                >
-
-                <Button
-                    android:id="@+id/buttonCalculateMacros"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Calculate Macros"/>
-
-                <Button
-                    android:id="@+id/buttonSetManually"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Set manually"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </HorizontalScrollView>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

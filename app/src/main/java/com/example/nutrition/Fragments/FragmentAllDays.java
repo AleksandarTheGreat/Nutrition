@@ -190,6 +190,17 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         binding.textViewLimitCalories.setText("Calories ~ " + customMacros.getCalories());
         binding.textViewLimitCarbs.setText("Carbs ~ " + customMacros.getCarbs());
         binding.textViewLimitSugars.setText("Sugars ~ " + customMacros.getSugars());
+
+        binding.progressBarProteinsCircle.setMax(customMacros.getProteins());
+        binding.progressBarCaloriesCircle.setMax(customMacros.getCalories());
+        binding.progressBarCarbsCircle.setMax(customMacros.getCarbs());
+        binding.progressBarSugarsCircle.setMax(customMacros.getSugars());
+
+        binding.progressBarProteinsCircle.setProgress(100);
+        binding.progressBarCaloriesCircle.setProgress(100);
+        binding.progressBarCarbsCircle.setProgress(100);
+        binding.progressBarSugarsCircle.setProgress(100);
+
     }
 
     // HELPER METHODS
