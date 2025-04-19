@@ -23,12 +23,14 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.nutrition.Adapters.ItemsAdapter;
 import com.example.nutrition.Adapters.ProductsAdapter;
+import com.example.nutrition.Model.CustomMacros;
 import com.example.nutrition.Model.Item;
 import com.example.nutrition.Model.Product;
 import com.example.nutrition.Model.Suggestion;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ItemsRepo;
 import com.example.nutrition.Repos.SuggestionsRepo;
+import com.example.nutrition.SharedPrefs.SharedPrefCustomMacros;
 import com.example.nutrition.databinding.FragmentADayBinding;
 import com.google.android.material.card.MaterialCardView;
 
@@ -36,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.format.TextStyle;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -60,7 +63,7 @@ public class HelperFragmentADay {
 
         String url = EdamamAPI.getUrl(searchedText);
 
-        ProgressDialog progressDialog = new ProgressDialog(context, com.anychart.R.style.ThemeOverlay_AppCompat_Dialog_Alert);
+        ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("Analyzing");
         progressDialog.setMessage("Please be patient while we are calculating your ingredient");
         progressDialog.setCancelable(false);
@@ -113,7 +116,7 @@ public class HelperFragmentADay {
                                     }
 
                                     @SuppressLint("DefaultLocale")
-                                    String result = String.format("Ingredient: %s\n\nProtein: %.2f\nCalories: %.2f\nCarbohydrates: %.2f\nSugar: %.2f\n",
+                                    String result = String.format("Ingredient: %s\nProtein: %.2f\nCalories: %.2f\nCarbohydrates: %.2f\nSugar: %.2f\n",
                                             ingredientName, protein, calories, carbohydrates, sugar);
 
                                     Log.d("Tag", result);
@@ -128,7 +131,7 @@ public class HelperFragmentADay {
                                     binding.searchViewFragmentADay.setQuery("", false);
 
                                     HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
-                                    HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
+                                    HelperFragmentADay.calculateTotalNutrients(context, binding, itemsAdapter);
                                     // Calculate total and change the ui in the material cards
 
                                     // Add the string search text to a database table
@@ -173,7 +176,7 @@ public class HelperFragmentADay {
     }
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    public static void calculateTotalNutrients(FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
+    public static void calculateTotalNutrients(Context context, FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
         float totalProtein = 0;
         float totalCalories = 0;
         float totalCarbs = 0;
@@ -186,10 +189,28 @@ public class HelperFragmentADay {
             totalSugars += item.getSugar();
         }
 
-        binding.textViewNutrient1Number.setText(String.format("%d", (int) totalProtein));
-        binding.textViewNutrient2Number.setText(String.format("%d", (int) totalCalories));
-        binding.textViewNutrient3Number.setText(String.format("%d", (int) totalCarbs));
-        binding.textViewNutrient4Number.setText(String.format("%d", (int) totalSugars));
+        CustomMacros customMacros = SharedPrefCustomMacros.readFromSharedPref(context);
+        Log.d("Tag", customMacros.toString());
+
+        binding.textViewLimitProteins.setText(String.format("%d / %d", (int) totalProtein, customMacros.getProteins()));
+        binding.textViewLimitCalories.setText(String.format("%d / %d", (int) totalCalories, customMacros.getCalories()));
+        binding.textViewLimitCarbs.setText(String.format("%d / %d", (int) totalCarbs, customMacros.getCarbs()));
+        binding.textViewLimitSugars.setText(String.format("%d / %d", (int) totalSugars, customMacros.getSugars()));
+
+        binding.progressBarProteinsCircle.setMax(customMacros.getProteins());
+        binding.progressBarCaloriesCircle.setMax(customMacros.getCalories());
+        binding.progressBarCarbsCircle.setMax(customMacros.getCarbs());
+        binding.progressBarSugarsCircle.setMax(customMacros.getSugars());
+
+        binding.progressBarProteinsCircle.setProgress((int) totalProtein);
+        binding.progressBarCaloriesCircle.setProgress((int) totalCalories);
+        binding.progressBarCarbsCircle.setProgress((int) totalCarbs);
+        binding.progressBarSugarsCircle.setProgress((int) totalSugars);
+
+        if (totalProtein > customMacros.getProteins()) binding.textViewLimitProteins.setTypeface(Typeface.DEFAULT_BOLD);
+        if (totalCalories > customMacros.getCalories()) binding.textViewLimitCalories.setTypeface(Typeface.DEFAULT_BOLD);
+        if (totalCarbs > customMacros.getCarbs()) binding.textViewLimitCarbs.setTypeface(Typeface.DEFAULT_BOLD);
+        if (totalSugars > customMacros.getSugars()) binding.textViewLimitSugars.setTypeface(Typeface.DEFAULT_BOLD);
     }
 
     public void showSuggestions(FragmentADayBinding binding) {

@@ -67,7 +67,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
                 .inflate(R.layout.single_item_layout, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
-        myViewHolder.linearLayout.setOnClickListener(v -> {
+        myViewHolder.imageViewRemove.setOnClickListener(v -> {
             Item item = itemList.get(myViewHolder.getAdapterPosition());
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
@@ -84,7 +84,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
                             Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
 
                             HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
-                            HelperFragmentADay.calculateTotalNutrients(binding, ItemsAdapter.this);
+                            HelperFragmentADay.calculateTotalNutrients(context, binding, ItemsAdapter.this);
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -129,6 +129,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         protected Chip chipCarbohydrates;
         protected Chip chipCalories;
         protected Chip chipSugar;
+        protected ImageView imageViewRemove;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -140,6 +141,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             this.chipCarbohydrates = itemView.findViewById(R.id.textViewActualCarbs);
             this.chipCalories = itemView.findViewById(R.id.textViewActualCalories);
             this.chipSugar = itemView.findViewById(R.id.textViewActualSugar);
+            this.imageViewRemove = itemView.findViewById(R.id.imageViewRemoveItem);
         }
     }
 

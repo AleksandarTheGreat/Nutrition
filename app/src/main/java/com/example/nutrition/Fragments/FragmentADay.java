@@ -67,7 +67,6 @@ public class FragmentADay extends Fragment implements IEssentials {
     private boolean isNightModeOn;
     private List<Suggestion> allSuggestions;
 
-    private MaterialCardView [] materialCardViews;
     private TextView [] textViewsMacros;
 
     public FragmentADay() {
@@ -99,9 +98,6 @@ public class FragmentADay extends Fragment implements IEssentials {
         View searchPlate = binding.searchViewFragmentADay.findViewById(androidx.appcompat.R.id.search_plate);
         if (searchPlate != null) searchPlate.setBackgroundColor(Color.TRANSPARENT);
 
-        materialCardViews = new MaterialCardView[]{binding.materialCardProteins, binding.materialCardCalories, binding.materialCardCarbohydrates, binding.materialCardSugar};
-        textViewsMacros = new TextView[]{binding.textViewProteins, binding.textViewCalories, binding.textViewCarbohydrates, binding.textViewSugar};
-
         itemsRepo = new ItemsRepo(getContext());
         suggestionsRepo = new SuggestionsRepo(getContext());
 
@@ -122,7 +118,7 @@ public class FragmentADay extends Fragment implements IEssentials {
 
                 // Calculate total and change the ui in the material cards
                 HelperFragmentADay.checkIfItemsAreEmpty(binding, itemsAdapter);
-                HelperFragmentADay.calculateTotalNutrients(binding, itemsAdapter);
+                HelperFragmentADay.calculateTotalNutrients(getContext(), binding, itemsAdapter);
 
                 addEventListeners();
             });
@@ -172,9 +168,6 @@ public class FragmentADay extends Fragment implements IEssentials {
             helperMain.goToActivity(getContext(), IntroductionActivity.class, MyIntroFragAdapter.TYPE_4);
         });
 
-
-        // Add click events on the cards to sort according to the specific macronutrient
-        helperFragmentADay.addClickEventsForMaterialCardViews(materialCardViews, textViewsMacros, itemsAdapter);
     }
 
     public void additionalThemeSettings() {
@@ -186,6 +179,11 @@ public class FragmentADay extends Fragment implements IEssentials {
             binding.textViewSub1.setTextColor(colorWhite);
             binding.textViewSubTitleSection2.setTextColor(colorWhite);
 
+            binding.textViewLimitProteins.setTextColor(colorWhite);
+            binding.textViewLimitCalories.setTextColor(colorWhite);
+            binding.textViewLimitCarbs.setTextColor(colorWhite);
+            binding.textViewLimitSugars.setTextColor(colorWhite);
+
         } else {
             int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
 
@@ -193,6 +191,11 @@ public class FragmentADay extends Fragment implements IEssentials {
 
             binding.textViewSub1.setTextColor(colorBlack);
             binding.textViewSubTitleSection2.setTextColor(colorBlack);
+
+            binding.textViewLimitProteins.setTextColor(colorBlack);
+            binding.textViewLimitCalories.setTextColor(colorBlack);
+            binding.textViewLimitCarbs.setTextColor(colorBlack);
+            binding.textViewLimitSugars.setTextColor(colorBlack);
         }
 
         int primaryColor = MaterialColors.getColor(getContext(), com.google.android.material.R.attr.colorPrimary, Color.BLACK);

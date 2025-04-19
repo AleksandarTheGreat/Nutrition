@@ -72,7 +72,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         helperFragmentAllDays = new HelperFragmentAllDays(getContext(), appCompatActivity);
 
         customMacros = SharedPrefCustomMacros.readFromSharedPref(getContext());
-        setUpCustomMacroLimits();
 
         Handler handler = new Handler(Looper.getMainLooper());
         new Thread(() -> {
@@ -160,10 +159,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
-            binding.textViewLimitProteins.setTextColor(colorWhite);
-            binding.textViewLimitCalories.setTextColor(colorWhite);
-            binding.textViewLimitCarbs.setTextColor(colorWhite);
-            binding.textViewLimitSugars.setTextColor(colorWhite);
 
             binding.textViewTitleFragmentAllDays.setTextColor(colorWhite);
             binding.textViewStatistics.setTextColor(colorWhite);
@@ -175,10 +170,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
 
             binding.textViewSub1.setTextColor(color);
             binding.textViewSub3.setTextColor(color);
-            binding.textViewLimitProteins.setTextColor(colorBlack);
-            binding.textViewLimitCalories.setTextColor(colorBlack);
-            binding.textViewLimitCarbs.setTextColor(colorBlack);
-            binding.textViewLimitSugars.setTextColor(colorBlack);
 
             binding.textViewTitleFragmentAllDays.setTextColor(colorBlack);
             binding.textViewStatistics.setTextColor(colorBlack);
@@ -186,20 +177,6 @@ public class FragmentAllDays extends Fragment implements IEssentials {
     }
 
     public void setUpCustomMacroLimits(){
-        binding.textViewLimitProteins.setText("Proteins ~ " + customMacros.getProteins());
-        binding.textViewLimitCalories.setText("Calories ~ " + customMacros.getCalories());
-        binding.textViewLimitCarbs.setText("Carbs ~ " + customMacros.getCarbs());
-        binding.textViewLimitSugars.setText("Sugars ~ " + customMacros.getSugars());
-
-        binding.progressBarProteinsCircle.setMax(customMacros.getProteins());
-        binding.progressBarCaloriesCircle.setMax(customMacros.getCalories());
-        binding.progressBarCarbsCircle.setMax(customMacros.getCarbs());
-        binding.progressBarSugarsCircle.setMax(customMacros.getSugars());
-
-        binding.progressBarProteinsCircle.setProgress(100);
-        binding.progressBarCaloriesCircle.setProgress(100);
-        binding.progressBarCarbsCircle.setProgress(100);
-        binding.progressBarSugarsCircle.setProgress(100);
 
     }
 

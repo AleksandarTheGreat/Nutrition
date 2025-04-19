@@ -45,13 +45,17 @@
     <color name="fun_quiz">#4CAF50</color>
 
     <color name="colorProtein">#F2132D</color>
-    <color name="colorProteinBack">#26F2132D</color>
+    <color name="colorProteinBack">#66F2132D</color>
+    <color name="colorProteinCardBack">#1AF2132D</color>
     <color name="colorCarbohydrate">#FFC61A</color>
-    <color name="colorCarbohydrateBack">#26FFC61A</color>
+    <color name="colorCarbohydrateBack">#66FFC61A</color>
+    <color name="colorCarbohydrateCardBack">#1AFFC61A</color>
     <color name="colorCalorie">#CDDC39</color>
-    <color name="colorCalorieBack">#26CDDC39</color>
+    <color name="colorCalorieBack">#66CDDC39</color>
+    <color name="colorCalorieCardBack">#1ACDDC39</color>
     <color name="colorSugar">#1792F4</color>
-    <color name="colorSugarBack">#261792F4</color>
+    <color name="colorSugarBack">#661792F4</color>
+    <color name="colorSugarCardBack">#1A1792F4</color>
 
     <color name="almostWhite">#F4F4F4</color>
     <color name="almostBlack">#161616</color>

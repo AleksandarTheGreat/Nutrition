@@ -7,7 +7,7 @@
             android:innerRadiusRatio="3.5"
             android:thickness="20dp"
             android:useLevel="false">
-            <solid android:color="@color/backForSearchBar"/>
+            <solid android:color="@color/colorSugarBack"/>
         </shape>
     </item>
 

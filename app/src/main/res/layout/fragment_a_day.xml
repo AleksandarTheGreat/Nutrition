@@ -82,260 +82,223 @@
         android:layout_height="match_parent"
         android:layout_below="@id/headerLayoutFragmentADay">
 
-        <GridLayout
-            android:id="@+id/gridLayoutMacros"
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollViewMacros"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
             android:layout_marginBottom="24dp"
-            android:columnCount="2"
-            android:rowCount="2">
+            android:layout_marginHorizontal="8dp"
+            android:scrollbars="none">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardProteins"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="8dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:tag="proteins">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    app:cardBackgroundColor="@color/colorProteinCardBack"
+                    style="@style/Widget.Material3.CardView.Filled"
                     >
 
-                    <ImageView
-                        android:id="@+id/imageViewProtein"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:src="@drawable/ic_steak"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient1Number"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                    <LinearLayout
+                        android:id="@+id/linearLayoutProteinsCircle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minWidth="150dp"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/textViewNutrient1Number"
+                        <ProgressBar
+                            android:id="@+id/progressBarProteinsCircle"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginVertical="4dp"
+                            android:max="100"
+                            android:progress="70"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/progress_bar_circle_proteins"
+                            />
+
+                        <TextView
+                            android:id="@+id/textViewLimitProteins"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:minWidth="100dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Limit Proteins: 105"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Proteins"
+                            />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    app:cardBackgroundColor="@color/colorCalorieCardBack"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutCaloriesCircle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minWidth="150dp"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarCaloriesCircle"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginVertical="4dp"
+                            android:max="100"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/progress_bar_circle_calories"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            />
+
+                        <TextView
+                            android:id="@+id/textViewLimitCalories"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:minWidth="100dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Limit Proteins: 105"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Calories"
+                            />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    app:cardBackgroundColor="@color/colorCarbohydrateCardBack"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutCarbsCircle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minWidth="150dp"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarCarbsCircle"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginVertical="4dp"
+                            android:max="100"
+                            android:progress="53"
+                            android:progressDrawable="@drawable/progress_bar_circle_carbs"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            />
+
+                        <TextView
+                            android:id="@+id/textViewLimitCarbs"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:minWidth="100dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Limit Proteins: 105"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Carbs"
+                            />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    app:cardBackgroundColor="@color/colorSugarCardBack"
+                    style="@style/Widget.Material3.CardView.Filled">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutSugarsCircle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="0.00"
-                        android:textColor="@color/colorProtein"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/imageViewProtein"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/imageViewProtein"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        android:minWidth="150dp"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/textViewProteins"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="Proteins"
-                        android:textAlignment="textStart"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/textViewNutrient1Number"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient1Number"
-                        />
+                        <ProgressBar
+                            android:id="@+id/progressBarSugarsCircle"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginVertical="4dp"
+                            android:max="100"
+                            android:progress="67"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/progress_bar_circle_sugar"
+                            />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/textViewLimitSugars"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:minWidth="100dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Limit Proteins: 105"
+                            android:textSize="18sp"
+                            />
 
-            </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Sugars"
+                            />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardCalories"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginStart="4dp"
-                android:layout_marginBottom="8dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:tag="calories">
+                    </LinearLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                </com.google.android.material.card.MaterialCardView>
 
-                    <ImageView
-                        android:id="@+id/imageViewCalories"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:src="@drawable/ic_olive_oil"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient2Number"
-                        app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textViewNutrient2Number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="0.00"
-                        android:textColor="@color/colorCalorie"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/imageViewCalories"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/imageViewCalories"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewCalories"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="Calories"
-                        android:textAlignment="textStart"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/textViewNutrient2Number"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient2Number" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardCarbohydrates"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="4dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:tag="carbohydrates">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/imageViewCarbs"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:src="@drawable/ic_wheat"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient3Number"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewNutrient3Number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="0.00"
-                        android:textColor="@color/colorCarbohydrate"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/imageViewCarbs"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/imageViewCarbs"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewCarbohydrates"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="Carbs"
-                        android:textAlignment="textStart"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/textViewNutrient3Number"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient3Number" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardSugar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginStart="4dp"
-                android:layout_marginBottom="4dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:tag="sugar">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/imageViewSugar"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:src="@drawable/ic_sugar"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewNutrient4Number"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewNutrient4Number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:text="0.00"
-                        android:textColor="@color/colorSugar"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/imageViewSugar"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/imageViewSugar"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewSugar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="Sugars"
-                        android:textAlignment="textStart"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/textViewNutrient4Number"
-                        app:layout_constraintTop_toBottomOf="@id/textViewNutrient4Number" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </GridLayout>
-
+        </HorizontalScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/subtitleLayoutSoFarFragmentADay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/gridLayoutMacros"
+            android:layout_below="@id/horizontalScrollViewMacros"
             android:layout_marginHorizontal="12dp"
             android:layout_marginBottom="12dp">
 
