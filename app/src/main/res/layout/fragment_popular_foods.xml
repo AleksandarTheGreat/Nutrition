@@ -38,7 +38,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <GridLayout
             android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                 android:layout_columnWeight="1"
                 style="@style/MaterialCardFoods">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -60,24 +61,42 @@
 
                     <ImageView
                         android:id="@+id/imageViewIconGrains"
-                        android:layout_height="wrap_content"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
+                        android:layout_weight="1"
                         android:src="@drawable/grains"
                         android:scaleType="centerCrop"
                         />
 
                     <TextView
                         android:id="@+id/textViewGrains"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
                         android:text="Grains"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
                         android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewGrainsDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:textSize="14sp"
+                        android:text="Provide energy through carbohydrates and include foods like bread, rice, and pasta."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -87,14 +106,15 @@
                 android:layout_columnWeight="1"
                 style="@style/MaterialCardFoods">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconVegetables"
-                        android:layout_height="match_parent"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/vegetables"
                         android:scaleType="centerCrop"
@@ -102,16 +122,31 @@
 
                     <TextView
                         android:id="@+id/textViewVegetables"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
                         android:text="Vegetables"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
-                        android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewVegetablesDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="Packed with fiber, vitamins, and nutrients that support body functions."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -121,14 +156,15 @@
                 android:layout_columnWeight="1"
                 style="@style/MaterialCardFoods">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconFruits"
-                        android:layout_height="match_parent"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/fruit"
                         android:scaleType="centerCrop"
@@ -136,16 +172,31 @@
 
                     <TextView
                         android:id="@+id/textViewFruit"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
                         android:text="Fruit"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
-                        android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewFruitDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="Rich in vitamins, minerals, and natural sugars for overall health."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -155,14 +206,15 @@
                 android:layout_columnWeight="1"
                 style="@style/MaterialCardFoods">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconMeatAndProteins"
-                        android:layout_height="match_parent"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/meat"
                         android:scaleType="centerCrop"
@@ -170,16 +222,31 @@
 
                     <TextView
                         android:id="@+id/textViewMeatAndProteins"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
-                        android:text="Meat"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
+                        android:text="Meat and Proteins"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
-                        android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewMeatAndProteinsDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="A key source of protein and iron for muscle and tissue health."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -189,14 +256,15 @@
                 android:layout_columnWeight="1"
                 style="@style/MaterialCardFoods">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconDairy"
-                        android:layout_height="match_parent"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/dairy"
                         android:scaleType="centerCrop"
@@ -204,16 +272,31 @@
 
                     <TextView
                         android:id="@+id/textViewDairy"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
                         android:text="Dairy"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
-                        android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewDairyDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="Offers calcium and vitamin D for strong bones and teeth."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -223,14 +306,15 @@
                 style="@style/MaterialCardFoods"
                 android:layout_columnWeight="1">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconFatsOilsAndSweets"
-                        android:layout_height="match_parent"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/fats_oils_sweets"
                         android:scaleType="centerCrop"
@@ -238,16 +322,31 @@
 
                     <TextView
                         android:id="@+id/textViewSweets"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
                         android:text="Sweets"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
-                        android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewSweetsDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="High in sugar and calories, best enjoyed occasionally."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -258,14 +357,15 @@
                 style="@style/MaterialCardFoods"
                 >
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imageViewIconFastFood"
-                        android:layout_height="match_parent"
+                        android:layout_height="200dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/fast_food"
                         android:scaleType="centerCrop"
@@ -273,16 +373,31 @@
 
                     <TextView
                         android:id="@+id/textViewFastFood"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:textSize="16sp"
-                        android:text="Fast food"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:padding="4dp"
+                        android:text="Fast Food"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:background="@color/white"
-                        android:layout_alignParentBottom="true"
                         />
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewFastFoodDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="Convenient but often high in fat, salt, and calories."
+                        android:textAlignment="center"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

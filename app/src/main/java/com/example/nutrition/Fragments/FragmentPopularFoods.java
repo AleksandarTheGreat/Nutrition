@@ -78,6 +78,15 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
             binding.textViewSweets.setTextColor(colorWhite);
             binding.textViewFastFood.setTextColor(colorWhite);
 
+            binding.textViewGrainsDescription.setTextColor(colorWhite);
+            binding.textViewVegetablesDescription.setTextColor(colorWhite);
+            binding.textViewFruitDescription.setTextColor(colorWhite);
+            binding.textViewMeatAndProteinsDescription.setTextColor(colorWhite);
+            binding.textViewDairyDescription.setTextColor(colorWhite);
+            binding.textViewSweetsDescription.setTextColor(colorWhite);
+            binding.textViewFastFoodDescription.setTextColor(colorWhite);
+
+
             binding.textViewGrains.setBackgroundColor(colorBackground);
             binding.textViewVegetables.setBackgroundColor(colorBackground);
             binding.textViewFruit.setBackgroundColor(colorBackground);
@@ -85,6 +94,14 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
             binding.textViewDairy.setBackgroundColor(colorBackground);
             binding.textViewSweets.setBackgroundColor(colorBackground);
             binding.textViewFastFood.setBackgroundColor(colorBackground);
+
+            binding.textViewGrainsDescription.setBackgroundColor(colorBackground);
+            binding.textViewVegetablesDescription.setBackgroundColor(colorBackground);
+            binding.textViewFruitDescription.setBackgroundColor(colorBackground);
+            binding.textViewMeatAndProteinsDescription.setBackgroundColor(colorBackground);
+            binding.textViewDairyDescription.setBackgroundColor(colorBackground);
+            binding.textViewSweetsDescription.setBackgroundColor(colorBackground);
+            binding.textViewFastFoodDescription.setBackgroundColor(colorBackground);
 
         } else {
 
@@ -102,6 +119,15 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
             binding.textViewSweets.setTextColor(colorBlack);
             binding.textViewFastFood.setTextColor(colorBlack);
 
+            binding.textViewGrainsDescription.setTextColor(colorBlack);
+            binding.textViewVegetablesDescription.setTextColor(colorBlack);
+            binding.textViewFruitDescription.setTextColor(colorBlack);
+            binding.textViewMeatAndProteinsDescription.setTextColor(colorBlack);
+            binding.textViewDairyDescription.setTextColor(colorBlack);
+            binding.textViewSweetsDescription.setTextColor(colorBlack);
+            binding.textViewFastFoodDescription.setTextColor(colorBlack);
+
+
             binding.textViewGrains.setBackgroundColor(colorBackground);
             binding.textViewVegetables.setBackgroundColor(colorBackground);
             binding.textViewFruit.setBackgroundColor(colorBackground);
@@ -109,6 +135,14 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
             binding.textViewDairy.setBackgroundColor(colorBackground);
             binding.textViewSweets.setBackgroundColor(colorBackground);
             binding.textViewFastFood.setBackgroundColor(colorBackground);
+
+            binding.textViewGrainsDescription.setBackgroundColor(colorBackground);
+            binding.textViewVegetablesDescription.setBackgroundColor(colorBackground);
+            binding.textViewFruitDescription.setBackgroundColor(colorBackground);
+            binding.textViewMeatAndProteinsDescription.setBackgroundColor(colorBackground);
+            binding.textViewDairyDescription.setBackgroundColor(colorBackground);
+            binding.textViewSweetsDescription.setBackgroundColor(colorBackground);
+            binding.textViewFastFoodDescription.setBackgroundColor(colorBackground);
         }
     }
 }
