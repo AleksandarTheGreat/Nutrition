@@ -192,10 +192,18 @@ public class HelperFragmentADay {
         CustomMacros customMacros = SharedPrefCustomMacros.readFromSharedPref(context);
         Log.d("Tag", customMacros.toString());
 
-        binding.textViewLimitProteins.setText(String.format("%d / %d", (int) totalProtein, customMacros.getProteins()));
-        binding.textViewLimitCalories.setText(String.format("%d / %d", (int) totalCalories, customMacros.getCalories()));
-        binding.textViewLimitCarbs.setText(String.format("%d / %d", (int) totalCarbs, customMacros.getCarbs()));
-        binding.textViewLimitSugars.setText(String.format("%d / %d", (int) totalSugars, customMacros.getSugars()));
+        if (customMacros.getProteins() < 0)
+            binding.textViewLimitProteins.setText(String.format("%d / Not set", (int) totalProtein));
+        else binding.textViewLimitProteins.setText(String.format("%d / %d", (int) totalProtein, customMacros.getProteins()));
+        if (customMacros.getCalories() < 0)
+            binding.textViewLimitCalories.setText(String.format("%d / Not set", (int) totalCalories));
+        else binding.textViewLimitCalories.setText(String.format("%d / %d", (int) totalCalories, customMacros.getCalories()));
+        if (customMacros.getCarbs() < 0)
+            binding.textViewLimitCarbs.setText(String.format("%d / Not set", (int) totalCarbs));
+        else binding.textViewLimitCarbs.setText(String.format("%d / %d", (int) totalCarbs, customMacros.getCarbs()));
+        if (customMacros.getSugars() < 0)
+            binding.textViewLimitSugars.setText(String.format("%d / Not set", (int) totalSugars));
+        else binding.textViewLimitSugars.setText(String.format("%d / %d", (int) totalSugars, customMacros.getSugars()));
 
         binding.progressBarProteinsCircle.setMax(customMacros.getProteins());
         binding.progressBarCaloriesCircle.setMax(customMacros.getCalories());

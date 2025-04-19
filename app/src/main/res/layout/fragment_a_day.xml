@@ -117,8 +117,6 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginVertical="4dp"
-                            android:max="100"
-                            android:progress="70"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:progressDrawable="@drawable/progress_bar_circle_proteins"
                             />
@@ -130,7 +128,7 @@
                             android:minWidth="100dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Limit Proteins: 105"
+                            android:text="0"
                             android:textSize="18sp"
                             />
 
@@ -166,8 +164,6 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginVertical="4dp"
-                            android:max="100"
-                            android:progress="20"
                             android:progressDrawable="@drawable/progress_bar_circle_calories"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             />
@@ -179,7 +175,7 @@
                             android:minWidth="100dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Limit Proteins: 105"
+                            android:text="0"
                             android:textSize="18sp"
                             />
 
@@ -215,8 +211,6 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginVertical="4dp"
-                            android:max="100"
-                            android:progress="53"
                             android:progressDrawable="@drawable/progress_bar_circle_carbs"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             />
@@ -228,7 +222,7 @@
                             android:minWidth="100dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Limit Proteins: 105"
+                            android:text="0"
                             android:textSize="18sp"
                             />
 
@@ -263,8 +257,6 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginVertical="4dp"
-                            android:max="100"
-                            android:progress="67"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:progressDrawable="@drawable/progress_bar_circle_sugar"
                             />
@@ -276,7 +268,7 @@
                             android:minWidth="100dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Limit Proteins: 105"
+                            android:text="0"
                             android:textSize="18sp"
                             />
 
