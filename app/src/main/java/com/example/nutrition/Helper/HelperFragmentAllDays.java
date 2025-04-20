@@ -270,19 +270,13 @@ public class HelperFragmentAllDays {
                 if (isNightModeOn){
                     int colorWhite = ContextCompat.getColor(context, R.color.white);
                     textViewProgress.setTextColor(colorWhite);
-                    textViewProgress.setTypeface(null, Typeface.BOLD);
                     textViewDay.setTextColor(colorWhite);
-                    textViewDay.setTypeface(null, Typeface.BOLD);
                     textViewDayNumber.setTextColor(colorWhite);
-                    textViewDayNumber.setTypeface(null, Typeface.BOLD);
                 } else {
                     int colorBlack = ContextCompat.getColor(context, R.color.black);
                     textViewProgress.setTextColor(colorBlack);
-                    textViewProgress.setTypeface(null, Typeface.BOLD);
                     textViewDay.setTextColor(colorBlack);
-                    textViewDay.setTypeface(null, Typeface.BOLD);
                     textViewDayNumber.setTextColor(colorBlack);
-                    textViewDayNumber.setTypeface(null, Typeface.BOLD);
                 }
             } else if (day.getCreatedAt().equals(LocalDate.now().minusDays(1))){
                 if (isNightModeOn){

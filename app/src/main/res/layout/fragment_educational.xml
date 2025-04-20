@@ -69,12 +69,24 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Searching"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
+                        android:text="Searching"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/siracha_regular"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView4Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Learn how to search for your food items when measuring it."
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/siracha_regular"
                         />
 
                 </LinearLayout>
@@ -103,12 +115,24 @@
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Quick quiz"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
                         android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView3Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="A quiz of some questions for you to challenge yourself."
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/siracha_regular"
                         />
 
                 </LinearLayout>
@@ -136,12 +160,24 @@
 
                     <TextView
                         android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Definitions"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
                         android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView1Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Proteins, Calories, Carbohydrates, Sugars. Learn about them."
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/siracha_regular"
                         />
 
                 </LinearLayout>
@@ -169,12 +205,24 @@
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Myths / facts"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
                         android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView2Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Popular myths and gossips that are not real about nutrition."
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/siracha_regular"
                         />
 
                 </LinearLayout>
@@ -203,12 +251,24 @@
 
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Motivation"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
                         android:fontFamily="@font/siracha_regular"
                         android:layout_marginTop="4dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView5Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quotes that will motivate you to stay on track when you are feeling lost."
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/siracha_regular"
                         />
 
                 </LinearLayout>

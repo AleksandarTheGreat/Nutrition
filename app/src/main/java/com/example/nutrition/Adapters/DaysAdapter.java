@@ -129,12 +129,12 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
             }
 
             if (day.getCreatedAt().equals(currentDate)) {
-                holder.textViewDay.setTypeface(null, Typeface.BOLD);
-                holder.textViewDate.setTypeface(null, Typeface.BOLD);
-                holder.textViewLabelMacro.setTypeface(null, Typeface.BOLD);
-                holder.textViewNumberMacro.setTypeface(null, Typeface.BOLD);
-                holder.textViewDaysNumber.setTypeface(null, Typeface.BOLD);
-                holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Today)");
+                holder.textViewDay.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDate.setTypeface(null, Typeface.NORMAL);
+                holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
+                holder.textViewDay.setText(day.calculateLongDayNameOfDate());
                 holder.textViewDay.setTextColor(colorText);
                 holder.textViewDate.setTextColor(colorText);
                 holder.textViewDaysNumber.setTextColor(colorText);
@@ -148,7 +148,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewNumberMacro.setTypeface(null, Typeface.NORMAL);
                 holder.textViewDaysNumber.setTypeface(null, Typeface.NORMAL);
-                holder.textViewDay.setText(day.calculateLongDayNameOfDate() + " (Yesterday)");
+                holder.textViewDay.setText(day.calculateLongDayNameOfDate());
                 holder.textViewDay.setTextColor(colorText);
                 holder.textViewDate.setTextColor(colorText);
                 holder.textViewDaysNumber.setTextColor(colorText);
@@ -194,6 +194,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText(macro);
                 if (day.totalProteins() > customMacros.getProteins()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorProtein));
+                    holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorProtein));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorProteinCardBack));
                 }
                 break;
@@ -202,6 +203,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText(macro);
                 if (day.totalCalories() > customMacros.getCalories()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCalorie));
+                    holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorCalorie));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorCalorieCardBack));
                 }
                 break;
@@ -210,6 +212,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText("Carbs");
                 if (day.totalCarbohydrates() > customMacros.getCarbs()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
+                    holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorCarbohydrate));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorCarbohydrateCardBack));
                 }
                 break;
@@ -218,6 +221,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewLabelMacro.setText(macro);
                 if (day.totalSugar() > customMacros.getSugars()){
                     holder.textViewDaysNumber.setTextColor(ContextCompat.getColor(context, R.color.colorSugar));
+                    holder.textViewNumberMacro.setTextColor(ContextCompat.getColor(context, R.color.colorSugar));
                     holder.materialCardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorSugarCardBack));
                 }
                 break;

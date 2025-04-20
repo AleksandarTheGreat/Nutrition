@@ -65,7 +65,7 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
         if (isNightModeOn){
 
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
-            int colorBackground = MaterialColors.getColor(getContext(), android.R.attr.colorBackground, Color.BLACK);
+            int colorBackground = ContextCompat.getColor(getContext(), R.color.black);
 
             binding.imageViewIconSection1.setImageResource(R.drawable.ic_pyramid_white);
             binding.textViewSubTitleSection1.setTextColor(colorWhite);
@@ -77,14 +77,6 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
             binding.textViewDairy.setTextColor(colorWhite);
             binding.textViewSweets.setTextColor(colorWhite);
             binding.textViewFastFood.setTextColor(colorWhite);
-
-            binding.textViewGrainsDescription.setTextColor(colorWhite);
-            binding.textViewVegetablesDescription.setTextColor(colorWhite);
-            binding.textViewFruitDescription.setTextColor(colorWhite);
-            binding.textViewMeatAndProteinsDescription.setTextColor(colorWhite);
-            binding.textViewDairyDescription.setTextColor(colorWhite);
-            binding.textViewSweetsDescription.setTextColor(colorWhite);
-            binding.textViewFastFoodDescription.setTextColor(colorWhite);
 
 
             binding.textViewGrains.setBackgroundColor(colorBackground);
@@ -118,14 +110,6 @@ public class FragmentPopularFoods extends Fragment implements IEssentials {
             binding.textViewDairy.setTextColor(colorBlack);
             binding.textViewSweets.setTextColor(colorBlack);
             binding.textViewFastFood.setTextColor(colorBlack);
-
-            binding.textViewGrainsDescription.setTextColor(colorBlack);
-            binding.textViewVegetablesDescription.setTextColor(colorBlack);
-            binding.textViewFruitDescription.setTextColor(colorBlack);
-            binding.textViewMeatAndProteinsDescription.setTextColor(colorBlack);
-            binding.textViewDairyDescription.setTextColor(colorBlack);
-            binding.textViewSweetsDescription.setTextColor(colorBlack);
-            binding.textViewFastFoodDescription.setTextColor(colorBlack);
 
 
             binding.textViewGrains.setBackgroundColor(colorBackground);
