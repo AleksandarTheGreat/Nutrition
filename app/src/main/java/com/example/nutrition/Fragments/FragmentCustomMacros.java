@@ -1,7 +1,10 @@
 package com.example.nutrition.Fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,7 +16,9 @@ import com.example.nutrition.Helper.Toaster;
 import com.example.nutrition.Model.CustomMacros;
 import com.example.nutrition.R;
 import com.example.nutrition.SharedPrefs.SharedPrefCustomMacros;
+import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentCustomMacrosBinding;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 
 public class FragmentCustomMacros extends Fragment implements IEssentials {
@@ -21,9 +26,14 @@ public class FragmentCustomMacros extends Fragment implements IEssentials {
     private FragmentCustomMacrosBinding binding;
     private Toaster toaster;
     private CustomMacros customMacros;
+    private AppCompatActivity appCompatActivity;
 
     public FragmentCustomMacros() {
         // Required empty public constructor
+    }
+
+    public FragmentCustomMacros(AppCompatActivity appCompatActivity){
+        this.appCompatActivity = appCompatActivity;
     }
 
     @Override
@@ -32,6 +42,7 @@ public class FragmentCustomMacros extends Fragment implements IEssentials {
 
         instantiateObjects();
         addEventListeners();
+        additionalThemeChanges();
 
         return binding.getRoot();
     }
@@ -57,25 +68,25 @@ public class FragmentCustomMacros extends Fragment implements IEssentials {
     @Override
     public void addEventListeners() {
         binding.buttonSaveCustomMacros.setOnClickListener(view -> {
-            if (binding.textInputProteins.getText().toString().isEmpty()){
+            if (binding.textInputProteins.getText().toString().isEmpty()) {
                 binding.textLayoutProteins.setError("Enter proteins");
                 return;
             }
 
             binding.textLayoutProteins.setError("");
-            if (binding.textInputCalories.getText().toString().isEmpty()){
+            if (binding.textInputCalories.getText().toString().isEmpty()) {
                 binding.textLayoutCalories.setError("Enter calories");
                 return;
             }
 
             binding.textLayoutCalories.setError("");
-            if (binding.textInputCarbs.getText().toString().isEmpty()){
+            if (binding.textInputCarbs.getText().toString().isEmpty()) {
                 binding.textLayoutCarbs.setError("Enter carbs");
                 return;
             }
 
             binding.textLayoutCarbs.setError("");
-            if (binding.textInputSugars.getText().toString().isEmpty()){
+            if (binding.textInputSugars.getText().toString().isEmpty()) {
                 binding.textLayoutSugars.setError("Enter sugars");
                 return;
             }
@@ -100,6 +111,20 @@ public class FragmentCustomMacros extends Fragment implements IEssentials {
             binding.textInputCarbs.setText("");
             binding.textInputSugars.setText("");
 
+            appCompatActivity.getSupportFragmentManager().popBackStack();
+
         });
+    }
+
+    public void additionalThemeChanges(){
+        if (ThemeUtils.isNightModeActive(appCompatActivity)) {
+            int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+
+            binding.textViewCustomMacros.setTextColor(colorWhite);
+        } else {
+            int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+
+            binding.textViewCustomMacros.setTextColor(colorBlack);
+        }
     }
 }

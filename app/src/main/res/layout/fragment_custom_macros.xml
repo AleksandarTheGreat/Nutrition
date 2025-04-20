@@ -9,6 +9,7 @@
     tools:context=".Fragments.FragmentCustomMacros">
 
     <TextView
+        android:id="@+id/textViewCustomMacros"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginBottom="8dp"
@@ -34,7 +35,8 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="8dp"
         android:hint="Proteins"
-        >
+        app:boxStrokeColor="@color/colorProtein"
+        app:hintTextColor="@color/colorProtein">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputProteins"
@@ -52,6 +54,8 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="8dp"
         android:hint="Calories"
+        app:boxStrokeColor="@color/colorCalorie"
+        app:hintTextColor="@color/colorCalorie"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -70,6 +74,8 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="8dp"
         android:hint="Carbohydrates"
+        app:boxStrokeColor="@color/colorCarbohydrate"
+        app:hintTextColor="@color/colorCarbohydrate"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -88,6 +94,8 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="24dp"
         android:hint="Sugars"
+        app:boxStrokeColor="@color/colorSugar"
+        app:hintTextColor="@color/colorSugar"
         >
 
         <com.google.android.material.textfield.TextInputEditText

@@ -81,7 +81,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
 
         String dayName = day.calculateLongDayNameOfDate();
         holder.textViewDay.setText(dayName);
-        holder.textViewDate.setText(day.getDateIntoStringFormat());
+        holder.textViewDate.setText(day.dateIntoReadableFormat());
         holder.textViewDaysNumber.setText("D" + reversePosition);
         holder.materialCardView.setBackgroundColor(Color.TRANSPARENT);
 
@@ -140,6 +140,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDaysNumber.setTextColor(colorText);
                 holder.textViewLabelMacro.setTextColor(colorText);
                 holder.textViewNumberMacro.setTextColor(colorText);
+
+                holder.textViewDate.setText(day.dateIntoReadableFormat() + " - Today");
             }
             // Yesterday
             else if (day.getCreatedAt().equals(currentDate.minusDays(1))) {
@@ -154,6 +156,8 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.MyViewHolder> 
                 holder.textViewDaysNumber.setTextColor(colorText);
                 holder.textViewLabelMacro.setTextColor(colorText);
                 holder.textViewNumberMacro.setTextColor(colorText);
+
+                holder.textViewDate.setText(day.dateIntoReadableFormat() + " - Yesterday");
             }
             // Every other day
             else {

@@ -59,10 +59,10 @@ public class Section3Activity extends ParentActivity {
         if (id != 0) {
             Day day = daysRepo.get(id);
             fragmentADay = new FragmentADay(day, appCompatActivity);
-            MyFragmentManager.change(appCompatActivity, fragmentADay, true);
+            MyFragmentManager.change2(appCompatActivity, fragmentADay, false);
         } else {
             fragmentAllDays = new FragmentAllDays(appCompatActivity);
-            MyFragmentManager.change(appCompatActivity, fragmentAllDays, false);
+            MyFragmentManager.change2(appCompatActivity, fragmentAllDays, false);
         }
     }
 

@@ -140,7 +140,7 @@ public class FragmentAllDays extends Fragment implements IEssentials {
         });
 
         binding.buttonSetManually.setOnClickListener(view -> {
-            MyFragmentManager.change(appCompatActivity, new FragmentCustomMacros(), false);
+            MyFragmentManager.change2(appCompatActivity, new FragmentCustomMacros(appCompatActivity), true);
             toaster.text("Going there now");
         });
 

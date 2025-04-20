@@ -139,7 +139,7 @@ public class HelperFragmentAllDays {
                 linearLayout.setGravity(Gravity.CENTER);
 
                 linearLayout.setOnClickListener(view -> {
-                    MyFragmentManager.change(appCompatActivity, new FragmentADay(day, appCompatActivity), false);
+                    MyFragmentManager.change2(appCompatActivity, new FragmentADay(day, appCompatActivity), true);
                     Log.d("Tag", day.calculateShortDayNameOfDate() + " - " + day.getDateIntoStringFormat());
                 });
 
@@ -149,7 +149,7 @@ public class HelperFragmentAllDays {
                         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
                         builder.setTitle("Alert")
                                 .setIcon(R.drawable.ic_remove)
-                                .setMessage("Are you sure you want to delete\n'" + day.calculateLongDayNameOfDate() + " - " + day.getDateIntoStringFormat() + "' ")
+                                .setMessage("Are you sure you want to delete\n'" + day.calculateLongDayNameOfDate() + " - " + day.dateIntoReadableFormat() + "' ")
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @SuppressLint("NotifyDataSetChanged")
                                     @Override

@@ -83,7 +83,7 @@
 
                     <TextView
                         android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_marginHorizontal="4dp"
                         android:paddingHorizontal="4dp"
                         android:text="Take a quiz to find out your macros input for the day"
@@ -92,7 +92,7 @@
 
                     <Button
                         android:id="@+id/buttonCalculateMacros"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
                         android:text="Calculate Macros"/>
@@ -126,7 +126,7 @@
 
                     <TextView
                         android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_marginHorizontal="4dp"
                         android:paddingHorizontal="4dp"
                         android:text="Set up your own macros by just filling in a form"
@@ -135,7 +135,7 @@
 
                     <Button
                         android:id="@+id/buttonSetManually"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
                         android:text="Set manually"

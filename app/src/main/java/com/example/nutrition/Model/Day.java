@@ -47,6 +47,11 @@ public class Day {
         return createdAt.toString();
     }
 
+    public String dateIntoReadableFormat(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMM yyyy");
+        return createdAt.format(dtf);
+    }
+
     public String calculateShortDayNameOfDate(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return createdAt.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH);

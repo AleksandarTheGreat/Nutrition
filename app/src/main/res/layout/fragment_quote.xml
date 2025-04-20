@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
         android:fontFamily="@font/playwrite_regular"
-        android:lineHeight="45dp"
         android:text="Some really big text so I can see if the margin is working"
         android:textSize="26sp"
         android:textAlignment="center"

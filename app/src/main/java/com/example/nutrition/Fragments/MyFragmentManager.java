@@ -36,4 +36,21 @@ public class MyFragmentManager {
                     .replace(R.id.fragmentContainerViewSection3Activity, fragment)
                     .commit();
     }
+
+    public static void change2(AppCompatActivity activity, Fragment fragment, boolean shouldPutOnStack){
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        if (shouldPutOnStack){
+            fragmentManager
+                    .beginTransaction()
+                    .setCustomAnimations(R.anim.right_to_center, R.anim.center_to_left, R.anim.left_to_center, R.anim.center_to_right)
+                    .replace(R.id.fragmentContainerViewSection3Activity, fragment)
+                    .addToBackStack("backStack")
+                    .commit();
+        } else {
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainerViewSection3Activity, fragment)
+                    .commit();
+        }
+    }
 }

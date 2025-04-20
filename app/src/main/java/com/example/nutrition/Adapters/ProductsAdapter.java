@@ -63,21 +63,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
             myViewHolder.textViewName.setTextColor(ContextCompat.getColor(context, R.color.black));
         }
 
-
         myViewHolder.progressBarProtein.setMax(80);
-        myViewHolder.progressBarCarbs.setMax(100);
         myViewHolder.progressBarCalories.setMax(902);
+        myViewHolder.progressBarCarbs.setMax(100);
         myViewHolder.progressBarSugar.setMax(100);
-
-        myViewHolder.constraintLayout.setOnClickListener(v -> {
-            int position = myViewHolder.getAdapterPosition();
-
-            Product product = productList.get(position);
-            createDialog(product);
-            // Show the dialog
-
-            toaster.text(product.getName());
-        });
 
         return myViewHolder;
     }
