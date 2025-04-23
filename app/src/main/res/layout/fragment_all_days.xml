@@ -91,11 +91,11 @@
                         />
 
                     <Button
-                        android:id="@+id/buttonCalculateMacros"
+                        android:id="@+id/buttonPickPredefinedMacros"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
-                        android:text="Calculate Macros"/>
+                        android:text="Pick Predefined"/>
 
                 </LinearLayout>
 

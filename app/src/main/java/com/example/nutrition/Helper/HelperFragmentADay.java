@@ -215,10 +215,19 @@ public class HelperFragmentADay {
         binding.progressBarCarbsCircle.setProgress((int) totalCarbs);
         binding.progressBarSugarsCircle.setProgress((int) totalSugars);
 
-        if (totalProtein > customMacros.getProteins()) binding.textViewLimitProteins.setTypeface(Typeface.DEFAULT_BOLD);
-        if (totalCalories > customMacros.getCalories()) binding.textViewLimitCalories.setTypeface(Typeface.DEFAULT_BOLD);
-        if (totalCarbs > customMacros.getCarbs()) binding.textViewLimitCarbs.setTypeface(Typeface.DEFAULT_BOLD);
-        if (totalSugars > customMacros.getSugars()) binding.textViewLimitSugars.setTypeface(Typeface.DEFAULT_BOLD);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            Typeface typefaceRubikBold = context.getResources().getFont(R.font.rubik_bold);
+            Typeface typefaceRubikRegular = context.getResources().getFont(R.font.rubik_regular);
+
+            if (totalProtein > customMacros.getProteins()) binding.textViewLimitProteins.setTypeface(typefaceRubikBold);
+            else binding.textViewLimitProteins.setTypeface(typefaceRubikRegular);
+            if (totalCalories > customMacros.getCalories()) binding.textViewLimitCalories.setTypeface(typefaceRubikBold);
+            else binding.textViewLimitCalories.setTypeface(typefaceRubikRegular);
+            if (totalCarbs > customMacros.getCarbs()) binding.textViewLimitCarbs.setTypeface(typefaceRubikBold);
+            else binding.textViewLimitCarbs.setTypeface(typefaceRubikRegular);
+            if (totalSugars > customMacros.getSugars()) binding.textViewLimitSugars.setTypeface(typefaceRubikBold);
+            else binding.textViewLimitSugars.setTypeface(typefaceRubikRegular);
+        }
     }
 
     public void showSuggestions(FragmentADayBinding binding) {

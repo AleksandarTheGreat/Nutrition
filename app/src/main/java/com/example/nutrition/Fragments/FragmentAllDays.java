@@ -144,8 +144,9 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             toaster.text("Going there now");
         });
 
-        binding.buttonCalculateMacros.setOnClickListener(view -> {
-            toaster.text("Not ready yet, babe ;)");
+        binding.buttonPickPredefinedMacros.setOnClickListener(view -> {
+            MyFragmentManager.change2(appCompatActivity, new FragmentAutomaticMacros(appCompatActivity), false);
+            toaster.text("Starting to be ready, babe ;)");
         });
 
     }

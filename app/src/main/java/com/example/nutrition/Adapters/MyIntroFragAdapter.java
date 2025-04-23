@@ -92,7 +92,7 @@ public class MyIntroFragAdapter extends FragmentStateAdapter {
         if (!isNightModeActive)
             color = R.color.black;
 
-        fragmentList.add(new FragmentIntroduction(new Macronutrient("Macronutrients", "Quickly learn about Proteins, Calories, Carbohydrates and Sugars.\n\n", R.drawable.icon_hello, color), isNightModeActive));
+        fragmentList.add(new FragmentIntroduction(new Macronutrient("Definitions", "Quickly learn about Proteins, Calories, Carbohydrates and Sugars.\n\n", R.drawable.icon_hello, color), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(
                 new Macronutrient("Protein", "Proteins are large biomolecules and macromolecules that comprise one or more long chains of amino acid residues.\n\nIn short terms they are important for muscle growth.", R.drawable.ic_steak, R.color.colorProtein), isNightModeActive));
         fragmentList.add(new FragmentIntroduction(

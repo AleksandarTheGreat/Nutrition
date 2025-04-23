@@ -49,6 +49,7 @@ public class MyFragmentManager {
         } else {
             fragmentManager
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.right_to_center, R.anim.center_to_left, R.anim.left_to_center, R.anim.center_to_right)
                     .replace(R.id.fragmentContainerViewSection3Activity, fragment)
                     .commit();
         }
