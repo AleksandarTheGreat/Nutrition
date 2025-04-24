@@ -1,16 +1,942 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragments.FragmentPredefinedMacros">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Predefined Macros"
-        android:layout_gravity="center"
-        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerLayoutMainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginBottom="8dp"
+        android:paddingHorizontal="4dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imageViewLogoFragmentPredefinedMacros"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_new_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textViewPickAPlanFragmentPredefinedMacros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:letterSpacing="-0.02"
+            android:text="Pick a plan"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/imageViewLogoFragmentPredefinedMacros"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:columnCount="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_lazy"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Lose Fat"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_lazy"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Maintain"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_lazy"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Gain Muscle"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_walk"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Lose Fat"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Lightly Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_walk"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Lose Fat"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_walk"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan6"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Maintain"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan6"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan6"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan6"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan6"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan6"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_running"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan7"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Gain Muscle"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan7"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan7"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan7"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan7"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan7"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_running"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan8"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Lose Fat"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan8"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Lightly Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan8"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan8"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan8"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan8"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_running"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan9"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Lose Fat"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan9"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan9"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan9"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan9"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan9"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_athlete"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan10"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Maintain"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan10"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan10"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan10"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan10"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan10"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_athlete"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan11"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Gain Muscle"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan11"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Not Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan11"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan11"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan11"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan11"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/matCardPlan12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_columnWeight="1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:src="@drawable/ic_athlete"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewTitlePlan12"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Lose Fat"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewStatusPlan12"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Lightly Active"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewProteinsPlan12"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Proteins - 100"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCaloriesPlan12"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Calories - 1023"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewCarbsPlan12"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Carbohydrates - 400"
+                        />
+
+                    <TextView
+                        android:id="@+id/textViewSugarPlan12"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Sugars - 40"
+                        />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>

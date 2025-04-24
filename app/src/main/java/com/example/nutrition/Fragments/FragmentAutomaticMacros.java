@@ -50,11 +50,11 @@ public class FragmentAutomaticMacros extends Fragment implements IEssentials {
     @Override
     public void addEventListeners() {
         binding.linearLayoutMale.setOnClickListener(view -> {
-            MyFragmentManager.change2(appCompatActivity, new FragmentPredefinedMacros("male", appCompatActivity), false);
+            MyFragmentManager.change2(appCompatActivity, new FragmentPredefinedMacros("male", appCompatActivity), true);
         });
 
         binding.linearLayoutFemale.setOnClickListener(view -> {
-            MyFragmentManager.change2(appCompatActivity, new FragmentPredefinedMacros("female", appCompatActivity), false);
+            MyFragmentManager.change2(appCompatActivity, new FragmentPredefinedMacros("female", appCompatActivity), true);
         });
     }
 
