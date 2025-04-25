@@ -16,9 +16,11 @@ import android.widget.TextView;
 
 import com.example.nutrition.Helper.IEssentials;
 import com.example.nutrition.Helper.Toaster;
+import com.example.nutrition.Model.CustomMacros;
 import com.example.nutrition.Model.PredefinedPlan;
 import com.example.nutrition.R;
 import com.example.nutrition.Repos.ParentRepo;
+import com.example.nutrition.SharedPrefs.SharedPrefCustomMacros;
 import com.example.nutrition.Utils.ThemeUtils;
 import com.example.nutrition.databinding.FragmentPredefinedMacrosBinding;
 import com.google.android.material.card.MaterialCardView;
@@ -64,23 +66,44 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
         predefinedPlans = new PredefinedPlan[12];
 
         if (gender.equals("male")){
+            binding.imageViewLogoFragmentPredefinedMacros.setImageResource(R.drawable.ic_male);
             Log.d("Tag", "Male Plans");
             setUpMalePlans();
         } else {
+            binding.imageViewLogoFragmentPredefinedMacros.setImageResource(R.drawable.ic_female);
             Log.d("Tag", "Female Plans ");
             setUpFemalePlans();
         }
 
         applyPlansToCards();
+        readMacrosFromSharedPrefAndCheckTheCard();
     }
 
     @Override
     public void addEventListeners() {
-        for (MaterialCardView materialCardView: materialCardViewsPlans){
+        for (int i=0;i<materialCardViewsPlans.length;i++){
+            MaterialCardView materialCardView = materialCardViewsPlans[i];
+            int finalI = i;
             materialCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     materialCardView.setChecked(!materialCardView.isChecked());
+                    if (materialCardView.isChecked()){
+                        toaster.text("Plan saved");
+
+                        PredefinedPlan predefinedPlan = predefinedPlans[finalI];
+                        int proteins = predefinedPlan.getProteins();
+                        int calories = predefinedPlan.getCalories();
+                        int carbohydrates = predefinedPlan.getCarbohydrates();
+                        int sugars = predefinedPlan.getSugars();
+
+                        SharedPrefCustomMacros.writeToSharedPref(getContext(), proteins, calories, carbohydrates, sugars);
+                    } else {
+                        toaster.text("Plan revoked");
+                        SharedPrefCustomMacros.writeToSharedPref(getContext(), -1, -1, -1 ,-1);
+                    }
+
+                    // This is to not have multiple cards selected
                     for (MaterialCardView materialCardView1: materialCardViewsPlans){
                         if (materialCardView != materialCardView1)
                             materialCardView1.setChecked(false);
@@ -93,6 +116,12 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
     public void additionalThemeChanges(){
         if (ThemeUtils.isNightModeActive(appCompatActivity)){
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
+
+            binding.textViewPickAPlanFragmentPredefinedMacros.setTextColor(colorWhite);
+            binding.textViewNotActive.setTextColor(colorWhite);
+            binding.textViewLightlyActive.setTextColor(colorWhite);
+            binding.textViewActive.setTextColor(colorWhite);
+            binding.textViewAthlete.setTextColor(colorWhite);
 
             binding.textViewTitlePlan1.setTextColor(colorWhite);
             binding.textViewTitlePlan2.setTextColor(colorWhite);
@@ -108,6 +137,12 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
             binding.textViewTitlePlan12.setTextColor(colorWhite);
         } else {
             int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
+
+            binding.textViewPickAPlanFragmentPredefinedMacros.setTextColor(colorBlack);
+            binding.textViewNotActive.setTextColor(colorBlack);
+            binding.textViewLightlyActive.setTextColor(colorBlack);
+            binding.textViewActive.setTextColor(colorBlack);
+            binding.textViewAthlete.setTextColor(colorBlack);
 
             binding.textViewTitlePlan1.setTextColor(colorBlack);
             binding.textViewTitlePlan2.setTextColor(colorBlack);
@@ -155,9 +190,9 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
         predefinedPlans[7] = new PredefinedPlan("Maintain", "Active", 100, 2600, 300, 40);
         predefinedPlans[8] = new PredefinedPlan("Gain Muscle", "Active", 120, 2800, 330, 45);
 
-        predefinedPlans[9] = new PredefinedPlan("Lose Fat", "Athlete", 100, 2400, 220, 45);
-        predefinedPlans[10] = new PredefinedPlan("Maintain", "Athlete", 130, 2900, 350, 45);
-        predefinedPlans[11] = new PredefinedPlan("Gain Muscle", "Athlete", 150, 3300, 380, 50);
+        predefinedPlans[9] = new PredefinedPlan("Lose Fat", "Athlete", 130, 2700, 240, 40);
+        predefinedPlans[10] = new PredefinedPlan("Maintain", "Athlete", 150, 3200, 360, 45);
+        predefinedPlans[11] = new PredefinedPlan("Gain Muscle", "Athlete", 170, 3600, 450, 50);
     }
 
     @SuppressLint("SetTextI18n")
@@ -167,28 +202,39 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
             LinearLayout linearLayout = (LinearLayout) materialCardView.getChildAt(0);
             PredefinedPlan predefinedPlan = predefinedPlans[i];
 
-            TextView textViewTitle = (TextView) linearLayout.getChildAt(1);
-            TextView textViewStatus = (TextView) linearLayout.getChildAt(2);
+            TextView textViewTitle = (TextView) linearLayout.getChildAt(0);
 
-            TextView textViewProteins = (TextView) linearLayout.getChildAt(3);
+            TextView textViewProteins = (TextView) linearLayout.getChildAt(2);
             TextView textViewCalories = (TextView) linearLayout.getChildAt(4);
-            TextView textViewCarbohydrates = (TextView) linearLayout.getChildAt(5);
-            TextView textViewSugars = (TextView) linearLayout.getChildAt(6);
-
+            TextView textViewCarbohydrates = (TextView) linearLayout.getChildAt(6);
+            TextView textViewSugars = (TextView) linearLayout.getChildAt(8);
 
             textViewTitle.setText(predefinedPlan.getTitle());
-            textViewStatus.setText(predefinedPlan.getStatus());
 
-            textViewProteins.setText("Proteins - " + predefinedPlan.getProteins());
-            textViewCalories.setText("Calories - " + predefinedPlan.getCalories());
-            textViewCarbohydrates.setText("Carbohydrates - " + predefinedPlan.getCarbohydrates());
-            textViewSugars.setText("Sugars - " + predefinedPlan.getSugars());
+            textViewProteins.setText(String.valueOf(predefinedPlan.getProteins()));
+            textViewCalories.setText(String.valueOf(predefinedPlan.getCalories()));
+            textViewCarbohydrates.setText(String.valueOf(predefinedPlan.getCarbohydrates()));
+            textViewSugars.setText(String.valueOf(predefinedPlan.getSugars()));
 
             textViewProteins.setTextColor(ContextCompat.getColor(getContext(), R.color.colorProtein));
             textViewCalories.setTextColor(ContextCompat.getColor(getContext(), R.color.colorCalorie));
             textViewCarbohydrates.setTextColor(ContextCompat.getColor(getContext(), R.color.colorCarbohydrate));
             textViewSugars.setTextColor(ContextCompat.getColor(getContext(), R.color.colorSugar));
         }
+    }
+
+    public void readMacrosFromSharedPrefAndCheckTheCard(){
+        CustomMacros customMacros = SharedPrefCustomMacros.readFromSharedPref(getContext());
+
+        for (int i=0;i<predefinedPlans.length;i++){
+            PredefinedPlan predefinedPlan = predefinedPlans[i];
+
+            if (predefinedPlan.getProteins() == customMacros.getProteins() && predefinedPlan.getCalories() == customMacros.getCalories()
+            && predefinedPlan.getCarbohydrates() == customMacros.getCarbs() && predefinedPlan.getSugars() == customMacros.getSugars()){
+                materialCardViewsPlans[i].setChecked(true);
+            }
+        }
+
     }
 }
 
