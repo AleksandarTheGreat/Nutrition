@@ -156,24 +156,15 @@ public class FragmentAllDays extends Fragment implements IEssentials {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Light);
             int colorWhite = ContextCompat.getColor(getContext(), R.color.white);
 
-            binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_white);
 
-            binding.textViewSub1.setTextColor(color);
-            binding.textViewSub3.setTextColor(color);
-
+            binding.textViewAverageLabel.setTextColor(colorWhite);
             binding.textViewTitleFragmentAllDays.setTextColor(colorWhite);
-            binding.textViewStatistics.setTextColor(colorWhite);
         } else {
             int color = ContextCompat.getColor(getContext(), R.color.colorText60Dark);
             int colorBlack = ContextCompat.getColor(getContext(), R.color.black);
 
-            binding.imageViewLogoGraph.setImageResource(R.drawable.ic_stats_black);
-
-            binding.textViewSub1.setTextColor(color);
-            binding.textViewSub3.setTextColor(color);
-
+            binding.textViewAverageLabel.setTextColor(colorBlack);
             binding.textViewTitleFragmentAllDays.setTextColor(colorBlack);
-            binding.textViewStatistics.setTextColor(colorBlack);
         }
     }
 

@@ -73,21 +73,21 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setTitle("Delete")
                     .setIcon(R.drawable.ic_remove)
-                    .setMessage("Are you sure you want to delete '" + item.getIngredient() + "' from the list ??")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setMessage("'" + item.getIngredient() + "' will be removed from the list.")
+                    .setPositiveButton("Yes, I know, duhh...", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             itemsRepo.delete(item.getId());
                             itemList.remove(item);
 
                             notifyItemRemoved(myViewHolder.getAdapterPosition());
-                            Log.d("Tag", "Item '" + item.getIngredient() + "' deleted");
+                            Log.d("Tag", "'" + item.getIngredient() + "' deleted successfully, hope you're happy now...");
 
                             HelperFragmentADay.checkIfItemsAreEmpty(binding, ItemsAdapter.this);
                             HelperFragmentADay.calculateTotalNutrients(context, binding, ItemsAdapter.this);
                         }
                     })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("Changed my mind", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();

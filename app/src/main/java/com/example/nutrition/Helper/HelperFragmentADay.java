@@ -146,7 +146,7 @@ public class HelperFragmentADay {
                             }
                         } catch (JSONException e) {
                             Log.d("Tag", "Error: " + e.getMessage());
-                            toaster.text("Failed to receive the response, please check your input request");
+                            toaster.text("Sorry, probably an unknown food ingredient, try again");
                             progressDialog.dismiss();
                         }
                     }
@@ -165,13 +165,9 @@ public class HelperFragmentADay {
 
     public static void checkIfItemsAreEmpty(FragmentADayBinding binding, ItemsAdapter itemsAdapter) {
         if (itemsAdapter.isListEmpty()) {
-            binding.textViewNoItemsFragmentADay.setVisibility(View.VISIBLE);
-            binding.textViewSearchForWhat.setVisibility(View.VISIBLE);
-            binding.imageViewSearching.setVisibility(View.VISIBLE);
+            binding.linearLayoutEmptyItemsFragmentADay.setVisibility(View.VISIBLE);
         } else {
-            binding.textViewNoItemsFragmentADay.setVisibility(View.INVISIBLE);
-            binding.textViewSearchForWhat.setVisibility(View.INVISIBLE);
-            binding.imageViewSearching.setVisibility(View.INVISIBLE);
+            binding.linearLayoutEmptyItemsFragmentADay.setVisibility(View.GONE);
         }
     }
 

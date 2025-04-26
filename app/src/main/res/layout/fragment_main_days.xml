@@ -22,25 +22,20 @@
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_days"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <TextView
             android:id="@+id/textViewSubTitleSection3"
             style="@style/SubTitlePart"
-            android:text="Tracking my progress"
+            android:text="My Days"
+            android:textSize="26sp"
             app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
-        <TextView
-            android:id="@+id/textViewHelper1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Press the arrow to add a day"
-            android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@id/textViewSubTitleSection3"
-            app:layout_constraintLeft_toRightOf="@id/imageViewIconSection3"
-            />
 
         <ImageView
             android:id="@+id/imageViewArrow"
@@ -65,34 +60,53 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp" />
 
-        <ImageView
-            android:id="@+id/imageViewRunning"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
-            android:src="@drawable/ic_run"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@id/textViewNoDaysMainActivity"
-            />
-
-        <TextView
-            android:id="@+id/textViewNoDaysMainActivity"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayoutEmptyDaysFragmentMainDays"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawableLeft="@drawable/ic_info"
-            android:drawablePadding="8dp"
-            android:textSize="16sp"
-            android:text="You have no days to track, yet" />
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/buttonGetStarted"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/textViewNoDaysMainActivity"
-            android:layout_marginTop="12dp"
-            android:text="Get started!"
-            />
+            <ImageView
+                android:id="@+id/imageViewRunning"
+                android:layout_height="80dp"
+                android:layout_width="80dp"
+                android:src="@drawable/ic_run"
+                />
+
+            <TextView
+                android:id="@+id/textViewEmpty1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="You have no days to track" />
+
+            <TextView
+                android:id="@+id/textViewEmpty2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Click the Top right arrow" />
+
+            <TextView
+                android:id="@+id/textViewEmpty3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="20sp"
+                android:text="or" />
+
+            <Button
+                android:id="@+id/buttonGetStarted"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:text="Get started!"
+                />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

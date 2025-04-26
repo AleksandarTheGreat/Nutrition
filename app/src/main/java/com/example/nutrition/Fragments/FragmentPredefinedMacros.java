@@ -98,16 +98,25 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
                         int sugars = predefinedPlan.getSugars();
 
                         SharedPrefCustomMacros.writeToSharedPref(getContext(), proteins, calories, carbohydrates, sugars);
+                        materialCardView.setScaleY(1.02f);
+                        materialCardView.setScaleX(1.02f);
                     } else {
                         toaster.text("Plan revoked");
                         SharedPrefCustomMacros.writeToSharedPref(getContext(), -1, -1, -1 ,-1);
+                        materialCardView.setScaleY(1.0f);
+                        materialCardView.setScaleX(1.0f);
                     }
 
                     // This is to not have multiple cards selected
                     for (MaterialCardView materialCardView1: materialCardViewsPlans){
-                        if (materialCardView != materialCardView1)
+                        if (materialCardView != materialCardView1){
                             materialCardView1.setChecked(false);
+                            materialCardView1.setScaleY(1.0f);
+                            materialCardView1.setScaleX(1.0f);
+                        }
                     }
+
+                    // Maybe exit, go to the main fragment idk ?
                 }
             });
         }
@@ -232,6 +241,8 @@ public class FragmentPredefinedMacros extends Fragment implements IEssentials {
             if (predefinedPlan.getProteins() == customMacros.getProteins() && predefinedPlan.getCalories() == customMacros.getCalories()
             && predefinedPlan.getCarbohydrates() == customMacros.getCarbs() && predefinedPlan.getSugars() == customMacros.getSugars()){
                 materialCardViewsPlans[i].setChecked(true);
+                materialCardViewsPlans[i].setScaleX(1.02f);
+                materialCardViewsPlans[i].setScaleY(1.02f);
             }
         }
 

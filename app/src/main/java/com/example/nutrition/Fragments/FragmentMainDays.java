@@ -86,6 +86,7 @@ public class FragmentMainDays extends Fragment implements IEssentials {
 
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_white);
             binding.imageViewArrow.setImageResource(R.drawable.ic_right_white);
+            binding.textViewEmpty2.setTextColor(colorWhite);
 
         } else {
 
@@ -95,6 +96,7 @@ public class FragmentMainDays extends Fragment implements IEssentials {
 
             binding.imageViewIconSection3.setImageResource(R.drawable.ic_calendar_black);
             binding.imageViewArrow.setImageResource(R.drawable.ic_right_black);
+            binding.textViewEmpty2.setTextColor(colorBlack);
 
         }
     }
@@ -113,13 +115,9 @@ public class FragmentMainDays extends Fragment implements IEssentials {
                 // and since we only interact via click
                 // and don't load or delete new days this is enough
                 if (daysAdapter.isEmpty()){
-                    binding.textViewNoDaysMainActivity.setVisibility(View.VISIBLE);
-                    binding.imageViewRunning.setVisibility(View.VISIBLE);
-                    binding.buttonGetStarted.setVisibility(View.VISIBLE);
+                    binding.linearLayoutEmptyDaysFragmentMainDays.setVisibility(View.VISIBLE);
                 } else {
-                    binding.textViewNoDaysMainActivity.setVisibility(View.GONE);
-                    binding.imageViewRunning.setVisibility(View.GONE);
-                    binding.buttonGetStarted.setVisibility(View.GONE);
+                    binding.linearLayoutEmptyDaysFragmentMainDays.setVisibility(View.GONE);
                 }
 
                 activityMainBinding.textViewTotalDays.setText(String.valueOf(daysAdapter.getItemCount()));

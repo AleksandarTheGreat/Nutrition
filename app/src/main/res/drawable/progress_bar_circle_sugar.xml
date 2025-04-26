@@ -5,7 +5,7 @@
     <item android:id="@android:id/background">
         <shape android:shape="ring"
             android:innerRadiusRatio="3.5"
-            android:thickness="20dp"
+            android:thickness="15dp"
             android:useLevel="false">
             <solid android:color="@color/colorSugarBack"/>
         </shape>
@@ -15,7 +15,7 @@
     <item android:id="@android:id/progress">
         <shape android:shape="ring"
             android:innerRadiusRatio="3.5"
-            android:thickness="20dp"
+            android:thickness="15dp"
             android:useLevel="true">
             <solid android:color="@color/colorSugar"/>
         </shape>

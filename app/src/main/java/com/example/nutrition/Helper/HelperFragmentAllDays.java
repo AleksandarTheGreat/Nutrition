@@ -309,8 +309,7 @@ public class HelperFragmentAllDays {
         int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
 
         if (dayList.size() == 0){
-            binding.textViewSub3.setText("Average " + macronutrient);
-            binding.textViewSub3.setTextColor(colorPrimary);
+            binding.textViewAverageLabel.setText("Average " + macronutrient);
             binding.textViewAverage.setText("0");
             binding.textViewAverage.setTextColor(colorPrimary);
             return;
@@ -335,15 +334,11 @@ public class HelperFragmentAllDays {
             }
         }
 
-        binding.textViewSub3.setText("Average " + macronutrient);
-        binding.textViewSub3.setTextColor(colorPrimary);
+        binding.textViewAverageLabel.setText("Average " + macronutrient);
         binding.textViewAverage.setText(String.format("%.0f", sum / dayList.size()));
         binding.textViewAverage.setTextColor(colorPrimary);
     }
 
-    public void countAndSetTotalDays(Context context, FragmentAllDaysBinding binding, int totalDays){
-        int colorPrimary = MaterialColors.getColor(context, com.google.android.material.R.attr.colorPrimary, Color.BLUE);
-    }
 }
 
 
