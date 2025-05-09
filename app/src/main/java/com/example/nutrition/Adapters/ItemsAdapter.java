@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -114,6 +115,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.come_from_left);
         holder.linearLayout.startAnimation(animation);
+
+        holder.constraintLayoutItem.setOnClickListener(view -> {
+            if (holder.linearLayoutMacroChips.isShown()){
+                holder.linearLayoutMacroChips.setVisibility(View.GONE);
+            } else {
+                holder.linearLayoutMacroChips.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -123,6 +132,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         protected LinearLayout linearLayout;
+        protected ConstraintLayout constraintLayoutItem;
+        protected LinearLayout linearLayoutMacroChips;
+
         protected ImageView imageViewItemIcon;
         protected TextView textViewIngredient;
         protected Chip chipProtein;
@@ -135,6 +147,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
             super(itemView);
             this.linearLayout = itemView.findViewById(R.id.mainLayoutSingleItem);
             this.imageViewItemIcon = itemView.findViewById(R.id.imageViewItemIcon);
+            this.constraintLayoutItem = itemView.findViewById(R.id.constraintLayoutItem);
+            this.linearLayoutMacroChips = itemView.findViewById(R.id.linearLayoutMacroChips);
 
             this.textViewIngredient = itemView.findViewById(R.id.textViewSingleItemTitle);
             this.chipProtein = itemView.findViewById(R.id.textViewActualProteins);

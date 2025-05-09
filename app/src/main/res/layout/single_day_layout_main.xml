@@ -8,8 +8,7 @@
     android:layout_marginHorizontal="2dp"
     app:strokeWidth="0dp"
     app:cardElevation="1dp"
-    app:cardCornerRadius="8dp"
-    >
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,35 +16,24 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/textViewSingleDayNumber"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="D1"
-            android:gravity="center"
-            android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            />
-
-        <TextView
             android:id="@+id/textViewDay"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             android:text="Day name here"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="@id/textViewSingleDayNumber"
-            app:layout_constraintLeft_toRightOf="@id/textViewSingleDayNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             />
 
         <TextView
             android:id="@+id/textViewDate"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             android:text="10.06.2024"
             android:textSize="12sp"
-            app:layout_constraintLeft_toRightOf="@id/textViewSingleDayNumber"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewDay"
             />
 
@@ -58,7 +46,7 @@
             android:textAlignment="center"
             android:layout_marginEnd="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textViewSingleDayNumber"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
         <TextView
