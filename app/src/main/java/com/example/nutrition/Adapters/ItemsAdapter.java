@@ -119,8 +119,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
         holder.constraintLayoutItem.setOnClickListener(view -> {
             if (holder.linearLayoutMacroChips.isShown()){
                 holder.linearLayoutMacroChips.setVisibility(View.GONE);
+                if (isNightModeOn) holder.imageViewItemIcon.setImageResource(R.drawable.ic_arrow_down_white);
+                else holder.imageViewItemIcon.setImageResource(R.drawable.ic_arrow_down_black);
             } else {
                 holder.linearLayoutMacroChips.setVisibility(View.VISIBLE);
+                if (isNightModeOn) holder.imageViewItemIcon.setImageResource(R.drawable.ic_arrow_right_white);
+                else holder.imageViewItemIcon.setImageResource(R.drawable.ic_arrow_right_black);
             }
         });
     }
@@ -162,11 +166,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyViewHolder
     private void additionalThemeChanges(MyViewHolder holder) {
         if (isNightModeOn) {
             int colorWhite = ContextCompat.getColor(context, R.color.white);
-            holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_white);
+            holder.imageViewItemIcon.setImageResource(R.drawable.ic_arrow_down_white);
             holder.textViewIngredient.setTextColor(colorWhite);
         } else {
             int colorBlack = ContextCompat.getColor(context, R.color.black);
-            holder.imageViewItemIcon.setImageResource(R.drawable.ic_plate_black);
+            holder.imageViewItemIcon.setImageResource(R.drawable.ic_arrow_down_black);
             holder.textViewIngredient.setTextColor(colorBlack);
         }
     }

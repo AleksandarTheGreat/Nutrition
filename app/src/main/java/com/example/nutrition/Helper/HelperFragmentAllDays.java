@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.provider.CloudMediaProvider;
 import android.util.Log;
 import android.view.Gravity;
@@ -46,6 +47,7 @@ public class HelperFragmentAllDays {
     private Context context;
     private AppCompatActivity appCompatActivity;
     private boolean isNightModeOn;
+    private Lock lock;
 
     public HelperFragmentAllDays(Context context, AppCompatActivity appCompatActivity){
         this.context = context;
